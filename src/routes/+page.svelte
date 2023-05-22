@@ -115,7 +115,7 @@
   
   <style>
   
-  /* Global Styles */
+
   
   body {
     font-family: Arial, sans-serif;

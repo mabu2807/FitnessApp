@@ -7,7 +7,7 @@
       title: 'Krafttraining',
       imageSrc: 'src/assets/workout2.jpg',
       description: ' Sed do eiusmod temporrem ipsum dolor sit ametorididunt ut labore et dolore magna aliqua. ',
-      link: 'https://example.com/button1'
+      link: '\liftingplan'
     },
     {
       title: 'Cardio',
@@ -204,7 +204,7 @@ font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, O
   cursor: pointer;
   border: 2px solid #393e46;
   overflow: hidden;
-  
+  margin-bottom: 20px;
   transition: background-color 0.3s ease;
   animation: shadow-animation 2s infinite linear;
 }
@@ -284,7 +284,7 @@ font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, O
   color: #ffffff;
   padding: 44px;
  
-  margin-top: 20px;
+  
 }
 
 .footer-content {

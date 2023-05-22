@@ -11,8 +11,8 @@
         <nav class="navbar-collapse">
             <ul class="navbar-nav">
                 <li><a href="/">Home</a></li>
-                <li><a href="/">Workouts</a></li>
-                <li><a href="/user">Progress</a></li>
+                <li><a href="/tracker">Workouts</a></li>
+                <li><a href="/">Progress</a></li>
                 <li><a href="/">Settings</a></li>
                 <li><button class="navbar-button"><a href="/">Log In</a></button></li>
             </ul>
@@ -25,6 +25,10 @@
 <slot />
 
 <style>
+
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 
 .header {
     background-color: #393e46;
