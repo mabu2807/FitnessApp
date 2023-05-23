@@ -12,7 +12,7 @@
 		"test:unit": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"prepare": "npm run smui-theme-light && npm run smui-theme-dark",
+		"prepare": "pnpm run smui-theme-light && pnpm run smui-theme-dark",
 "smui-theme-light": "smui-theme compile static/smui.css -i src/theme ./node_modules" ,
 "smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark ./node_modules"
 	},
