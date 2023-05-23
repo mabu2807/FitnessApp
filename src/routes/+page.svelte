@@ -279,6 +279,7 @@
   color: #ffffff;
   width: 100%;
   height: 60px;
+  padding: 22px 0;
 }
 
 .footer-content {

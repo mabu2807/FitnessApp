@@ -32,7 +32,7 @@
     </div>
     <div class="button-cards">
       {#each buttonData as button}
-      <a href={button.link} target="_blank" rel="noopener noreferrer" class="button-card">
+      <a href={button.link}  class="button-card">
         <div class="image-container">
           <img src={button.imageSrc} alt="Button Image" />
         </div>
