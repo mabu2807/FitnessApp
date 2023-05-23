@@ -16,6 +16,12 @@ devDependencies:
   '@smui/icon-button':
     specifier: ^7.0.0-beta.8
     version: 7.0.0-beta.8(svelte@3.59.1)(typescript@5.0.4)
+  '@smui/tab':
+    specifier: 7.0.0-beta.8
+    version: 7.0.0-beta.8(svelte@3.59.1)(typescript@5.0.4)
+  '@smui/tab-bar':
+    specifier: 7.0.0-beta.8
+    version: 7.0.0-beta.8(svelte@3.59.1)(typescript@5.0.4)
   '@sveltejs/adapter-auto':
     specifier: ^2.1.0
     version: 2.1.0(@sveltejs/kit@1.16.3)
@@ -487,6 +493,58 @@ packages:
       tslib: 2.5.0
     dev: true
 
+  /@material/tab-bar@14.0.0:
+    resolution: {integrity: sha512-G/UYEOIcljCHlkj3iCRGIz4zE9RVcsdC9wuOR6LE2rla6EGyT0x2psNlL0pIMROjXoB0HGda/gB90ovzKcbURA==}
+    dependencies:
+      '@material/animation': 14.0.0
+      '@material/base': 14.0.0
+      '@material/density': 14.0.0
+      '@material/elevation': 14.0.0
+      '@material/feature-targeting': 14.0.0
+      '@material/tab': 14.0.0
+      '@material/tab-indicator': 14.0.0
+      '@material/tab-scroller': 14.0.0
+      '@material/theme': 14.0.0
+      '@material/typography': 14.0.0
+      tslib: 2.5.0
+    dev: true
+
+  /@material/tab-indicator@14.0.0:
+    resolution: {integrity: sha512-wfq136fsJGqtCIW8x1wFQHgRr7dIQ9SWqp6WG4FQGHpSzliNDA23/bdBUjh3lX2U+mfbdsFmZWEPy06jg2uc5g==}
+    dependencies:
+      '@material/animation': 14.0.0
+      '@material/base': 14.0.0
+      '@material/feature-targeting': 14.0.0
+      '@material/theme': 14.0.0
+      tslib: 2.5.0
+    dev: true
+
+  /@material/tab-scroller@14.0.0:
+    resolution: {integrity: sha512-wadETsRM7vT4mRjXedaPXxI/WFSSgqHRNI//dORJ6627hoiJfLb5ixwUKTYk9zTz6gNwAlRTrKh98Dr9T7n7Kw==}
+    dependencies:
+      '@material/animation': 14.0.0
+      '@material/base': 14.0.0
+      '@material/dom': 14.0.0
+      '@material/feature-targeting': 14.0.0
+      '@material/tab': 14.0.0
+      tslib: 2.5.0
+    dev: true
+
+  /@material/tab@14.0.0:
+    resolution: {integrity: sha512-jGSQdp6BvZOVnvGbv0DvNDJL2lHYVFtKGehV0gSZ7FrjHK6gZnKZjWOVwt1NPu9ig9zy85vPRFpvFTeje1KZpg==}
+    dependencies:
+      '@material/base': 14.0.0
+      '@material/elevation': 14.0.0
+      '@material/feature-targeting': 14.0.0
+      '@material/focus-ring': 14.0.0
+      '@material/ripple': 14.0.0
+      '@material/rtl': 14.0.0
+      '@material/tab-indicator': 14.0.0
+      '@material/theme': 14.0.0
+      '@material/typography': 14.0.0
+      tslib: 2.5.0
+    dev: true
+
   /@material/theme@14.0.0:
     resolution: {integrity: sha512-6/SENWNIFuXzeHMPHrYwbsXKgkvCtWuzzQ3cUu4UEt3KcQ5YpViazIM6h8ByYKZP8A9d8QpkJ0WGX5btGDcVoA==}
     dependencies:
@@ -626,6 +684,55 @@ packages:
       '@material/dom': 14.0.0
       '@material/ripple': 14.0.0
       '@smui/common': 7.0.0-beta.8(svelte@3.59.1)(typescript@5.0.4)
+      svelte2tsx: 0.6.14(svelte@3.59.1)(typescript@5.0.4)
+    transitivePeerDependencies:
+      - svelte
+      - typescript
+    dev: true
+
+  /@smui/tab-bar@7.0.0-beta.8(svelte@3.59.1)(typescript@5.0.4):
+    resolution: {integrity: sha512-N0hraNszsVCIBAFxXu9YZhMEn9o85coQ1+BYXdhx4J+11x0dwa+E5qTCntqm6RN9zNK/ZaH9ctNUxhvWMbG4ww==}
+    dependencies:
+      '@material/tab-bar': 14.0.0
+      '@smui/common': 7.0.0-beta.8(svelte@3.59.1)(typescript@5.0.4)
+      '@smui/tab': 7.0.0-beta.8(svelte@3.59.1)(typescript@5.0.4)
+      '@smui/tab-scroller': 7.0.0-beta.8(svelte@3.59.1)(typescript@5.0.4)
+      svelte2tsx: 0.6.14(svelte@3.59.1)(typescript@5.0.4)
+    transitivePeerDependencies:
+      - svelte
+      - typescript
+    dev: true
+
+  /@smui/tab-indicator@7.0.0-beta.8(svelte@3.59.1)(typescript@5.0.4):
+    resolution: {integrity: sha512-sj4dH+AwZbgZq1oz/7FzNgA7lKQNobbXyMfSi100Sx27PnXbEEXto0zyafROaNAtjD0h9fzfczPEQEABM9qHwg==}
+    dependencies:
+      '@material/tab-indicator': 14.0.0
+      '@smui/common': 7.0.0-beta.8(svelte@3.59.1)(typescript@5.0.4)
+      svelte2tsx: 0.6.14(svelte@3.59.1)(typescript@5.0.4)
+    transitivePeerDependencies:
+      - svelte
+      - typescript
+    dev: true
+
+  /@smui/tab-scroller@7.0.0-beta.8(svelte@3.59.1)(typescript@5.0.4):
+    resolution: {integrity: sha512-LRsnQwIg2UCsBmG57EkRvsL9pv07Lb2O3T8Sdt3a6ackKweOqMWQyir04uAcE3EcjTzsZxM7MGzLLZ8mJr1ACg==}
+    dependencies:
+      '@material/dom': 14.0.0
+      '@material/tab-scroller': 14.0.0
+      '@smui/common': 7.0.0-beta.8(svelte@3.59.1)(typescript@5.0.4)
+      svelte2tsx: 0.6.14(svelte@3.59.1)(typescript@5.0.4)
+    transitivePeerDependencies:
+      - svelte
+      - typescript
+    dev: true
+
+  /@smui/tab@7.0.0-beta.8(svelte@3.59.1)(typescript@5.0.4):
+    resolution: {integrity: sha512-v+WKqv4Hv4KzU3unM/xBX3sJOIiB6vatlEze1HKGBAlLLh+kRZOM1NgLh/SPBpPOSNbdZwbGzPZDAFXCT1ZnIw==}
+    dependencies:
+      '@material/tab': 14.0.0
+      '@smui/common': 7.0.0-beta.8(svelte@3.59.1)(typescript@5.0.4)
+      '@smui/ripple': 7.0.0-beta.8(svelte@3.59.1)(typescript@5.0.4)
+      '@smui/tab-indicator': 7.0.0-beta.8(svelte@3.59.1)(typescript@5.0.4)
       svelte2tsx: 0.6.14(svelte@3.59.1)(typescript@5.0.4)
     transitivePeerDependencies:
       - svelte

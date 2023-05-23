@@ -13,8 +13,8 @@
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
 		"prepare": "pnpm run smui-theme-light && pnpm run smui-theme-dark",
-"smui-theme-light": "smui-theme compile static/smui.css -i src/theme ./node_modules" ,
-"smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark ./node_modules"
+		"smui-theme-light": "smui-theme compile static/smui.css -i src/theme ./node_modules",
+		"smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark ./node_modules"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
@@ -22,6 +22,8 @@
 		"@smui/card": "7.0.0-beta.8",
 		"@smui/dialog": "^7.0.0-beta.8",
 		"@smui/icon-button": "^7.0.0-beta.8",
+		"@smui/tab": "7.0.0-beta.8",
+		"@smui/tab-bar": "7.0.0-beta.8",
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"@sveltejs/kit": "^1.5.0",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
