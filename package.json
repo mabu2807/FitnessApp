@@ -24,6 +24,8 @@
 		"@smui/icon-button": "^7.0.0-beta.8",
 		"@smui/tab": "7.0.0-beta.8",
 		"@smui/tab-bar": "7.0.0-beta.8",
+		"@smui/textfield": "7.0.0-beta.8",
+		"@smui/top-app-bar": "7.0.0-beta.8",
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"@sveltejs/kit": "^1.5.0",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",

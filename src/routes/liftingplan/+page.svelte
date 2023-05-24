@@ -9,7 +9,7 @@
 let plans = [
   {
         id: "0",
-        title: "Trainingsplan 2",
+        title: "Trainingsplan 1",
         description: "Ein intensiver Trainingsplan für Fettverbrennung und Ausdauersteigerung.",
         image: "src/assets/plan1.jpg",
         plan: [
