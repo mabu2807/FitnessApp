@@ -4,59 +4,194 @@
   import IconButton from '@smui/icon-button';
   import Button, { Label } from '@smui/button';
 
-
 // export let data;
 
 let plans = [
-      {
+  {
+        id: "0",
         title: "Trainingsplan 1",
-        description: "Ein umfassender Trainingsplan für Muskelaufbau und Kraftsteigerung.",
-        image: "src/assets/plan1.jpg"
+        description: "Ein intensiver Trainingsplan für Fettverbrennung und Ausdauersteigerung.",
+        image: "src/assets/plan1.jpg",
+        plan: [
+          {
+            id: 1,
+            exercise: "Bankdrücken",
+            description: "Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.",
+            imagePath: "src/assets/plan1.jpg",
+            sets: "3",
+            repetitions: "18",
+            weigth: "120"
+          } ,
+          {
+            id: 2,
+            exercise: "Butterfly",
+            description: "Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.",
+            imagePath: "src/assets/plan2.jpg",
+            sets: "3",
+            repetitions: "18",
+            weigth: "120"
+          } ,
+          {
+            id: 1,
+            exercise: "Bankdrücken",
+            description: "Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.",
+            imagePath: "src/assets/plan1.jpg",
+            sets: "3",
+            repetitions: "18",
+            weigth: "120"
+          } ,
+          {
+            id: 2,
+            exercise: "Butterfly",
+            description: "Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.",
+            imagePath: "src/assets/plan2.jpg",
+            sets: "3",
+            repetitions: "18",
+            weigth: "120"
+          } ,{
+            id: 1,
+            exercise: "Bankdrücken",
+            description: "Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.",
+            imagePath: "src/assets/plan1.jpg",
+            sets: "3",
+            repetitions: "18",
+            weigth: "120"
+          } ,
+          {
+            id: 2,
+            exercise: "Butterfly",
+            description: "Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.",
+            imagePath: "src/assets/plan2.jpg",
+            sets: "3",
+            repetitions: "18",
+            weigth: "120"
+          } 
+        ]
       },
       {
+        id: "1",
         title: "Trainingsplan 2",
         description: "Ein intensiver Trainingsplan für Fettverbrennung und Ausdauersteigerung.",
-        image: "src/assets/plan2.jpg"
+        image: "src/assets/plan2.jpg",
+        plan: [
+          {
+            id: 1,
+            exercise: "Bankdrücken",
+            description: "Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.",
+            imagePath: "src/assets/plan1.jpg",
+            sets: "3",
+            repetitions: "18",
+            weigth: "120"
+          } ,
+          {
+            id: 2,
+            exercise: "Butterfly",
+            description: "Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.",
+            imagePath: "src/assets/plan2.jpg",
+            sets: "3",
+            repetitions: "18",
+            weigth: "120"
+          } ,
+          {
+            id: 1,
+            exercise: "Bankdrücken",
+            description: "Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.",
+            imagePath: "src/assets/plan1.jpg",
+            sets: "3",
+            repetitions: "18",
+            weigth: "120"
+          } ,
+          {
+            id: 2,
+            exercise: "Butterfly",
+            description: "Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.",
+            imagePath: "src/assets/plan2.jpg",
+            sets: "3",
+            repetitions: "18",
+            weigth: "120"
+          } ,{
+            id: 1,
+            exercise: "Bankdrücken",
+            description: "Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.",
+            imagePath: "src/assets/plan1.jpg",
+            sets: "3",
+            repetitions: "18",
+            weigth: "120"
+          } ,
+          {
+            id: 2,
+            exercise: "Butterfly",
+            description: "Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.",
+            imagePath: "src/assets/plan2.jpg",
+            sets: "3",
+            repetitions: "18",
+            weigth: "120"
+          } 
+        ]
       },
       {
+        id: "2",
         title: "Trainingsplan 3",
         description: "Ein flexibler Trainingsplan für Ganzkörperfitness und Beweglichkeit.",
-        image: "src/assets/plan3.jpg"
+        image: "src/assets/plan3.jpg",
+        plan: [
+          {
+            id: 1,
+            exercise: "Bankdrücken",
+            description: "Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.",
+            imagePath: "src/assets/plan1.jpg"
+          } ,
+          {
+            id: 2,
+            exercise: "Butterfly",
+            description: "Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.",
+            imagePath: "src/assets/plan2.jpg"
+          } 
+        ]
       },
       {
+        id: "3",
         title: "Trainingsplan 4",
         description: "Ein umfassender Trainingsplan für die Beweglichkeit.",
-        image: "src/assets/plan4.jpg"
+        image: "src/assets/plan4.jpg",
+        plan: [
+          {
+            id: 1,
+            exercise: "Bankdrücken",
+            description: "Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.",
+            imagePath: "src/assets/plan1.jpg"
+          } ,
+          {
+            id: 2,
+            exercise: "Butterfly",
+            description: "Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.",
+            imagePath: "src/assets/plan2.jpg"
+          } 
+        ]
       }
       
     ];
   
-  let length = plans.length;
+  $: plength = plans.length;
+
 
   let open = false;
-  let response = 'Nothing yet.';
+  let showPlan: any;
 
-  function closeHandler(e: CustomEvent<{ action: string }>) {
-    switch (e.detail.action) {
-      case 'close':
-        response = 'Closed without response.';
-        break;
-      case 'reject':
-        response = 'Rejected.';
-        break;
-      case 'accept':
-        response = 'Accepted.';
-        break;
-    }
+
+
+  function setPlan(plan: any) {
+    open = true;
+    showPlan = plan;
+    
   }
-
   </script>
   
-<pre class="status">Response: {response}</pre>
-  <main>
-   
 
-      {#if length > 0}
+
+  <main>
+
+      {#if plength > 0}
       <div class="category">
         <h1 class="category-title">Wähle einen Trainingsplan</h1>
         <p class="category-description">Entdecke unsere vielfältigen Trainingsmöglichkeiten</p>
@@ -69,12 +204,52 @@ let plans = [
       <div class="plan-content">
         <h3 class="plan-title">{plan.title}</h3>
         <p class="plan-description">{plan.description}</p>
-        <button class="select-button">Auswählen</button>
+        <button on:click={() => setPlan(plan)} class="select-button">
+          <Label>Auswählen</Label>
+        </button>
       </div>
     </div>
     {/each}
   </div>
   
+  {#if showPlan}
+  <Dialog
+  bind:open
+  aria-labelledby="large-scroll-title"
+  aria-describedby="large-scroll-content"
+  surface$style="width: 1050px; max-width: calc(100vw - 32px);">
+  <Title id="large-scroll-title">{showPlan.title}</Title>
+  <Content id="large-scroll-content">
+    <div>
+
+</div>
+    <div class="exc-container">
+    {#each {length: showPlan.plan.length} as _, i}
+
+    <h2> Übung {i+1}: {showPlan.plan[i].exercise}</h2>
+      <div class="exc-wrapper">
+        <div class="image-co">
+
+          <img src="{showPlan.plan[i].imagePath}" alt="{showPlan.plan[i].imagePath}">
+        </div>
+        <div class="exc-descript">
+          <p> <b> {showPlan.plan[i].sets} </b> Sätze x <b> {showPlan.plan[i].repetitions} </b> Wiederholungen (Gewicht: Langhantel mit zusätzlichen <b> {showPlan.plan[i].weigth}kg </b>)</p>
+       
+          <h4>Hinweise zur Ausführung:</h4>
+          <p>{showPlan.plan[i].description}</p>
+        </div>
+      </div>
+        {/each}
+     
+    </div>
+  </Content>
+  <Actions>
+    <Button action="accept">
+      <Label>Done</Label>
+    </Button>
+  </Actions>
+</Dialog>
+{/if}
   <footer class="footer-n">
     <div class="footer-content">
       <p class="footer-text">&copy; 2023 Fitness Tracker. All rights reserved.</p>
@@ -116,6 +291,65 @@ let plans = [
 
 
   <style>
+
+.exc-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+   margin-top: 20px;
+}
+
+
+
+.exc-wrapper {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  
+}
+
+.exc-descript {
+  width: 100%;
+  height: 10%;
+}
+
+.image-co {
+  width: 47%;
+    height: 285px;
+    overflow: hidden;
+    border: 2px solid #a19d9d;
+    border-radius: 5px;
+  }
+
+  .image-co img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+.select-button {
+  font-size: 16px;
+  padding: 8px 16px;
+  margin-top: 10px;
+  border: none;
+  background-color: #393e46;
+  color: #ffffff;
+  border: 1px solid #393e46;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.select-button:hover {
+  
+  border: none;
+  background-color: #ffffff;
+  color: #393e46;
+  border: 1px solid #393e46;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: .5s ease all;
+}
 
 .info-container {
   background-color: #f5f5f5;
@@ -253,26 +487,7 @@ font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, O
   color: rgb(144, 144, 144);
 }
 
-    .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-  }
-
-  .modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 500px;
-    text-align: center;
-  }
+  
 
     .plan-container {
       display: flex;
@@ -315,45 +530,10 @@ font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, O
       
     }
   
-    .select-button {
-      font-size: 16px;
-      padding: 8px 16px;
-      margin-top: 10px;
-      border: none;
-      background-color: #393e46;
-      color: #ffffff;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+   
 
-    .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 
-  .popup-content {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .popup-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 16px;
-    color: #888888;
-    cursor: pointer;
-  }
+  
 
 .footer-n {
   background-color: #393e46;

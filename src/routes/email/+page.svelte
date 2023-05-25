@@ -1,6 +1,6 @@
 
 <script>
-  import nodemailer from "nodemailer";
+  // import nodemailer from "nodemailer";
 
   function sendEmail() {
     console.log('test');
