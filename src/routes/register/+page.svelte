@@ -104,7 +104,7 @@ body {
   display: block;
   margin: auto;
   margin-top: 120px;
-  background: #000;
+  background: #393e46;
   color: #fff;
   font-weight: bold;
   -webkit-box-shadow: 0px 9px 15px -11px rgba(0, 0, 0, 0.4);

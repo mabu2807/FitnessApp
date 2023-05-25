@@ -12,7 +12,7 @@
       <section class="hero">
         <h2>Welcome to Fitness Tracker</h2>
         <p>Track your fitness progress and achieve your goals.</p>
-        <a href="/tracker" class="btn">Get Started</a>
+        <a href="/getStarted" class="btn">Get Started</a>
       </section>
       <section class="workouts">
         <h2>Popular Workouts</h2>
@@ -37,67 +37,8 @@
           <div class="container">
             <h2>Your Progress</h2>
             <p>Track your progress and stay motivated.</p>
-            <div class="progress-chart">
-              <div class="chart-row">
-                <div class="chart-label">Jan</div>
-                <div class="chart-bar" style="height: 70%;"></div>
-                <div class="chart-value">70%</div>
-              </div>
-              <div class="chart-row">
-                <div class="chart-label">Feb</div>
-                <div class="chart-bar" style="height: 80%;"></div>
-                <div class="chart-value">80%</div>
-              </div>
-              <div class="chart-row">
-                <div class="chart-label">Mar</div>
-                <div class="chart-bar" style="height: 90%;"></div>
-                <div class="chart-value">90%</div>
-              </div>
-              <div class="chart-row">
-                <div class="chart-label">Apr</div>
-                <div class="chart-bar" style="height: 60%;"></div>
-                <div class="chart-value">60%</div>
-              </div>
-              <div class="chart-row">
-                <div class="chart-label">May</div>
-                <div class="chart-bar" style="height: 85%;"></div>
-                <div class="chart-value">85%</div>
-              </div>
-              <div class="chart-row">
-                <div class="chart-label">Jun</div>
-                <div class="chart-bar" style="height: 75%;"></div>
-                <div class="chart-value">75%</div>
-              </div>
-              <div class="chart-row">
-                <div class="chart-label">Jul</div>
-                <div class="chart-bar" style="height: 55%;"></div>
-                <div class="chart-value">55%</div>
-              </div>
-              <div class="chart-row">
-                <div class="chart-label">Aug</div>
-                <div class="chart-bar" style="height: 70%;"></div>
-                <div class="chart-value">70%</div>
-              </div>
-              <div class="chart-row">
-                <div class="chart-label">Sep</div>
-                <div class="chart-bar" style="height: 95%;"></div>
-                <div class="chart-value">95%</div>
-              </div>
-              <div class="chart-row">
-                <div class="chart-label">Oct</div>
-                <div class="chart-bar" style="height: 85%;"></div>
-                <div class="chart-value">85%</div>
-              </div>
-              <div class="chart-row">
-                <div class="chart-label">Nov</div>
-                <div class="chart-bar" style="height: 65%;"></div>
-                <div class="chart-value">65%</div>
-              </div>
-              <div class="chart-row">
-                <div class="chart-label">Dec</div>
-                <div class="chart-bar" style="height: 80%;"></div>
-                <div class="chart-value">80%</div>
-              </div>
+            <div class="progress-chart" >
+              <p >Es gibt keine Charts</p>
             </div>
           </div>
         </section>
