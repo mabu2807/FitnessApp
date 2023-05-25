@@ -13,7 +13,7 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/tracker">Workouts</a></li>
                 <li><a href="/">Progress</a></li>
-                <li><a href="/">Settings</a></li>
+                <li><a href="/email">Settings</a></li>
                 <li><button class="navbar-button"><a href="/">Log In</a></button></li>
             </ul>
         </nav>

@@ -12,9 +12,9 @@
 		"test:unit": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"prepare": "npm run smui-theme-light && npm run smui-theme-dark",
-"smui-theme-light": "smui-theme compile static/smui.css -i src/theme ./node_modules" ,
-"smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark ./node_modules"
+		"prepare": "pnpm run smui-theme-light && pnpm run smui-theme-dark",
+		"smui-theme-light": "smui-theme compile static/smui.css -i src/theme ./node_modules",
+		"smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark ./node_modules"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
@@ -24,6 +24,7 @@
 		"@smui/icon-button": "^7.0.0-beta.8",
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"@sveltejs/kit": "^1.5.0",
+		"@types/nodemailer": "^6.4.8",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"eslint": "^8.28.0",
@@ -39,5 +40,11 @@
 		"vite": "^4.3.0",
 		"vitest": "^0.25.3"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"nodemailer": "^6.9.2",
+		"pnpm": "^8.5.1",
+		"postmark": "^3.0.18",
+		"svelte-email": "^0.0.4"
+	}
 }
