@@ -1,4 +1,44 @@
+<script>
+  import { onMount } from 'svelte';
+  import { fade, fly} from 'svelte/transition';
 
+    
+
+    let items = [
+    { id: 1, name: 'John Doe', text: 'Die FitnessApp hat mein Training auf ein ganz neues Level gebracht. Ich liebe die Vielfalt der Kurse und die Möglichkeit, meinen Fortschritt zu verfolgen.', imgSrc: 'src/assets/customer1.jpg' },
+    { id: 2, name: 'Hampelmann Hagen', text: 'einfach gut', imgSrc: 'src/assets/customer1.jpg'},
+    { id: 3, name: 'Jane Smith', text: 'einwandfrei', imgSrc:'src/assets/customer2.jpg'}, 
+  ];
+
+  let currentIndex = 0;
+  let visibleItems = [];
+
+  const showItems = () => {
+    if (items.length <= 2) {
+      visibleItems = items;
+    } else {
+      visibleItems = [
+        items[currentIndex],
+        items[(currentIndex + 1) % items.length]
+      ];
+    }
+  };
+
+  const handlePrevious = () => {
+    currentIndex = (currentIndex - 1 + items.length) % items.length;
+    showItems();
+  };
+
+  const handleNext = () => {
+    currentIndex = (currentIndex + 1) % items.length;
+    showItems();
+  };
+
+  onMount(() => {
+    showItems();
+  });
+
+  </script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,18 +71,18 @@
           <p>Eine intensive Trainingsform mit abwechselnden Phasen von hoher Intensität und kurzen Ruhephasen.</p>
         </div>
       </section>
+      
+      <h2 class="headTestimonials">Was unsere Kunden sagen</h2>
       <section id="testimonials">
-        <h2>Was unsere Kunden sagen</h2>
-        <div class="testimonial">
-          <img src="src/assets/customer1.jpg" alt="Kunde 1">
-          <p>"Die FitnessApp hat mein Training auf ein ganz neues Level gebracht. Ich liebe die Vielfalt der Kurse und die Möglichkeit, meinen Fortschritt zu verfolgen."</p>
-          <cite>John Doe</cite>
-        </div>
-        <div class="testimonial">
-          <img src="src/assets/customer2.jpg" alt="Kunde 2">
-          <p>"Dank der FitnessApp habe ich endlich meine Fitnessziele erreicht. Die Trainer sind motivierend und die App ist benutzerfreundlich."</p>
-          <cite>Jane Smith</cite>
-        </div>
+        <div class="arrow" on:click={handleNext}><i class="fa-solid fa-arrow-left fa-3x"></i></div>
+        {#each visibleItems as item (item.id)}
+         <div class="testimonial" transition:fade="{{duration:70, delay:300}}">
+         <img src={"src/assets/test.jpeg"} alt="Kunde {item.id}">
+          <p>{item.text}</p>
+          <cite>{item.name}</cite>
+         </div>
+        {/each}
+        <div class="arrow" on:click={handlePrevious}><i class="fa-solid fa-arrow-right fa-3x"></i></div>
       </section>
       <section id="contact">
         <h2>Kontaktieren Sie uns</h2>
@@ -144,19 +184,35 @@
 .course p {
   margin-bottom: 10px;
 }
+
+.arrow {
+  margin-left: 110px;
+  margin-right: 110px;
+}
+
+.headTestimonials {
+  background-color: #f9f9f9;
+  text-align: center;
+  margin-bottom: 0;
+  padding: 20px;
+}
   
   #testimonials {
   background-color: #f9f9f9;
-  padding: 50px 0;
+  /* padding: 50px 0;
   text-align: center;
-  margin-top: 80px;
+  margin-top: 80px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .testimonial {
   display: inline-block;
+  height: 200px;
   width: 300px;
   padding: 20px;
-  margin: 20px;
+  margin: 30px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
