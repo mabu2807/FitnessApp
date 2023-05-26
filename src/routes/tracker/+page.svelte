@@ -1,27 +1,122 @@
 
 <script lang="ts">
   import { onMount } from 'svelte';
+  import Dialog, { Header, Title, Content, Actions } from '@smui/dialog';
+  import IconButton from '@smui/icon-button';
+  import Button, { Label } from '@smui/button';
+	import { element } from 'svelte/internal';
 
-  let buttonData = [
+  let open = false;
+  let removeDisabled = true;
+  let addDisabled = true;
+  
+  
+
+
+  function addOn(){
+    open = true;
+  }
+
+  function add(){
+    let iconToMove = [];
+    availableData.forEach(element => {
+      if(element.selected==true){
+        iconToMove.push(element);
+      }
+    });
+    iconToMove.forEach(item => {
+      selectedData.push(item);
+      availableData.splice(availableData.indexOf(item), 1);
+    })
+    selectedData.forEach(item => {
+      item.selected=false;
+    });
+    availableData.forEach(item => {
+      item.selected=false;
+    });
+    selectedData=selectedData;
+    availableData=availableData;
+    removeDisabled=true;
+    addDisabled=true;
+
+  }
+
+  function remove(){
+    let iconToMove = [];
+    selectedData.forEach(element => {
+      if(element.selected==true){
+        iconToMove.push(element);
+      }
+    });
+    iconToMove.forEach(item => {
+      availableData.push(item);
+      selectedData.splice(selectedData.indexOf(element),1);
+    })
+    availableData.forEach(item => {
+      item.selected=false;
+    });
+    selectedData.forEach(item => {
+      item.selected=false;
+    });
+    selectedData=selectedData;
+    availableData=availableData;
+    removeDisabled=true;
+    addDisabled=true;
+    
+  }
+
+  
+
+  function buttonRemoveDisabled(){
+    removeDisabled=true;
+    selectedData.forEach(element => {
+      if(element.selected==true){
+        removeDisabled=false;
+      }
+    })
+      }
+
+  function buttonAddDisabled(){
+    addDisabled=true;
+    availableData.forEach(element => {
+      if(element.selected==true){
+        addDisabled=false;
+      }
+    })
+      }
+
+
+  
+
+  //Check which items are already taken!!!
+
+  let selectedData = [
     {
       title: 'Krafttraining',
       imageSrc: 'src/assets/workout2.jpg',
       description: ' Sed do eiusmod temporrem ipsum dolor sit ametorididunt ut labore et dolore magna aliqua. ',
-      link: '\liftingplan'
+      link: '\liftingplan',
+      selected: false
     },
     {
       title: 'Cardio',
       imageSrc: 'src/assets/workout1.jpg',
       description: ' labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqu',
-      link: 'https://example.com/button2'
-    },
+      link: 'https://example.com/button2',
+      selected: false
+    }
+  ];
+
+  let availableData = [
     {
       title: 'Yoga',
       imageSrc: 'src/assets/workout3.jpg',
       description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. minim veniam, quis nostrud exercita',
-      link: 'https://example.com/button3'
+      link: 'https://example.com/button3',
+      selected: false
     }
-  ];
+  ]
+
 </script>
 
   <main>
@@ -31,7 +126,7 @@
       
     </div>
     <div class="button-cards">
-      {#each buttonData as button}
+      {#each selectedData as button}
       <a href={button.link}  class="button-card">
         <div class="image-container">
           <img src={button.imageSrc} alt="Button Image" />
@@ -51,7 +146,7 @@
   <p class="info-text">Erhalte Zugriff auf eine Vielzahl von zusätzlichen Trainingsplänen, um dein Fitnessziel zu erreichen.</p>
   <div class="button-container">
 
-    <button class="subscribe-button">
+    <button class="subscribe-button" on:click={addOn}>
       <div class="subscribe-container-text">
         
         <p class="subscribe-text">Jetzt Abonnieren</p>
@@ -64,6 +159,50 @@
   </div>
 </div>
 
+<Dialog
+  bind:open
+  aria-labelledby="large-scroll-title"
+  aria-describedby="large-scroll-content"
+  surface$style="width: 1050px; max-width: calc(100vw - 32px);">
+  <Title id="large-scroll-title">{"Erweitere dein Training"}</Title>
+  <Content id="large-scroll-content">
+    <hr>
+    <h2>Füge neue Sportarten hinzu</h2>
+    <div class="icon-container">
+    {#each {length: availableData.length} as _, i}
+    <div>
+        <button style="{availableData[i].selected ? 'outline-style: solid;' : 'outline-style: none;'}" class="icon-card" on:click={()=>{availableData[i].selected=!availableData[i].selected; buttonAddDisabled()}}>
+          <img class="image-container" src="{availableData[i].imageSrc}" alt="{availableData[i].imageSrc}">
+          <div class="icon-title">{availableData[i].title}</div>
+        </button>
+      </div>
+          {/each}
+        </div>
+        <hr>
+        <h2>Lösche ausgewählte Sportarten</h2>
+    <div class="icon-container">
+      {#each {length: selectedData.length} as _, i}
+    <div>
+        <button style="{selectedData[i].selected ? 'outline-style: solid;' : 'outline-style: none;'}" class="icon-card" on:click={()=>{selectedData[i].selected=!selectedData[i].selected; buttonRemoveDisabled()}}>
+          
+          <img class="image-container" src="{selectedData[i].imageSrc}" alt="{selectedData[i].imageSrc}">
+          <div class="icon-title">{selectedData[i].title}</div>
+        </button>
+    </div>
+          {/each}
+    </div>
+        
+  </Content>
+  <Actions>
+    <Button on:click={remove} disabled={removeDisabled}>
+      <Label>Remove</Label>
+    </Button>
+    <Button on:click={add} disabled={addDisabled}>
+      <Label>Add</Label>
+    </Button>
+  </Actions>
+</Dialog>
+
 
 
   </main>
@@ -75,6 +214,23 @@
 </footer>
 
 <style>
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  
+}
+
+
+  .icon-title {
+    margin-top: 5px;
+  text-align: center;
+  font-size: 12px;
+  }
+
+
+
+
 
   
   .category {
@@ -126,6 +282,28 @@ font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, O
     color: inherit;
     margin: 10px;
   }
+
+  .icon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 130px;
+    background-color: #fff;
+    border: none; 
+    /* border-radius: 8px; */
+    overflow: hidden;
+    /* outline-style: solid;
+    outline-color: black; */
+    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease-in-out; */
+    text-decoration: none;
+    color: inherit;
+    margin: 10px;
+  }
+
+
 
   .button-card:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.518);

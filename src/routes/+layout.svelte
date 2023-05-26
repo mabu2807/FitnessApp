@@ -131,7 +131,7 @@
     display: none;
   }
 
-  .navbar-collapse.show {
+  .navbar-collapse {
     display: block;
     position: absolute;
     top: 100%;

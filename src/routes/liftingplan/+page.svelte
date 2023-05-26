@@ -178,12 +178,18 @@ let plans = [
   let open = false;
   let showPlan: any;
 
+  let addOnOpen = false;
+
 
 
   function setPlan(plan: any) {
     open = true;
     showPlan = plan;
-    
+
+  }
+
+  function addOns(){
+    addOnOpen = true;
   }
   </script>
   
@@ -274,7 +280,6 @@ let plans = [
       </button>
         </div>
       </div>
-
       
   <footer class="footer">
     <div class="footer-content">

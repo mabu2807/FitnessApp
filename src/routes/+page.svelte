@@ -12,7 +12,7 @@
       <section class="hero">
         <h2>Welcome to Fitness Tracker</h2>
         <p>Track your fitness progress and achieve your goals.</p>
-        <a href="/tracker" class="btn">Get Started</a>
+        <a href="/login" class="btn">Get Started</a>
       </section>
       <section class="workouts">
         <h2>Popular Workouts</h2>
@@ -22,7 +22,7 @@
             <h3>Cardio Blast</h3>
             <p>A high-intensity cardio workout to burn calories.</p>
           </div>
-          <a href="/" class="btn">Start Workout</a>
+          <a href="/login" class="btn">Start Workout</a>
         </div>
         <div class="workout-card">
           <img src="src/assets/workout2.jpg" alt="Workout 2">
@@ -30,7 +30,7 @@
             <h3>Strength Training</h3>
             <p>Build strength and tone your muscles with this workout.</p>
           </div>
-          <a href="/" class="btn">Start Workout</a>
+          <a href="/login" class="btn">Start Workout</a>
         </div>
       </section>
       <section class="progress">
