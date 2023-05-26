@@ -9,7 +9,7 @@
 let plans = [
   {
         id: "0",
-        title: "Trainingsplan 1",
+        title: "Trainingsplan 1: Muskelaufbau",
         description: "Ein intensiver Trainingsplan für Fettverbrennung und Ausdauersteigerung.",
         image: "src/assets/plan1.jpg",
         plan: [
@@ -70,7 +70,7 @@ let plans = [
       },
       {
         id: "1",
-        title: "Trainingsplan 2",
+        title: "Trainingsplan 2: Fettverbrennung",
         description: "Ein intensiver Trainingsplan für Fettverbrennung und Ausdauersteigerung.",
         image: "src/assets/plan2.jpg",
         plan: [
@@ -131,7 +131,7 @@ let plans = [
       },
       {
         id: "2",
-        title: "Trainingsplan 3",
+        title: "Trainingsplan 3: Flexibilität",
         description: "Ein flexibler Trainingsplan für Ganzkörperfitness und Beweglichkeit.",
         image: "src/assets/plan3.jpg",
         plan: [
@@ -151,7 +151,7 @@ let plans = [
       },
       {
         id: "3",
-        title: "Trainingsplan 4",
+        title: "Trainingsplan 4: Beweglichkeit",
         description: "Ein umfassender Trainingsplan für die Beweglichkeit.",
         image: "src/assets/plan4.jpg",
         plan: [
@@ -297,7 +297,10 @@ let plans = [
 
   <style>
 
+    
+
 .exc-container {
+  
   display: flex;
   flex-direction: column;
   justify-content: center;

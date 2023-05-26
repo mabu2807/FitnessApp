@@ -58,6 +58,7 @@
   height: 500px;
   display: flex;
   background-color: #fff;
+  border-radius: 8px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
