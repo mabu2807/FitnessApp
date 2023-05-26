@@ -6,8 +6,58 @@
     <title>Fitness Tracker</title>
   </head>
   <body>
-     
-        
+    <main>
+      <section class="hero">
+        <h2>Welcome to Fitness Tracker</h2>
+        <p>Track your fitness progress and achieve your goals.</p>
+        <a href="/getStarted" class="btn">Get Started</a>
+      </section>
+      
+      <section id="courses">
+        <h2>Unsere Kurse</h2>
+        <div class="course">
+          <img src="src/assets/workout1.jpg" alt="Kurs 1">
+          <h3>Pilates</h3>
+          <p>Ein Ganzkörpertraining zur Verbesserung von Flexibilität, Kraft und Körperhaltung.</p>
+        </div>
+        <div class="course">
+          <img src="src/assets/workout2.jpg" alt="Kurs 2">
+          <h3>Yoga</h3>
+          <p>Entspannen Sie Ihren Geist und stärken Sie Ihren Körper mit verschiedenen Yoga-Übungen.</p>
+        </div>
+        <div class="course">
+          <img src="src/assets/workout3.jpg" alt="Kurs 3">
+          <h3>HIIT</h3>
+          <p>Eine intensive Trainingsform mit abwechselnden Phasen von hoher Intensität und kurzen Ruhephasen.</p>
+        </div>
+      </section>
+      <section id="testimonials">
+        <h2>Was unsere Kunden sagen</h2>
+        <div class="testimonial">
+          <img src="src/assets/customer1.jpg" alt="Kunde 1">
+          <p>"Die FitnessApp hat mein Training auf ein ganz neues Level gebracht. Ich liebe die Vielfalt der Kurse und die Möglichkeit, meinen Fortschritt zu verfolgen."</p>
+          <cite>John Doe</cite>
+        </div>
+        <div class="testimonial">
+          <img src="src/assets/customer2.jpg" alt="Kunde 2">
+          <p>"Dank der FitnessApp habe ich endlich meine Fitnessziele erreicht. Die Trainer sind motivierend und die App ist benutzerfreundlich."</p>
+          <cite>Jane Smith</cite>
+        </div>
+      </section>
+      <section id="contact">
+        <h2>Kontaktieren Sie uns</h2>
+        <form>
+          <input type="text" name="name" placeholder="Name" required>
+          <input type="email" name="email" placeholder="E-Mail-Adresse" required>
+          <textarea name="message" placeholder="Nachricht" required></textarea>
+          <button type="submit">Senden</button>
+        </form>
+      </section>
+      
+      
+    </main>
+    
+<!--         
     <main>
       <section class="hero">
         <h2>Welcome to Fitness Tracker</h2>
@@ -44,7 +94,7 @@
         </section>
         
         
-    </main>
+    </main> -->
   
 <footer class="footer">
   <div class="footer-content">
@@ -55,19 +105,160 @@
   </body>
   
   <style>
-  
-
-  
-  body {
+   body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
   }
+
+  #courses {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.course {
+  display: inline-block;
+  width: 300px;
+  padding: 20px;
+  margin: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.course:hover {
+  transform: scale(1.05);
+}
+
+.course img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.course h3 {
+  margin-bottom: 10px;
+}
+
+.course p {
+  margin-bottom: 10px;
+}
+  
+  #testimonials {
+  background-color: #f9f9f9;
+  padding: 50px 0;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.testimonial {
+  display: inline-block;
+  width: 300px;
+  padding: 20px;
+  margin: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial img {
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.testimonial p {
+  margin-bottom: 10px;
+}
+
+.testimonial cite {
+  font-style: italic;
+  color: #888;
+}
+
+.hero {
+    background-color: #eeeeee;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  .hero h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+
+  .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: background-color 0.3s ease-in-out;
+    }
+  
+    .btn:hover {
+      background-color: blue;
+    }
+
+
+#contact {
+  background-color: white;
+  padding: 50px 0;
+  text-align: center;
+}
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  display: inline-block;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background-color: #555;
+}
+  
+  /* body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  } */
   
   
   
   /* Hero Section Styles */
-  
+/*   
   .hero {
     background-color: #eeeeee;
     padding: 40px;
@@ -86,7 +277,7 @@
   
     /* Hero Section Styles */
   
-    .btn {
+    /* .btn {
       display: inline-block;
       padding: 10px 20px;
       background-color: #00adb5;
@@ -100,10 +291,10 @@
     .btn:hover {
       background-color: #393e46;
     }
-  
+   */
     /* Workouts Section Styles */
   
-    .workouts {
+    /* .workouts {
       padding: 40px;
       text-align: center;
     }
@@ -147,72 +338,10 @@
       font-size: 16px;
       margin-bottom: 10px;
     }
-  
+   */
     /* Progress Section Styles */
   
    /* Progress Section Styles */
-  
-  .progress {
-    background-color: #fff;
-    padding: 80px 0;
-  }
-  
-  .progress h2 {
-    font-size: 36px;
-    font-weight: 700;
-    color: #444;
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  
-  .progress p {
-    font-size: 18px;
-    font-weight: 400;
-    color: #777;
-    text-align: center;
-    margin-bottom: 50px;
-  }
-  
-  .progress .progress-chart {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  
-  .progress .chart-row {
-    width: calc(100% / 12 - 20px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 30px;
-  }
-  
-  .progress .chart-label {
-    font-size: 18px;
-    font-weight: 700;
-    color: #444;
-    margin-bottom: 10px;
-  }
-  
-  .progress .chart-bar {
-    width: 30px;
-    background-color: #007bff;
-    transition: height 0.8s ease-in-out;
-  }
-  
-  .progress .chart-value {
-    font-size: 16px;
-    font-weight: 400;
-    color: #777;
-    margin-top: 10px;
-  }
-  
-  @media screen and (max-width: 992px) {
-    .progress .chart-row {
-      width: calc(100% / 6 - 20px);
-    }
-  }
-  
   
    
 .footer {

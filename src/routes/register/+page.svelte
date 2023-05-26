@@ -10,12 +10,14 @@
   <section class="register">
     <div class="register_box">
       <div class="left">
-        <div class="top_link">
-          <a href="/"><img src="logo.png" alt="Logo"></a>
-        </div>
         <div class="contact">
           <form action="#">
-            <h3>Create an Account</h3>
+            <div class="title-wrapper">
+              <div class="top_link">
+                <a href="/"><img src="src/assets/Logo.jpg" alt="Logo"></a>
+              </div>
+              <h3>Create an Account</h3>
+            </div>
             <input type="text" placeholder="Username">
             <input type="email" placeholder="Email">
             <input type="password" placeholder="Password">
@@ -80,6 +82,27 @@ body {
   text-align: center;
   margin-bottom: 40px;
   color: #000;
+}
+
+.left .title-wrapper {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.left .top_link {
+  background-color: #000;
+  width: 18%;
+    height: 85px;
+    overflow: hidden;
+    margin-right: 60px;
+    border-radius: 5px;
+}
+
+.left .top_link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .left input {
