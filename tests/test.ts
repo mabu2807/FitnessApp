@@ -21,3 +21,18 @@ test('Index Page: course section is visible', async ({ page }) => {
 	await page.goto('/');
 	await expect(page.getByRole('heading', { name: 'Unsere Kurse'})).toBeVisible();
 });
+
+test('Index Page: headTestimonals section is visible', async ({ page }) => {
+	await page.goto('/');
+	await expect(page.getByRole('heading', { name: 'Was unsere Kunden sagen'})).toBeVisible();
+});
+
+test('Index Page: Contact section is visible', async ({ page }) => {
+	await page.goto('/');
+	await expect(page.getByRole('heading', { name: 'Kontaktieren Sie uns'})).toBeVisible();
+});
+
+test('Index Page: Footer section is visible', async ({ page }) => {
+	await page.goto('/');
+	await expect(page.locator('.footer')).toBeVisible();
+});
