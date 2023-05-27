@@ -3,6 +3,7 @@
     let arrows = "<<< ";
     let currentPage = 0;
     let pages = [
+      { title: '' , value: '', prevValue: null},
       { title: 'Ziele', value: '', prevValue: null, description: 'Füge deine Körpergröße ein, damit wir ein optimalen Trainingsplan für dich erstellen können!'  },
       { title: 'Körpergröße', value: '', prevValue: null, description: 'Füge deine Körpergröße ein, damit wir ein optimalen Trainingsplan für dich erstellen können!' },
       { title: 'Gewicht', value: '', prevValue: null, description: 'Füge deine Körpergröße ein, damit wir ein optimalen Trainingsplan für dich erstellen können!'  },
@@ -36,23 +37,47 @@
 <body>
 
 
-  <div class="overview">
-    {#each pages as page, i}
-    <div class="overview-wrapper">
-
-        <a class="overview-link" on:click={() => currentPage = i}>
-            {page.title}
-        </a>
-        <p> {page.value !== '' ? `${page.value}` : ''}</p>
-    </div>
-    {/each}
-  </div>
+ 
   
   {#each pages as page, i}
     {#if i === currentPage}
     
-            {#if i === 0}
+      {#if i === 0}
+        <div class="first-container">
+          <div class="first-wrapper">
+
+            <div class="first-title-wrapper">
+              <h2 class="first-title">Willkommen</h2>
+             
+
+                <img src="src/assets/Logo.jpg" alt="logo">
+              
+            </div>
+
+            <div class="first-description-wrapper">
+              <p>Hier kannst du deine Ziele festlegen und deine Fortschritte verfolgen. Bist du bereits registriert? Klicke auf den Button unten, um auf dein Konto zuzugreifen. Wenn nicht, melde dich jetzt an und starte deine Fitnessreise mit uns. Zusammen erreichen wir deine Ziele!</p>
+              <p>Du hast bereits ein Account? </p>
+            </div>
+
+            <div class="first-button-">
+              <a href="/login">Melde dich an!</a>
+              <button class="first-next-button" on:click={nextPage}>
+                {i === pages.length - 1 ? 'Abschließen' : 'Zur Registrierung'}
+            </button>
+            </div>
+          </div>
+        </div>
+      
+            {:else if i === 1}
+            <div class="title-container">
+
+              <div class="title">
+                <h2>Schritt: {i}</h2>
+                <p>Wähle zunächst dein Ziel aus!</p>
+              </div>
+            </div>
             <div class="card-container" class:hidden={i !== currentPage}>
+              
                 {#each ['Lose weight', 'Gain muscle', 'Stay fit'] as goal}
                 <div
                 class="card {page.value === goal ? 'selected' : ''}"
@@ -61,6 +86,17 @@
                 <p class="card-description">{goal === 'Lose weight' ? 'Gewicht reduzieren und Fett abbauen' : goal === 'Gain muscle' ? 'Muskeln aufbauen und Körper definieren' : 'Allgemeine Fitness erhalten und verbessern'}</p>
             </div>
             {/each}
+            <div class="overview">
+              {#each pages as page, i}
+              <div class="overview-wrapper">
+          
+                  <a class="overview-link" on:click={() => currentPage = i}>
+                       {page.title}
+                  </a>
+                  <p> {page.value !== '' ? `${page.value}` : ''}</p>
+              </div>
+              {/each}
+            </div>
         </div>
         {:else}
         <div class="page-wrapper">
@@ -70,7 +106,7 @@
         
         <div class="input-container" class:hidden={i !== currentPage}>
             <div class="input-label-wrapper">
-                <span class="input-label">{page.title}</span>
+                <span class="input-label">Schritt {i}: {page.title}</span>
                 <span class="input-description">{page.description}</span>
             </div>
             
@@ -79,6 +115,18 @@
         
     </div>
 </div>
+<div class="overview">
+  {#each pages as page, i}
+  <div class="overview-wrapper">
+
+      <a class="overview-link" on:click={() => currentPage = i}>
+          {page.title}
+      </a>
+      <p> {page.value !== '' ? `${page.value}` : ''}</p>
+  </div>
+  {/each}
+</div>
+
         {/if}
         {#if currentPage > 0}
         <div class="button-container-left">
@@ -87,21 +135,95 @@
            
         </div>
         {/if}
+        {#if currentPage > 0}
         <div class="button-container-right">
             
             <button class="next-button" on:click={nextPage}>
                 {i === pages.length - 1 ? 'Abschließen' : 'Weiter >>>'}
             </button>
-            
-    </div>
+          </div>
+          {/if}
+
+    
     {/if}
     {/each}
   </body>
   
   <style>
- 
 
-    
+    .title-container {
+      position: absolute;
+    top: 14%;
+    left: 26%;
+    }
+
+.first-container {
+  display: flex;
+  flex-direction: colum;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+}
+
+.first-wrapper {
+  box-shadow: 0 0 10px black;
+  
+  border-radius: 8px;
+  width: 50%;
+  padding: 20px 60px 81px;
+}
+
+.first-title-wrapper {
+  display: flex;
+  flex-direction: row;
+  
+}
+.first-title-wrapper {
+  font-size: 50px;
+}
+
+.first-title-wrapper img {
+  object-fit: cover;
+  width: 30%;
+    height: 0%;
+    margin-right: 32px;
+}
+
+.first-title {
+ 
+  color: #333;
+}
+
+.first-description-wrapper {
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+.first-button- {
+  margin-top: 40px;
+}
+
+.first-button- a {
+  cursor: pointer;
+    padding: 12px 29px;
+    background-color: white;
+    border: 2px solid #00adb5;
+    font-weight: 600;
+    color: #00adb5;
+    border-radius: 8px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.first-button- a:hover {
+  background-color: #00adb5;
+  color: white;
+}
+
+
 .overview {
     position: absolute;
     bottom: -66px;
@@ -216,6 +338,7 @@
         width: 40%;
         border-radius: 8px;
         box-shadow: 0 0 10px black;
+        background-color: #f6f6f6;
     }
 
     
@@ -238,13 +361,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+    width: 120%;
     
 }
 
 .input-description {
     text-align: center;
-    color: #797070;
+    color: #3d3d3d;
     border-radius: 8px;
     padding: 20px 20px;
 }
@@ -312,6 +435,24 @@
       
     }
   
+    .first-next-button {
+      cursor: pointer;
+      padding: 12px 29px;
+       background-color: white;
+       border: 2px solid #c82333;
+       font-weight: 600;
+       color: #c82333;
+       border-radius: 8px;
+       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .first-next-button:hover {
+      background-color: #c82333;
+      color: white;
+      transition: all ease .5s;
+      
+
+    }
     .next-button {
         cursor: pointer;
        padding: 20px 50px;
