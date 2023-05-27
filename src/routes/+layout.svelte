@@ -17,8 +17,8 @@
       <nav class="navbar-collapse">
         <ul class="navbar-nav">
           <li><a href="/" class="a-nav">Home</a></li>
-          <li><a href="/tracker" class="a-nav">Workouts</a></li>
-          <li><a href="/" class="a-nav">Progress</a></li>
+          <li><a href="/kategorie" class="a-nav">Workouts</a></li>
+          <li><a href="/progress" class="a-nav">Progress</a></li>
           <li><a href="/" class="a-nav">Settings</a></li>
           <li><a href="/login" class="navbar-button">Log In</a></li>
         </ul>

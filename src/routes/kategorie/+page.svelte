@@ -88,8 +88,6 @@
 
   
 
-  //Check which items are already taken!!!
-
   let selectedData = [
     {
       title: 'Krafttraining',
@@ -171,7 +169,7 @@
     <div class="icon-container">
     {#each {length: availableData.length} as _, i}
     <div>
-        <button style="{availableData[i].selected ? 'outline-style: solid;' : 'outline-style: none;'}" class="icon-card" on:click={()=>{availableData[i].selected=!availableData[i].selected; buttonAddDisabled()}}>
+        <button style="{availableData[i].selected ? 'box-shadow: 0 0 10px black; border-radius: 8px; transition: .5s ease all;' : 'outline-style: none;'}" class="icon-card" on:click={()=>{availableData[i].selected=!availableData[i].selected; buttonAddDisabled()}}>
           <img class="image-container" src="{availableData[i].imageSrc}" alt="{availableData[i].imageSrc}">
           <div class="icon-title">{availableData[i].title}</div>
         </button>
@@ -183,7 +181,7 @@
     <div class="icon-container">
       {#each {length: selectedData.length} as _, i}
     <div>
-        <button style="{selectedData[i].selected ? 'outline-style: solid;' : 'outline-style: none;'}" class="icon-card" on:click={()=>{selectedData[i].selected=!selectedData[i].selected; buttonRemoveDisabled()}}>
+        <button style="{selectedData[i].selected ? 'box-shadow: 0 0 10px black; border-radius: 8px; transition: .5s ease all;' : 'outline-style: none;'}" class="icon-card" on:click={()=>{selectedData[i].selected=!selectedData[i].selected; buttonRemoveDisabled()}}>
           
           <img class="image-container" src="{selectedData[i].imageSrc}" alt="{selectedData[i].imageSrc}">
           <div class="icon-title">{selectedData[i].title}</div>
@@ -303,6 +301,12 @@ font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, O
     margin: 10px;
   }
 
+  .icon-card:hover {
+    border-radius: 8px;
+    transform: scale(1.1);
+    transition: 0.5s ease all;
+  }
+
 
 
   .button-card:hover {
@@ -316,6 +320,7 @@ font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, O
     width: 100%;
     height: 180px;
     overflow: hidden;
+    object-fit: cover;
   }
 
   .image-container img {
