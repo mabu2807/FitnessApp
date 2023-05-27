@@ -118,34 +118,77 @@ let weightInput2 = "";
     </div>
   </main>
   <style>
-    .container {
-      display: flex;
-      justify-content: space-between;
-    }
+  * {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.exercise-container {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
+  transition: background-color 0.3s ease;
   
-    .exercise-container {
-      width: 500px;
-      height: 400px;
-      margin-right: 20px;
-    }
-  
-    .input-container {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 10px;
-    }
-  
-    input {
-      margin-bottom: 5px;
-    }
-  
-    button {
-      margin-top: 5px;
-    }
-  
-    canvas {
-      height: 300px;
-      width: 450px;
-    }
+}
+
+.exercise-container:hover {
+ 
+}
+
+.exercise-container.selected {
+  background-color: #ccc;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.input-container {
+  margin-top: 10px;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+canvas {
+  width: 100%;
+  height: 200px;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+}
+
   </style>
   
