@@ -4,7 +4,7 @@
 
     onMount(async () => {
       try {
-        let records = await fetch('/');
+        let records = await fetch('/user');
         let data = await records.json();
         console.log(data);
       } catch (error) {
