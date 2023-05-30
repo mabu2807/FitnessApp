@@ -11,7 +11,55 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id            Int             @id @default(autoincrement())
+  email         String          @unique
+  username      String
+  userDetails   UserDetails?     
+  userDetailsId Int             
+  foodDiary     FoodDiary?     
+  foodDiaryId   Int             
+}
+
+model UserDetails {
+  user    User  @relation(fields: [userId], references: [id])
+  userId  Int   @unique
+  gender  String 
+  weight  Float
+  height  Int
+}
+
+model FoodDiary {
+  id      Int   @id @default(autoincrement())
+  user    User  @relation(fields: [userId], references: [id])
+  userId  Int   @unique
+  meals   Meal[]
+}
+
+model Meal {
+  id          Int       @id @default(autoincrement())
+  foodDiary   FoodDiary @relation(fields: [foodDiaryId], references: [id])
+  foodDiaryId Int       @unique
+  day         DateTime
+  time        String
+  dish        Dish      @relation(fields: [dishId], references: [id])
+  dishId      Int
+}
+
+model Dish {
+  id                Int     @id @default(autoincrement())
+  name              String  @unique
+  meals             Meal[] 
+  nutritionalValues NutritionalValues?
+}
+
+model NutritionalValues {
+  dish          Dish  @relation(fields: [dishId], references: [id])
+  dishId        Int   @unique
+  energy        Int
+  fat           Float?
+  saturatedFat  Float?
+  carbohydrates Float?
+  sugar         Float?
+  protein       Float?
+  salt          Float?
 }
