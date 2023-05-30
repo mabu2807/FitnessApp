@@ -1,19 +1,23 @@
+<!-- src/routes/+page.svelte -->
+
+<!-- 1. -->
 <script lang="ts">
+  import type { PageData } from './$types'
 
-    import {onMount} from 'svelte';
-
-    onMount(async () => {
-      try {
-        let records = await fetch('/user');
-        let data = await records.json();
-        console.log(data);
-      } catch (error) {
-        console.error('Error fetching records:', error);
-      }
-    });
-
+  export let data: PageData
 </script>
 
-
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div>
+  <h1>Users</h1>
+  <main>
+    <div>
+      <!-- 2. -->
+      {#each data.feed as user (user.id)}
+        <div>
+          <h2>{user.username}</h2>
+          <p>Email: {user.email}</p>
+        </div>
+      {/each}
+    </div>
+  </main>
+</div>

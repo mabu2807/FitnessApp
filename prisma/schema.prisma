@@ -15,7 +15,7 @@ model User {
   email         String          @unique
   username      String
   userDetails   UserDetails?     
-  userDetailsId Int             
+  userDetailsId Int       
   foodDiary     FoodDiary?     
   foodDiaryId   Int             
 }
