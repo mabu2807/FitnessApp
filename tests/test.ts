@@ -1,5 +1,7 @@
 import { expect, test } from '@playwright/test';
 
+
+//Tests For Navbar
 test('Nav. Bar: Workouts button works', async ({ page }) => {
 	await page.goto('/');
 	await page.getByRole('link', { name: 'Workouts'}).click()
@@ -24,6 +26,8 @@ test('Nav. Bar: LogIn button works', async ({ page }) => {
 	await expect(page).toHaveURL('/login');
 });
 
+
+//Tests for Index Page
 test('Index Page: has expected Title', async ({ page }) => {
 	await page.goto('/');
 	await expect(page).toHaveTitle('Fitness Tracker');
