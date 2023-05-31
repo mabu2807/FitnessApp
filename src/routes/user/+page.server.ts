@@ -4,9 +4,9 @@ import prisma from '$lib/prisma';
 import type { PageServerLoad } from './$types';
 
 export const load = (async () => {
-// 1.
-const response = await prisma.user.findMany()
+	// 1.
+	const response = await prisma.user.findMany();
 
-// 2.
-return { feed: response };
+	// 2.
+	return { feed: response };
 }) satisfies PageServerLoad;
