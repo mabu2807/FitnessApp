@@ -1,9 +1,36 @@
 import { expect, test } from '@playwright/test';
 
 
+//Tests For Navbar
+test('Nav. Bar: Workouts button works', async ({ page }) => {
+	await page.goto('/');
+	await page.getByRole('link', { name: 'Workouts'}).click()
+	await expect(page).toHaveURL('/kategorie');
+});
+
+test('Nav. Bar: Progress button works', async ({ page }) => {
+	await page.goto('/');
+	await page.getByRole('link', { name: 'Progress'}).click()
+	await expect(page).toHaveURL('/progress');
+});
+
+/*test('Nav. Bar: Settings button works', async ({ page }) => {
+	await page.goto('/');
+	await page.getByRole('link', { name: 'Settings'}).click()
+	await expect(page).toHaveURL('/settings');
+});*/
+
+test('Nav. Bar: LogIn button works', async ({ page }) => {
+	await page.goto('/');
+	await page.getByRole('link', { name: 'Log In'}).click()
+	await expect(page).toHaveURL('/login');
+});
+
+
+//Tests for Index Page
 test('Index Page: has expected Title', async ({ page }) => {
 	await page.goto('/');
-	await expect(page).toHaveTitle("Fitness Tracker");
+	await expect(page).toHaveTitle('Fitness Tracker');
 });
 
 test('Index Page: GetStarted button is visible', async ({ page }) => {
@@ -14,7 +41,7 @@ test('Index Page: GetStarted button is visible', async ({ page }) => {
 test('Index Page: GetStarted button works', async ({ page }) => {
 	await page.goto('/');
 	await page.getByRole('link', { name: 'Get Started'}).click();
-	await expect(page).toHaveURL("/getStarted");
+	await expect(page).toHaveURL('/getStarted');
 });
 
 test('Index Page: course section is visible', async ({ page }) => {
