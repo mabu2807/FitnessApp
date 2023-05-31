@@ -27,8 +27,8 @@ export const actions = {
             data: {
                 email,
                 username,
-                userDetails: { connect: { userDetailsId: userDetailsId } },
-                foodDiary: { connect: { userId: foodDiaryId } }
+                userDetails: { connect: { userId: userDetailsId } },
+                foodDiary: { connect: { id: foodDiaryId } }
             },
         });
 
