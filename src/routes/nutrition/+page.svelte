@@ -1,15 +1,10 @@
 <script lang="ts">
 	import CircleProgressBar from './CircleProgressBar.svelte';
 	import Chart from './nutriChart.svelte';
-	const userGender = 'm';
-	const userWeight = 80;
-	var allcalories = 0;
+	import type { PageData } from './$types';
 
-	if (userGender == 'm') {
-		allcalories = 24 * userWeight;
-	} else {
-		allcalories = 0.9 * 24 * userWeight;
-	}
+	export let data: PageData;
+	var allcalories = data.allcalories;
 
 	let mealTimes = [
 		{
