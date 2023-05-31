@@ -11,11 +11,30 @@
 		{ title: 'Körperfettanteil', link: '/getStarted/bfp', value: 'Backend' }
 	];
 
-	let sliderValue = '175 cm';
+	let picsource = '/src/assets/15.jpg';
+	let sliderValue = '80kg';
 
 	function updateSliderValue(event) {
+		pages[1].value = sliderValue + 'kg';
 		sliderValue = event.target.value;
-		pages[1].value = sliderValue + ' cm';
+		let val = parseInt(event.target.value);
+		if (val < 60) {
+			picsource = '/src/assets/5.jpg';
+		} else if (val < 70) {
+			picsource = '/src/assets/10.jpg';
+		} else if (val < 80) {
+			picsource = '/src/assets/15.jpg';
+		} else if (val < 90) {
+			picsource = '/src/assets/20.jpg';
+		} else if (val < 100) {
+			picsource = '/src/assets/25.jpg';
+		} else if (val < 110) {
+			picsource = '/src/assets/30.jpg';
+		} else if (val < 120) {
+			picsource = '/src/assets/35.jpg';
+		} else{
+            picsource = '/src/assets/40.jpg';
+        }
 	}
 
 	function updateSliderOnMount() {
@@ -29,45 +48,65 @@
 	<div class="title-container">
 		<div class="title">
 			<h1>Schritt: 2</h1>
-			<p>Wähle deine Körpergröße aus!</p>
+			<p>Wähle dein Gewicht aus!</p>
 		</div>
 	</div>
 
-	<div class="slider-value">
-		<p>{pages[1].value}</p>
+	<div class="pic-slider-container">
+		<div class="pic">
+			<img src={picsource} alt="person" />
+		</div>
+		<div class="slider-value">
+			<p>{pages[1].value}</p>
+		</div>
 	</div>
-	<div class="slidecontainer">
-		<input
-			type="range"
-			min="150"
-			max="200"
-			bind:value={sliderValue}
-			class="slider"
-			id="myRange"
-			on:input={updateSliderValue}
-		/>
-	</div>
+		<div class="slidecontainer">
+			<input
+				type="range"
+				min="50"
+				max="130"
+				bind:value={sliderValue}
+				class="slider"
+				id="myRange"
+				on:input={updateSliderValue}
+			/>
+		</div>
 
-	<div class="button-container-right">
-		<a href="/getStarted/weight" class="next-button">Nächste</a>
-	</div>
+		<div class="button-container-right">
+			<a href="/getStarted/weight" class="next-button">Nächste</a>
+		</div>
 
-	<div class="button-container-left">
-		<a href="/getStarted/goals" class="back-button">Zurück</a>
-	</div>
+		<div class="button-container-left">
+			<a href="/getStarted/goals" class="back-button">Zurück</a>
+		</div>
 
-	<div class="overview">
-		{#each pages as page, i}
-			<div class="overview-wrapper">
-				<a href={page.link} class="overview-link">{page.title}</a>
-				<p>{page.value}</p>
-			</div>
-		{/each}
-	</div>
-</body>
+		<div class="overview">
+			{#each pages as page, i}
+				<div class="overview-wrapper">
+					<a href={page.link} class="overview-link">{page.title}</a>
+					<p>{page.value}</p>
+				</div>
+			{/each}
+		</div>
+	</body
+>
 
 <style>
+	.pic {
+		margin-right: 20px;
+	}
 
+	.pic img {
+		object-fit: cover;
+        max-height: 250px;
+	}
+
+	.pic-slider-container{
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		min-height: 232px;
+	}
 	.title-container {
 		font-size: 1rem;
 		display: flex;
@@ -78,7 +117,6 @@
 	}
 
 	.slider-value {
-		justify-content: center;
 		font-size: 3rem;
 		display: flex;
 		margin-top: 3%;
