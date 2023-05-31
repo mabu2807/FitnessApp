@@ -11,8 +11,7 @@
 		{ title: 'Körpergröße', link: '/getStarted/size', value: 'Backend' },
 		{ title: 'Gewicht', link: '/getStarted/weight', value: 'Backend' },
 		{ title: 'Geburtsdatum', link: '/getStarted/dob', value: 'Backend' },
-		{ title: 'Aktivitätslevel', link: '/getStarted/level', value: 'Backend' },
-		{ title: 'Körperfettanteil', link: '/getStarted/bfp', value: 'Backend' }
+		{ title: 'Aktivitätslevel', link: '/getStarted/level', value: 'Backend' }
 	];
 
 	function selectCard(value) {
