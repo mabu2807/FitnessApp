@@ -1,8 +1,9 @@
 <script lang="ts">
 	import CircleProgressBar from './CircleProgressBar.svelte';
+	import Chart from './nutriChart.svelte';
 	const userGender = 'm';
 	const userWeight = 80;
-	let allcalories = 0;
+	var allcalories = 0;
 
 	if (userGender == 'm') {
 		allcalories = 24 * userWeight;
@@ -40,6 +41,10 @@
 	});
 	let amount = usedCalories / allcalories;
 	const progress = amount;
+
+	function editCard(event: any) {
+		console.log(event);
+	}
 </script>
 
 <div>
@@ -58,6 +63,7 @@
 		</div>
 		<div class="column middle">
 			<p class="text1">Wochenübersicht</p>
+			<Chart value={allcalories} />
 		</div>
 	</div>
 	<div>
@@ -65,8 +71,13 @@
 		<div class="cards1">
 			{#each mealTimes as meal}
 				<div class="cards2">
-					<div class="text2">
-						<h2>{meal.title}</h2>
+					<div class="row2">
+						<div class="text2">
+							<h2>{meal.title}</h2>
+						</div>
+						<div>
+							<button id={meal.id.toString()} on:click={editCard} class="button">Edit</button>
+						</div>
 					</div>
 					<div class="image1">
 						<img src={meal.icon} alt="Meal Icon" height="150px" width="200px" />
@@ -78,11 +89,6 @@
 				</div>
 			{/each}
 		</div>
-	</div>
-	<div class="cards3">
-		<label for="inputMeal">Hier die Mahlzeiten eintragen: </label>
-		<input type="text" id="iMeal" />
-		<button id="button">Speichern</button>
 	</div>
 </div>
 
@@ -97,6 +103,11 @@
 	.row {
 		display: -flex;
 		display: flex;
+	}
+	.row2 {
+		display: -flex;
+		display: flex;
+		align-items: center;
 	}
 	.column.side {
 		-webkit-flex: 1;
@@ -122,6 +133,17 @@
 	.image1 {
 		margin-left: 20px;
 	}
+	.button {
+		margin-left: 100px;
+		background-color: cadetblue;
+		border-radius: 15%;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+	}
 	.cards1 {
 		display: flex;
 		justify-content: center;
@@ -138,6 +160,7 @@
 		width: 20vw;
 		margin: 50px;
 		background-color: aliceblue;
+		border-radius: 10%;
 	}
 	.cards3 {
 		border-style: solid;
