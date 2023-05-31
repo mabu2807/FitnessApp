@@ -2,7 +2,7 @@ import prisma from '$lib/prisma';
 
 import type { PageServerLoad } from '../$types';
 
-type userdetail = {
+export type userdetail = {
 	id: number;
 	gender: string;
 	weight: number;
