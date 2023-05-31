@@ -11,11 +11,11 @@
 		{ title: 'Körperfettanteil', link: '/getStarted/bfp', value: 'Backend' }
 	];
 
-	let sliderValue = '175 cm';
+	let sliderValue = '175';
 
 	function updateSliderValue(event) {
 		sliderValue = event.target.value;
-		pages[1].value = sliderValue + ' cm';
+		pages[1].value = sliderValue;
 	}
 
 	function updateSliderOnMount() {
@@ -34,8 +34,9 @@
 	</div>
 
 	<div class="slider-value">
-		<p>{pages[1].value}</p>
+		<p>{pages[1].value} cm</p>
 	</div>
+
 	<div class="slidecontainer">
 		<input
 			type="range"
@@ -67,7 +68,6 @@
 </body>
 
 <style>
-
 	.title-container {
 		font-size: 1rem;
 		display: flex;
@@ -82,16 +82,18 @@
 		font-size: 3rem;
 		display: flex;
 		margin-top: 3%;
-		left: 90%;
 		text-align: center;
 	}
 
 	.slidecontainer {
+		position: absolute;
+		bottom: 20%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		width: 60%;
 		display: flex;
-		justify-content: center;
-		margin: 1% auto;
 		align-items: center;
+		margin: 1% auto;
 	}
 
 	.slider {

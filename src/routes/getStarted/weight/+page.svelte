@@ -12,10 +12,10 @@
 	];
 
 	let picsource = '/src/assets/15.jpg';
-	let sliderValue = '80kg';
+	let sliderValue = '80';
 
 	function updateSliderValue(event) {
-		pages[1].value = sliderValue + 'kg';
+		pages[1].value = sliderValue;
 		sliderValue = event.target.value;
 		let val = parseInt(event.target.value);
 		if (val < 60) {
@@ -32,9 +32,9 @@
 			picsource = '/src/assets/30.jpg';
 		} else if (val < 120) {
 			picsource = '/src/assets/35.jpg';
-		} else{
-            picsource = '/src/assets/40.jpg';
-        }
+		} else {
+			picsource = '/src/assets/40.jpg';
+		}
 	}
 
 	function updateSliderOnMount() {
@@ -57,53 +57,49 @@
 			<img src={picsource} alt="person" />
 		</div>
 		<div class="slider-value">
-			<p>{pages[1].value}</p>
+			<p>{pages[1].value} kg</p>
 		</div>
 	</div>
-		<div class="slidecontainer">
-			<input
-				type="range"
-				min="50"
-				max="130"
-				bind:value={sliderValue}
-				class="slider"
-				id="myRange"
-				on:input={updateSliderValue}
-			/>
-		</div>
+	<div class="slidecontainer">
+		<input
+			type="range"
+			min="50"
+			max="130"
+			bind:value={sliderValue}
+			class="slider"
+			id="myRange"
+			on:input={updateSliderValue}
+		/>
+	</div>
 
-		<div class="button-container-right">
-			<a href="/getStarted/weight" class="next-button">Nächste</a>
-		</div>
+	<div class="button-container-right">
+		<a href="/getStarted/dob" class="next-button">Nächste</a>
+	</div>
 
-		<div class="button-container-left">
-			<a href="/getStarted/goals" class="back-button">Zurück</a>
-		</div>
+	<div class="button-container-left">
+		<a href="/getStarted/size" class="back-button">Zurück</a>
+	</div>
 
-		<div class="overview">
-			{#each pages as page, i}
-				<div class="overview-wrapper">
-					<a href={page.link} class="overview-link">{page.title}</a>
-					<p>{page.value}</p>
-				</div>
-			{/each}
-		</div>
-	</body
->
+	<div class="overview">
+		{#each pages as page, i}
+			<div class="overview-wrapper">
+				<a href={page.link} class="overview-link">{page.title}</a>
+				<p>{page.value}</p>
+			</div>
+		{/each}
+	</div>
+</body>
 
 <style>
-	.pic {
-		margin-right: 20px;
-	}
-
 	.pic img {
 		object-fit: cover;
-        max-height: 250px;
+		max-height: 200px;
 	}
 
-	.pic-slider-container{
+	.pic-slider-container {
 		justify-content: center;
 		align-items: center;
+		position: relative;
 		display: flex;
 		min-height: 232px;
 	}
@@ -120,16 +116,22 @@
 		font-size: 3rem;
 		display: flex;
 		margin-top: 3%;
-		left: 90%;
+		left: 55%;
 		text-align: center;
+		position: absolute; 
+		top: 30%; 
+		transform: translateY(-50%); 
 	}
 
 	.slidecontainer {
+		position: absolute;
+		bottom: 20%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		width: 60%;
 		display: flex;
-		justify-content: center;
-		margin: 1% auto;
 		align-items: center;
+		margin: 1% auto;
 	}
 
 	.slider {
