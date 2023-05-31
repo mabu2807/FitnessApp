@@ -299,6 +299,7 @@ font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, O
     text-decoration: none;
     color: inherit;
     margin: 10px;
+    cursor: pointer;
   }
 
   .icon-card:hover {

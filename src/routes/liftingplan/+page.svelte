@@ -6,7 +6,7 @@
 
 // export let data;
 
-let plans = [
+export let plans = [
   {
         id: "0",
         title: "Trainingsplan 1: Muskelaufbau",

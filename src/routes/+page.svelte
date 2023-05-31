@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
   import { onMount } from 'svelte';
   import { fade, fly} from 'svelte/transition';
 
@@ -11,6 +13,9 @@
   ];
 
   let currentIndex = 0;
+  /**
+	 * @type {any[]}
+	 */
   let visibleItems = [];
 
   const showItems = () => {
@@ -74,15 +79,20 @@
       
       <h2 class="headTestimonials">Was unsere Kunden sagen</h2>
       <section id="testimonials">
+       
+       
         <div class="arrow" on:click={handleNext}><i class="fa-solid fa-arrow-left fa-3x"></i></div>
         {#each visibleItems as item (item.id)}
-         <div class="testimonial" transition:fade="{{duration:70, delay:300}}">
+        
+        <!-- svelte-ignore missing-declaration -->
+        <div class="testimonial out in"  transition:fly="{{x: -100, opacity: 0}}" animate:fly="{{x: 0, opacity: 1}}">
          <img src={"src/assets/test.jpeg"} alt="Kunde {item.id}">
           <p>{item.text}</p>
           <cite>{item.name}</cite>
          </div>
         {/each}
         <div class="arrow" on:click={handlePrevious}><i class="fa-solid fa-arrow-right fa-3x"></i></div>
+       
       </section>
       
       <section id="contact">
@@ -177,14 +187,35 @@
 
 .testimonial {
   display: inline-block;
-  height: 200px;
+  height: 250px;
   width: 300px;
   padding: 20px;
   margin: 30px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
+
+.out {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+.in {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  @keyframes fly-in {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
 
 .testimonial img {
   object-fit: cover;

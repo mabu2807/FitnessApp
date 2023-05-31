@@ -29,6 +29,9 @@
       }
     }
   
+    /**
+	 * @param {string} value
+	 */
     function selectCard(value) {
       pages[currentPage].value = value;
     //   nextPage();
