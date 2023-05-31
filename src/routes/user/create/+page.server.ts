@@ -2,6 +2,10 @@ import prisma from "$lib/prisma";
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
+const validateEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+}
+
 export const actions = {
     default: async ({ request }) => {
         const data = await request.formData();
@@ -18,9 +22,7 @@ export const actions = {
             return fail(400, { incorrect: true })
         }
 
-        //Validate email
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if(!emailRegex.test(email)){
+        if(!validateEmail){
             return fail(422, {email})
         }
 
