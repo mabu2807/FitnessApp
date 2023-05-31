@@ -3,6 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
+		"preinstall": "npx only-allow pnpm",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
@@ -38,5 +39,7 @@
 		"chart.js": "^4.3.0",
 		"svelte-chartjs": "^3.1.2",
 		"svelte-materialify": "^0.3.11"
+		"@prisma/client": "4.14.1",
+		"prisma": "^4.14.1"
 	}
 }
