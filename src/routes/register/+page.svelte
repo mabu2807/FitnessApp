@@ -224,6 +224,53 @@ body {
     }
   }
 
+  @media (max-width: 850px) {
+  .register_box {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .register_box .left {
+    width: auto;
+    height: auto;
+    padding-left: 7vw;
+    padding-top: 7vh;
+    padding-bottom: 7vh;
+    padding-right: 7vw;
+  }
+
+  .register_box .right {
+    width: auto;
+    height: 20vh;
+    
+  }
+  .left h3{
+    font-size: 4vw;
+  }
+
+  .left input{
+    font-size: 2vw;
+    margin-top: 5vh;
+  }
+
+  .error{
+    font-size: 2.3vw;
+  }
+
+  .register .submit{
+    width: 22vw;
+    height: 4vh;
+    font-size: 2vw;
+  }
+
+
+  .right-text h5 {
+    display: none;
+  }
+  
+}
+
+
 
 
 </style>
