@@ -3,56 +3,27 @@
   import Chart from "chart.js/auto";
 
   let trainingPlans = [
-  {
-    name: "Plan 1",
-    exercises: [
-      {
-        name: "Übung 1",
-        weight: [
-          { x: 10, y: 5 },
-          { x: 20, y: 10 },
-          { x: 15, y: 7 },
-          { x: 25, y: 12 }
-        ],
-      },
-      {
-        name: "Übung 2",
-        weight: [
-          { x: 5, y: 2 },
-          { x: 10, y: 4 },
-          { x: 15, y: 7 },
-          { x: 25, y: 12 },
-          { x: 10, y: 5 }
-        ],
-      },
-    ],
-  },
-  {
-    name: "Plan 2",
-    exercises: [
-      {
-        name: "Übung 3",
-        weight: [
-          { x: 30, y: 15 },
-          { x: 40, y: 20 },
-        ],
-      },
-      {
-        name: "Übung 4",
-        weight: [
-          { x: 15, y: 7 },
-          { x: 25, y: 12 },
-        ],
-      },
-    ],
-  },
-];
-
+    {
+      name: "Plan 1",
+      exercises: [
+        { name: "Bankdrücken", weight: [] },
+        { name: "Butterfly", weight: [] },
+        { name: "Thomasrow", weight: [] }
+      ]
+    },
+    {
+      name: "Plan 2",
+      exercises: [
+        { name: "Seitheben", weight: [] },
+        { name: "Bizeps", weight: [] },
+        { name: "Trizeps", weight: [] }
+      ]
+    }
+  ];
 
   let selectedTrainingPlan = trainingPlans[0];
-  let weightInput: Array<Array<string>> = trainingPlans.map(plan => plan.exercises.map(() => ""));
-  let weightInput2: Array<Array<string>> = trainingPlans.map(plan => plan.exercises.map(() => ""));
-
+  let weightInput = "";
+  let weightInput2 = "";
 
   let charts: any[] = [];
 
@@ -101,53 +72,37 @@
     chart.update();
   }
 
-  
-  function addWeight(planIndex: number, exerciseIndex: number) {
-    const weight = parseFloat(weightInput[planIndex][exerciseIndex]);
-    const weight2 = parseFloat(weightInput2[planIndex][exerciseIndex]);
+  function addWeight() {
+    const weight = parseFloat(weightInput);
+    const weight2 = parseFloat(weightInput2);
     if (!isNaN(weight) && !isNaN(weight2)) {
-      trainingPlans[planIndex].exercises[exerciseIndex].weight.push({ x: weight, y: weight2 });
-      const chartIndex = planIndex * trainingPlans[0].exercises.length + exerciseIndex;
-      updateChart(charts[chartIndex], trainingPlans[planIndex].exercises[exerciseIndex].weight);
+      selectedTrainingPlan.exercises[selectedExerciseIndex].weight.push({ x: weight, y: weight2 });
+      updateChart(charts[selectedExerciseIndex], selectedTrainingPlan.exercises[selectedExerciseIndex].weight);
     }
-    weightInput[planIndex][exerciseIndex] = "";
-    weightInput2[planIndex][exerciseIndex] = "";
+    weightInput = "";
+    weightInput2 = "";
   }
 
   function updateWeight(event: any) {
-  const weight = parseFloat(event.target.value);
-  const planIndex = parseInt(event.target.dataset.planIndex);
-  const exerciseIndex = parseInt(event.target.dataset.exerciseIndex);
-
-  if (!isNaN(weight)) {
-    (trainingPlans[planIndex].exercises[exerciseIndex].weight as any) = weight;
-    updateChart(charts[planIndex * trainingPlans.length + exerciseIndex], trainingPlans[planIndex].exercises[exerciseIndex].weight);
+    const weight = parseFloat(event.target.value);
+    const index = parseInt(event.target.dataset.index);
+    if (!isNaN(weight)) {
+      (selectedTrainingPlan.exercises[selectedExerciseIndex].weight[index] as any) = weight;
+      updateChart(charts[selectedExerciseIndex], selectedTrainingPlan.exercises[selectedExerciseIndex].weight);
+    }
   }
-}
-
-
 
   let selectedExerciseIndex = 0;
 
   onMount(() => {
-  const containers = document.querySelectorAll(".exercise-container");
-  containers.forEach((container, index) => {
-    const canvas = container.querySelector("canvas");
-    const chart = createChart(canvas);
-    charts.push(chart);
-    const trainingPlanIndex = Math.floor(index / trainingPlans[0].exercises.length);
-    const exerciseIndex = index % trainingPlans[0].exercises.length;
-    updateChart(chart, trainingPlans[trainingPlanIndex].exercises[exerciseIndex].weight);
-  });
-
-  trainingPlans.forEach((plan, planIndex) => {
-      plan.exercises.forEach((exercise, exerciseIndex) => {
-        const chartIndex = planIndex * trainingPlans[0].exercises.length + exerciseIndex;
-        updateChart(charts[chartIndex], exercise.weight);
-      });
+    const containers = document.querySelectorAll(".exercise-container");
+    containers.forEach((container, index) => {
+      const canvas = container.querySelector("canvas");
+      const chart = createChart(canvas);
+      charts.push(chart);
+      updateChart(chart, selectedTrainingPlan.exercises[index].weight);
     });
-});
-
+  });
 
   onDestroy(() => {
     charts.forEach((chart) => {
@@ -159,21 +114,23 @@
 <main>
   <h1>Fitness Tracking</h1>
 
-  {#each trainingPlans as trainingPlan, planIndex}
+  {#each trainingPlans as trainingPlan}
     <section>
       <h2>{trainingPlan.name}</h2>
       <div class="container">
-        {#each trainingPlan.exercises as exercise, exerciseIndex}
+        {#each trainingPlan.exercises as exercise, index}
           <div class="exercise-container" on:keydown={() => {
             selectedTrainingPlan = trainingPlan;
-            selectedExerciseIndex = exerciseIndex;
+            selectedExerciseIndex = index;
           }}>
             <h3>{exercise.name}</h3>
             <div class="input-container">
-              
-              <input type="number" placeholder="Gewicht" bind:value={weightInput[planIndex][exerciseIndex]} />
-              <input type="number" placeholder="Gewicht 2" bind:value={weightInput2[planIndex][exerciseIndex]} />
-              <button on:click={() => addWeight(planIndex, exerciseIndex)}>Hinzufügen</button>
+              {#each exercise.weight as weight, weightIndex}
+                <input type="number" placeholder="Gewicht" value={weight} on:change={updateWeight} data-index={weightIndex} />
+              {/each}
+              <input type="number" placeholder="Gewicht" bind:value={weightInput} />
+              <input type="number" placeholder="Gewicht 2" bind:value={weightInput2} />
+              <button on:click={addWeight}>Hinzufügen</button>
             </div>
             <canvas></canvas>
           </div>
