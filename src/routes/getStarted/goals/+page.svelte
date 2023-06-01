@@ -30,7 +30,10 @@
 	<div class="card-container">
 		{#each zieleBackend as goal}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div class="card {pages[0].value === goal.title ? 'selected' : ''}" on:click={() => selectCard(goal.title)}>
+			<div
+				class="card {pages[0].value === goal.title ? 'selected' : ''}"
+				on:click={() => selectCard(goal.title)}
+			>
 				<h2 class="card-title">{goal.title}</h2>
 				<p class="card-description">{goal.description}</p>
 			</div>
@@ -93,51 +96,51 @@
 		border: 2px solid black;
 	}
 
-    .card-title {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      text-align: center;
-    }
-  
-    .card-description {
-      font-size: 0.9rem;
-      text-align: center;
-    }
+	.card-title {
+		font-size: 1.2rem;
+		margin-bottom: 0.5rem;
+		text-align: center;
+	}
 
-    .card.selected {
-      background-color: #007bff;
-      color: white;
-      border-color: #007bff;
-    }
-  
-    .card.selected:hover {
-      transform: scale(1);
-      box-shadow: none;
-     
-    }
+	.card-description {
+		font-size: 0.9rem;
+		text-align: center;
+	}
 
-    .button-container-right {
-        position: absolute;
-        right: 5%;
-        bottom: 20%;
-    } 
+	.card.selected {
+		background-color: #007bff;
+		color: white;
+		border-color: #007bff;
+	}
 
-    .next-button {
-        cursor: pointer;
-       padding: 20px 50px;
-       background-color: white;
-       border: 2px solid #0056b3;
-       font-weight: 600;
-       color: #0056b3;
-       border-radius: 8px;
-       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-  
-    .next-button:hover {
-      background-color: #0056b3;
-      color: white;
-      transition: all ease .5s;
-    }
+	.card.selected:hover {
+		transform: scale(1);
+		box-shadow: none;
+	}
+
+	.button-container-right {
+		position: absolute;
+		right: 5%;
+		bottom: 20%;
+	}
+
+	.next-button {
+		cursor: pointer;
+		padding: 20px 50px;
+		background-color: white;
+		border: 2px solid #0056b3;
+		font-weight: 600;
+		color: #0056b3;
+		border-radius: 8px;
+		font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial,
+			sans-serif;
+	}
+
+	.next-button:hover {
+		background-color: #0056b3;
+		color: white;
+		transition: all ease 0.5s;
+	}
 
 	.overview {
 		position: absolute;

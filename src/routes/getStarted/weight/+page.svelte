@@ -52,12 +52,12 @@
 	</div>
 
 	<div class="pic-slider-container">
-			<div class="pic">
-				<img src={picsource} alt="person" />
-			</div>
-			<div class="slider-value">
-				<p>{pages[1].value} kg</p>
-			</div>
+		<div class="pic">
+			<img src={picsource} alt="person" />
+		</div>
+		<div class="slider-value">
+			<p>{pages[1].value} kg</p>
+		</div>
 	</div>
 	<div class="slidecontainer">
 		<input
@@ -105,7 +105,7 @@
 		display: flex;
 		min-height: 232px;
 		flex-direction: column; /* Updated */
-  		align-items: center; /* Added */
+		align-items: center; /* Added */
 	}
 	.title-container {
 		font-size: 1rem;

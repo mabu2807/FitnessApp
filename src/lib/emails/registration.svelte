@@ -60,7 +60,7 @@
 			<Text style={paragraph}>Hi {firstName}, welcome to FitnessHub!</Text>
 			<Text style={paragraph}>Please click on the following button to verify your email:</Text>
 			<a href="https://www.google.com">
-				<button>Verify Email</button>    
+				<button>Verify Email</button>
 			</a>
 		</Container>
 	</Section>

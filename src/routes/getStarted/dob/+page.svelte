@@ -7,9 +7,9 @@
 		{ title: 'Aktivitätslevel', link: '/getStarted/level', value: 'Backend' }
 	];
 
-    let dob = "";
+	let dob = '';
 
-    function updateDOB(event) {
+	function updateDOB(event) {
 		dob = event.target.value;
 		pages[3].value = dob;
 	}
@@ -23,7 +23,7 @@
 		</div>
 	</div>
 	<div class="datepicker-container">
-		<input type="date" id="dob" bind:value={dob} on:input={updateDOB}/>
+		<input type="date" id="dob" bind:value={dob} on:input={updateDOB} />
 	</div>
 	<div class="button-container-right">
 		<a href="/getStarted/level" class="next-button">Nächste</a>
@@ -56,7 +56,7 @@
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-        margin-top: 5%;
+		margin-top: 5%;
 		text-align: center;
 	}
 	.title-container {
