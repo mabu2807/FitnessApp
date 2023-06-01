@@ -1,0 +1,23 @@
+[
+	{
+		"id": 1,
+		"title": "Frühstück",
+		"icon": "src/assets/breakfast2.webp",
+		"meal": "Eier mit Speck und dazu eine Banane",
+		"calories": 820
+	},
+	{
+		"id": 2,
+		"title": "Mittagessen",
+		"icon": "src/assets/lunch2.jpeg",
+		"meal": "Nudeln mit Spinat",
+		"calories": 600
+	},
+	{
+		"id": 3,
+		"title": "Abendessen",
+		"icon": "src/assets/dinner2.jpeg",
+		"meal": "Kartoffeln mit Brokkoli und Hähnchen",
+		"calories": 500
+	}
+]
