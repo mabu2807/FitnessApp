@@ -1,3 +1,4 @@
+
 <script lang="ts">
     import type { ActionData } from "./$types";
   
@@ -5,23 +6,27 @@
 
   </script>
 
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fitness Registration</title>
   <link rel="stylesheet" href="style.css">
 </head>
-  
+
 <body>
   <section class="register">
     <div class="register_box">
       <div class="left">
         <div class="contact">
+
           <form method="post">
+
             <div class="title-wrapper">
               <div class="top_link">
                 <a href="/"><img src="src/assets/Logo.jpg" alt="Logo"></a>
               </div>
+
               <h3>Erstelle einen Account</h3>
             </div>
             <input name = "username" type="text" placeholder="Benutzername" value={form?.username ?? ""}>
@@ -45,7 +50,6 @@
     </div>
   </section>
 </body>
-
 <style>
 
 body {
@@ -63,10 +67,13 @@ body {
 }
 
 .register_box {
-  width: 90vw;
+  width: 1050px;
+  height: 600px;
+  /*width: 90vw;
   height: 80vh;
-  /* width: 1050px; 
+   width: 1050px; 
   height: 600px; */
+
   position: relative;
   background: #fff;
   border-radius: 10px;
@@ -76,23 +83,31 @@ body {
 }
 
 .register_box .left {
-  width: 43%;
+  width: 41%;
   height: 100%;
-  padding: 1vw 1vh;
+  padding: 25px 25px;
+
+  /*width: 43%;
+  height: 100%;
+  padding: 1vw 1vh;*/
   background-color: #fff;
 }
 
 .register_box .right {
-  width: 57%;
+  width: 59%;
+  /*width: 57%;*/
   height: 100%;
   background-color: #000;
 }
 
 .left h3 {
   text-align: center;
-  font-size: 2vw;
-  /* margin-bottom: 1.5vh; */
-  margin-top: 3vh;
+  margin-bottom: 40px;
+
+  /*font-size: 2vw;
+  margin-bottom: 1.5vh; 
+  margin-top: 3vh;*/
+
   color: #000;
 }
 
@@ -105,12 +120,19 @@ body {
 .left .top_link {
   background-color: #000;
   width: 18%;
-  height: 24%;
+
+    height: 85px;
+    overflow: hidden;
+    margin-right: 60px;
+    border-radius: 5px;
+
+  /*height: 24%;
   overflow: hidden;
   margin-right: 3vw; 
   margin-left: 0.7vw;
   margin-top: 0.7vh;
-  border-radius: 5px;
+  border-radius: 5px;*/
+
 }
 
 .left .top_link img {
@@ -122,32 +144,46 @@ body {
 .left input {
   border: none;
   width: 80%;
-  margin-left: 0.6vw;
+
+  margin: 15px 0px;
+  border-bottom: 1px solid #000;
+  padding: 7px 9px;
+  /*margin-left: 0.6vw;
   margin-top: 3vh;
   border-bottom: 1px solid #000;
-  padding: 0.4vw 0.4vh;
+  padding: 0.4vw 0.4vh;*/
+
   width: 91%;
   overflow: hidden;
   background: transparent;
   font-weight: 600;
-  font-size: 1.1vw;
+  font-size: 14px;
+  /*font-size: 1.1vw;*/
   color: #000;
 }
 
 .register .submit {
   cursor: pointer;
-  width: 12vw;
+  padding: 15px 
+  /*width: 12vw;
   height: 6vh;
-  /* padding: 1vw 0.7vh; */
+   padding: 1vw 0.7vh; */
+
   border: 2px solid black;
   border-radius: 8px;
   display: block;
   margin: auto;
-  margin-top: 9vh;
+  margin-top: 120px;
   background: #393e46;
   color: #fff;
   font-weight: bold;
-  font-size: 1.1vw;
+
+  /*margin-top: 9vh;
+  background: #393e46;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1vw;*/
+
   -webkit-box-shadow: 0px 9px 15px -11px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0px 9px 15px -11px rgba(0, 0, 0, 0.4);
   box-shadow: 0px 9px 15px -11px rgba(0, 0, 0, 0.4);
@@ -179,7 +215,8 @@ body {
   display: block;
   width: 100%;
   text-align: center;
-  font-size: 4vw;
+  font-size: 50px;
+  /*font-size: 4vw;*/
   font-weight: 500;
   color: #000;
 }
@@ -188,7 +225,8 @@ body {
   display: block;
   width: 100%;
   text-align: center;
-  font-size: 1.5vw;
+  font-size: 19px;
+  /*font-size: 1.5vw;*/
   font-weight: 400;
   color: #000;
 }
@@ -198,15 +236,32 @@ body {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 10vw;
-  height: 0.7vh;
+  width: 70px;
+  height: 5px;
+  /*width: 10vw;
+  height: 0.7vh;*/
+
   background-color: #000;
   border-radius: 10px;
   animation: indicator 1.5s ease-in-out infinite alternate;
 }
 @keyframes indicator {
     0% {
-      width: 20vw;
+
+      width: 200px;
+    }
+    50% {
+      width: 250px;
+    }
+    100% {
+      width: 200px;
+    }
+  }
+
+
+
+/*
+  width: 20vw;
     }
     50% {
       width: 26vw;
@@ -260,9 +315,6 @@ body {
     display: none;
   }
   
-}
-
-
-
-
+}*/
 </style>
+
