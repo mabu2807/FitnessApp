@@ -18,26 +18,27 @@
       <div class="left">
         <div class="contact">
           <form method="post">
-            <!-- action="#" -->
             <div class="title-wrapper">
               <div class="top_link">
                 <a href="/"><img src="src/assets/Logo.jpg" alt="Logo"></a>
               </div>
-              <h3>Create an Account</h3>
+              <h3>Erstelle einen Account</h3>
             </div>
-            <input name = "username" type="text" placeholder="Username" value={form?.username ?? ""}>
+            <input name = "username" type="text" placeholder="Benutzername" value={form?.username ?? ""}>
             <input name = "email" type="email" placeholder="Email" value={form?.email ?? ""}>
-            <input name = "password" type="password" placeholder="Password" value={form?.password ?? ""}>
-            <!-- <input type="password" placeholder="Confirm Password"> -->
-            <!--{#if form?.missing}<p class="error">Bitte füllen sie die Felder aus!</p>{/if} -->
-            <button type="submit" class="submit">Sign Up</button>
+            <input name = "password" type="password" placeholder="Passwort" value={form?.password ?? ""}>
+            <input name="passwordConfirm" type="password" placeholder="Bestätige Passwort" value={form?.passwordConfirm ?? ""}>
+            <div class="error">
+            {#if form?.missing}<p>Bitte füllen sie die Felder aus!</p>{/if}
+            </div>
+            <button type="submit" class="submit">Registrieren</button>
           </form>
         </div>
       </div>
       <div class="right">
         <div class="right-text">
           <h2>Join FitnessHub</h2>
-          <h5>Your path to a healthier lifestyle</h5>
+          <h5>Komm in die Gruppe und werde zu einem Halbgott!</h5>
         </div>
         <div class="right-indicator"></div>
       </div>
@@ -45,36 +46,7 @@
   </section>
 </body>
 
-
-
-  <!-- <div class="page">
-    <form method="post">
-      <h1>Register User</h1>
-      {#if form?.missing}<p class="error">Missing field required!</p>{/if}
-      <input
-        name="email"
-        placeholder="email"
-        type="text"
-        value={form?.email ?? ""}
-      />
-      <input
-        name="username"
-        placeholder="Your Name"
-        type="text"
-        value={form?.username ?? ""}
-      />
-      <input
-        name="password"
-        placeholder="password"
-        type="password"
-        value={form?.password ?? ""}
-      />
-      <button type="submit">Create</button>
-      <a class="back" href="/"> or Cancel </a>
-    </form>
-  </div> -->
-
-  <style>
+<style>
 
 body {
   margin: 0;
@@ -91,8 +63,10 @@ body {
 }
 
 .register_box {
-  width: 1050px;
-  height: 600px;
+  width: 90vw;
+  height: 80vh;
+  /* width: 1050px; 
+  height: 600px; */
   position: relative;
   background: #fff;
   border-radius: 10px;
@@ -102,21 +76,23 @@ body {
 }
 
 .register_box .left {
-  width: 41%;
+  width: 43%;
   height: 100%;
-  padding: 25px 25px;
+  padding: 1vw 1vh;
   background-color: #fff;
 }
 
 .register_box .right {
-  width: 59%;
+  width: 57%;
   height: 100%;
   background-color: #000;
 }
 
 .left h3 {
   text-align: center;
-  margin-bottom: 40px;
+  font-size: 2vw;
+  /* margin-bottom: 1.5vh; */
+  margin-top: 3vh;
   color: #000;
 }
 
@@ -129,10 +105,12 @@ body {
 .left .top_link {
   background-color: #000;
   width: 18%;
-    height: 85px;
-    overflow: hidden;
-    margin-right: 60px;
-    border-radius: 5px;
+  height: 24%;
+  overflow: hidden;
+  margin-right: 3vw; 
+  margin-left: 0.7vw;
+  margin-top: 0.7vh;
+  border-radius: 5px;
 }
 
 .left .top_link img {
@@ -144,28 +122,32 @@ body {
 .left input {
   border: none;
   width: 80%;
-  margin: 15px 0px;
+  margin-left: 0.6vw;
+  margin-top: 3vh;
   border-bottom: 1px solid #000;
-  padding: 7px 9px;
+  padding: 0.4vw 0.4vh;
   width: 91%;
   overflow: hidden;
   background: transparent;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 1.1vw;
   color: #000;
 }
 
 .register .submit {
   cursor: pointer;
-  padding: 15px 70px;
+  width: 12vw;
+  height: 6vh;
+  /* padding: 1vw 0.7vh; */
   border: 2px solid black;
   border-radius: 8px;
   display: block;
   margin: auto;
-  margin-top: 120px;
+  margin-top: 9vh;
   background: #393e46;
   color: #fff;
   font-weight: bold;
+  font-size: 1.1vw;
   -webkit-box-shadow: 0px 9px 15px -11px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0px 9px 15px -11px rgba(0, 0, 0, 0.4);
   box-shadow: 0px 9px 15px -11px rgba(0, 0, 0, 0.4);
@@ -197,7 +179,7 @@ body {
   display: block;
   width: 100%;
   text-align: center;
-  font-size: 50px;
+  font-size: 4vw;
   font-weight: 500;
   color: #000;
 }
@@ -206,7 +188,7 @@ body {
   display: block;
   width: 100%;
   text-align: center;
-  font-size: 19px;
+  font-size: 1.5vw;
   font-weight: 400;
   color: #000;
 }
@@ -216,23 +198,70 @@ body {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 70px;
-  height: 5px;
+  width: 10vw;
+  height: 0.7vh;
   background-color: #000;
   border-radius: 10px;
   animation: indicator 1.5s ease-in-out infinite alternate;
 }
 @keyframes indicator {
     0% {
-      width: 200px;
+      width: 20vw;
     }
     50% {
-      width: 250px;
+      width: 26vw;
     }
     100% {
-      width: 200px;
+      width: 20vw;
     }
   }
+
+  @media (max-width: 850px) {
+  .register_box {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .register_box .left {
+    width: auto;
+    height: auto;
+    padding-left: 7vw;
+    padding-top: 7vh;
+    padding-bottom: 7vh;
+    padding-right: 7vw;
+  }
+
+  .register_box .right {
+    width: auto;
+    height: 20vh;
+    
+  }
+  .left h3{
+    font-size: 4vw;
+  }
+
+  .left input{
+    font-size: 2vw;
+    margin-top: 5vh;
+  }
+
+  .error{
+    font-size: 2.3vw;
+  }
+
+  .register .submit{
+    width: 22vw;
+    height: 4vh;
+    font-size: 2vw;
+  }
+
+
+  .right-text h5 {
+    display: none;
+  }
+  
+}
+
 
 
 
