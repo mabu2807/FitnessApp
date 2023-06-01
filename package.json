@@ -16,6 +16,9 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
+		"@smui/paper": "7.0.0-beta.8",
+		"@smui/tab": "7.0.0-beta.8",
+		"@smui/tab-bar": "7.0.0-beta.8",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.5.0",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
@@ -34,6 +37,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fortawesome/fontawesome-free": "^6.4.0",
 		"@prisma/client": "^4.15.0",
 		"@smui/button": "7.0.0-beta.8",
 		"@smui/dialog": "7.0.0-beta.8",

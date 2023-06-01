@@ -96,7 +96,7 @@
 	}
 	.pic img {
 		object-fit: cover;
-		max-height: 200px;
+		max-height: 304px;
 	}
 
 	.pic-slider-container {
