@@ -10,7 +10,7 @@
 		{ title: 'Aktivitätslevel', link: '/getStarted/level', value: 'Backend' }
 	];
 
-	let picsource = '/src/assets/15.jpg';
+	let picsource = '/src/assets/final15.jpg';
 	let sliderValue = '90';
 
 	function updateSliderValue(event) {
@@ -18,21 +18,21 @@
 		sliderValue = event.target.value;
 		let val = parseInt(event.target.value);
 		if (val < 60) {
-			picsource = '/src/assets/5.jpg';
+			picsource = '/src/assets/final5.jpg';
 		} else if (val < 70) {
-			picsource = '/src/assets/10.jpg';
+			picsource = '/src/assets/final10.jpg';
 		} else if (val < 80) {
-			picsource = '/src/assets/15.jpg';
+			picsource = '/src/assets/final15.jpg';
 		} else if (val < 90) {
-			picsource = '/src/assets/20.jpg';
+			picsource = '/src/assets/final20.jpg';
 		} else if (val < 100) {
-			picsource = '/src/assets/25.jpg';
+			picsource = '/src/assets/final25.jpg';
 		} else if (val < 110) {
-			picsource = '/src/assets/30.jpg';
+			picsource = '/src/assets/final30.jpg';
 		} else if (val < 120) {
-			picsource = '/src/assets/35.jpg';
+			picsource = '/src/assets/final35.jpg';
 		} else {
-			picsource = '/src/assets/40.jpg';
+			picsource = '/src/assets/final40.jpg';
 		}
 	}
 

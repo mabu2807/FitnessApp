@@ -1,4 +1,6 @@
 <script>
+	import { each } from 'svelte/internal';
+	import { onMount } from 'svelte';
 
 	let pages = [
 		{ title: 'Ziele', link: '/getStarted/goals', value: 'Backend' },
@@ -8,6 +10,18 @@
 		{ title: 'Aktivitätslevel', link: '/getStarted/level', value: 'Backend' }
 	];
 
+	let sliderValue = '5';
+
+	function updateSliderValue(event) {
+		sliderValue = event.target.value;
+		pages[4].value = sliderValue;
+	}
+
+	function updateSliderOnMount() {
+		pages[4].value = sliderValue;
+	}
+
+	onMount(updateSliderOnMount);
 </script>
 
 <body>
@@ -16,6 +30,22 @@
 			<h1>Schritt: 5</h1>
 			<p>Wähle dein Aktivitätslevel aus!</p>
 		</div>
+	</div>
+
+	<div class="slider-value">
+		<p>{pages[4].value}</p>
+	</div>
+
+	<div class="slidecontainer">
+		<input
+			type="range"
+			min="0"
+			max="10"
+			bind:value={sliderValue}
+			class="slider"
+			id="myRange"
+			on:input={updateSliderValue}
+		/>
 	</div>
 
 	<div class="button-container-right">
@@ -35,6 +65,7 @@
 		{/each}
 	</div>
 </body>
+
 <style>
 	.title-container {
 		font-size: 1rem;
@@ -43,6 +74,40 @@
 		margin-top: 3%;
 		left: 50%;
 		text-align: center;
+	}
+
+	.slider-value {
+		justify-content: center;
+		font-size: 3rem;
+		display: flex;
+		margin-top: 3%;
+		text-align: center;
+	}
+
+	.slidecontainer {
+		position: absolute;
+		bottom: 20%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 60%;
+		display: flex;
+		align-items: center;
+		margin: 1% auto;
+	}
+
+	.slider {
+		width: 100%;
+		height: 20px;
+		border-radius: 5px;
+		background: white;
+		outline: none;
+		opacity: 0.6;
+		-webkit-transition: 0.2s;
+		transition: opacity 0.2s;
+	}
+
+	.slider:hover {
+		opacity: 1;
 	}
 
 	.button-container-right {
