@@ -143,7 +143,7 @@
 		display: flex;
 		justify-content: center;
 		margin-top: 20px;
-		rowcaloriesweek-gap: 10px;
+		row-gap: 10px;
 	}
 	.cardContent {
 		border-style: solid;
