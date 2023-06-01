@@ -46,38 +46,38 @@
 	<section>
 		<h2>Ernährungstagebuch</h2>
 	</section>
-	<div class="row">
-		<div class="column side">
+	<div class="rowCaloriesWeek">
+		<div class="columnCalories">
 			<div style="vertical-align: baseline ;">
-				<p class="text1">Tages-Kalorienverbrauch</p>
+				<p class="textTitle">Tages-Kalorienverbrauch</p>
 				<div style="align-items: center;">
 					<CircleProgressBar {progress} />
 					<p>{usedCalories}/ {allcalories} kcal</p>
 				</div>
 			</div>
 		</div>
-		<div class="column middle">
-			<p class="text1">Wochenübersicht</p>
+		<div class="columnWeek">
+			<p class="textTitle">Wochenübersicht</p>
 			<Chart value={allcalories} />
 		</div>
 	</div>
 	<div>
-		<p class="text1">Mahlzeiten</p>
-		<div class="cards1">
+		<p class="textTitle">Mahlzeiten</p>
+		<div class="cardGeneral">
 			{#each mealTimes as meal}
-				<div class="cards2">
-					<div class="row2">
-						<div class="text2">
+				<div class="cardContent">
+					<div class="rowMealtitleButton">
+						<div class="textMealTitle">
 							<h2>{meal.title}</h2>
 						</div>
 						<div>
 							<button id={meal.id.toString()} on:click={editCard} class="button">Edit</button>
 						</div>
 					</div>
-					<div class="image1">
+					<div class="imageCard">
 						<img src={meal.icon} alt="Meal Icon" height="150px" width="200px" />
 					</div>
-					<div class="textDescription">
+					<div class="textMealDescription">
 						<p>{meal.meal}</p>
 						<p>{meal.calories} kcal</p>
 					</div>
@@ -95,16 +95,16 @@
 		font-size: 35px;
 		color: white;
 	}
-	.row {
+	.rowCaloriesWeek {
 		display: -flex;
 		display: flex;
 	}
-	.row2 {
+	.rowMealtitleButton {
 		display: -flex;
 		display: flex;
 		align-items: center;
 	}
-	.column.side {
+	.columnCalories {
 		-webkit-flex: 1;
 		-ms-flex: 1;
 		flex: 1;
@@ -113,19 +113,19 @@
 		text-align: center;
 		align-content: center;
 	}
-	.column.middle {
+	.columnWeek {
 		-webkit-flex: 1;
 		-ms-flex: 1;
 		flex: 1;
 		align-items: center;
 	}
-	.text1 {
+	.textTitle {
 		font: 600;
 		font-weight: bold;
 		font-size: 30px;
 		margin-bottom: 20px;
 	}
-	.image1 {
+	.imageCard {
 		margin-left: 20px;
 	}
 	.button {
@@ -139,13 +139,13 @@
 		display: inline-block;
 		font-size: 16px;
 	}
-	.cards1 {
+	.cardGeneral {
 		display: flex;
 		justify-content: center;
 		margin-top: 20px;
 		row-gap: 10px;
 	}
-	.cards2 {
+	.cardContent {
 		border-style: solid;
 		border-color: black;
 		display: flex;
@@ -157,20 +157,10 @@
 		background-color: aliceblue;
 		border-radius: 10%;
 	}
-	.cards3 {
-		border-style: solid;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		width: 20vw;
-		margin: 50px;
-		background-color: aliceblue;
-	}
-	.textDescription {
+	.textMealDescription {
 		margin-left: 20px;
 	}
-	.text2 {
+	.textMealTitle {
 		font: 400;
 		font-weight: bold;
 		font-size: 15px;
