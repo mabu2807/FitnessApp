@@ -1,177 +1,204 @@
+<script>
+  let isMenuOpen = false;
 
-<head>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-
-<body>
-  <div class="header">
-    <div class="navbar">
-      <div class="navbar-brand">
-        <h1>Fitness Tracker</h1>
-      </div>
-      <button class="navbar-toggler">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-      <nav class="navbar-collapse">
-        <ul class="navbar-nav">
-          <li><a href="/" class="a-nav">Home</a></li>
-          <li><a href="/kategorie" class="a-nav">Workouts</a></li>
-          <li><a href="/progress" class="a-nav">Progress</a></li>
-          <li><a href="/" class="a-nav">Settings</a></li>
-          <li><a href="/login" class="navbar-button">Log In</a></li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-
-</body>
-
-<slot />
+  function toggleMenu() {
+      isMenuOpen = !isMenuOpen;
+  }
+</script>
 
 <style>
-
-  /* Hier kommt der CSS-Code für die Navbar-Styles */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-.header {
-  background-color: #393e46;
-  padding: 20px;
-  color: #ffffff;
-  margin: 0;
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navbar-brand h1 {
-  font-size: 24px;
-  margin: 0;
-}
-
-.navbar-toggler {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.bar {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background-color: #ffffff;
-  margin-bottom: 5px;
-  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-.navbar-nav {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.navbar-nav li {
-  margin-left: 20px;
-}
-
-.navbar-nav .a-nav {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 16px;
-  transition: color 0.3s ease-in-out;
-}
-
-.navbar-nav .a-nav:hover {
-  color: #00adb5;
-}
-
-
-.navbar-button {
-  text-decoration: none;
-  padding: 8px 18px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  background-color: #00adb5;
-  border: 2px solid #00adb5;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.navbar-button:hover {
-  background-color: #393e46;
-  border: white 2px solid;
-  color: white;
-  cursor: pointer;
-  transition: all ease 0.2s;
-}
-
-/* Responsive Styles */
-
-@media (max-width: 768px) {
-  .navbar-toggler {
-    display: block;
+  *,
+  *::after,
+  *::before {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
   }
 
-  .navbar-collapse {
-    display: none;
+  .navbar {
+      background: #393e46;
+      color: white;
+      
+      z-index: 100;
+      position: relative;
+      padding-left: 20px; /* Innenabstand auf der linken Seite */
   }
 
-  .navbar-collapse {
-    display: block;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: #393e46;
-    padding: 10px 20px;
-    z-index: 99;
+  .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+      padding-left: 80px;
   }
 
-  .navbar-nav {
-    flex-direction: column;
-    align-items: flex-start;
+  .menu-items {
+      display: flex;
+      list-style: none;
+      margin-right: 20px; /* Innenabstand auf der rechten Seite der Reiter */
   }
 
-  .navbar-nav li {
-    margin-left: 0;
-    margin-bottom: 10px;
+  .menu-items li {
+      margin-left: 1.5rem;
+      font-size: 1.3rem;
   }
 
-  .navbar-nav a {
-    font-size: 14px;
+  .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease-in-out;
   }
 
-  .navbar-toggler .bar {
-    background-color: #ffffff;
+  .navbar a:hover {
+      color: #117964;
   }
 
-  /* .navbar-toggler.show .bar:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
+  .hamburger-lines {
+      display: none;
+      cursor: pointer;
+      position: relative;
+      width: 30px;
+      height: 20px;
   }
 
-  .navbar-toggler.show .bar:nth-child(2) {
-    opacity: 0;
+  .line {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #393e46;
+      transition: transform 0.3s ease-in-out;
   }
 
-  .navbar-toggler.show .bar:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-  } */
-}
+  .line1 {
+      top: 0;
+  }
 
+  .line2 {
+      top: 50%;
+      transform: translateY(-50%);
+  }
+
+  .line3 {
+      bottom: 0;
+  }
+
+  .login-button {
+        background-color: #117964;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .login-button:hover {
+        background-color: #0e604c;
+    }
+
+    @media (max-width: 768px) {
+        .navbar-container {
+            justify-content: space-between;
+            padding-right: 20px; /* Innenabstand auf der rechten Seite */
+            padding-left: 0; /* Kein Innenabstand auf der linken Seite */
+        }
+
+        .menu-items {
+            display: none;
+            position: absolute;
+            
+            top: 100%;
+            right: 0;
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 5px 0px 10px 0px #aaa;
+        }
+
+        .login-button {
+          padding: 8px 16px;
+          margin-left: 20px;
+        width: 27%;
+        }
+
+        .navbar-container.open .menu-items {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hamburger-lines {
+            display: block;
+        }
+
+      }
+
+  @media (max-width: 768px) {
+      .navbar-container {
+          justify-content: space-between;
+          padding-right: 20px; /* Innenabstand auf der rechten Seite */
+          padding-left: 0; /* Kein Innenabstand auf der linken Seite */
+      }
+
+      .menu-items {
+          display: none;
+          position: absolute;
+          padding-top: 40px;
+          top: 100%;
+          right: 0;
+          width: 100%;
+          background-color: #393e46;
+          padding: 20px;
+          box-shadow: 5px 0px 10px 0px #aaa;
+      }
+
+      .navbar-container.open .menu-items {
+          display: flex;
+          flex-direction: column;
+          
+      }
+
+      .hamburger-lines {
+          display: block;
+          
+      }
+
+      .hamburger-lines .line {
+          background-color: white;
+      }
+
+      .navbar-container.open .line1 {
+          transform: rotate(45deg) translate(5px, 6px);
+      }
+
+      .navbar-container.open .line2 {
+          opacity: 0;
+      }
+
+      .navbar-container.open .line3 {
+          transform: rotate(-45deg) translate(5px, -6px);
+      }
+  }
 </style>
- 
+
+<nav class="navbar">
+  <div class="navbar-container" class:open={isMenuOpen}>
+      <h1 class="logo">FitnessHub</h1> <!-- Logo auf der linken Seite -->
+      <ul class="menu-items">
+          <li><a href="/">Home</a></li>
+          <li><a href="/kategorie">Workouts</a></li>
+          <li><a href="/progress">Progress</a></li>
+          <button class="login-button">Login</button>
+      </ul>
+      <div class="hamburger-lines" on:click={toggleMenu}>
+          <span class="line line1"></span>
+          <span class="line line2"></span>
+          <span class="line line3"></span>
+      </div>
+  </div>
+</nav>
+
+
+<slot />

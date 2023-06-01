@@ -37,12 +37,19 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@emotion/react": "^11.11.0",
+		"@emotion/styled": "^11.11.0",
 		"@fortawesome/fontawesome-free": "^6.4.0",
+		"@material-ui/core": "^4.12.4",
+		"@mui/icons-material": "^5.11.16",
+		"@mui/material": "^5.13.3",
+		"@mui/system": "^5.13.2",
 		"@prisma/client": "^4.15.0",
 		"@smui/button": "7.0.0-beta.8",
 		"@smui/dialog": "7.0.0-beta.8",
 		"@smui/icon-button": "7.0.0-beta.8",
 		"chart.js": "^4.3.0",
-		"prisma": "^4.15.0"
+		"prisma": "^4.15.0",
+		"svelte-tabs": "^1.1.0"
 	}
 }

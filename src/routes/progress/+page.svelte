@@ -1,7 +1,8 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
   import Chart from "chart.js/auto";
- 
+
+
   let trainingPlans = [
   {
     name: "Plan 1",
@@ -190,18 +191,20 @@
   chart.update();
 }
 
-
 </script>
 
-
-
-
 <main>
+
+  
+
 
   <div class="category">
     <h1 class="category-title">Verfolge deine Trainingspläne</h1>
     <p class="category-description">Nutze die Möglichkeit deinen Trainingsplan zu verfolgen und deine entdecke deine Stärken und Schwächen!</p>
     
+    
+  </div>
+
   {#each trainingPlans as trainingPlan, planIndex}
     <section class="section-wrapper">
       <div class="title-wrapper">
