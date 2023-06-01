@@ -27,7 +27,7 @@
 <body>
 	<div class="title-container">
 		<div class="title">
-			<h1>Schritt: 2</h1>
+			<h1>Schritt: 5</h1>
 			<p>Wähle dein Aktivitätslevel aus!</p>
 		</div>
 	</div>
