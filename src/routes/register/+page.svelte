@@ -25,11 +25,11 @@
               </div>
               <h3>Create an Account</h3>
             </div>
-            <input type="text" placeholder="Username" value={form?.username ?? ""}>
-            <input type="email" placeholder="Email" value={form?.email ?? ""}>
-            <input type="password" placeholder="Password" value={form?.password ?? ""}>
+            <input name = "username" type="text" placeholder="Username" value={form?.username ?? ""}>
+            <input name = "email" type="email" placeholder="Email" value={form?.email ?? ""}>
+            <input name = "password" type="password" placeholder="Password" value={form?.password ?? ""}>
             <!-- <input type="password" placeholder="Confirm Password"> -->
-            {#if form?.missing}<p class="error">Bitte füllen sie die Felder aus!</p>{/if}
+            <!--{#if form?.missing}<p class="error">Bitte füllen sie die Felder aus!</p>{/if} -->
             <button type="submit" class="submit">Sign Up</button>
           </form>
         </div>
