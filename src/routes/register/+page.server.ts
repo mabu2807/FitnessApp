@@ -10,20 +10,25 @@ export const actions = {
     default: async ({ request }) => {
         const data = await request.formData();
 
-        const email = data.get("email")
-        const username = data.get("username")
-        const password = data.get("password")
+        const email = data.get("email");
+        const username = data.get("username");
+        const password = data.get("password");
+        const passwordConfirm = data.get("passwordConfirm");
 
-        if (!email || !username || !password) {
-            return fail(400, { email, username, password, missing: true });
+        if (!email || !username || !password || !passwordConfirm) {
+            return fail(400, { email, username, password, passwordConfirm, missing: true });
         }
 
-        if (typeof email != "string" || typeof username != "string" || typeof password != "string") {
-            return fail(400, { incorrect: true })
+        if (typeof email != "string" || typeof username != "string" || typeof password != "string" || typeof passwordConfirm != "string") {
+            return fail(400, { incorrect: true });
         }
 
         if(!validateEmail){
-            return fail(422, {email})
+            return fail(422, {email});
+        }
+
+        if(password !== passwordConfirm){
+            return fail(401, {email, username, password});
         }
 
         //Check if email already exists
@@ -31,7 +36,7 @@ export const actions = {
             where: { email: email }
         });
         if(user){
-            return fail(409, {email})
+            return fail(409, {email});
         }
 
         await prisma.user.create({
@@ -42,6 +47,6 @@ export const actions = {
             },
         });
 
-        throw redirect(303, `/`)
+        throw redirect(303, `/`);
     }
 } satisfies Actions;
