@@ -2,7 +2,15 @@ import prisma from '$lib/prisma';
 
 import type { PageServerLoad } from '../$types';
 
-function calcallcalories(userDetails: any) {
+export type userdetail = {
+	id: number;
+	gender: string;
+	weight: number;
+	height: number;
+	foodDiaryId: number;
+};
+
+function calcallcalories(userDetails: userdetail) {
 	let allCalories = 0;
 	if (userDetails.gender == 'm') {
 		allCalories = 24 * userDetails.weight;
@@ -30,7 +38,7 @@ export const load = (async () => {
 	}
 	const allCalories = calcallcalories(response);
 
-	console.log(allCalories);
+	console.log(response);
 
 	// 2.
 	return { userdetail: response, allcalories: allCalories };

@@ -1,4 +1,11 @@
 
+                         
+<script lang="ts">
+    import type { ActionData } from "./$types";
+  
+    export let form: ActionData;
+  </script>                  
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,10 +22,21 @@
           <a href="/"><img src="logo.png" alt="Logo"></a>
         </div>
         <div class="contact">
-          <form action="#">
+          <form method="post">
             <h3>Member Login</h3>
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
+ {#if form?.missing}<p class="error">Missing field required!</p>{/if}
+      <input
+        name="email"
+        placeholder="email"
+        type="text"
+        value={form?.email ?? ""}
+      />
+      <input
+        name="password"
+        placeholder="password"
+        type="password"
+        value={form?.password ?? ""}
+      />
             <button type="submit" class="submit">Sign In</button>
             <div class="register-wrapper">
               <p>Du hast noch keinen Account? Dann <a href="/register">Registriere</a> dich jetzt! </p>
@@ -195,3 +213,4 @@
 
 
 </style>
+
