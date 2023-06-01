@@ -90,12 +90,6 @@ body {
   
 }
 
-.error{
-  text-align: center;
-  margin-top: 40px;
-  color: #000;
-}
-
 .register_box {
   width: 1050px;
   height: 600px;
