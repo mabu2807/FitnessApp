@@ -1,7 +1,8 @@
 import prisma from '$lib/prisma';
-
 import type { PageServerLoad } from '../$types';
+import { initChartData } from './initChartData';
 
+//types
 export type userdetail = {
 	id: number;
 	gender: string;
@@ -10,6 +11,7 @@ export type userdetail = {
 	foodDiaryId: number;
 };
 
+//calculation max calories for the user per day
 function calcallcalories(userDetails: userdetail) {
 	let allCalories = 0;
 	if (userDetails.gender == 'm') {
@@ -21,25 +23,41 @@ function calcallcalories(userDetails: userdetail) {
 	return allCalories;
 }
 
+// Load function
 export const load = (async () => {
-	let response;
-
+	let responseUserDetails;
+	let responseUsermeals;
 	try {
-		response = await prisma.userDetails.findUnique({
+		responseUserDetails = await prisma.userDetails.findUnique({
 			where: {
 				userId: 1
 			}
 		});
+		responseUsermeals = await prisma.meal.findMany({
+			where: {
+				foodDiaryId: 1
+			},
+			include:{
+				dish: true,
+			}
+		})
 	} catch (error) {
 		throw new Error('DB request faild ');
 	}
-	if (response == null) {
+	if (responseUserDetails == null) {
 		throw new Error('UserID does not exist');
 	}
-	const allCalories = calcallcalories(response);
+	if (responseUsermeals == null){
+		throw new Error("User have no meals :)");
+	}
+	
+	const allCalories = calcallcalories(responseUserDetails)
+	//const chartdata  = initChartData(allCalories, responseUsermeals)
+	
 
-	console.log(response);
+	console.log(responseUserDetails);
+	console.log(responseUsermeals)
 
 	// 2.
-	return { userdetail: response, allcalories: allCalories };
+	return { userdetail: responseUserDetails, allcalories: allCalories};
 }) satisfies PageServerLoad;
