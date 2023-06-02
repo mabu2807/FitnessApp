@@ -2,6 +2,8 @@
 	import CircleProgressBar from './CircleProgressBar.svelte';
 	import Chart from './nutriChart.svelte';
 	import type { PageData } from './$types';
+	import Head from '../../components/Head.svelte';
+	import Footer from '../../components/Footer.svelte';
 
 	export let data: PageData;
 	var allcalories = data.allcalories;
@@ -41,6 +43,8 @@
 		console.log(event);
 	}
 </script>
+
+<Head></Head>
 
 <div>
 	<section>
@@ -86,6 +90,7 @@
 		</div>
 	</div>
 </div>
+<Footer></Footer>
 
 <style>
 	section {

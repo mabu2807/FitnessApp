@@ -72,7 +72,7 @@
 			<li><a class="a" href="/">Home</a></li>
 			<li><a class="a" href="/kategorie">Workouts</a></li>
 			<li><a class="a" href="/progress">Progress</a></li>
-			<li><a class="a" href="/">Ernährungsplan</a></li>
+			<li><a class="a" href="/nutrition">Ernährungsplan</a></li>
 		</ul>
 
 		<!-- <Avatar src="/src/assets/profile.jpg"  actionParams="#Apollo" /> -->
