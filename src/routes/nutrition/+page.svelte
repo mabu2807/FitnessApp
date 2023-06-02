@@ -1,6 +1,8 @@
 <script lang="ts">
 	import CircleProgressBar from './CircleProgressBar.svelte';
 	import Chart from './nutriChart.svelte';
+	import Dialog from './dialog.svelte';
+	let dialog;
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -38,7 +40,7 @@
 	const progress = amount;
 
 	function editCard(event: any) {
-		console.log(event);
+		console.log(event.currentTarget.getAttribute('id'));
 	}
 </script>
 
@@ -71,7 +73,13 @@
 							<h2>{meal.title}</h2>
 						</div>
 						<div>
-							<button id={meal.id.toString()} on:click={editCard} class="button">Edit</button>
+							<button
+								id={meal.id.toString()}
+								on:click={editCard}
+								on:click={() => dialog.showModal()}
+								class="button">Edit</button
+							>
+							<Dialog bind:dialog />
 						</div>
 					</div>
 					<div class="imageCard">
@@ -165,5 +173,6 @@
 		font-weight: bold;
 		font-size: 15px;
 		margin-left: 40px;
+		color: white;
 	}
 </style>
