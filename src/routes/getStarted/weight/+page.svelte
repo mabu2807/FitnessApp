@@ -1,20 +1,13 @@
 <script>
 	import { each } from 'svelte/internal';
+	import {getStartedData} from '../Data';
 	import { onMount } from 'svelte';
 
-	let pages = [
-		{ title: 'Ziele', link: '/getStarted/goals', value: 'Backend' },
-		{ title: 'Körpergröße', link: '/getStarted/size', value: 'Backend' },
-		{ title: 'Gewicht', link: '/getStarted/weight', value: 'Backend' },
-		{ title: 'Geburtsdatum', link: '/getStarted/dob', value: 'Backend' },
-		{ title: 'Aktivitätslevel', link: '/getStarted/level', value: 'Backend' }
-	];
-
 	let picsource = '/src/assets/final15.jpg';
-	let sliderValue = '90';
+	let sliderValue;
 
 	function updateSliderValue(event) {
-		pages[1].value = sliderValue;
+		$getStartedData[2].value = sliderValue;
 		sliderValue = event.target.value;
 		let val = parseInt(event.target.value);
 		if (val < 60) {
@@ -35,12 +28,12 @@
 			picsource = '/src/assets/final40.jpg';
 		}
 	}
-
-	function updateSliderOnMount() {
-		pages[1].value = sliderValue;
+	function startValue(){
+		sliderValue = $getStartedData[2].value === '' ? '90' : $getStartedData[2].value;
+		$getStartedData[2].value = sliderValue;
 	}
 
-	onMount(updateSliderOnMount);
+	onMount(startValue);
 </script>
 
 <body>
@@ -56,7 +49,7 @@
 			<img src={picsource} alt="person" />
 		</div>
 		<div class="slider-value">
-			<p>{pages[1].value} kg</p>
+			<p>{sliderValue} kg</p>
 		</div>
 	</div>
 	<div class="slidecontainer">
@@ -80,7 +73,7 @@
 	</div>
 
 	<div class="overview">
-		{#each pages as page, i}
+		{#each $getStartedData as page, i}
 			<div class="overview-wrapper">
 				<a href={page.link} class="overview-link">{page.title}</a>
 				<p>{page.value}</p>

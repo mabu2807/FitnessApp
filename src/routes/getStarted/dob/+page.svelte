@@ -1,18 +1,20 @@
 <script>
-	let pages = [
-		{ title: 'Ziele', link: '/getStarted/goals', value: 'Backend' },
-		{ title: 'Körpergröße', link: '/getStarted/size', value: 'Backend' },
-		{ title: 'Gewicht', link: '/getStarted/weight', value: 'Backend' },
-		{ title: 'Geburtsdatum', link: '/getStarted/dob', value: 'Backend' },
-		{ title: 'Aktivitätslevel', link: '/getStarted/level', value: 'Backend' }
-	];
+	import {getStartedData} from '../Data';
+	import { onMount } from 'svelte';
 
-	let dob = '';
+	let dob;
 
 	function updateDOB(event) {
 		dob = event.target.value;
-		pages[3].value = dob;
+		$getStartedData[3].value = dob;
 	}
+
+	function startValue(){
+		dob = $getStartedData[3].value === '' ? '2001-09-11' : $getStartedData[3].value;
+		$getStartedData[3].value = dob;
+	}
+
+	onMount(startValue);
 </script>
 
 <body>
@@ -34,7 +36,7 @@
 	</div>
 
 	<div class="overview">
-		{#each pages as page, i}
+		{#each $getStartedData as page, i}
 			<div class="overview-wrapper">
 				<a href={page.link} class="overview-link">{page.title}</a>
 				<p>{page.value}</p>
@@ -47,7 +49,7 @@
 	.datepicker-container input[type='date'] {
 		font-size: 2rem;
 		padding: 10px;
-		width: 200px;
+		width: 250px;
 		height: 40px;
 	}
 
