@@ -110,7 +110,7 @@
 	];
 </script>
 
-<Head></Head>
+<Head />
 
 <main>
 	<div class="category">
@@ -218,7 +218,7 @@
 		</Actions>
 	</Dialog>
 </main>
-<Footer></Footer>
+<Footer />
 
 <style>
 	.icon-container {

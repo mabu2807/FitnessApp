@@ -44,7 +44,7 @@
 	}
 </script>
 
-<Head></Head>
+<Head />
 
 <div>
 	<section>
@@ -90,7 +90,7 @@
 		</div>
 	</div>
 </div>
-<Footer></Footer>
+<Footer />
 
 <style>
 	section {

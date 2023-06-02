@@ -46,7 +46,7 @@
 
 	<title>Fitness Tracker</title>
 </head> -->
-<Head></Head>
+<Head />
 <body>
 	<main>
 		<section class="hero">
@@ -107,7 +107,7 @@
 			</form>
 		</section>
 	</main>
-	<Footer></Footer>
+	<Footer />
 </body>
 
 <style>
@@ -269,5 +269,4 @@
 	button[type='submit']:hover {
 		background-color: #555;
 	}
-
 </style>

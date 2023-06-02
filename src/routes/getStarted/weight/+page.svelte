@@ -1,6 +1,6 @@
 <script>
 	import { each } from 'svelte/internal';
-	import {getStartedData} from '../Data';
+	import { getStartedData } from '../Data';
 	import { onMount } from 'svelte';
 
 	let picsource = '/src/assets/final15.jpg';
@@ -28,7 +28,7 @@
 			picsource = '/src/assets/final40.jpg';
 		}
 	}
-	function startValue(){
+	function startValue() {
 		sliderValue = $getStartedData[2].value === '' ? '90' : $getStartedData[2].value;
 		$getStartedData[2].value = sliderValue;
 	}

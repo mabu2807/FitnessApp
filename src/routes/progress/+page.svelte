@@ -190,7 +190,7 @@
 	}
 </script>
 
-<Head></Head>
+<Head />
 
 <main>
 	<div class="category">
@@ -247,7 +247,7 @@
 		</section>
 	{/each}
 </main>
-<Footer></Footer>
+<Footer />
 
 <style>
 	.category {

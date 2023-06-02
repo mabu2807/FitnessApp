@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { each } from 'svelte/internal';
-	import {getStartedData} from '../Data';
+	import { getStartedData } from '../Data';
 
 	let zieleBackend = [
 		{ title: 'Lose Weight', description: 'Gewicht reduzieren und Fett abbauen' },
 		{ title: 'Gain Muscle', description: 'Muskeln aufbauen und Körper definieren' },
 		{ title: 'Stay Fit', description: 'Allgemeine Fitness erhalten und verbessern' }
 	];
-	
+
 	function selectCard(value) {
 		$getStartedData[0].value = value;
 	}
