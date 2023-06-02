@@ -64,6 +64,9 @@ devDependencies:
   '@playwright/test':
     specifier: ^1.34.3
     version: 1.34.3
+  '@skeletonlabs/skeleton':
+    specifier: ^1.6.2
+    version: 1.6.2
   '@smui/circular-progress':
     specifier: 7.0.0-beta.8
     version: 7.0.0-beta.8(svelte@3.59.1)(typescript@5.1.3)
@@ -1141,6 +1144,13 @@ packages:
       domhandler: 5.0.3
       selderee: 0.11.0
     dev: false
+
+  /@skeletonlabs/skeleton@1.6.2:
+    resolution: {integrity: sha512-Xp+gCAgxEfzwa6lUzeFHhIiTzPe7wKAWZJzo0UnNJfgMCuJy4Txu2bDXz6ZCyu9+B6+i8lShFPxPuENqTfP14w==}
+    dependencies:
+      esm-env: 1.0.0
+      svelte: 3.58.0
+    dev: true
 
   /@smui/button@7.0.0-beta.8(svelte@3.59.1)(typescript@5.1.3):
     resolution: {integrity: sha512-DE/dXV0a0L+LtXZRyhEH1rN6+5XJwG1s1xqa8v4778fCe/Zf8qpHTXsF1Y8xxjbr7NeOdqIYkgFEk3F8Gee1lg==}
@@ -3486,6 +3496,11 @@ packages:
       pascal-case: 3.1.2
       svelte: 3.59.1
       typescript: 5.1.3
+
+  /svelte@3.58.0:
+    resolution: {integrity: sha512-brIBNNB76mXFmU/Kerm4wFnkskBbluBDCjx/8TcpYRb298Yh2dztS2kQ6bhtjMcvUhd5ynClfwpz5h2gnzdQ1A==}
+    engines: {node: '>= 8'}
+    dev: true
 
   /svelte@3.59.1:
     resolution: {integrity: sha512-pKj8fEBmqf6mq3/NfrB9SLtcJcUvjYSWyePlfCqN9gujLB25RitWK8PvFzlwim6hD/We35KbPlRteuA6rnPGcQ==}

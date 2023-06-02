@@ -461,6 +461,8 @@
 		background-color: #393e46;
 		color: #ffffff;
 		padding: 44px;
+		position: relative;
+		bottom: 0;
 	}
 
 	.footer-content {
