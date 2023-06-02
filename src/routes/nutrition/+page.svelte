@@ -1,12 +1,15 @@
 <script lang="ts">
 	import CircleProgressBar from './CircleProgressBar.svelte';
 	import Chart from './nutriChart.svelte';
-	import Dialog from './dialog.svelte';
-	let dialog;
+	import Dialog from './dialogEdit.svelte';
+	import DialogAdd from './dialogAdd.svelte';
+	let dialog: HTMLDialogElement;
+	let dialogAdd: HTMLDialogElement;
 	import type { PageData } from './$types';
+	import type { MouseEventHandler } from 'svelte/elements';
 
 	export let data: PageData;
-	var allcalories = data.allcalories;
+	let allcalories = data.allcalories;
 
 	let mealTimes = [
 		{
@@ -39,8 +42,11 @@
 	let amount = usedCalories / allcalories;
 	const progress = amount;
 
-	function editCard(event: any) {
+	const editCard: MouseEventHandler<HTMLButtonElement> = (event) => {
 		console.log(event.currentTarget.getAttribute('id'));
+	};
+	function addMeal(event: any) {
+		console.log('Add Meal');
 	}
 </script>
 
@@ -65,32 +71,41 @@
 	</div>
 	<div>
 		<p class="textTitle">Mahlzeiten</p>
-		<div class="cardGeneral">
-			{#each mealTimes as meal}
+		<div class="rowAllCards">
+			<div class="cardGeneral">
+				{#each mealTimes as meal}
+					<div class="cardContent">
+						<div class="rowMealtitleButton">
+							<div class="textMealTitle">
+								<h2>{meal.title}</h2>
+							</div>
+							<div>
+								<button
+									id={meal.id.toString()}
+									on:click={editCard}
+									on:click={() => dialog.showModal()}
+									class="button">Edit</button
+								>
+								<Dialog bind:dialog />
+							</div>
+						</div>
+						<div class="imageCard">
+							<img src={meal.icon} alt="Meal Icon" height="150px" width="200px" />
+						</div>
+						<div class="textMealDescription">
+							<p>{meal.meal}</p>
+							<p>{meal.calories} kcal</p>
+						</div>
+					</div>
+				{/each}
+			</div>
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<div class="cardGeneral" on:click={addMeal} on:click={() => dialogAdd.showModal()}>
+				<DialogAdd bind:dialogAdd />
 				<div class="cardContent">
-					<div class="rowMealtitleButton">
-						<div class="textMealTitle">
-							<h2>{meal.title}</h2>
-						</div>
-						<div>
-							<button
-								id={meal.id.toString()}
-								on:click={editCard}
-								on:click={() => dialog.showModal()}
-								class="button">Edit</button
-							>
-							<Dialog bind:dialog />
-						</div>
-					</div>
-					<div class="imageCard">
-						<img src={meal.icon} alt="Meal Icon" height="150px" width="200px" />
-					</div>
-					<div class="textMealDescription">
-						<p>{meal.meal}</p>
-						<p>{meal.calories} kcal</p>
-					</div>
+					<h2 class="textAddMealTitle">Hier klicken um neue Mahlzeit hinzuzufügen</h2>
 				</div>
-			{/each}
+			</div>
 		</div>
 	</div>
 </div>
@@ -111,6 +126,12 @@
 		display: -flex;
 		display: flex;
 		align-items: center;
+	}
+	.rowAllCards {
+		display: -flex;
+		display: flex;
+		width: 90vw;
+		flex-wrap: wrap;
 	}
 	.columnCalories {
 		-webkit-flex: 1;
@@ -173,6 +194,12 @@
 		font-weight: bold;
 		font-size: 15px;
 		margin-left: 40px;
-		color: white;
+		color: black;
+	}
+	.textAddMealTitle {
+		color: red;
+		align-self: center;
+		justify-content: center;
+		text-align: center;
 	}
 </style>

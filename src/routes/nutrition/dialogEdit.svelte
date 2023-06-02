@@ -1,5 +1,5 @@
-<script>
-	export let dialog;
+<script lang="ts">
+	export let dialog: HTMLDialogElement;
 
 	const closeClick = () => {
 		dialog.close();
