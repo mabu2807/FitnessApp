@@ -6,6 +6,8 @@
 	let dialog: HTMLDialogElement;
 	let dialogAdd: HTMLDialogElement;
 	import type { PageData } from './$types';
+	import Head from '../../components/Head.svelte';
+	import Footer from '../../components/Footer.svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
 
 	export let data: PageData;
@@ -49,6 +51,8 @@
 		console.log('Add Meal');
 	}
 </script>
+
+<Head />
 
 <div>
 	<section>
@@ -109,6 +113,7 @@
 		</div>
 	</div>
 </div>
+<Footer />
 
 <style>
 	section {

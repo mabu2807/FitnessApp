@@ -4,6 +4,8 @@
 	import IconButton from '@smui/icon-button';
 	import Button, { Label } from '@smui/button';
 	import { element } from 'svelte/internal';
+	import Head from '../../components/Head.svelte';
+	import Footer from '../../components/Footer.svelte';
 
 	let open = false;
 	let removeDisabled = true;
@@ -107,6 +109,8 @@
 		}
 	];
 </script>
+
+<Head />
 
 <main>
 	<div class="category">
@@ -214,11 +218,7 @@
 		</Actions>
 	</Dialog>
 </main>
-<footer class="footer">
-	<div class="footer-content">
-		<p class="footer-text">&copy; 2023 Fitness Tracker. All rights reserved.</p>
-	</div>
-</footer>
+<Footer />
 
 <style>
 	.icon-container {

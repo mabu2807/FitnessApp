@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import Chart from 'chart.js/auto';
+	import Head from '../../components/Head.svelte';
+	import Footer from '../../components/Footer.svelte';
 
 	let trainingPlans = [
 		{
@@ -188,6 +190,8 @@
 	}
 </script>
 
+<Head />
+
 <main>
 	<div class="category">
 		<h1 class="category-title">Verfolge deine Trainingspläne</h1>
@@ -243,6 +247,7 @@
 		</section>
 	{/each}
 </main>
+<Footer />
 
 <style>
 	.category {
