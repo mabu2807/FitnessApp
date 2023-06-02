@@ -1,21 +1,15 @@
-<script>
+<script lang="ts">
 	import { each } from 'svelte/internal';
+	import {getStartedData} from '../Data';
 
 	let zieleBackend = [
 		{ title: 'Lose Weight', description: 'Gewicht reduzieren und Fett abbauen' },
 		{ title: 'Gain Muscle', description: 'Muskeln aufbauen und Körper definieren' },
 		{ title: 'Stay Fit', description: 'Allgemeine Fitness erhalten und verbessern' }
 	];
-	let pages = [
-		{ title: 'Ziele', link: '/getStarted/goals', value: 'Backend' },
-		{ title: 'Körpergröße', link: '/getStarted/size', value: 'Backend' },
-		{ title: 'Gewicht', link: '/getStarted/weight', value: 'Backend' },
-		{ title: 'Geburtsdatum', link: '/getStarted/dob', value: 'Backend' },
-		{ title: 'Aktivitätslevel', link: '/getStarted/level', value: 'Backend' }
-	];
-
+	
 	function selectCard(value) {
-		pages[0].value = value;
+		$getStartedData[0].value = value;
 	}
 </script>
 
@@ -31,7 +25,7 @@
 		{#each zieleBackend as goal}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div
-				class="card {pages[0].value === goal.title ? 'selected' : ''}"
+				class="card {$getStartedData[0].value === goal.title ? 'selected' : ''}"
 				on:click={() => selectCard(goal.title)}
 			>
 				<h2 class="card-title">{goal.title}</h2>
@@ -45,10 +39,10 @@
 	</div>
 
 	<div class="overview">
-		{#each pages as page, i}
+		{#each $getStartedData as data, i}
 			<div class="overview-wrapper">
-				<a href={page.link} class="overview-link">{page.title}</a>
-				<p>{page.value}</p>
+				<a href={data.link} class="overview-link">{data.title}</a>
+				<p>{data.value}</p>
 			</div>
 		{/each}
 	</div>

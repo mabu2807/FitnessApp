@@ -1,27 +1,22 @@
 <script>
 	import { each } from 'svelte/internal';
 	import { onMount } from 'svelte';
+	import {getStartedData} from '../Data';
 
-	let pages = [
-		{ title: 'Ziele', link: '/getStarted/goals', value: 'Backend' },
-		{ title: 'Körpergröße', link: '/getStarted/size', value: 'Backend' },
-		{ title: 'Gewicht', link: '/getStarted/weight', value: 'Backend' },
-		{ title: 'Geburtsdatum', link: '/getStarted/dob', value: 'Backend' },
-		{ title: 'Aktivitätslevel', link: '/getStarted/level', value: 'Backend' }
-	];
-
-	let sliderValue = '175';
+	let sliderValue;
 
 	function updateSliderValue(event) {
 		sliderValue = event.target.value;
-		pages[1].value = sliderValue;
+		$getStartedData[1].value = sliderValue;
 	}
 
-	function updateSliderOnMount() {
-		pages[1].value = sliderValue;
+	function startValue(){
+		sliderValue = $getStartedData[1].value === '' ? '175' : $getStartedData[1].value;
+		$getStartedData[1].value = sliderValue;
 	}
 
-	onMount(updateSliderOnMount);
+	onMount(startValue);
+
 </script>
 
 <body>
@@ -33,7 +28,7 @@
 	</div>
 
 	<div class="slider-value">
-		<p>{pages[1].value} cm</p>
+		<p>{sliderValue} cm</p>
 	</div>
 
 	<div class="slidecontainer">
@@ -57,7 +52,7 @@
 	</div>
 
 	<div class="overview">
-		{#each pages as page, i}
+		{#each $getStartedData as page, i}
 			<div class="overview-wrapper">
 				<a href={page.link} class="overview-link">{page.title}</a>
 				<p>{page.value}</p>

@@ -68,6 +68,11 @@
 		font-family: Arial, sans-serif;
 	}
 
+	.error {
+		margin-left: 0.9vw;
+		font-size: 1.1vw;
+	}
+
 	.register {
 		height: 100vh;
 		display: flex;
@@ -76,12 +81,8 @@
 	}
 
 	.register_box {
-		width: 1050px;
-		height: 600px;
-		/*width: 90vw;
-  height: 80vh;
-   width: 1050px; 
-  height: 600px; */
+		width: 90vw;
+		height: 80vh;
 
 		position: relative;
 		background: #fff;
@@ -92,30 +93,24 @@
 	}
 
 	.register_box .left {
-		width: 41%;
+		width: 43%;
 		height: 100%;
-		padding: 25px 25px;
-
-		/*width: 43%;
-  height: 100%;
-  padding: 1vw 1vh;*/
+		padding: 1vw 1vh;
 		background-color: #fff;
 	}
 
 	.register_box .right {
-		width: 59%;
-		/*width: 57%;*/
+		width: 57%;
 		height: 100%;
 		background-color: #000;
 	}
 
 	.left h3 {
 		text-align: center;
-		margin-bottom: 40px;
 
-		/*font-size: 2vw;
-  margin-bottom: 1.5vh; 
-  margin-top: 3vh;*/
+		font-size: 2vw;
+		margin-bottom: 1.5vh;
+		margin-top: 3vh;
 
 		color: #000;
 	}
@@ -129,17 +124,13 @@
 		background-color: #000;
 		width: 18%;
 
-		height: 85px;
+		height: 24%;
 		overflow: hidden;
-		margin-right: 60px;
+		margin-right: 3vw;
+		margin-left: 0.7vw;
+		margin-top: 0.7vh;
+		margin-bottom: 3vh;
 		border-radius: 5px;
-
-		/*height: 24%;
-  overflow: hidden;
-  margin-right: 3vw; 
-  margin-left: 0.7vw;
-  margin-top: 0.7vh;
-  border-radius: 5px;*/
 	}
 
 	.left .top_link img {
@@ -149,51 +140,34 @@
 	}
 
 	.left input {
-		border: none;
-		width: 80%;
-
-		margin: 15px 0px;
-		border-bottom: 1px solid #000;
-		padding: 7px 9px;
-		/*margin-left: 0.6vw;
-  margin-top: 3vh;
-  border-bottom: 1px solid #000;
-  padding: 0.4vw 0.4vh;*/
-
-		width: 91%;
+		width: 90%;
+		padding: 1.3vh 0.5vw;
+		margin-left: 0.7vw;
+		margin-bottom: 3vh;
+		border: 1px solid #ccc;
 		overflow: hidden;
 		background: transparent;
 		font-weight: 600;
-		font-size: 14px;
-		/*font-size: 1.1vw;*/
-		color: #000;
+		font-size: 1.1vw;
+		border-radius: 8px;
 	}
 
 	.register .submit {
 		cursor: pointer;
-		padding: 15px;
-		/*width: 12vw;
-  height: 6vh;
-   padding: 1vw 0.7vh; */
+		width: 12vw;
+		height: 6vh;
+		padding: 1vh 0.7vw;
 
-		border: 2px solid black;
+		border: 2px solid #393e46;
 		border-radius: 8px;
 		display: block;
 		margin: auto;
-		margin-top: 120px;
+
+		margin-top: 7vh;
 		background: #393e46;
 		color: #fff;
 		font-weight: bold;
-
-		/*margin-top: 9vh;
-  background: #393e46;
-  color: #fff;
-  font-weight: bold;
-  font-size: 1.1vw;*/
-
-		-webkit-box-shadow: 0px 9px 15px -11px rgba(0, 0, 0, 0.4);
-		-moz-box-shadow: 0px 9px 15px -11px rgba(0, 0, 0, 0.4);
-		box-shadow: 0px 9px 15px -11px rgba(0, 0, 0, 0.4);
+		font-size: 1.1vw;
 	}
 
 	.register .submit:hover {
@@ -222,8 +196,8 @@
 		display: block;
 		width: 100%;
 		text-align: center;
-		font-size: 50px;
-		/*font-size: 4vw;*/
+
+		font-size: 4vw;
 		font-weight: 500;
 		color: #000;
 	}
@@ -232,8 +206,8 @@
 		display: block;
 		width: 100%;
 		text-align: center;
-		font-size: 19px;
-		/*font-size: 1.5vw;*/
+
+		font-size: 1.5vw;
 		font-weight: 400;
 		color: #000;
 	}
@@ -243,10 +217,9 @@
 		bottom: 20px;
 		left: 50%;
 		transform: translateX(-50%);
-		width: 70px;
-		height: 5px;
-		/*width: 10vw;
-  height: 0.7vh;*/
+
+		width: 10vw;
+		height: 0.7vh;
 
 		background-color: #000;
 		border-radius: 10px;
@@ -254,70 +227,56 @@
 	}
 	@keyframes indicator {
 		0% {
-			width: 200px;
+			width: 20vw;
 		}
 		50% {
-			width: 250px;
+			width: 26vw;
 		}
 		100% {
-			width: 200px;
+			width: 20vw;
 		}
 	}
 
-	/*
-  width: 20vw;
-    }
-    50% {
-      width: 26vw;
-    }
-    100% {
-      width: 20vw;
-    }
-  }
+	@media (max-width: 850px) {
+		.register_box {
+			flex-direction: column;
+			height: auto;
+		}
 
-  @media (max-width: 850px) {
-  .register_box {
-    flex-direction: column;
-    height: auto;
-  }
+		.register_box .left {
+			width: auto;
+			height: auto;
+			padding-left: 7vw;
+			padding-top: 7vh;
+			padding-bottom: 7vh;
+			padding-right: 7vw;
+		}
 
-  .register_box .left {
-    width: auto;
-    height: auto;
-    padding-left: 7vw;
-    padding-top: 7vh;
-    padding-bottom: 7vh;
-    padding-right: 7vw;
-  }
+		.register_box .right {
+			width: auto;
+			height: 20vh;
+		}
+		.left h3 {
+			font-size: 4vw;
+		}
 
-  .register_box .right {
-    width: auto;
-    height: 20vh;
-    
-  }
-  .left h3{
-    font-size: 4vw;
-  }
+		.left input {
+			font-size: 2vw;
+			margin-top: 3vh;
+		}
 
-  .left input{
-    font-size: 2vw;
-    margin-top: 5vh;
-  }
+		.error {
+			font-size: 2vw;
+		}
 
-  .error{
-    font-size: 2.3vw;
-  }
+		.register .submit {
+			width: 32vw;
+			height: 8vh;
+			font-size: 2vw;
+		}
 
-  .register .submit{
-    width: 22vw;
-    height: 4vh;
-    font-size: 2vw;
-  }
-
-
-  .right-text h5 {
-    display: none;
-  }
-  
-}*/
+		.right-text h5 {
+			display: none;
+		}
+	}
 </style>
