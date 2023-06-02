@@ -9,14 +9,17 @@
 
 	let settings = [
 		{
+			referencing: "/",
 			setting: "Persönliche Daten",
 			icon: "fa-solid fa-user"
 		},
 		{
+			referencing: "/profile/change-password",
 			setting: "Passwort ändern",
 			icon: "fa-solid fa-key"
 		}, 
 		{
+			referencing: "/",
 			setting: "Einstellungen",
 			icon: "fa-solid fa-gear"
 		}
@@ -92,7 +95,7 @@
 			<div class="settings-wrapper">
 				{#each settings as setting}
 				
-					<a href="/" class="setting">
+					<a href={setting.referencing} class="setting">
 						<div class="setting-icon">
 							<i class="{setting.icon}"></i>
 							
