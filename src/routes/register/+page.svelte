@@ -68,6 +68,11 @@
 		font-family: Arial, sans-serif;
 	}
 
+	.error {
+		margin-left: 0.9vw;
+		font-size: 1.1vw;
+	}
+
 	.register {
 		height: 100vh;
 		display: flex;
@@ -78,8 +83,6 @@
 	.register_box {
 		width: 90vw;
 		height: 80vh;
-		width: 1050px;
-		height: 600px;
 
 		position: relative;
 		background: #fff;
@@ -126,6 +129,7 @@
 		margin-right: 3vw;
 		margin-left: 0.7vw;
 		margin-top: 0.7vh;
+		margin-bottom: 3vh;
 		border-radius: 5px;
 	}
 
@@ -136,42 +140,34 @@
 	}
 
 	.left input {
-		border: none;
-		width: 80%;
-
-		margin-left: 0.6vw;
-		margin-top: 3vh;
-		border-bottom: 1px solid #000;
-		padding: 0.4vw 0.4vh;
-
-		width: 91%;
+		width: 90%;
+		padding: 1.3vh 0.5vw;
+		margin-left: 0.7vw;
+		margin-bottom: 3vh;
+		border: 1px solid #ccc;
 		overflow: hidden;
 		background: transparent;
 		font-weight: 600;
 		font-size: 1.1vw;
-		color: #000;
+		border-radius: 8px;
 	}
 
 	.register .submit {
 		cursor: pointer;
 		width: 12vw;
 		height: 6vh;
-		padding: 1vw 0.7vh;
+		padding: 1vh 0.7vw;
 
-		border: 2px solid black;
+		border: 2px solid #393e46;
 		border-radius: 8px;
 		display: block;
 		margin: auto;
 
-		margin-top: 9vh;
+		margin-top: 7vh;
 		background: #393e46;
 		color: #fff;
 		font-weight: bold;
 		font-size: 1.1vw;
-
-		-webkit-box-shadow: 0px 9px 15px -11px rgba(0, 0, 0, 0.4);
-		-moz-box-shadow: 0px 9px 15px -11px rgba(0, 0, 0, 0.4);
-		box-shadow: 0px 9px 15px -11px rgba(0, 0, 0, 0.4);
 	}
 
 	.register .submit:hover {
@@ -266,16 +262,16 @@
 
 		.left input {
 			font-size: 2vw;
-			margin-top: 5vh;
+			margin-top: 3vh;
 		}
 
 		.error {
-			font-size: 2.3vw;
+			font-size: 2vw;
 		}
 
 		.register .submit {
-			width: 22vw;
-			height: 4vh;
+			width: 32vw;
+			height: 8vh;
 			font-size: 2vw;
 		}
 
