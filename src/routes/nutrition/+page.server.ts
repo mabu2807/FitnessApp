@@ -4,11 +4,10 @@ import { initChartData } from './initChartData';
 
 //types
 export type userdetail = {
-	id: number;
+	userId: number;
 	gender: string;
 	weight: number;
 	height: number;
-	foodDiaryId: number;
 };
 
 //calculation max calories for the user per day
@@ -19,6 +18,7 @@ function calcallcalories(userDetails: userdetail) {
 	} else {
 		allCalories = 0.9 * 24 * userDetails.weight;
 	}
+	allCalories = Math.round(allCalories);
 
 	return allCalories;
 }
@@ -27,42 +27,22 @@ function calcallcalories(userDetails: userdetail) {
 export const load = (async () => {
 	let responseUserDetails;
 	let responseUsermeals;
-	const date = new Date;
-	const day = new Date;
-	day.setDate(-6)
-	day.setHours(0, 0, 0, 0);
-	console.log(day)
-
 	try {
 		responseUserDetails = await prisma.userDetails.findUnique({
 			where: {
 				userId: 1
 			}
 		});
-		responseUsermeals = await prisma.meal.groupBy({
-			by:['day','dishId'],
-			where:{
-				day:{
-					gte: day
-				}
-			},
-			_count:{
-				dishId:true
-			}
 
-			
-			
-		 });
-		// const responsetest = await prisma.meal.findMany({
-		// 	include:{
-		// 		dish:{
-		// 			include:{
-		// 				nutritionalValues: true
-		// 			}
-		// 		}
-		// 	}
-		// });
-		//console.log(responsetest)
+		responseUsermeals = await prisma.meal.findMany({
+			include: {
+				dish: {
+					include: {
+						nutritionalValues: true
+					}
+				}
+			}
+		});
 	} catch (error) {
 		throw new Error('DB request faild ');
 	}
@@ -72,12 +52,39 @@ export const load = (async () => {
 	if (responseUsermeals == null) {
 		throw new Error('User have no meals :)');
 	}
-	const test = responseUsermeals[0]
 	const allCalories = calcallcalories(responseUserDetails);
-	//const chartdata  = initChartData(allCalories, responseUsermeals)
-	console.log();
-	responseUserDetails
+
+	// calculation calperday
+	const calperdayunsorted = [0, 0, 0, 0, 0, 0, 0];
+	for (let i = 0; i < 7; i++) {
+		for (let j = 0; j < responseUsermeals.length; j++) {
+			if (responseUsermeals[j].day.getDay() == i) {
+				calperdayunsorted[i] =
+					calperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.energy;
+			}
+		}
+	}
+	const today = new Date();
+	let weekday = today.getDay();
+	console.log(weekday);
+
+	let calperday = [0, 0, 0, 0, 0, 0, 0];
+	if (weekday !== 6) {
+		for (let i = 0; i < 7; i++) {
+			weekday = weekday + 1;
+			calperday[i] = calperdayunsorted[weekday];
+			if (weekday == 6) {
+				weekday = 0;
+			}
+		}
+	} else {
+		calperday = calperdayunsorted;
+	}
+
+	console.log(calperday);
+
+	const chartdata = initChartData(allCalories, calperday);
 
 	// 2.
-	return { userdetail: responseUserDetails, allcalories: allCalories };
+	return { userdetail: responseUserDetails, allcalories: allCalories, chartdata:chartdata};
 }) satisfies PageServerLoad;
