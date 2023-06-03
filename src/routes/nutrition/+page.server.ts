@@ -27,37 +27,56 @@ function calcallcalories(userDetails: userdetail) {
 export const load = (async () => {
 	let responseUserDetails;
 	let responseUsermeals;
+	const date = new Date;
+	const day = new Date;
+	day.setDate(-6)
+	day.setHours(0, 0, 0, 0);
+	console.log(day)
+
 	try {
 		responseUserDetails = await prisma.userDetails.findUnique({
 			where: {
 				userId: 1
 			}
 		});
-		responseUsermeals = await prisma.meal.findMany({
-			where: {
-				foodDiaryId: 1
-			},
-			include:{
-				dish: true,
-			}
-		})
+		// responseUsermeals = await prisma.meal.groupBy({
+		// 	by:['day','dishId'],
+		// 	where:{
+		// 		day:{
+		// 			gte: day
+		// 		}
+		// 	},
+		// 	_count:{
+		// 		dishId:true
+		// 	}
+			
+			
+		// });
+		// const responsetest = await prisma.meal.findMany({
+		// 	include:{
+		// 		dish:{
+		// 			include:{
+		// 				nutritionalValues: true
+		// 			}
+		// 		}
+		// 	}
+		// });
+		//console.log(responsetest)
 	} catch (error) {
 		throw new Error('DB request faild ');
 	}
 	if (responseUserDetails == null) {
 		throw new Error('UserID does not exist');
 	}
-	if (responseUsermeals == null){
-		throw new Error("User have no meals :)");
+	if (responseUsermeals == null) {
+		throw new Error('User have no meals :)');
 	}
-	
-	const allCalories = calcallcalories(responseUserDetails)
+	const test = responseUsermeals[0]
+	const allCalories = calcallcalories(responseUserDetails);
 	//const chartdata  = initChartData(allCalories, responseUsermeals)
-	
-
-	console.log(responseUserDetails);
-	console.log(responseUsermeals)
+	console.log();
+	responseUserDetails
 
 	// 2.
-	return { userdetail: responseUserDetails, allcalories: allCalories};
+	return { userdetail: responseUserDetails, allcalories: allCalories };
 }) satisfies PageServerLoad;
