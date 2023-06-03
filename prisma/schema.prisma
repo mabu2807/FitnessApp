@@ -11,12 +11,12 @@ datasource db {
 }
 
 model User {
-  id            Int          @id @default(autoincrement())
-  email         String       @unique
-  username      String
-  password      String
-  userDetails   UserDetails?
-  userDetailsId Int?
+  id          Int          @id @default(autoincrement())
+  email       String       @unique
+  username    String
+  password    String
+  verified    Boolean      @default(false)
+  userDetails UserDetails?
 }
 
 model UserDetails {
@@ -27,7 +27,6 @@ model UserDetails {
   weight        Float
   height        Int
   foodDiary     FoodDiary?
-  foodDiaryId   Int
   trainingPlans UserDetailsTrainingPlan[]
   session       Session[]
 }
@@ -116,16 +115,16 @@ model CardioExercisePerformance {
 }
 
 model FoodDiary {
-  id          Int         @id @default(autoincrement())
-  userDetails UserDetails @relation(fields: [userId], references: [id])
-  userId      Int         @unique
-  meals       Meal[]
+  id            Int         @id @default(autoincrement())
+  userDetails   UserDetails @relation(fields: [userDetailsId], references: [id])
+  userDetailsId Int         @unique
+  meals         Meal[]
 }
 
 model Meal {
   id          Int       @id @default(autoincrement())
   foodDiary   FoodDiary @relation(fields: [foodDiaryId], references: [id])
-  foodDiaryId Int       @unique
+  foodDiaryId Int
   day         DateTime
   time        String
   dish        Dish      @relation(fields: [dishId], references: [id])
@@ -133,15 +132,16 @@ model Meal {
 }
 
 model Dish {
-  id                Int                @id @default(autoincrement())
-  name              String             @unique
-  meals             Meal[]
-  nutritionalValues NutritionalValues?
+  id                  Int               @id @default(autoincrement())
+  name                String            @unique
+  meals               Meal[]
+  nutritionalValues   NutritionalValues @relation(fields: [nutritionalValuesId], references: [id])
+  nutritionalValuesId Int               @unique
 }
 
 model NutritionalValues {
-  dish          Dish   @relation(fields: [dishId], references: [id])
-  dishId        Int    @unique
+  id            Int    @id @default(autoincrement())
+  Dish          Dish?
   energy        Int
   fat           Float?
   saturatedFat  Float?

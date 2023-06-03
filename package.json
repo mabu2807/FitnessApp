@@ -60,5 +60,8 @@
 		"svelte-email": "^0.0.4",
 		"svelte-materialify": "^0.3.11",
 		"svelte-tabs": "^1.1.0"
-	}
+	},
+	"prisma": {
+		"seed": "ts-node prisma/seed.ts"
+	  }
 }
