@@ -39,19 +39,20 @@ export const load = (async () => {
 				userId: 1
 			}
 		});
-		// responseUsermeals = await prisma.meal.groupBy({
-		// 	by:['day','dishId'],
-		// 	where:{
-		// 		day:{
-		// 			gte: day
-		// 		}
-		// 	},
-		// 	_count:{
-		// 		dishId:true
-		// 	}
+		responseUsermeals = await prisma.meal.groupBy({
+			by:['day','dishId'],
+			where:{
+				day:{
+					gte: day
+				}
+			},
+			_count:{
+				dishId:true
+			}
+
 			
 			
-		// });
+		 });
 		// const responsetest = await prisma.meal.findMany({
 		// 	include:{
 		// 		dish:{
