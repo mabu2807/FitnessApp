@@ -197,7 +197,7 @@
 		color: black;
 	}
 	.textAddMealTitle {
-		color: red;
+		color: black;
 		align-self: center;
 		justify-content: center;
 		text-align: center;
