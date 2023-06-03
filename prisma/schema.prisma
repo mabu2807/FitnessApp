@@ -125,7 +125,7 @@ model FoodDiary {
 model Meal {
   id          Int       @id @default(autoincrement())
   foodDiary   FoodDiary @relation(fields: [foodDiaryId], references: [id])
-  foodDiaryId Int       @unique
+  foodDiaryId Int        
   day         DateTime
   time        String
   dish        Dish      @relation(fields: [dishId], references: [id])
