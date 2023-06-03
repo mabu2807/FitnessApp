@@ -1,24 +1,14 @@
-<script>
+<script lang="ts">
 	import { Bar } from 'svelte-chartjs';
-	import { data } from './data';
 
 	import { Chart, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
 
 	Chart.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
 	export let value;
+	export let chartdata;
 
-	var colorChange = value;
-	var red = 'rgb(255, 99, 132)';
-
-	var dataset = data.datasets[0];
-	let userdata = dataset.data;
-
-	for (let i = 0; i < userdata.length; i++) {
-		if (userdata[i] > Number(colorChange)) {
-			dataset.backgroundColor[i] = red;
-		}
-	}
+	let data = chartdata;
 </script>
 
 <canvas id="myChart" />

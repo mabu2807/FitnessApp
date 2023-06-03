@@ -71,7 +71,8 @@ function changeBorderColors(allCalories: number, calperday: number[]) {
 		'rgba(98,  182, 239, 1)',
 		'rgba(113, 205, 205, 1)',
 		'rgba(98,  182, 239, 1)',
-		'rgba(113, 205, 205, 1)'
+		'rgba(113, 205, 205, 1)',
+		'rgba(98, 182, 239, 1)'
 	];
 	const red = 'rgb(255, 99, 132, 0.4)';
 	for (let i = 0; i < calperday.length; i++) {

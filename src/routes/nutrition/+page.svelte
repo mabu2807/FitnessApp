@@ -43,11 +43,8 @@
 			calories: 30
 		}
 	];
-	let usedCalories = 0;
-	mealTimes.forEach((meal) => {
-		usedCalories += meal.calories;
-		return usedCalories;
-	});
+	let usedCalories = data.chartdata.datasets[0].data[6];
+
 	let amount = usedCalories / allcalories;
 	const progress = amount;
 
@@ -77,7 +74,7 @@
 		</div>
 		<div class="columnWeek">
 			<p class="textTitle">Wochenübersicht</p>
-			<Chart value={allcalories} />
+			<Chart value={allcalories} chartdata={data.chartdata} />
 		</div>
 	</div>
 	<div>
@@ -191,9 +188,10 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		width: 20%;
+		width: 300px;
 		background-color: aliceblue;
 		border-radius: 10%;
+		margin-bottom: 5vh;
 	}
 	.textMealDescription {
 	}
