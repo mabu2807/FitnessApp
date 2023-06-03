@@ -20,9 +20,8 @@ model User {
 }
 
 model UserDetails {
-  id            Int                       @id @default(autoincrement())
   user          User                      @relation(fields: [userId], references: [id])
-  userId        Int                       @unique
+  userId        Int                       @id
   gender        String
   weight        Float
   height        Int
@@ -38,14 +37,14 @@ model TrainingPlan {
 }
 
 model UserDetailsTrainingPlan {
-  userDetails    UserDetails  @relation(fields: [userDetailsId], references: [id])
-  userDetailsId  Int
+  userDetails    UserDetails  @relation(fields: [userId], references: [userId])
+  userId  Int
   trainingPlan   TrainingPlan @relation(fields: [trainingPlanId], references: [id])
   trainingPlanId Int
   active         Boolean
   assignedAt     DateTime     @default(now())
 
-  @@id([userDetailsId, trainingPlanId])
+  @@id([userId, trainingPlanId])
 }
 
 model SessionTemplate {
@@ -75,7 +74,7 @@ model ExerciseTemplate {
 
 model Session {
   id                Int             @id @default(autoincrement())
-  userDetails       UserDetails     @relation(fields: [userId], references: [id])
+  userDetails       UserDetails     @relation(fields: [userId], references: [userId])
   userId            Int
   sessionTemplate   SessionTemplate @relation(fields: [sessionTemplateId], references: [id])
   sessionTemplateId Int
@@ -116,8 +115,8 @@ model CardioExercisePerformance {
 
 model FoodDiary {
   id            Int         @id @default(autoincrement())
-  userDetails   UserDetails @relation(fields: [userDetailsId], references: [id])
-  userDetailsId Int         @unique
+  userDetails   UserDetails @relation(fields: [userId], references: [userId])
+  userId Int         @unique
   meals         Meal[]
 }
 
