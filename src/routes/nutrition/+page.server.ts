@@ -37,27 +37,26 @@ export const load = (async () => {
 			where: {
 				foodDiaryId: 1
 			},
-			include:{
-				dish: true,
+			include: {
+				dish: true
 			}
-		})
+		});
 	} catch (error) {
 		throw new Error('DB request faild ');
 	}
 	if (responseUserDetails == null) {
 		throw new Error('UserID does not exist');
 	}
-	if (responseUsermeals == null){
-		throw new Error("User have no meals :)");
+	if (responseUsermeals == null) {
+		throw new Error('User have no meals :)');
 	}
-	
-	const allCalories = calcallcalories(responseUserDetails)
+
+	const allCalories = calcallcalories(responseUserDetails);
 	//const chartdata  = initChartData(allCalories, responseUsermeals)
-	
 
 	console.log(responseUserDetails);
-	console.log(responseUsermeals)
+	console.log(responseUsermeals);
 
 	// 2.
-	return { userdetail: responseUserDetails, allcalories: allCalories};
+	return { userdetail: responseUserDetails, allcalories: allCalories };
 }) satisfies PageServerLoad;

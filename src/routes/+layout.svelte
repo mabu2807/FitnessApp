@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte/internal';
+	import '/static/colorcodes.css';
 
 	let isMenuOpen = false;
 	let isProfileMenuOpen = false;

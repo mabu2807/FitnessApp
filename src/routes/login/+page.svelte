@@ -70,7 +70,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-color: #f3f3f3;
+		background-color: var(--lightgrey);
 	}
 
 	.login_box {
@@ -79,7 +79,7 @@
 		display: flex;
 		position: relative;
 		overflow: hidden;
-		background-color: #fff;
+		background-color: var(--white);
 		border-radius: 8px;
 		box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 	}
@@ -98,7 +98,7 @@
 	}
 
 	.left .top_link {
-		background-color: #000;
+		background-color: var(--black);
 		width: 18%;
 
 		height: 24%;
@@ -133,7 +133,7 @@
 		padding: 1.3vh 0.5vw;
 		margin-left: 0.7vw;
 		margin-bottom: 3vh;
-		border: 1px solid #ccc;
+		border: 1px solid var(--lightgrey-input);
 		overflow: hidden;
 		background: transparent;
 		font-weight: 600;
@@ -147,10 +147,10 @@
 
 		margin-left: 0.7vw;
 		padding: 1vh 0.7vw;
-		border: 2px solid #393e46;
+		border: 2px solid var(--darkgrey);
 		border-radius: 8px;
-		background-color: #393e46;
-		color: #fff;
+		background-color: var(--darkgrey);
+		color: var(--white);
 		font-size: 1.2vw;
 		font-weight: bold;
 		cursor: pointer;
@@ -165,13 +165,13 @@
 		text-decoration: none;
 	}
 	.left .register-wrapper a:hover {
-		color: #393e46;
-		border-bottom: 1px solid #393e46;
+		color: var(--darkgrey);
+		border-bottom: 1px solid var(--darkgrey);
 	}
 
 	.left .submit:hover {
-		color: #393e46;
-		background-color: #fff;
+		color: var(--darkgrey);
+		background-color: var(--white);
 		transition: all ease 0.5s;
 	}
 
@@ -186,7 +186,7 @@
 	.right-text h2 {
 		font-size: 2.4vw;
 		font-weight: 500;
-		color: #333;
+		color: var(--darkgrey);
 		margin-left: 3vw;
 		margin-right: 3vw;
 		margin-bottom: 2vh;
@@ -195,7 +195,7 @@
 	.right-text h5 {
 		font-size: 1.3vw;
 		font-weight: 300;
-		color: #8f8f8f;
+		color: var(--grey);
 		margin-top: 3vh;
 		margin-right: 4vw;
 		margin-left: 4vw;
@@ -208,7 +208,7 @@
 		transform: translateX(-50%);
 		width: 10vw;
 		height: 0.7vh;
-		background-color: #000;
+		background-color: var(--black);
 		border-radius: 10px;
 		animation: indicator 1.5s ease-in-out infinite alternate;
 	}
@@ -220,7 +220,7 @@
 		transform: translateX(-50%);
 		width: 10vw;
 		height: 0.7vh;
-		background-color: #000;
+		background-color: var(--black);
 		border-radius: 10px;
 		animation: indicator 1.5s ease-in-out infinite alternate;
 	}

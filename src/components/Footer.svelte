@@ -20,8 +20,8 @@
 
 <style>
 	.footer {
-		background-color: #393e46;
-		color: #ffffff;
+		background-color: var(--darkgrey);
+		color: var(--white);
 		width: 100%;
 		height: 5.5vh;
 		padding: 1.8vw 0;
@@ -43,11 +43,11 @@
 		font-size: 1.4vw;
 	}
 	.footer i:hover {
-		color: #888;
+		color: var(--grey);
 	}
 	.linkFooter {
 		margin-right: 1.5vw;
-		color: white;
+		color: var(--white);
 	}
 	@media (max-width: 1100px) {
 		.footer-text {
