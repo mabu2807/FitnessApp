@@ -28,7 +28,7 @@ CREATE TABLE `TrainingPlan` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `UserDetailsTrainingPlan` (
+CREATE TABLE `UserTrainingPlan` (
     `userId` INTEGER NOT NULL,
     `trainingPlanId` INTEGER NOT NULL,
     `active` BOOLEAN NOT NULL,
@@ -92,7 +92,6 @@ CREATE TABLE `LiftingExercisePerformance` (
     `weight` DOUBLE NOT NULL,
     `exerciseId` INTEGER NOT NULL,
 
-    UNIQUE INDEX `LiftingExercisePerformance_exerciseId_key`(`exerciseId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -174,10 +173,10 @@ CREATE TABLE `_ExerciseTemplateToSessionTemplate` (
 ALTER TABLE `UserDetails` ADD CONSTRAINT `UserDetails_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `UserDetailsTrainingPlan` ADD CONSTRAINT `UserDetailsTrainingPlan_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `UserDetails`(`userId`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `UserTrainingPlan` ADD CONSTRAINT `UserTrainingPlan_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `UserDetails`(`userId`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `UserDetailsTrainingPlan` ADD CONSTRAINT `UserDetailsTrainingPlan_trainingPlanId_fkey` FOREIGN KEY (`trainingPlanId`) REFERENCES `TrainingPlan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `UserTrainingPlan` ADD CONSTRAINT `UserTrainingPlan_trainingPlanId_fkey` FOREIGN KEY (`trainingPlanId`) REFERENCES `TrainingPlan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `SessionTemplate` ADD CONSTRAINT `SessionTemplate_categoryId_fkey` FOREIGN KEY (`categoryId`) REFERENCES `Category`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

@@ -26,17 +26,17 @@ model UserDetails {
   weight        Float
   height        Int
   foodDiary     FoodDiary?
-  trainingPlans UserDetailsTrainingPlan[]
+  trainingPlans UserTrainingPlan[]
   session       Session[]
 }
 
 model TrainingPlan {
   id               Int                       @id @default(autoincrement())
-  users            UserDetailsTrainingPlan[]
+  users            UserTrainingPlan[]
   sessionTemplates SessionTemplate[]
 }
 
-model UserDetailsTrainingPlan {
+model UserTrainingPlan {
   userDetails    UserDetails  @relation(fields: [userId], references: [userId])
   userId  Int
   trainingPlan   TrainingPlan @relation(fields: [trainingPlanId], references: [id])
@@ -90,9 +90,9 @@ model Exercise {
   exerciseTemplateId         Int
   title                      String
   //An exercise can either be a lifting or a cardio exercise. Prisma apperantly does not offer support for inheritance, so an
-  //exercise has to optional attributes cardio and lifting
-  liftingExercisePerformance LiftingExercisePerformance?
-  cardioExercisePerformance  CardioExercisePerformance?
+  //exercise has two optional attributes cardio and lifting
+  liftingExercisePerformance LiftingExercisePerformance[]
+  cardioExercisePerformance  CardioExercisePerformance[]
 }
 
 model LiftingExercisePerformance {
@@ -101,7 +101,7 @@ model LiftingExercisePerformance {
   repetitions Int
   weight      Float
   exercise    Exercise @relation(fields: [exerciseId], references: [id])
-  exerciseId  Int      @unique
+  exerciseId  Int
 }
 
 model CardioExercisePerformance {
