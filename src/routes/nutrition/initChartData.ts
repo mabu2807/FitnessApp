@@ -14,7 +14,6 @@ export function initChartData(allCalories: number, calperday: number[]) {
 			}
 		]
 	};
-	console.log(data);
 	return data;
 }
 
@@ -30,7 +29,7 @@ function calcWeekArray() {
 	];
 	const day = new Date();
 
-	let weekday = day.getDay() + 1;
+	let weekday = day.getDay();
 	if (weekday == 7) {
 		weekday = -1;
 	}

@@ -66,7 +66,6 @@ export const load = (async () => {
 	}
 	const today = new Date();
 	let weekday = today.getDay();
-	console.log(weekday);
 
 	let calperday = [0, 0, 0, 0, 0, 0, 0];
 	if (weekday !== 6) {
@@ -80,8 +79,6 @@ export const load = (async () => {
 	} else {
 		calperday = calperdayunsorted;
 	}
-
-	console.log(calperday);
 
 	const chartdata = initChartData(allCalories, calperday);
 
