@@ -17,28 +17,28 @@
 		{
 			id: 1,
 			title: 'Frühstück',
-			icon: 'src/assets/breakfast2.webp',
+			icon: 'breakfast2.webp',
 			meal: 'Eier mit Speck und dazu eine Banane',
 			calories: 820
 		},
 		{
 			id: 2,
 			title: 'Mittagessen',
-			icon: 'src/assets/lunch2.jpeg',
+			icon: 'lunch2.jpeg',
 			meal: 'Nudeln mit Spinat',
 			calories: 600
 		},
 		{
 			id: 3,
 			title: 'Abendessen',
-			icon: 'src/assets/dinner2.jpeg',
+			icon: 'dinner2.jpeg',
 			meal: 'Kartoffeln mit Brokkoli und Hähnchen',
 			calories: 500
 		},
 		{
 			id: 4,
 			title: 'Snack',
-			icon: 'src/assets/snack.jpg',
+			icon: 'snack.jpg',
 			meal: 'Reiswaffel',
 			calories: 30
 		}
@@ -94,7 +94,7 @@
 									on:click={() => dialog.showModal()}
 									class="button"
 								>
-									<img src="src/assets/Edit_Pencil.png" alt="Edit Meal" />
+									<img src="Edit_Pencil.png" alt="Edit Meal" />
 								</button>
 								<Dialog bind:dialog />
 							</div>

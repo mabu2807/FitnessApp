@@ -73,15 +73,15 @@
 				<li><a class="a" href="/nutrition">Ernährungsplan</a></li>
 			</ul>
 
-			<!-- <Avatar src="/src/assets/profile.jpg"  actionParams="#Apollo" /> -->
+			<!-- <Avatar src="profile.jpg"  actionParams="#Apollo" /> -->
 			<div class="profile-wrapper" on:click={toggleProfileMenu}>
-				<a><img src="/src/assets/profile.jpg" alt="" /> </a>
+				<a><img src="profile.jpg" alt="" /> </a>
 			</div>
 			{#if isProfileMenuOpen}
 				<div class="sidebar">
 					<div class="profile-title-container">
 						<div class="profile-wrapper-sidebar" on:click={toggleProfileMenu}>
-							<a><img src="/src/assets/profile.jpg" alt="" /> </a>
+							<a><img src="profile.jpg" alt="" /> </a>
 						</div>
 						<p class="user-title">{testUser.name}</p>
 					</div>
