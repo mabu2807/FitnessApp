@@ -34,13 +34,17 @@
 			icon: 'src/assets/dinner2.jpeg',
 			meal: 'Kartoffeln mit Brokkoli und Hähnchen',
 			calories: 500
+		},
+		{
+			id: 4,
+			title: 'Snack',
+			icon: 'src/assets/snack.jpg',
+			meal: 'Reiswaffel',
+			calories: 30
 		}
 	];
-	let usedCalories = 0;
-	mealTimes.forEach((meal) => {
-		usedCalories += meal.calories;
-		return usedCalories;
-	});
+	let usedCalories = data.chartdata.datasets[0].data[6];
+
 	let amount = usedCalories / allcalories;
 	const progress = amount;
 
@@ -70,7 +74,7 @@
 		</div>
 		<div class="columnWeek">
 			<p class="textTitle">Wochenübersicht</p>
-			<Chart value={allcalories} />
+			<Chart value={allcalories} chartdata={data.chartdata} />
 		</div>
 	</div>
 	<div>
@@ -88,8 +92,10 @@
 									id={meal.id.toString()}
 									on:click={editCard}
 									on:click={() => dialog.showModal()}
-									class="button">Edit</button
+									class="button"
 								>
+									<img src="src/assets/Edit_Pencil.png" alt="Edit Meal" />
+								</button>
 								<Dialog bind:dialog />
 							</div>
 						</div>
@@ -128,14 +134,13 @@
 		display: flex;
 	}
 	.rowMealtitleButton {
-		display: -flex;
 		display: flex;
+		justify-content: space-around;
+		width: 100%;
 		align-items: center;
 	}
 	.rowAllCards {
-		display: -flex;
 		display: flex;
-		width: 90vw;
 		flex-wrap: wrap;
 	}
 	.columnCalories {
@@ -163,21 +168,18 @@
 		margin-left: 20px;
 	}
 	.button {
-		margin-left: 100px;
-		background-color: cadetblue;
-		border-radius: 15%;
-		color: white;
-		padding: 15px 32px;
-		text-align: center;
+		background-color: transparent;
+		border: none;
+		width: 32px;
+		height: 32px;
 		text-decoration: none;
-		display: inline-block;
-		font-size: 16px;
 	}
 	.cardGeneral {
 		display: flex;
-		justify-content: center;
+		justify-content: space-around;
 		margin-top: 20px;
-		row-gap: 10px;
+		width: 100vw;
+		flex-wrap: wrap;
 	}
 	.cardContent {
 		border-style: solid;
@@ -186,19 +188,17 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		width: 20vw;
-		margin: 50px;
+		width: 300px;
 		background-color: aliceblue;
 		border-radius: 10%;
+		margin-bottom: 5vh;
 	}
 	.textMealDescription {
-		margin-left: 20px;
 	}
 	.textMealTitle {
 		font: 400;
 		font-weight: bold;
 		font-size: 15px;
-		margin-left: 40px;
 		color: black;
 	}
 	.textAddMealTitle {
