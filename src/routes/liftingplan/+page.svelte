@@ -183,7 +183,7 @@
 					exercise: 'Butterfly',
 					description:
 						'Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.',
-					imagePath: '/plan2.jpg'
+					imagePath: 'plan2.jpg'
 				}
 			]
 		}
