@@ -1,23 +1,44 @@
 [
-	{
-		"id": 1,
-		"title": "Frühstück",
-		"icon": "src/assets/breakfast2.webp",
-		"meal": "Eier mit Speck und dazu eine Banane",
-		"calories": 820
-	},
-	{
-		"id": 2,
-		"title": "Mittagessen",
-		"icon": "src/assets/lunch2.jpeg",
-		"meal": "Nudeln mit Spinat",
-		"calories": 600
-	},
-	{
-		"id": 3,
-		"title": "Abendessen",
-		"icon": "src/assets/dinner2.jpeg",
-		"meal": "Kartoffeln mit Brokkoli und Hähnchen",
-		"calories": 500
-	}
+    {
+        "id": 1,
+        "foodDiaryId": 1,
+        "day": "2023-06-03",
+        "time": "Breakfast",
+        "dishId": 1
+    },
+    {
+        "id": 2,
+        "foodDiaryId": 1,
+        "day": "2023-06-03",
+        "time": "Lunch",
+        "dishId": 2
+    },
+    {
+        "id": 3,
+        "foodDiaryId": 1,
+        "day": "2023-06-03",
+        "time": "Dinner",
+        "dishId": 3
+    },
+    {
+        "id": 4,
+        "foodDiaryId": 2,
+        "day": "2023-06-03",
+        "time": "Breakfast",
+        "dishId": 1
+    },
+    {
+        "id": 5,
+        "foodDiaryId": 2,
+        "day": "2023-06-03",
+        "time": "Lunch",
+        "dishId": 2
+    },
+    {
+        "id": 6,
+        "foodDiaryId": 2,
+        "day": "2023-06-03",
+        "time": "Dinner",
+        "dishId": 3
+    }
 ]

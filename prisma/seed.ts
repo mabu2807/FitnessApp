@@ -9,6 +9,10 @@ import sessionData from "../src/lib/testdata/Session.json" assert { type: "json"
 import exerciseTemplateData from "../src/lib/testdata/ExerciseTemplate.json" assert { type: "json" }
 import exerciseData from "../src/lib/testdata/Exercise.json" assert { type: "json" }
 import liftingExercisePerformanceData from "../src/lib/testdata/LiftingExercisePerformance.json" assert { type: "json" }
+import mealData from "../src/lib/testdata/Meal.json" assert { type: "json" }
+import dishData from "../src/lib/testdata/Dish.json" assert { type: "json" }
+import foodDiaryData from "../src/lib/testdata/FoodDiary.json" assert { type: "json" }
+import nutritionalValuesData from "../src/lib/testdata/NutritionalValues.json" assert { type: "json" }
 
 const prisma = new PrismaClient()
 
@@ -119,6 +123,53 @@ async function main() {
         repetitions: liftingExercisePerformance.repetitions,
         weight: liftingExercisePerformance.weight,
         exerciseId: liftingExercisePerformance.exerciseId
+      }
+    })
+  }
+
+  for (const foodDiary of foodDiaryData) {
+    await prisma.foodDiary.create({
+      data: {
+        id: foodDiary.id,
+        userId: foodDiary.userId
+      }
+    })
+  }
+
+  for (const nutritionalValues of nutritionalValuesData) {
+    await prisma.nutritionalValues.create({
+      data: {
+        id: nutritionalValues.id,
+        energy: nutritionalValues.energy,
+        fat: nutritionalValues.fat,
+        saturatedFat: nutritionalValues.saturedFat,
+        carbohydrates: nutritionalValues.carbohydrates,
+        sugar: nutritionalValues.sugar,
+        protein: nutritionalValues.protein,
+        salt: nutritionalValues.salt
+      }
+    })
+  }
+
+  for (const dish of dishData) {
+    await prisma.dish.create({
+      data: {
+        id: dish.id,
+        name: dish.name,
+        imagePath: dish.imagePath,
+        nutritionalValuesId: dish.nutritionalValuesId
+      }
+    })
+  }
+
+  for (const meal of mealData) {
+    await prisma.meal.create({
+      data: {
+        id: meal.id,
+        foodDiaryId: meal.foodDiaryId,
+        day: new Date(meal.day),
+        time: meal.time,
+        dishId: meal.dishId
       }
     })
   }

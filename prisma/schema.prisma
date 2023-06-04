@@ -132,7 +132,8 @@ model Meal {
 
 model Dish {
   id                  Int               @id @default(autoincrement())
-  name                String            @unique
+  name                String        
+  imagePath           String    
   meals               Meal[]
   nutritionalValues   NutritionalValues @relation(fields: [nutritionalValuesId], references: [id])
   nutritionalValuesId Int               @unique

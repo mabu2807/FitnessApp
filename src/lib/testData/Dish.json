@@ -1,0 +1,20 @@
+[
+	{
+		"id": 1,
+		"name": "Eier mit Speck und dazu eine Banane",
+		"imagePath": "src/assets/breakfast2.webp",
+		"nutritionalValuesId": 1
+	},
+	{
+		"id": 2,
+		"name": "Nudeln mit Spinat",
+		"imagePath": "src/assets/lunch2.jpeg",
+		"nutritionalValuesId": 2
+	},
+	{
+		"id": 3,
+		"name": "Kartoffeln mit Brokkoli und Hähnchen",
+		"imagePath": "src/assets/dinner2.jpeg",
+		"nutritionalValuesId": 3
+	}
+]
