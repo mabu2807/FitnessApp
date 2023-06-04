@@ -62,7 +62,6 @@ export const load = (async () => {
 		// Calc on week before
 		const todayMidnight = new Date();
 		todayMidnight.setHours(2,0,0,0);
-		console.log(todayMidnight)
 		responedaymeal = await prisma.meal.findMany({
 			where:{
 				day:{
@@ -100,7 +99,6 @@ export const load = (async () => {
 	}
 	const today = new Date();
 	let weekday = today.getDay();
-	console.log(weekday)
 	let calperday = [];
 	if (weekday !== 6) {
 		for (let i = 0; i < 7; i++) {
@@ -114,8 +112,7 @@ export const load = (async () => {
 		calperday = calperdayunsorted;
 	}
 	const chartdata = initChartData(allCalories, calperday);
-	console.log(calperday)
 	
 	// -------------------------- return -------------------------------------------
-	return { userdetail: responseUserDetails, allcalories: allCalories, chartdata:chartdata};
+	return {allcalories: allCalories, chartdata:chartdata, mealsforCards: responedaymeal};
 }) satisfies PageServerLoad;
