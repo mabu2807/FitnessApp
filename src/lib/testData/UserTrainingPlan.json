@@ -1,0 +1,17 @@
+[
+	{
+		"userId": 1,
+        "trainigPlanId": 1,
+        "active": true
+	},
+	{
+		"userId": 2,
+        "trainigPlanId": 2,
+        "active": true
+	},
+	{
+		"userId": 3,
+        "trainigPlanId": 3,
+        "active": true
+    }
+]

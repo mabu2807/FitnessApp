@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "description": "push",
+        "categoryId": 1,
+        "trainingPlanId": 1
+    },
+    {
+        "id": 2,
+        "description": "pull",
+        "categoryId": 1,
+        "trainingPlanId": 1
+    },
+    {
+        "id": 3,
+        "description": "Laufen",
+        "categoryId": 2,
+        "trainingPlanId": 2
+    },
+    {
+        "id": 4,
+        "description": "Rudern",
+        "categoryId": 2,
+        "trainingPlanId": 2
+    },
+    {
+        "id": 5,
+        "description": "Schwimmen",
+        "categoryId": 3,
+        "trainingPlanId": 3
+    }
+]

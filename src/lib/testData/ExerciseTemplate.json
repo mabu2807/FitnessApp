@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "Bankdrücken",
+        "description": "Drück ne Langhantel hoch",
+        "sessionTemplateId": 1
+    },
+    {
+        "id": 2,
+        "title": "Flys",
+        "description": "Flieg",
+        "sessionTemplateId": 1
+    },
+    {
+        "id": 3,
+        "title": "Rudern",
+        "description": "Ruder",
+        "sessionTemplateId": 2
+    },
+    {
+        "id": 4,
+        "title": "Latzug",
+        "description": "zieh",
+        "sessionTemplateId": 2
+    }
+]

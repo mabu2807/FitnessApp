@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "energy": 820,
+        "fat": 60.2,
+        "saturedFat": 20.5,
+        "carbohydrates": 30,
+        "sugar": 25,
+        "protein": 35,
+        "salt": 4.1
+    },
+    {
+        "id": 2,
+        "energy": 600,
+        "fat": 20.2,
+        "saturedFat": 5,
+        "carbohydrates": 40,
+        "sugar": 8,
+        "protein": 15,
+        "salt": 1.5
+    },
+    {
+        "id": 3,
+        "energy": 500,
+        "fat": 32.3,
+        "saturedFat": 21,
+        "carbohydrates": 40,
+        "sugar": 15,
+        "protein": 40,
+        "salt": 2
+    }
+]
