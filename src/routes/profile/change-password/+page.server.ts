@@ -9,7 +9,8 @@ export const actions = {
 		const oldPassword = data.oldPassword;
 		const newPassword = data.newPassword;
 		const newPasswordRepeated = data.newPasswordRepeated;
-		const email = 'adrian.hagen@sap.com';
+		//Hardcoded, needs to be changed once login cookies are enabled
+		const email = 'markus@masse.de';
 
 		if (!oldPassword || !newPassword || !newPasswordRepeated) {
 			return fail(400, { oldPassword, newPassword, newPasswordRepeated, missing: true });
