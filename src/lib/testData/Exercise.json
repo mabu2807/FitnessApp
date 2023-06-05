@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "sessionId": 1,
+        "exerciseTemplateId": 1,
+        "title": "Bankdrücken"
+    },
+    {
+        "id": 2,
+        "sessionId": 1,
+        "exerciseTemplateId": 2,
+        "title": "Flys"
+    },
+    {
+        "id": 3,
+        "sessionId": 2,
+        "exerciseTemplateId": 3,
+        "title": "Rudern"
+    },
+    {
+        "id": 4,
+        "sessionId": 2,
+        "exerciseTemplateId": 4,
+        "title": "Latzug"
+    }
+]
