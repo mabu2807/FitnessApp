@@ -9,19 +9,19 @@
 
 	let settings = [
 		{
-			referencing: "/",
-			setting: "Persönliche Daten",
-			icon: "fa-solid fa-user"
+			referencing: '/',
+			setting: 'Persönliche Daten',
+			icon: 'fa-solid fa-user'
 		},
 		{
-			referencing: "/profile/change-password",
-			setting: "Passwort ändern",
-			icon: "fa-solid fa-key"
-		}, 
+			referencing: 'profile/change-password',
+			setting: 'Passwort ändern',
+			icon: 'fa-solid fa-key'
+		},
 		{
-			referencing: "/",
-			setting: "Einstellungen",
-			icon: "fa-solid fa-gear"
+			referencing: '',
+			setting: 'Einstellungen',
+			icon: 'fa-solid fa-gear'
 		}
 	];
 
@@ -80,20 +80,18 @@
 			<div class="profile-wrapper" on:click={toggleProfileMenu}>
 				<a><img src="profile.jpg" alt="" /> </a>
 			</div>
-			<span class="bar"></span>
-			<div class="settings-wrapper">
-				{#each settings as setting}
-				
-					<a href={setting.referencing} class="setting">
-						<div class="setting-icon">
-							<i class="{setting.icon}"></i>
+			{#if isProfileMenuOpen}
+				<div class="sidebar">
+					<div class="profile-title-container">
+						<div class="profile-wrapper-sidebar" on:click={toggleProfileMenu}>
+							<a><img src="profile.jpg" alt="" /> </a>
 						</div>
 						<p class="user-title">{testUser.name}</p>
 					</div>
 					<span class="bar" />
 					<div class="settings-wrapper">
 						{#each settings as setting}
-							<a href="/" class="setting">
+							<a href={setting.referencing} class="setting">
 								<div class="setting-icon">
 									<i class={setting.icon} />
 								</div>
