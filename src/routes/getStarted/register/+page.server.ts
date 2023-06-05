@@ -1,6 +1,6 @@
 import prisma from '$lib/prisma';
 import { fail, redirect } from '@sveltejs/kit';
-import type { Actions } from '../register/$types';
+import type { Actions } from './$types';
 
 const validateEmail = (email: string) => {
 	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);

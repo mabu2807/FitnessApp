@@ -43,7 +43,7 @@
 	</div>
 
 	<div class="button-container-right">
-		<a href="/getStarted/level" class="next-button">Nächste</a>
+		<a href="/getStarted/register" class="next-button">Abschließen</a>
 	</div>
 
 	<div class="button-container-left">
@@ -112,7 +112,7 @@
 
 	.next-button {
 		cursor: pointer;
-		padding: 20px 50px;
+		padding: 20px 31px;
 		background-color: white;
 		border: 2px solid #0056b3;
 		font-weight: 600;
