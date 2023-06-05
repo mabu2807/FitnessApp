@@ -140,7 +140,7 @@
 		box-shadow: 0 0 10px black;
 		z-index: 100;
 		position: relative;
-		padding-left: 20px; /* Innenabstand auf der linken Seite */
+		padding-left: 20px; 
 	}
 
 	.navbar-container {
@@ -393,8 +393,8 @@
 	@media (max-width: 768px) {
 		.navbar-container {
 			justify-content: space-between;
-			padding-right: 20px; /* Innenabstand auf der rechten Seite */
-			padding-left: 0; /* Kein Innenabstand auf der linken Seite */
+			padding-right: 20px; 
+			padding-left: 0; 
 		}
 
 		.menu-items {
@@ -426,8 +426,8 @@
 	@media (max-width: 768px) {
 		.navbar-container {
 			justify-content: space-between;
-			padding-right: 20px; /* Innenabstand auf der rechten Seite */
-			padding-left: 0; /* Kein Innenabstand auf der linken Seite */
+			padding-right: 20px; 
+			padding-left: 0; 
 		}
 
 		.menu-items {
