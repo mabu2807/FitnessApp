@@ -130,9 +130,9 @@ CREATE TABLE `Meal` (
 CREATE TABLE `Dish` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
+    `imagePath` VARCHAR(191) NOT NULL,
     `nutritionalValuesId` INTEGER NOT NULL,
 
-    UNIQUE INDEX `Dish_name_key`(`name`),
     UNIQUE INDEX `Dish_nutritionalValuesId_key`(`nutritionalValuesId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
