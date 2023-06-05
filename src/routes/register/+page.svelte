@@ -19,7 +19,7 @@
 					<form method="post">
 						<div class="title-wrapper">
 							<div class="top_link">
-								<a href="/"><img src="src/assets/Logo.jpg" alt="Logo" /></a>
+								<a href="/"><img src="Logo.jpg" alt="Logo" /></a>
 							</div>
 
 							<h3>Erstelle einen Account</h3>

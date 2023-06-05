@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "Wachstum",
+        "description": "Muskelaufbau über allem anderen"
+    },
+    {
+        "id": 2,
+        "name": "Ausdauer",
+        "description": "Werde ausdauernd!"
+    },
+    {
+        "id": 3,
+        "name": "Gelenkschonende Aquagymnastik",
+        "description": "Fit wie ein Fisch"
+    }
+]

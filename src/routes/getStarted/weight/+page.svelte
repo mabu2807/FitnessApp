@@ -1,9 +1,9 @@
 <script>
 	import { each } from 'svelte/internal';
-	import {getStartedData} from '../Data';
+	import { getStartedData } from '../Data';
 	import { onMount } from 'svelte';
 
-	let picsource = '/src/assets/final15.jpg';
+	let picsource = 'final15.jpg';
 	let sliderValue;
 
 	function updateSliderValue(event) {
@@ -11,24 +11,24 @@
 		sliderValue = event.target.value;
 		let val = parseInt(event.target.value);
 		if (val < 60) {
-			picsource = '/src/assets/final5.jpg';
+			picsource = 'final5.jpg';
 		} else if (val < 70) {
-			picsource = '/src/assets/final10.jpg';
+			picsource = 'final10.jpg';
 		} else if (val < 80) {
-			picsource = '/src/assets/final15.jpg';
+			picsource = 'final15.jpg';
 		} else if (val < 90) {
-			picsource = '/src/assets/final20.jpg';
+			picsource = 'final20.jpg';
 		} else if (val < 100) {
-			picsource = '/src/assets/final25.jpg';
+			picsource = 'final25.jpg';
 		} else if (val < 110) {
-			picsource = '/src/assets/final30.jpg';
+			picsource = 'final30.jpg';
 		} else if (val < 120) {
-			picsource = '/src/assets/final35.jpg';
+			picsource = 'final35.jpg';
 		} else {
-			picsource = '/src/assets/final40.jpg';
+			picsource = 'final40.jpg';
 		}
 	}
-	function startValue(){
+	function startValue() {
 		sliderValue = $getStartedData[2].value === '' ? '90' : $getStartedData[2].value;
 		$getStartedData[2].value = sliderValue;
 	}

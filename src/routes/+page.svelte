@@ -2,16 +2,18 @@
 	// @ts-nocheck
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
+	import Head from '../components/Head.svelte';
+	import Footer from '../components/Footer.svelte';
 
 	let items = [
 		{
 			id: 1,
 			name: 'John Doe',
 			text: 'Die FitnessApp hat mein Training auf ein ganz neues Level gebracht. Ich liebe die Vielfalt der Kurse und die Möglichkeit, meinen Fortschritt zu verfolgen.',
-			imgSrc: 'src/assets/customer1.jpg'
+			imgSrc: 'customer1.jpg'
 		},
-		{ id: 2, name: 'Hampelmann Hagen', text: 'einfach gut', imgSrc: 'src/assets/customer1.jpg' },
-		{ id: 3, name: 'Jane Smith', text: 'einwandfrei', imgSrc: 'src/assets/customer2.jpg' }
+		{ id: 2, name: 'Hampelmann Hagen', text: 'einfach gut', imgSrc: 'customer1.jpg' },
+		{ id: 3, name: 'Jane Smith', text: 'einwandfrei', imgSrc: 'customer2.jpg' }
 	];
 	let currentIndex = 0;
 	/**
@@ -38,12 +40,13 @@
 	});
 </script>
 
-<head>
+<!-- <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<title>Fitness Tracker</title>
-</head>
+</head> -->
+<Head />
 <body>
 	<main>
 		<section class="hero">
@@ -55,19 +58,19 @@
 		<section id="courses">
 			<h2>Unsere Kurse</h2>
 			<div class="course">
-				<img src="src/assets/workout1.jpg" alt="Kurs 1" />
+				<img src="workout1.jpg" alt="Kurs 1" />
 				<h3>Pilates</h3>
 				<p>Ein Ganzkörpertraining zur Verbesserung von Flexibilität, Kraft und Körperhaltung.</p>
 			</div>
 			<div class="course">
-				<img src="src/assets/workout2.jpg" alt="Kurs 2" />
+				<img src="workout2.jpg" alt="Kurs 2" />
 				<h3>Yoga</h3>
 				<p>
 					Entspannen Sie Ihren Geist und stärken Sie Ihren Körper mit verschiedenen Yoga-Übungen.
 				</p>
 			</div>
 			<div class="course">
-				<img src="src/assets/workout3.jpg" alt="Kurs 3" />
+				<img src="workout3.jpg" alt="Kurs 3" />
 				<h3>HIIT</h3>
 				<p>
 					Eine intensive Trainingsform mit abwechselnden Phasen von hoher Intensität und kurzen
@@ -86,7 +89,7 @@
 					transition:fly={{ x: -100, opacity: 0 }}
 					animate:fly={{ x: 0, opacity: 1 }}
 				>
-					<img src={'src/assets/test.jpeg'} alt="Kunde {item.id}" />
+					<img src={'test.jpeg'} alt="Kunde {item.id}" />
 					<p>{item.text}</p>
 					<cite>{item.name}</cite>
 				</div>
@@ -104,24 +107,7 @@
 			</form>
 		</section>
 	</main>
-
-	<footer class="footer">
-		<div class="footer-content">
-			<p class="footer-text">&copy; 2023 Fitness Tracker. All rights reserved.</p>
-			<a class="linkFooter" href="https://www.youtube.com/@RoswitaRuhl"
-				><i class="fa-brands fa-youtube fa-2x" /></a
-			>
-			<a class="linkFooter" href="https://www.instagram.com/ksvlangen/"
-				><i class="fa-brands fa-instagram fa-2x" /></a
-			>
-			<a class="linkFooter" href="https://twitter.com/mibi61?s=21&t=O8Ege5KSxyYHHBAtUfSaJQ"
-				><i class="fa-brands fa-square-twitter fa-2x" /></a
-			>
-			<a class="linkFooter" href="https://www.linkedin.com/in/luca-chmielarski?original_referer="
-				><i class="fa-brands fa-linkedin fa-2x" /></a
-			>
-		</div>
-	</footer>
+	<Footer />
 </body>
 
 <style>
@@ -282,31 +268,5 @@
 	}
 	button[type='submit']:hover {
 		background-color: #555;
-	}
-
-	.footer {
-		background-color: #393e46;
-		color: #ffffff;
-		width: 100%;
-		height: 60px;
-		padding: 22px 0;
-	}
-	.footer-content {
-		margin-right: 30%;
-		margin-left: 30%;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		height: 100%;
-	}
-	.footer-text {
-		font-size: 14px;
-		margin: 0;
-	}
-	i:hover {
-		color: #888;
-	}
-	.linkFooter {
-		color: white;
 	}
 </style>

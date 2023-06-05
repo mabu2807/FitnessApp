@@ -4,6 +4,8 @@
 	import IconButton from '@smui/icon-button';
 	import Button, { Label } from '@smui/button';
 	import { element } from 'svelte/internal';
+	import Head from '../../components/Head.svelte';
+	import Footer from '../../components/Footer.svelte';
 
 	let open = false;
 	let removeDisabled = true;
@@ -80,7 +82,7 @@
 	let selectedData = [
 		{
 			title: 'Krafttraining',
-			imageSrc: 'src/assets/workout2.jpg',
+			imageSrc: 'workout2.jpg',
 			description:
 				' Sed do eiusmod temporrem ipsum dolor sit ametorididunt ut labore et dolore magna aliqua. ',
 			link: 'liftingplan',
@@ -88,7 +90,7 @@
 		},
 		{
 			title: 'Cardio',
-			imageSrc: 'src/assets/workout1.jpg',
+			imageSrc: 'workout1.jpg',
 			description:
 				' labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqu',
 			link: 'https://example.com/button2',
@@ -99,7 +101,7 @@
 	let availableData = [
 		{
 			title: 'Yoga',
-			imageSrc: 'src/assets/workout3.jpg',
+			imageSrc: 'workout3.jpg',
 			description:
 				'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. minim veniam, quis nostrud exercita',
 			link: 'https://example.com/button3',
@@ -107,6 +109,8 @@
 		}
 	];
 </script>
+
+<Head />
 
 <main>
 	<div class="category">
@@ -214,11 +218,7 @@
 		</Actions>
 	</Dialog>
 </main>
-<footer class="footer">
-	<div class="footer-content">
-		<p class="footer-text">&copy; 2023 Fitness Tracker. All rights reserved.</p>
-	</div>
-</footer>
+<Footer />
 
 <style>
 	.icon-container {

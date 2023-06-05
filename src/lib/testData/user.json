@@ -1,0 +1,20 @@
+[
+	{
+		"id": 1,
+		"email": "markus@masse.de",
+		"username": "Mr. Masthuhn",
+		"password": "abc123"
+	},
+	{
+		"id": 2,
+		"email": "carsten@cardio.de",
+		"username": "Mr. Marathon",
+		"password": "cvb321"
+	},
+	{
+		"id": 3,
+		"email": "anja@aquagymnastik.de",
+		"username": "Aqua Anja",
+		"password": "anja987"
+	}
+]

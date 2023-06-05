@@ -1,7 +1,7 @@
 <script>
 	import { each } from 'svelte/internal';
 	import { onMount } from 'svelte';
-	import {getStartedData} from '../Data';
+	import { getStartedData } from '../Data';
 
 	let sliderValue;
 
@@ -10,13 +10,12 @@
 		$getStartedData[1].value = sliderValue;
 	}
 
-	function startValue(){
+	function startValue() {
 		sliderValue = $getStartedData[1].value === '' ? '175' : $getStartedData[1].value;
 		$getStartedData[1].value = sliderValue;
 	}
 
 	onMount(startValue);
-
 </script>
 
 <body>

@@ -1,0 +1,20 @@
+[
+	{
+		"userId": 1,
+        "gender": "male",
+		"weight": 130,
+        "height": 180
+	},
+	{
+		"userId": 2,
+        "gender": "male",
+		"weight": 78.5,
+        "height": 185
+	},
+	{
+		"userId": 3,
+        "gender": "female",
+        "weight": 62.2,
+        "height": 170
+	}
+]

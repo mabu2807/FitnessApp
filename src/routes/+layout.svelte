@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from "svelte/internal";
+	import { onMount } from 'svelte/internal';
 
 	let isMenuOpen = false;
 	let isProfileMenuOpen = false;
@@ -23,12 +23,11 @@
 			setting: "Einstellungen",
 			icon: "fa-solid fa-gear"
 		}
-	]
+	];
 
 	let testUser = {
-		name: "Georgiev, Aleks",
-		
-	}
+		name: 'Georgiev, Aleks'
+	};
 
 	function toggleMenu() {
 		isMenuOpen = !isMenuOpen;
@@ -39,57 +38,47 @@
 	}
 
 	onMount(() => {
-    // @ts-ignore
-    clickOutsideListener = (event) => {
-      const sidebar = document.querySelector('.sidebar');
-      const profileWrapper = document.querySelector('.profile-wrapper');
-      const targetElement = event.target;
+		// @ts-ignore
+		clickOutsideListener = (event) => {
+			const sidebar = document.querySelector('.sidebar');
+			const profileWrapper = document.querySelector('.profile-wrapper');
+			const targetElement = event.target;
 
-      if (
-        profileWrapper &&
-        !profileWrapper.contains(targetElement) &&
-        // @ts-ignore
-        !sidebar.contains(targetElement) &&
-        !targetElement.classList.contains('hamburger-lines')
-      ) {
-        isProfileMenuOpen = false;
-      }
-    };
+			if (
+				profileWrapper &&
+				!profileWrapper.contains(targetElement) &&
+				// @ts-ignore
+				!sidebar.contains(targetElement) &&
+				!targetElement.classList.contains('hamburger-lines')
+			) {
+				isProfileMenuOpen = false;
+			}
+		};
 
-    document.addEventListener('click', clickOutsideListener);
+		document.addEventListener('click', clickOutsideListener);
 
-    return () => {
-      // @ts-ignore
-      document.removeEventListener('click', clickOutsideListener);
-    };
-  });
-
+		return () => {
+			// @ts-ignore
+			document.removeEventListener('click', clickOutsideListener);
+		};
+	});
 </script>
 
 <nav class="navbar">
 	<div class="navbar-container" class:open={isMenuOpen}>
 		<h1 class="logo">FitnessHub</h1>
-		
+
 		{#if loggedIn}
-		<ul class="menu-items">
-			<li><a class="a" href="/">Home</a></li>
-			<li><a class="a" href="/kategorie">Workouts</a></li>
-			<li><a class="a" href="/progress">Progress</a></li>
-			<li><a class="a" href="/">Ernährungsplan</a></li>
-		</ul>
+			<ul class="menu-items">
+				<li><a class="a" href="/">Home</a></li>
+				<li><a class="a" href="/kategorie">Workouts</a></li>
+				<li><a class="a" href="/progress">Progress</a></li>
+				<li><a class="a" href="/nutrition">Ernährungsplan</a></li>
+			</ul>
 
-		<!-- <Avatar src="/src/assets/profile.jpg"  actionParams="#Apollo" /> -->
-		<div class="profile-wrapper" on:click={toggleProfileMenu}>
-			 <a><img src="/src/assets/profile.jpg" alt=""> </a>
-		</div>
-		{#if isProfileMenuOpen}
-		<div class="sidebar">
-			<div class="profile-title-container">
-
-				<div class="profile-wrapper-sidebar" on:click={toggleProfileMenu}>
-					<a><img src="/src/assets/profile.jpg" alt=""> </a>
-				</div>
-				<p class="user-title">{testUser.name}</p>
+			<!-- <Avatar src="profile.jpg"  actionParams="#Apollo" /> -->
+			<div class="profile-wrapper" on:click={toggleProfileMenu}>
+				<a><img src="profile.jpg" alt="" /> </a>
 			</div>
 			<span class="bar"></span>
 			<div class="settings-wrapper">
@@ -98,28 +87,39 @@
 					<a href={setting.referencing} class="setting">
 						<div class="setting-icon">
 							<i class="{setting.icon}"></i>
-							
 						</div>
-						<p>{setting.setting}</p>
-					</a>
-				
-				{/each}
-			</div>
-			<div style="flex-grow: 1;"></div>
-			<div class="exit-wrapper">
-				<div class="close-icon">
-					<i class="fa-sharp fa-solid fa-angles-right" on:click={toggleProfileMenu}></i>
+						<p class="user-title">{testUser.name}</p>
+					</div>
+					<span class="bar" />
+					<div class="settings-wrapper">
+						{#each settings as setting}
+							<a href="/" class="setting">
+								<div class="setting-icon">
+									<i class={setting.icon} />
+								</div>
+								<p>{setting.setting}</p>
+							</a>
+						{/each}
+					</div>
+					<div style="flex-grow: 1;" />
+					<div class="exit-wrapper">
+						<div class="close-icon">
+							<i class="fa-sharp fa-solid fa-angles-right" on:click={toggleProfileMenu} />
+						</div>
+						<div class="logOut">
+							<button class="logOut-button"
+								>Abmelden <i
+									class="fa-solid fa-right-from-bracket"
+									style="margin-left: 10px;"
+								/></button
+							>
+						</div>
+					</div>
 				</div>
-				<div class="logOut">
-					<button class="logOut-button">Abmelden <i class="fa-solid fa-right-from-bracket" style="margin-left: 10px;"></i></button>
-				</div>
-			</div>
-		</div>
-	{/if}
-		
+			{/if}
 		{/if}
 		{#if loggedIn == false}
-		<a  on:click={() => login} class="login-button">Login</a>
+			<a on:click={() => login} class="login-button">Login</a>
 		{/if}
 		<div class="hamburger-lines" on:click={toggleMenu}>
 			<span class="line line1" />
@@ -140,7 +140,6 @@
 		margin: 0;
 	}
 
-	
 	.navbar {
 		background: #393e46;
 		color: white;
@@ -149,7 +148,7 @@
 		position: relative;
 		padding-left: 20px; /* Innenabstand auf der linken Seite */
 	}
-	
+
 	.navbar-container {
 		display: flex;
 		justify-content: space-between;
@@ -165,7 +164,7 @@
 		text-align: center;
 		top: 0;
 		right: 0;
-		width: 300px; 
+		width: 300px;
 		height: 100vh;
 		background-color: #393e46;
 		box-shadow: -10px 0px 10px 1px rgba(0, 0, 0, 0.244);
@@ -177,17 +176,15 @@
 		flex-direction: row;
 		width: 100%;
 		height: 15%;
-		
 	}
 
 	.settings-wrapper {
 		display: flex;
 		flex-direction: column;
-		
+
 		width: 100%;
 		height: auto;
 		margin-top: 7%;
-		
 	}
 
 	.setting {
@@ -197,23 +194,21 @@
 		margin-left: 50px;
 		text-decoration: none;
 		color: white;
-		
 	}
 
 	.close-icon {
-		
 		width: 49%;
-    height: 26%;
-    font-size: 36px;
+		height: 26%;
+		font-size: 36px;
 		color: white;
 		margin: 6px 0 40px 0;
 	}
 
 	.close-icon i {
 		cursor: pointer;
-		
+
 		position: relative;
-		animation: indicator 1.5s ease-in-out  alternate;
+		animation: indicator 1.5s ease-in-out alternate;
 		animation-iteration-count: 2;
 	}
 
@@ -223,18 +218,17 @@
 
 	@keyframes indicator {
 		0% {
-    left: 0;
-  }
-  50% {
-    left: 10%;
-  }
-  75% {
-	left: 5%;
-  }
-  100% {
-    left: 0;    
-  }
-
+			left: 0;
+		}
+		50% {
+			left: 10%;
+		}
+		75% {
+			left: 5%;
+		}
+		100% {
+			left: 0;
+		}
 	}
 
 	.logOut {
@@ -243,21 +237,20 @@
 
 	.logOut-button {
 		cursor: pointer;
-		
+
 		padding: 14px 16px;
 		border: 3px solid white;
 		color: white;
 		border-radius: 30px;
 		background-color: #393e46;
 		font-weight: 700;
-		
 	}
 
 	.logOut-button:hover {
 		box-shadow: 0 0 10px white;
 		color: #393e46;
 		background-color: white;
-		transition: .4s ease all;
+		transition: 0.4s ease all;
 	}
 	.exit-wrapper {
 		display: flex;
@@ -287,10 +280,10 @@
 
 	.profile-wrapper-sidebar {
 		width: 23%;
-    	height: 62%;
+		height: 62%;
 		cursor: pointer;
-		
-    	margin: 20px 30px;
+
+		margin: 20px 30px;
 		border: 2px solid white;
 		border-radius: 400px;
 		box-shadow: 0 0 10px white;
@@ -298,9 +291,9 @@
 
 	.profile-wrapper-sidebar img {
 		height: 101%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 400px;
+		width: 100%;
+		object-fit: cover;
+		border-radius: 400px;
 	}
 
 	.profile-wrapper {
@@ -315,9 +308,9 @@
 
 	.profile-wrapper img {
 		height: 101%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 400px;
+		width: 100%;
+		object-fit: cover;
+		border-radius: 400px;
 	}
 
 	.menu-items {
@@ -332,9 +325,9 @@
 		font-size: 1.3rem;
 		list-style: none;
 	}
-	
+
 	.navbar .a {
-		margin: .5rem 1.5rem;
+		margin: 0.5rem 1.5rem;
 		color: white;
 		text-decoration: none;
 		font-weight: 600;
@@ -385,13 +378,13 @@
 	}
 
 	.login-button {
-		background-color:  #377ffb;
+		background-color: #377ffb;
 		color: white;
 		font-weight: 700;
 		border: 2px solid #377ffb;
 		margin-right: 80px;
 		padding: 5px 30px;
-		
+
 		border-radius: 4px;
 		font-size: 1.2rem;
 		cursor: pointer;
@@ -418,7 +411,6 @@
 			width: 100%;
 			background-color: #fff;
 			padding: 20px;
-				
 		}
 
 		.login-button {
