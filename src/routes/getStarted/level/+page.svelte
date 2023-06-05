@@ -4,6 +4,15 @@
 	import { getStartedData } from '../Data';
 
 	let sliderValue;
+	let popUp = false;
+
+	function showPopUp() {
+		popUp = true;
+	}
+
+	function closePopUp() {
+		popUp = false;
+	}
 
 	function updateSliderValue(event) {
 		sliderValue = event.target.value;
@@ -19,6 +28,27 @@
 </script>
 
 <body>
+	{#if popUp}
+		<div id="popupOverlay">
+			<div id="popupContent">
+				<h2>Bitte bestätigen Sie Ihre Daten</h2>
+				<table>
+					{#each $getStartedData as data}
+						<tr>
+							<td>{data.title}</td>
+							<td>{data.value}</td>
+						</tr>
+					{/each}
+				</table>
+				<div class="button-container-right">
+					<a href="/getStarted/register" class="next-button">Bestätigen</a>
+				</div>
+				<div class="button-container-left">
+					<button on:click={closePopUp} class="back-button">Abbrechen</button>
+				</div>
+			</div>
+		</div>
+	{/if}
 	<div class="title-container">
 		<div class="title">
 			<h1>Schritt: 5</h1>
@@ -43,7 +73,7 @@
 	</div>
 
 	<div class="button-container-right">
-		<a href="/getStarted/register" class="next-button">Abschließen</a>
+		<button on:click={showPopUp} class="next-button">Abschließen</button>
 	</div>
 
 	<div class="button-container-left">
@@ -68,6 +98,35 @@
 		margin-top: 3%;
 		left: 50%;
 		text-align: center;
+	}
+	#popupOverlay {
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.8);
+		z-index: 9999;
+	}
+
+	#popupContent h2{
+		font-size: 30px;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	#popupContent {
+		display: flex;
+		flex-direction: column;
+		align-items: left;
+		position: absolute;
+		background-color: #fff;
+		width: 60%;
+		height: 60%;
+		text-align: center;
+		margin: 0 auto;
 	}
 
 	.slider-value {
@@ -111,8 +170,11 @@
 	}
 
 	.next-button {
+		font-size: 16px;
+		font-weight: bold;
+		text-decoration: underline;
 		cursor: pointer;
-		padding: 20px 31px;
+		padding: 20px 50px;
 		background-color: white;
 		border: 2px solid #0056b3;
 		font-weight: 600;
@@ -135,6 +197,9 @@
 	}
 
 	.back-button {
+		font-size: 16px;
+		font-weight: bold;
+		text-decoration: underline;
 		cursor: pointer;
 		padding: 20px 50px;
 		background-color: white;
