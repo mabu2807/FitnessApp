@@ -2,6 +2,7 @@
 	import { each } from 'svelte/internal';
 	import { onMount } from 'svelte';
 	import { getStartedData } from '../Data';
+	import { page } from '$app/stores';
 
 	let sliderValue;
 	let popUp = false;
@@ -36,7 +37,7 @@
 					{#each $getStartedData as data}
 						<tr>
 							<td>{data.title}</td>
-							<td>{data.value}</td>
+							<td>{data.value}{data.unit}</td>
 						</tr>
 					{/each}
 				</table>
@@ -81,10 +82,12 @@
 	</div>
 
 	<div class="overview">
-		{#each $getStartedData as page, i}
+		{#each $getStartedData as data, i}
 			<div class="overview-wrapper">
-				<a href={page.link} class="overview-link">{page.title}</a>
-				<p>{page.value}</p>
+				<a href={data.link} class="overview-link">{data.title}</a>
+				{#if data.value!=''}
+				<p>{data.value}{data.unit}</p>
+				{/if}
 			</div>
 		{/each}
 	</div>

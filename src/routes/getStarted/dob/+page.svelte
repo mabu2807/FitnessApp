@@ -36,10 +36,12 @@
 	</div>
 
 	<div class="overview">
-		{#each $getStartedData as page, i}
+		{#each $getStartedData as data, i}
 			<div class="overview-wrapper">
-				<a href={page.link} class="overview-link">{page.title}</a>
-				<p>{page.value}</p>
+				<a href={data.link} class="overview-link">{data.title}</a>
+				{#if data.value!=''}
+				<p>{data.value}{data.unit}</p>
+				{/if}
 			</div>
 		{/each}
 	</div>
