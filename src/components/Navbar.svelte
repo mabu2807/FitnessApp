@@ -64,7 +64,10 @@
 
 <nav class="navbar">
 	<div class="navbar-container" class:open={isMenuOpen}>
-		<h1 class="logo">FitnessHub</h1>
+		<div class="logo">
+		<img src="/src/assets/Logo.jpg" alt="">
+		</div>
+		<h1>FitnessHub</h1>
 
 		{#if loggedIn}
 			<ul class="menu-items">
@@ -135,20 +138,20 @@
 	}
 
 	.navbar {
-		background: #393e46;
-		color: white;
-		box-shadow: 0 0 10px black;
+		background: var(--darkgrey);
+		color: var(--white);
+		box-shadow: 0 0 10px var(--black);
 		z-index: 100;
 		position: relative;
-		padding-left: 20px; 
+		padding-left: 2vw; 
 	}
 
 	.navbar-container {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		height: 64px;
-		padding-left: 80px;
+		height: 10vh;
+		padding-left: 4vw;
 	}
 
 	.sidebar {
@@ -158,9 +161,9 @@
 		text-align: center;
 		top: 0;
 		right: 0;
-		width: 300px;
+		width: 20vw;
 		height: 100vh;
-		background-color: #393e46;
+		background-color: var(--darkgrey);
 		box-shadow: -10px 0px 10px 1px rgba(0, 0, 0, 0.244);
 		transition: 0.3s ease all;
 	}
@@ -179,6 +182,25 @@
 		width: 100%;
 		height: auto;
 		margin-top: 7%;
+	}
+	.logo {
+		width: 20%;
+		height: 70%;
+		overflow: hidden;
+		margin-right: 1vw;
+		/* margin-right: 3vw;
+		margin-left: 0.7vw;
+		margin-top: 0.7vh;
+		margin-bottom: 5vh;
+		border-radius: 5px; */
+
+	}
+
+	.logo img{
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+
 	}
 
 	.setting {
@@ -312,7 +334,7 @@
 		justify-content: center;
 		align-items: center;
 		width: 100%;
-		margin: 0 20px;
+		margin: 0 2vw;
 	}
 
 	.menu-items li {
@@ -390,7 +412,7 @@
 		background-color: #393e46;
 	}
 
-	@media (max-width: 768px) {
+	/* @media (max-width: 768px) {
 		.navbar-container {
 			justify-content: space-between;
 			padding-right: 20px; 
@@ -471,5 +493,5 @@
 		.navbar-container.open .line3 {
 			transform: rotate(-45deg) translate(5px, -6px);
 		}
-	}
+	} */
 </style>
