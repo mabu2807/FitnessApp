@@ -3,18 +3,24 @@
 		"userId": 1,
         "gender": "male",
 		"weight": 130,
-        "height": 180
+        "height": 180,
+		"dob": "1978-10-10",
+		"activityLevel": 10
 	},
 	{
 		"userId": 2,
         "gender": "male",
 		"weight": 78.5,
-        "height": 185
+        "height": 185,
+		"dob": "1995-08-05",
+		"activityLevel": 6
 	},
 	{
 		"userId": 3,
         "gender": "female",
         "weight": 62.2,
-        "height": 170
+        "height": 170,
+		"dob": "1950-12-12",
+		"activityLevel": 5
 	}
 ]

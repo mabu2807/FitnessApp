@@ -6,4 +6,3 @@
 <Navbar></Navbar>
 
 <slot />
-
