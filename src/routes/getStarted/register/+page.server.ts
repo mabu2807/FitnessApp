@@ -1,6 +1,7 @@
 import prisma from '$lib/prisma';
 import { fail, redirect } from '@sveltejs/kit';
-import type { Actions } from '../register/$types';
+import type { Actions } from './$types';
+import { getStartedData } from '../Data';
 
 const validateEmail = (email: string) => {
 	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -51,6 +52,20 @@ export const actions = {
 				password: password
 			}
 		});
+
+		/*let userId = prisma.user.findUnique({
+			where: {
+				email: email
+			},
+			select:{
+				id: true
+			}});
+
+		await prisma.userDetails.create({
+			data: {
+				userId: userId; 
+			}
+		});*/
 
 		throw redirect(303, `/`);
 	}

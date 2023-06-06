@@ -42,7 +42,9 @@
 		{#each $getStartedData as data, i}
 			<div class="overview-wrapper">
 				<a href={data.link} class="overview-link">{data.title}</a>
-				<p>{data.value}</p>
+				{#if data.value!=''}
+				<p>{data.value}{data.unit}</p>
+				{/if}
 			</div>
 		{/each}
 	</div>
