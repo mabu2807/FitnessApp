@@ -1,17 +1,53 @@
 <script lang="ts">
+	import Head from '../../components/Head.svelte';
 	import type { ActionData } from './$types';
 
 	export let form: ActionData;
 </script>
 
-<head>
+<!-- <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Fitness Login</title>
 	<link rel="stylesheet" href="style.css" />
-</head>
+</head> -->
+
+<Head></Head>
 
 <body>
+	<section class="flex items-center justify-center h-screen">
+		<div class="w-11/12 md:w-7/12 lg:w-6/12 xl:w-5/12 2xl:w-4/12 bg-white rounded-lg shadow-md flex">
+			<div class="w-1/2 p-8">
+				<div class="mb-8">
+					<div class="flex items-center mb-6">
+						<a href="/"><img src="Logo.jpg" alt="Logo" class="w-1/2" /></a>
+					</div>
+					<h3 class="text-2xl font-semibold mb-4">Benutzer Login</h3>
+				</div>
+				<form method="post" class="mb-8">
+					<input name="email" placeholder="Email" type="text" value={form?.email ?? ''} class="w-full py-3 px-2 mb-4 border border-gray-300 rounded-md" />
+					<input name="password" placeholder="Passwort" type="password" value={form?.password ?? ''} class="w-full py-3 px-2 mb-4 border border-gray-300 rounded-md" />
+					{#if form?.missing}<p class="text-red-500 text-sm ml-2">Bitte füllen Sie die Felder aus!</p>{/if}
+					<button type="submit" class="w-full py-3 px-2 bg-gray-700 text-white font-bold rounded-md hover:bg-white hover:text-gray-700 transition duration-500">Sign In</button>
+					<div class="mt-6 text-sm">
+						<p>Noch keinen Account? Dann <a href="/register" class="text-gray-700 font-semibold">Registriere</a> dich jetzt!</p>
+					</div>
+				</form>
+			</div>
+			<div class="w-1/2 bg-gray-100 flex flex-col justify-center items-center">
+				<div class="mb-6">
+					<h2 class="text-3xl font-semibold mb-4">Willkommen bei FitnessHub</h2>
+					<h5 class="text-lg font-light text-gray-500 mx-8">Von Cardio Carsten zu Markus Masse, wir bitten jeden zur Kasse!</h5>
+				</div>
+				<div class="h-2 w-10/12 bg-black rounded-full mb-4"></div>
+				<div class="h-2 w-10/12 bg-black rounded-full"></div>
+			</div>
+		</div>
+	</section>
+</body>
+
+
+<!-- <body>
 	<section class="login">
 		<div class="login_box">
 			<div class="left">
@@ -301,4 +337,4 @@
 			bottom: 7%;
 		}
 	}
-</style>
+</style> -->
