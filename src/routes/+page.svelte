@@ -40,24 +40,36 @@
 	});
 </script>
 
-<!-- <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Transform is missing  -->
 
-	<title>Fitness Tracker</title>
-</head> -->
-<Head />
-<body>
-	<main>
-		<section class="hero">
+<!-- <body>
+	<main> -->
+		<!-- hero class -->
+		<section class="p-10 text-center">
 			<h2>Welcome to Fitness Tracker</h2>
 			<p>Track your fitness progress and achieve your goals.</p>
-			<a href="/getStarted" class="btn">Get Started</a>
+			<!-- btn class -->
+			<a href="/getStarted" class="btn variant-filled">Get Started</a>
 		</section>
+		<!-- courses class -->
+		<section class="py-4 text-center">
+			<h2 class="h2">Unsere Kurse</h2>
+			<!-- all div are course class -->
+			<div class="block card card-hover w-40 mx-6">
+				<header class="card-header"><img class="w-30" src="workout1.jpg" alt="Kurs 1" /></header>
+				<section class="p-4"><h3 class="h3">Pilates</h3><p>Ein Ganzkörpertraining zur Verbesserung von Flexibilität, Kraft und Körperhaltung.</p></section>
+				</div>
+				<div class="block card card-hover w-40 mx-6">
+					<header class="card-header"><img class="w-30" src="workout1.jpg" alt="Kurs 1" /></header>
+					<section class="p-4"><h3 class="h3">Pilates</h3><p>Ein Ganzkörpertraining zur Verbesserung von Flexibilität, Kraft und Körperhaltung.</p></section>
+					</div>
+					<div class="block card card-hover w-40 mx-6">
+						<header class="card-header"><img class="w-30" src="workout1.jpg" alt="Kurs 1" /></header>
+						<section class="p-4"><h3 class="h3">Pilates</h3><p>Ein Ganzkörpertraining zur Verbesserung von Flexibilität, Kraft und Körperhaltung.</p></section>
+						</div>
 
-		<section id="courses">
-			<h2>Unsere Kurse</h2>
-			<div class="course">
+					</section>
+			<!-- <div class="course">
 				<img src="workout1.jpg" alt="Kurs 1" />
 				<h3>Pilates</h3>
 				<p>Ein Ganzkörpertraining zur Verbesserung von Flexibilität, Kraft und Körperhaltung.</p>
@@ -76,15 +88,22 @@
 					Eine intensive Trainingsform mit abwechselnden Phasen von hoher Intensität und kurzen
 					Ruhephasen.
 				</p>
-			</div>
-		</section>
-
-		<h2 class="headTestimonials">Was unsere Kunden sagen</h2>
-		<section id="testimonials">
-			<div class="arrow" on:click={handleNext}><i class="fa-solid fa-arrow-left fa-3x" /></div>
-			{#each visibleItems as item (item.id)}
+			</div> -->
+	
+		<!-- headTestimonials class -->
+		<h2 class="h2 text-center">Was unsere Kunden sagen</h2>
+		<section class="text-center items-center justify-between flex" id="testimonials">
+			<!-- arrow class -->
+			<div class="mx-7" on:click={handleNext}><i class="fa-solid fa-arrow-left fa-3x" /></div>
+			{#each visibleItems as item (item.id)} 
 				<!-- svelte-ignore missing-declaration -->
-				<div
+				<div class="card" transition:fly={{ x: -100, opacity: 0 }}
+				animate:fly={{ x: 0, opacity: 1 }}>
+					<header class="card-header"><img class="w-25" src={'test.jpeg'} alt="Kunde {item.id}" /></header>
+					<section class="p-4"><p>{item.text}</p></section>
+					<footer class="card-footer"><cite>{item.name}</cite></footer>
+				</div>
+				<!-- <div
 					class="testimonial out in"
 					transition:fly={{ x: -100, opacity: 0 }}
 					animate:fly={{ x: 0, opacity: 1 }}
@@ -92,25 +111,25 @@
 					<img src={'test.jpeg'} alt="Kunde {item.id}" />
 					<p>{item.text}</p>
 					<cite>{item.name}</cite>
-				</div>
+				</div> -->
 			{/each}
-			<div class="arrow" on:click={handlePrevious}><i class="fa-solid fa-arrow-right fa-3x" /></div>
+			<div class="mx-7" on:click={handlePrevious}><i class="fa-solid fa-arrow-right fa-3x" /></div>
 		</section>
 
-		<section id="contact">
-			<h2>Kontaktieren Sie uns</h2>
-			<form>
-				<input type="text" name="name" placeholder="Name" required />
-				<input type="email" name="email" placeholder="E-Mail-Adresse" required />
-				<textarea name="message" placeholder="Nachricht" required />
-				<button type="submit">Senden</button>
+		<!-- contact class -->
+		<section class="text-center py-7">
+			<h2 class="h2">Kontaktieren Sie uns</h2>
+			<form class="w-50">
+				<input class="input" type="text" name="name" placeholder="Name" required />
+				<input class="input" type="email" name="email" placeholder="E-Mail-Adresse" required />
+				<textarea class="textarea" name="message" placeholder="Nachricht" required />
+				<button type="submit" class="btn variant-filled">Senden</button> 
 			</form>
 		</section>
-	</main>
-	<Footer />
-</body>
+	<!-- </main>
+</body> -->
 
-<style>
+<!-- <style>
 	body {
 		font-family: Arial, sans-serif;
 		margin: 0;
@@ -269,4 +288,4 @@
 	button[type='submit']:hover {
 		background-color: #555;
 	}
-</style>
+</style>   -->

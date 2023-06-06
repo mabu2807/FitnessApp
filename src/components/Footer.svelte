@@ -1,4 +1,4 @@
-<footer class="footer">
+<!-- <footer class="footer">
 	<div class="footer-content">
 		<p class="footer-text">&copy; 2023 FitnessHub. All rights reserved.</p>
 		<div class="footer-icons">
@@ -67,4 +67,22 @@
 			font-size: 3vw;
 		}
 	}
-</style>
+</style> -->
+
+<div class="footer">
+	<p class="footer-text">&copy; 2023 FitnessHub. All rights reserved.</p>
+	<div class="footer-icons">
+		<a class="linkFooter" href="https://www.youtube.com/@RoswitaRuhl"
+			><i class="fa-brands fa-youtube" /></a
+		>
+		<a class="linkFooter" href="https://www.instagram.com/ksvlangen/"
+			><i class="fa-brands fa-instagram" /></a
+		>
+		<a class="linkFooter" href="https://twitter.com/mibi61?s=21&t=O8Ege5KSxyYHHBAtUfSaJQ"
+			><i class="fa-brands fa-square-twitter" /></a
+		>
+		<a class="linkFooter" href="https://www.linkedin.com/in/luca-chmielarski?original_referer="
+			><i class="fa-brands fa-linkedin" /></a
+		>
+	</div>
+</div>
