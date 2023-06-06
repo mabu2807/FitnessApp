@@ -17,12 +17,12 @@
 
 	function updateSliderValue(event) {
 		sliderValue = event.target.value;
-		$getStartedData[4].value = sliderValue;
+		$getStartedData[5].value = sliderValue;
 	}
 
 	function startValue() {
-		sliderValue = $getStartedData[4].value === '' ? '5' : $getStartedData[4].value;
-		$getStartedData[4].value = sliderValue;
+		sliderValue = $getStartedData[5].value === '' ? '5' : $getStartedData[5].value;
+		$getStartedData[5].value = sliderValue;
 	}
 
 	onMount(startValue);
@@ -52,13 +52,13 @@
 	{/if}
 	<div class="title-container">
 		<div class="title">
-			<h1>Schritt: 5</h1>
+			<h1>Schritt: 6</h1>
 			<p>Wähle dein Aktivitätslevel aus!</p>
 		</div>
 	</div>
 
 	<div class="slider-value">
-		<p>{$getStartedData[4].value}</p>
+		<p>{$getStartedData[5].value}</p>
 	</div>
 
 	<div class="slidecontainer">
@@ -78,7 +78,7 @@
 	</div>
 
 	<div class="button-container-left">
-		<a href="/getStarted/dob" class="back-button">Zurück</a>
+		<a href="/getStarted/gender" class="back-button">Zurück</a>
 	</div>
 
 	<div class="overview">
