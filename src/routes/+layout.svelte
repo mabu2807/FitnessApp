@@ -4,8 +4,8 @@
 	import Footer from '../components/Footer.svelte';
 	import Navbar from '../components/Navbar.svelte';
 	// Your selected Skeleton theme:
-	import '../theme.postcss';
-	// import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
+	// import '../theme.postcss';
+	import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
 
 	// This contains the bulk of Skeletons required styles:
 // NOTE: this will be renamed skeleton.css in the v2.x release.
