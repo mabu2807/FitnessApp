@@ -34,7 +34,20 @@ async function main() {
         userId: userDetails.userId,
         gender: userDetails.gender,
         weight: userDetails.weight,
-        height: userDetails.height
+        height: userDetails.height,
+        dob: new Date(userDetails.dob),
+        activityLevel: userDetails.activityLevel
+      }
+    })
+  }
+
+  for (const category of categoryData) {
+    await prisma.category.create({
+      data: {
+        id: category.id,
+        name: category.name,
+        description: category.description,
+        imagePath: category.imagePath
       }
     })
   }
@@ -42,7 +55,11 @@ async function main() {
   for (const trainingPlan of trainingPlanData) {
     await prisma.trainingPlan.create({
       data: {
-        id: trainingPlan.id
+        id: trainingPlan.id,
+        title: trainingPlan.title,
+        description: trainingPlan.description,
+        imagePath: trainingPlan.imagePath,
+        categoryId: trainingPlan.categoryId
       }
     })
   }
@@ -53,16 +70,6 @@ async function main() {
         userId: userTrainingPlan.userId,
         trainingPlanId: userTrainingPlan.trainigPlanId,
         active: userTrainingPlan.active
-      }
-    })
-  }
-
-  for (const category of categoryData) {
-    await prisma.category.create({
-      data: {
-        id: category.id,
-        name: category.name,
-        description: category.description
       }
     })
   }
