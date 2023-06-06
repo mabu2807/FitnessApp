@@ -32,21 +32,17 @@
 	{#if popUp}
 		<div id="popupOverlay">
 			<div id="popupContent">
+				<button id="closePopButton" class="fa-solid fa-xmark" on:click={closePopUp}></button>
 				<h2>Bitte bestätigen Sie Ihre Daten</h2>
 				<table>
 					{#each $getStartedData as data}
 						<tr>
-							<td>{data.title}</td>
-							<td>{data.value}{data.unit}</td>
+							<td style='text-align: left; padding-right: 50px'>{data.title}</td>
+							<td style='text-align: right'>{data.value}{data.unit}</td>
 						</tr>
 					{/each}
 				</table>
-				<div class="button-container-right">
-					<a href="/getStarted/register" class="next-button">Bestätigen</a>
-				</div>
-				<div class="button-container-left">
-					<button on:click={closePopUp} class="back-button">Abbrechen</button>
-				</div>
+				<a href="/getStarted/register" class="abschließen-button">Bestätigen</a>
 			</div>
 		</div>
 	{/if}
@@ -60,24 +56,19 @@
 	<div class="slider-value">
 		<p>{$getStartedData[5].value}</p>
 	</div>
-
-	<div class="slidecontainer">
-		<input
-			type="range"
-			min="0"
-			max="10"
-			bind:value={sliderValue}
-			class="slider"
-			id="myRange"
-			on:input={updateSliderValue}
-		/>
-	</div>
-
-	<div class="button-container-right">
+	<div>
+		<div class="slidecontainer">
+			<input
+				type="range"
+				min="0"
+				max="10"
+				bind:value={sliderValue}
+				class="slider"
+				id="myRange"
+				on:input={updateSliderValue}
+			/>
+		</div>
 		<button on:click={showPopUp} class="next-button">Abschließen</button>
-	</div>
-
-	<div class="button-container-left">
 		<a href="/getStarted/gender" class="back-button">Zurück</a>
 	</div>
 
@@ -85,8 +76,8 @@
 		{#each $getStartedData as data, i}
 			<div class="overview-wrapper">
 				<a href={data.link} class="overview-link">{data.title}</a>
-				{#if data.value!=''}
-				<p>{data.value}{data.unit}</p>
+				{#if data.value != ''}
+					<p>{data.value}{data.unit}</p>
 				{/if}
 			</div>
 		{/each}
@@ -94,6 +85,36 @@
 </body>
 
 <style>
+	#closePopButton{
+		font-size: 2rem;
+		color:#c82333;
+		position: absolute;
+		right:5%;
+		top:5%;
+		border: none;
+		background: none;
+	}
+	.abschließen-button {
+		position: absolute;
+		bottom: 10%;
+		font-size: 16px;
+		font-weight: bold;
+		text-decoration: underline;
+		cursor: pointer;
+		padding: 20px;
+		background-color: white;
+		border: 2px solid #0056b3;
+		font-weight: 600;
+		color: #0056b3;
+		border-radius: 8px;
+		font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial,
+			sans-serif;
+	}
+	.abschließen-button:hover {
+		background-color: #0056b3;
+		color: white;
+		transition: all ease 0.5s;
+	}
 	.title-container {
 		font-size: 1rem;
 		display: flex;
@@ -114,8 +135,15 @@
 		background-color: rgba(0, 0, 0, 0.8);
 		z-index: 9999;
 	}
-
-	#popupContent h2{
+	#popupContent table {
+		width: 40%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: left;
+	}
+	#popupContent h2 {
 		font-size: 30px;
 		font-weight: bold;
 		text-decoration: underline;
@@ -123,7 +151,7 @@
 	#popupContent {
 		display: flex;
 		flex-direction: column;
-		align-items: left;
+		align-items: center;
 		position: absolute;
 		background-color: #fff;
 		width: 60%;
@@ -166,18 +194,17 @@
 		opacity: 1;
 	}
 
-	.button-container-right {
-		position: absolute;
-		right: 5%;
-		bottom: 20%;
-	}
-
 	.next-button {
+		position: absolute;
+		bottom: 16.5%;
+		right: 5%;
+		text-align: center;
+		width: 163.31px;
 		font-size: 16px;
 		font-weight: bold;
 		text-decoration: underline;
 		cursor: pointer;
-		padding: 20px 50px;
+		padding: 20px;
 		background-color: white;
 		border: 2px solid #0056b3;
 		font-weight: 600;
@@ -193,13 +220,10 @@
 		transition: all ease 0.5s;
 	}
 
-	.button-container-left {
+	.back-button {
 		position: absolute;
 		left: 5%;
-		bottom: 20%;
-	}
-
-	.back-button {
+		bottom: 16.5%;
 		font-size: 16px;
 		font-weight: bold;
 		text-decoration: underline;
