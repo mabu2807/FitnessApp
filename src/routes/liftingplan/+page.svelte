@@ -208,6 +208,72 @@
 
 <main>
 	{#if plength > 0}
+		<div class="category bg-gray-100 py-4 px-6 flex items-center justify-center flex-col">
+			<h1 class="category-title text-2xl font-bold">Wähle einen Trainingsplan</h1>
+			<p class="category-description text-base text-gray-500">Entdecke unsere vielfältigen Trainingsmöglichkeiten</p>
+		</div>
+		<div class="plan-container flex flex-wrap justify-center gap-4">
+			{#each plans as plan}
+				<div class="plan-card w-1/3 bg-white rounded-lg p-4 shadow">
+					<img src={plan.image} alt={plan.title} class="plan-image w-full h-48 rounded-md" />
+					<div class="plan-content">
+						<h3 class="plan-title text-lg font-bold">{plan.title}</h3>
+						<p class="plan-description text-sm text-gray-500">{plan.description}</p>
+						<button on:click={() => setPlan(plan)} class="select-button text-white bg-gray-900 border border-gray-900 rounded-md py-2 px-4 mt-2 transition duration-500 ease-in-out hover:bg-white hover:text-gray-900 hover:border-gray-900">
+							<Label>Auswählen</Label>
+						</button>
+					</div>
+				</div>
+			{/each}
+		</div>
+
+		{#if showPlan}
+			<Dialog
+				bind:open
+				aria-labelledby="large-scroll-title"
+				aria-describedby="large-scroll-content"
+				surface$style="width: 1050px; max-width: calc(100vw - 32px);"
+			>
+				<Title id="large-scroll-title">{showPlan.title}</Title>
+				<Content id="large-scroll-content">
+					<div />
+					<div class="exc-container">
+						{#each { length: showPlan.plan.length } as _, i}
+							<h2>Übung {i + 1}: {showPlan.plan[i].exercise}</h2>
+							<div class="exc-wrapper">
+								<div class="image-co">
+									<img src={showPlan.plan[i].imagePath} alt={showPlan.plan[i].imagePath} />
+								</div>
+								<div class="exc-descript">
+									<p>
+										<b> {showPlan.plan[i].sets} </b> Sätze x <b> {showPlan.plan[i].repetitions} </b>
+										Wiederholungen (Gewicht: Langhantel mit zusätzlichen
+										<b> {showPlan.plan[i].weigth}kg </b>)
+									</p>
+
+									<h4>Hinweise zur Ausführung:</h4>
+									<p>{showPlan.plan[i].description}</p>
+								</div>
+							</div>
+						{/each}
+					</div>
+				</Content>
+				<Actions>
+					<Button action="accept">
+						<Label>Done</Label>
+					</Button>
+				</Actions>
+			</Dialog>
+		{/if}
+		
+	{:else}
+		<p class="no-plan-message">Keine Trainingspläne gefunden.</p>
+	{/if}
+</main>
+
+<!-- 
+<main>
+	{#if plength > 0}
 		<div class="category">
 			<h1 class="category-title">Wähle einen Trainingsplan</h1>
 			<p class="category-description">Entdecke unsere vielfältigen Trainingsmöglichkeiten</p>
@@ -559,4 +625,4 @@
 		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
 			Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	}
-</style>
+</style> -->
