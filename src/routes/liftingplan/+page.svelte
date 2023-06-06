@@ -205,21 +205,53 @@
 		addOnOpen = true;
 	}
 </script>
+<!-- 
+	
 
+	.plan-card {
+		width: calc(33.33% - 20px);
+		margin-bottom: 20px;
+		background-color: #ffffff;
+		border-radius: 8px;
+		padding: 20px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+
+	.plan-image {
+		width: 100%;
+		height: 270px;
+		border-radius: 4px;
+	}
+
+	.plan-content {
+		margin-top: 10px;
+	}
+
+	.plan-title {
+		font-size: 18px;
+		margin-bottom: 10px;
+	}
+
+	.plan-description {
+		font-size: 14px;
+		margin-bottom: 10px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	} -->
 <main>
 	{#if plength > 0}
-		<div class="category">
-			<h1 class="category-title">Wähle einen Trainingsplan</h1>
-			<p class="category-description">Entdecke unsere vielfältigen Trainingsmöglichkeiten</p>
+		<div class=" bg-gray-100 mb-6 py-4 px-6 flex items-center justify-center flex-col ">
+			<h1 class="text-2xl font-bold">Wähle einen Trainingsplan</h1>
+			<p class=" text-base text-gray-500">Entdecke unsere vielfältigen Trainingsmöglichkeiten</p>
 		</div>
-		<div class="plan-container">
+		<div class=" flex flex-wrap justify-center gap-4 font-sans">
 			{#each plans as plan}
-				<div class="plan-card">
-					<img src={plan.image} alt={plan.title} class="plan-image" />
-					<div class="plan-content">
-						<h3 class="plan-title">{plan.title}</h3>
-						<p class="plan-description">{plan.description}</p>
-						<button on:click={() => setPlan(plan)} class="select-button">
+				<div class="plan-card w-1/3 mb-5 bg-white rounded-lg p-4 shadow">
+					<img src={plan.image} alt={plan.title} class="plan-image w-full h-72 rounded-md" />
+					<div class="mt-4">
+						<h3 class="mb-3  text-lg font-bold">{plan.title}</h3>
+						<p class="mb-3 text-sm text-gray-700">{plan.description}</p>
+						<button on:click={() => setPlan(plan)} class="select-button text-white bg-gray-900 border border-gray-900 rounded-md py-2 px-4 mt-2 transition duration-500 ease-in-out hover:bg-white hover:text-gray-900 hover:border-gray-900">
 							<Label>Auswählen</Label>
 						</button>
 					</div>
@@ -237,14 +269,14 @@
 				<Title id="large-scroll-title">{showPlan.title}</Title>
 				<Content id="large-scroll-content">
 					<div />
-					<div class="exc-container">
+					<div class="flex flex-col justify-center items-center mt-5">
 						{#each { length: showPlan.plan.length } as _, i}
 							<h2>Übung {i + 1}: {showPlan.plan[i].exercise}</h2>
-							<div class="exc-wrapper">
-								<div class="image-co">
-									<img src={showPlan.plan[i].imagePath} alt={showPlan.plan[i].imagePath} />
+							<div class="flex flex-row text-center">
+								<div class="w-3/5 h-72 rounded-lg border-solid border-gray-400 border-2">
+									<img class="w-full h-full object-cover" src={showPlan.plan[i].imagePath} alt={showPlan.plan[i].imagePath} />
 								</div>
-								<div class="exc-descript">
+								<div class="w-full h-1/5">
 									<p>
 										<b> {showPlan.plan[i].sets} </b> Sätze x <b> {showPlan.plan[i].repetitions} </b>
 										Wiederholungen (Gewicht: Langhantel mit zusätzlichen
@@ -265,71 +297,17 @@
 				</Actions>
 			</Dialog>
 		{/if}
-		<footer class="footer-n">
-			<div class="footer-content">
-				<p class="footer-text">&copy; 2023 Fitness Tracker. All rights reserved.</p>
-			</div>
-		</footer>
+		
 	{:else}
-		<div class="info-container">
-			<h2 class="info-title">Du hast noch keine Trainingspläne abonniert</h2>
-			<p class="info-text">
-				Abonniere jetzt und erhalte Zugriff auf eine Vielzahl von zusätzlichen Trainingsplänen, um
-				dein Fitnessziel zu erreichen.
-			</p>
-			<div class="button-container">
-				<button class="subscribe-button">
-					<div class="subscribe-container-text">
-						<p class="subscribe-text">Jetzt Abonnieren</p>
-					</div>
-					<div class="subscribe-container-plus">
-						<span class="plus-icon">+</span>
-					</div>
-				</button>
-			</div>
-		</div>
-
-		<footer class="footer">
-			<div class="footer-content">
-				<p class="footer-text">&copy; 2023 Fitness Tracker. All rights reserved.</p>
-			</div>
-		</footer>
+		<p class="no-plan-message">Keine Trainingspläne gefunden.</p>
 	{/if}
 </main>
 
+
+
+<!-- 
 <style>
-	.exc-container {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		margin-top: 20px;
-	}
-
-	.exc-wrapper {
-		display: flex;
-		flex-direction: row;
-		text-align: center;
-	}
-
-	.exc-descript {
-		width: 100%;
-		height: 10%;
-	}
-
-	.image-co {
-		width: 47%;
-		height: 285px;
-		overflow: hidden;
-		border: 2px solid #a19d9d;
-		border-radius: 5px;
-	}
-
-	.image-co img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
+	
 
 	.select-button {
 		font-size: 16px;
@@ -559,4 +537,4 @@
 		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
 			Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	}
-</style>
+</style> -->
