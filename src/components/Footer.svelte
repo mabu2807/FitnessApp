@@ -69,20 +69,26 @@
 	}
 </style> -->
 
-<div class="footer">
-	<p class="footer-text">&copy; 2023 FitnessHub. All rights reserved.</p>
-	<div class="footer-icons">
-		<a class="linkFooter" href="https://www.youtube.com/@RoswitaRuhl"
-			><i class="fa-brands fa-youtube" /></a
-		>
-		<a class="linkFooter" href="https://www.instagram.com/ksvlangen/"
-			><i class="fa-brands fa-instagram" /></a
-		>
-		<a class="linkFooter" href="https://twitter.com/mibi61?s=21&t=O8Ege5KSxyYHHBAtUfSaJQ"
-			><i class="fa-brands fa-square-twitter" /></a
-		>
-		<a class="linkFooter" href="https://www.linkedin.com/in/luca-chmielarski?original_referer="
-			><i class="fa-brands fa-linkedin" /></a
-		>
+
+
+<footer class="bg-gray-900 text-white w-full h-20 px-6">
+	<div class="flex items-center justify-between h-full">
+	  <p class="text-sm md:text-base">© 2023 FitnessHub. All rights reserved.</p>
+	  <div class="flex">
+		<a class="mr-4 hover:text-gray-500" href="https://www.youtube.com/@RoswitaRuhl">
+		  <i class="fab fa-youtube fa-2x"></i>
+		</a>
+		<a class="mr-4 hover:text-gray-500" href="https://www.instagram.com/ksvlangen/">
+		  <i class="fab fa-instagram fa-2x"></i>
+		</a>
+		<a class="mr-4 hover:text-gray-500" href="https://twitter.com/mibi61?s=21&t=O8Ege5KSxyYHHBAtUfSaJQ">
+		  <i class="fab fa-twitter-square fa-2x"></i>
+		</a>
+		<a class="mr-4 hover:text-gray-500" href="https://www.linkedin.com/in/luca-chmielarski?original_referer=">
+		  <i class="fab fa-linkedin fa-2x"></i>
+		</a>
+	  </div>
 	</div>
-</div>
+  </footer>
+  
+  
