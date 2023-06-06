@@ -122,7 +122,7 @@
 
 	<div class="flex flex-wrap justify-center gap-3 mt-5">
 		{#each selectedData as button}
-			<a href={button.link} class="flex flex-col items-center justify-center w-56 h-80 bg-white rounded-md shadow-md no-underline text-gray-400 mt-3 hover:w-64 transition-all duration-900 ease-in ">
+			<a href={button.link} class="flex flex-col items-center justify-center w-64 h-80 bg-white rounded-md shadow-xl no-underline text-gray-400 mt-3 hover:w-72 transition-all duration-900 ease-in ">
 				<div class="w-full h-full rounded-md">
 					<img class="w-full h-full object-cover rounded-tl-md rounded-tr-md" src={button.imageSrc} alt="Button Image" />
 				</div>
@@ -164,50 +164,70 @@
 		<Content id="large-scroll-content">
 			<hr />
 			<h2>Füge neue Sportarten hinzu</h2>
-			<div class="icon-container">
+			<!-- .icon-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 130px;
+		height: 130px;
+		background-color: #fff;
+		border: none;
+		/* border-radius: 8px; */
+		overflow: hidden;
+		/* outline-style: solid;
+    outline-color: black; */
+		/* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease-in-out; */
+		text-decoration: none;
+		color: inherit;
+		margin: 10px;
+		cursor: pointer;
+	} -->
+			<div class="flex items-center">
 				{#each { length: availableData.length } as _, i}
 					<div>
 						<button
 							style={availableData[i].selected
 								? 'box-shadow: 0 0 10px black; border-radius: 8px; transition: .5s ease all;'
 								: 'outline-style: none;'}
-							class="icon-card"
+							class=" flex flex-col items-center justify-center w-40 h-40 bg-gray-200 rounded-lg border-none overflow-hidden text-decoration-none text-gray-700 m-5 cursor-pointer hover:shadow-xl transition-all duration-200 ease-in"
 							on:click={() => {
 								availableData[i].selected = !availableData[i].selected;
 								buttonAddDisabled();
 							}}
 						>
 							<img
-								class="image-container"
+								class="w-full h-full overflow-hidden object-cover"
 								src={availableData[i].imageSrc}
 								alt={availableData[i].imageSrc}
 							/>
-							<div class="icon-title">{availableData[i].title}</div>
+							<div class=" mt-5 text-center text-xs mb-5">{availableData[i].title}</div>
 						</button>
 					</div>
 				{/each}
 			</div>
 			<hr />
 			<h2>Lösche ausgewählte Sportarten</h2>
-			<div class="icon-container">
+			<div class="flex items-center">
 				{#each { length: selectedData.length } as _, i}
 					<div>
 						<button
 							style={selectedData[i].selected
 								? 'box-shadow: 0 0 10px black; border-radius: 8px; transition: .5s ease all;'
 								: 'outline-style: none;'}
-							class="icon-card"
+							class=" flex flex-col items-center justify-center w-40 h-40 bg-gray-200 rounded-lg border-none overflow-hidden text-decoration-none text-gray-700 m-5 cursor-pointer hover:shadow-xl transition-all duration-200 ease-in"
 							on:click={() => {
 								selectedData[i].selected = !selectedData[i].selected;
 								buttonRemoveDisabled();
 							}}
 						>
 							<img
-								class="image-container"
+								class="w-full h-full overflow-hidden object-cover"
 								src={selectedData[i].imageSrc}
 								alt={selectedData[i].imageSrc}
 							/>
-							<div class="icon-title">{selectedData[i].title}</div>
+							<div class="mt-5 text-center text-xs mb-5">{selectedData[i].title}</div>
 						</button>
 					</div>
 				{/each}
@@ -223,7 +243,7 @@
 		</Actions>
 	</Dialog>
 </main>
-<Footer />
+
 
 <!-- <style>
 	.icon-container {
@@ -288,26 +308,7 @@
 		margin: 10px;
 	}
 
-	.icon-card {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		width: 130px;
-		height: 130px;
-		background-color: #fff;
-		border: none;
-		/* border-radius: 8px; */
-		overflow: hidden;
-		/* outline-style: solid;
-    outline-color: black; */
-		/* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.3s ease-in-out; */
-		text-decoration: none;
-		color: inherit;
-		margin: 10px;
-		cursor: pointer;
-	}
+	
 
 	.icon-card:hover {
 		border-radius: 8px;
