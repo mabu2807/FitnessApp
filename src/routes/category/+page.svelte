@@ -6,10 +6,13 @@
 	import { element } from 'svelte/internal';
 	import Head from '../../components/Head.svelte';
 	import Footer from '../../components/Footer.svelte';
+	import type { PageData } from './$types'
 
 	let open = false;
 	let removeDisabled = true;
 	let addDisabled = true;
+
+	export let data: PageData
 
 	function addOn() {
 		open = true;
@@ -85,7 +88,7 @@
 			imageSrc: 'workout2.jpg',
 			description:
 				' Sed do eiusmod temporrem ipsum dolor sit ametorididunt ut labore et dolore magna aliqua. ',
-			link: 'liftingplan',
+			link: 'liftingplans',
 			selected: false
 		},
 		{

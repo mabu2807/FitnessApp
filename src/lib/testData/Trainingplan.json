@@ -1,11 +1,26 @@
 [
 	{
-		"id": 1
+		"id": 1,
+		"title": "Trainingsplan 1: Muskelaufbau",
+		"description": "Ein intensiver Trainingsplan für Fettverbrennung und Ausdauersteigerung.",
+		"imagePath": "plan1.jpg"
 	},
 	{
-		"id": 2
+		"id": 2,
+		"title": "Trainingsplan 2: Fettverbrennung",
+		"description": "Ein intensiver Trainingsplan für Fettverbrennung und Ausdauersteigerung.",
+		"imagePath": "plan2.jpg"
 	},
 	{
-		"id": 3
+		"id": 3,
+		"title": "Trainingsplan 3: Flexibilität",
+		"description": "Ein flexibler Trainingsplan für Ganzkörperfitness und Beweglichkeit.",
+		"imagePath": "plan3.jpg"
+	},
+	{
+		"id": 4,
+		"title": "Trainingsplan 4: Beweglichkeit",
+		"description": "Ein umfassender Trainingsplan für die Beweglichkeit.",
+		"imagePath": "plan4.jpg"
 	}
 ]

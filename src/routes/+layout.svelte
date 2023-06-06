@@ -71,7 +71,7 @@
 		{#if loggedIn}
 			<ul class="menu-items">
 				<li><a class="a" href="/">Home</a></li>
-				<li><a class="a" href="/kategorie">Workouts</a></li>
+				<li><a class="a" href="/category">Workouts</a></li>
 				<li><a class="a" href="/progress">Progress</a></li>
 				<li><a class="a" href="/nutrition">Ernährungsplan</a></li>
 			</ul>

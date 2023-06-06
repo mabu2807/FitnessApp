@@ -42,7 +42,10 @@ async function main() {
   for (const trainingPlan of trainingPlanData) {
     await prisma.trainingPlan.create({
       data: {
-        id: trainingPlan.id
+        id: trainingPlan.id,
+        title: trainingPlan.title,
+        description: trainingPlan.description,
+        imagePath: trainingPlan.imagePath
       }
     })
   }
@@ -62,7 +65,8 @@ async function main() {
       data: {
         id: category.id,
         name: category.name,
-        description: category.description
+        description: category.description,
+        imagePath: category.imagePath
       }
     })
   }
