@@ -75,18 +75,18 @@
 	<div class="flex items-center justify-between h-full">
 	  <p class="text-sm md:text-base">© 2023 FitnessHub. All rights reserved.</p>
 	  <div class="flex">
-		<button class="mr-4 hover:text-gray-500" href="https://www.youtube.com/@RoswitaRuhl">
+		<a class="mr-4 hover:text-gray-500" href="https://www.youtube.com/@RoswitaRuhl">
 		  <i class="fab fa-youtube fa-2x"></i>
-		</button>
-		<button class="mr-4 hover:text-gray-500" href="https://www.instagram.com/ksvlangen/">
+		</a>
+		<a class="mr-4 hover:text-gray-500" href="https://www.instagram.com/ksvlangen/">
 		  <i class="fab fa-instagram fa-2x"></i>
-		</button>
-		<button class="mr-4 hover:text-gray-500" href="https://twitter.com/mibi61?s=21&t=O8Ege5KSxyYHHBAtUfSaJQ">
+		</a>
+		<a class="mr-4 hover:text-gray-500" href="https://twitter.com/mibi61?s=21&t=O8Ege5KSxyYHHBAtUfSaJQ">
 		  <i class="fab fa-twitter-square fa-2x"></i>
-		</button>
-		<button class="mr-4 hover:text-gray-500" href="https://www.linkedin.com/in/luca-chmielarski?original_referer=">
+		</a>
+		<a class="mr-4 hover:text-gray-500" href="https://www.linkedin.com/in/luca-chmielarski?original_referer=">
 		  <i class="fab fa-linkedin fa-2x"></i>
-		</button>
+		</a>
 	  </div>
 	</div>
   </footer>
