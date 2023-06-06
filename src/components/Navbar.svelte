@@ -3,9 +3,16 @@
 </script>
 
 <AppBar>
-	<svelte:fragment slot="lead">(icon)</svelte:fragment>
-	<svelte:fragment slot="trail">(actions)</svelte:fragment>
-	<svelte:fragment slot="headline">(headline)</svelte:fragment>
+	<svelte:fragment slot="lead">
+		<img class="w-20" src="/static/Logo.jpg" alt="">
+		<h1>FitnessHub</h1>
+	</svelte:fragment>
+	<svelte:fragment slot="trail">
+		<a href="/">Home</a>
+		<a href="/kategorie">Workouts</a>
+		<a href="/progress">Progress</a>
+		<a href="/nutrition">Ernährungsplan</a>
+	</svelte:fragment>
 </AppBar>
 <!-- <script>
 	import { onMount } from 'svelte/internal';
