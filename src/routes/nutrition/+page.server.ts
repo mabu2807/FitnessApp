@@ -40,10 +40,10 @@ export const load = (async () => {
 		// Calc on week before
 		const eineWocheZuvor = new Date();
 		eineWocheZuvor.setDate(heute.getDate() - 7);
-		eineWocheZuvor.setHours(2,0,0,0);
+		eineWocheZuvor.setHours(2, 0, 0, 0);
 		// Chart data request
 		responseUsermeals = await prisma.meal.findMany({
-			where:{
+			where: {
 				day: {
 					gt: eineWocheZuvor
 				}
@@ -52,19 +52,17 @@ export const load = (async () => {
 				dish: {
 					include: {
 						nutritionalValues: true
-					},
-					
+					}
 				}
 			}
 		});
 
-
 		// Calc on week before
 		const todayMidnight = new Date();
-		todayMidnight.setHours(2,0,0,0);
+		todayMidnight.setHours(2, 0, 0, 0);
 		responedaymeal = await prisma.meal.findMany({
-			where:{
-				day:{
+			where: {
+				day: {
 					gt: todayMidnight
 				}
 			},
@@ -72,11 +70,10 @@ export const load = (async () => {
 				dish: {
 					include: {
 						nutritionalValues: true
-					},
-					
+					}
 				}
 			}
-		})
+		});
 	} catch (error) {
 		throw new Error('DB request faild ');
 	}
@@ -93,7 +90,8 @@ export const load = (async () => {
 	for (let i = 0; i < 7; i++) {
 		for (let j = 0; j < responseUsermeals.length; j++) {
 			if (responseUsermeals[j].day.getDay() == i) {
-				calperdayunsorted[i] = calperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.energy;				
+				calperdayunsorted[i] =
+					calperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.energy;
 			}
 		}
 	}
@@ -112,7 +110,7 @@ export const load = (async () => {
 		calperday = calperdayunsorted;
 	}
 	const chartdata = initChartData(allCalories, calperday);
-	
+
 	// -------------------------- return -------------------------------------------
-	return {allcalories: allCalories, chartdata:chartdata, mealsforCards: responedaymeal};
+	return { allcalories: allCalories, chartdata: chartdata, mealsforCards: responedaymeal };
 }) satisfies PageServerLoad;

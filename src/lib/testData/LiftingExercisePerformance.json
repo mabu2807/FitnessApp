@@ -1,44 +1,44 @@
 [
-    {
-        "id": 1,
-        "set": 1,
-        "repetitions": 10,
-        "weight": 100,
-        "exerciseId": 1
-    },
-    {
-        "id": 2,
-        "set": 2,
-        "repetitions": 8,
-        "weight": 100,
-        "exerciseId": 1
-    },
-    {
-        "id": 3,
-        "set": 3,
-        "repetitions": 11,
-        "weight": 90,
-        "exerciseId": 1
-    },
-    {
-        "id": 4,
-        "set": 1,
-        "repetitions": 16,
-        "weight": 70,
-        "exerciseId": 2
-    },
-    {
-        "id": 5,
-        "set": 2,
-        "repetitions": 14,
-        "weight": 70,
-        "exerciseId": 2
-    },
-    {
-        "id": 6,
-        "set": 3,
-        "repetitions": 11,
-        "weight": 70,
-        "exerciseId": 2
-    }
+	{
+		"id": 1,
+		"set": 1,
+		"repetitions": 10,
+		"weight": 100,
+		"exerciseId": 1
+	},
+	{
+		"id": 2,
+		"set": 2,
+		"repetitions": 8,
+		"weight": 100,
+		"exerciseId": 1
+	},
+	{
+		"id": 3,
+		"set": 3,
+		"repetitions": 11,
+		"weight": 90,
+		"exerciseId": 1
+	},
+	{
+		"id": 4,
+		"set": 1,
+		"repetitions": 16,
+		"weight": 70,
+		"exerciseId": 2
+	},
+	{
+		"id": 5,
+		"set": 2,
+		"repetitions": 14,
+		"weight": 70,
+		"exerciseId": 2
+	},
+	{
+		"id": 6,
+		"set": 3,
+		"repetitions": 11,
+		"weight": 70,
+		"exerciseId": 2
+	}
 ]

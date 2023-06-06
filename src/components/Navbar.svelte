@@ -1,4 +1,13 @@
 <script>
+	import { AppBar } from '@skeletonlabs/skeleton';
+</script>
+
+<AppBar>
+	<svelte:fragment slot="lead">(icon)</svelte:fragment>
+	<svelte:fragment slot="trail">(actions)</svelte:fragment>
+	<svelte:fragment slot="headline">(headline)</svelte:fragment>
+</AppBar>
+<!-- <script>
 	import { onMount } from 'svelte/internal';
 
 	let isMenuOpen = false;
@@ -74,10 +83,10 @@
 				<li><a class="a" href="/kategorie">Workouts</a></li>
 				<li><a class="a" href="/progress">Progress</a></li>
 				<li><a class="a" href="/nutrition">Ernährungsplan</a></li>
-			</ul>
+			</ul> -->
 
 			<!-- <Avatar src="profile.jpg"  actionParams="#Apollo" /> -->
-			<div class="profile-wrapper" on:click={toggleProfileMenu}>
+			<!-- <div class="profile-wrapper" on:click={toggleProfileMenu}>
 				<a><img src="profile.jpg" alt="" /> </a>
 			</div>
 			{#if isProfileMenuOpen}
@@ -474,5 +483,4 @@
 			transform: rotate(-45deg) translate(5px, -6px);
 		}
 	}
-</style>
-
+</style> -->

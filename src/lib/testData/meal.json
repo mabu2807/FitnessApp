@@ -1,44 +1,44 @@
 [
-    {
-        "id": 1,
-        "foodDiaryId": 1,
-        "day": "2023-06-03",
-        "time": "Breakfast",
-        "dishId": 1
-    },
-    {
-        "id": 2,
-        "foodDiaryId": 1,
-        "day": "2023-06-03",
-        "time": "Lunch",
-        "dishId": 2
-    },
-    {
-        "id": 3,
-        "foodDiaryId": 1,
-        "day": "2023-06-03",
-        "time": "Dinner",
-        "dishId": 3
-    },
-    {
-        "id": 4,
-        "foodDiaryId": 2,
-        "day": "2023-06-03",
-        "time": "Breakfast",
-        "dishId": 1
-    },
-    {
-        "id": 5,
-        "foodDiaryId": 2,
-        "day": "2023-06-03",
-        "time": "Lunch",
-        "dishId": 2
-    },
-    {
-        "id": 6,
-        "foodDiaryId": 2,
-        "day": "2023-06-03",
-        "time": "Dinner",
-        "dishId": 3
-    }
+	{
+		"id": 1,
+		"foodDiaryId": 1,
+		"day": "2023-06-03",
+		"time": "Breakfast",
+		"dishId": 1
+	},
+	{
+		"id": 2,
+		"foodDiaryId": 1,
+		"day": "2023-06-03",
+		"time": "Lunch",
+		"dishId": 2
+	},
+	{
+		"id": 3,
+		"foodDiaryId": 1,
+		"day": "2023-06-03",
+		"time": "Dinner",
+		"dishId": 3
+	},
+	{
+		"id": 4,
+		"foodDiaryId": 2,
+		"day": "2023-06-03",
+		"time": "Breakfast",
+		"dishId": 1
+	},
+	{
+		"id": 5,
+		"foodDiaryId": 2,
+		"day": "2023-06-03",
+		"time": "Lunch",
+		"dishId": 2
+	},
+	{
+		"id": 6,
+		"foodDiaryId": 2,
+		"day": "2023-06-03",
+		"time": "Dinner",
+		"dishId": 3
+	}
 ]
