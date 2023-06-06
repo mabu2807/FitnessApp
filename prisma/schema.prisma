@@ -152,10 +152,10 @@ model NutritionalValues {
   id            Int    @id @default(autoincrement())
   Dish          Dish?
   energy        Int
-  fat           Float?
-  saturatedFat  Float?
-  carbohydrates Float?
-  sugar         Float?
-  protein       Float?
-  salt          Float?
+  fat           Float
+  saturatedFat  Float
+  carbohydrates Float
+  sugar         Float
+  protein       Float
+  salt          Float
 }
