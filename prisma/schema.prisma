@@ -25,7 +25,7 @@ model UserDetails {
   gender        String
   weight        Float
   height        Int
-  dob           DateTime
+  dob           DateTime           @default(now())
   activityLevel Int
   foodDiary     FoodDiary?
   trainingPlans UserTrainingPlan[]
