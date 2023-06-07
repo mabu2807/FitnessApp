@@ -41,7 +41,7 @@ let settings = [
 
 </script>
 
-<Drawer> 
+<Drawer position="right"> 
 <div class="flex flex-col justify-center items-center">
 
 	
@@ -91,7 +91,7 @@ let settings = [
 
 <AppShell class="transition-transform {positionClasses}">
 	<svelte:fragment slot="header" >
-		<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
+		<AppBar shadow="shadow-xl" gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
 			<svelte:fragment slot="lead">
 				<img class="w-20" src="/static/Logo.jpg" alt="">
 				
