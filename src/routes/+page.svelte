@@ -53,9 +53,9 @@
 			<h2 class="h2 text-4xl mb-5">Willkommen bei FitnessHub</h2>
 			<p class="text-lg mb-10">Track your fitness progress and achieve your goals.</p>
 			<!-- btn class -->
-			<a href="/getStarted" class="btn variant-filled inline-block px-4 py-2 transition duration-300 ease-in-out hover:bg-blue-500">Get Started</a>
+			<a href="/getStarted" class="btn variant-filled inline-block px-4 py-2 transition duration-300 ease-in-out hover:bg-blue-500"><span class="text-white">Get Started</span></a>
 		</section>
-		<div class="bg-gray-700 w-3/4 h-2 m-5 rounded-full dark:bg-white"></div>
+		<!-- <div class="bg-gray-700 w-3/4 h-2 m-5 rounded-full dark:bg-white"></div> -->
 		<!-- courses class -->
 		<section class="py-12 text-center ">
 			<h2 class="h2">Unsere Kurse</h2>

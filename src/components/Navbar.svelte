@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { AppBar } from '@skeletonlabs/skeleton';
 	import { Avatar } from '@skeletonlabs/skeleton';
-	import { AppShell } from '@skeletonlabs/skeleton';
-	import { Drawer, drawerStore } from '@skeletonlabs/skeleton';
+	import { Drawer, drawerStore, popup} from '@skeletonlabs/skeleton';
 import type { DrawerSettings } from '@skeletonlabs/skeleton';
+import type { PopupSettings } from '@skeletonlabs/skeleton';
 import { LightSwitch } from '@skeletonlabs/skeleton';
 
-$: positionClasses = $drawerStore.open ? 'translate-x-[31%]' : '';
+
+			
+
 
 const drawerSettings: DrawerSettings = {
 	id: 'example-1',
@@ -15,6 +17,15 @@ const drawerSettings: DrawerSettings = {
 	width: 'w-[280px] md:w-[480px]',
 	// padding: 'p-4',
 	rounded: 'rounded',
+};
+
+const popupNavigation: PopupSettings = {
+	// Represents the type of event that opens/closed the popup
+	event: 'click',
+	// Matches the data-popup value on your popup element
+	target: 'popupNavigation',
+	// Defines which side of your trigger the popup will appear
+	placement: 'bottom',
 };
 
 let settings = [
@@ -47,7 +58,7 @@ let settings = [
 	
 	<div class="flex flex-row justify-center items-center">
 
-		<div class=" w-32 h-30  m-8 border-2 border-white rounded-full shadow-lg">
+		<div class=" w-20 m-8 border-2 border-white rounded-full shadow-lg">
 			<Avatar
 			src="/static/profile.jpg"
 			fallback="/static/profile.jpg"
@@ -80,6 +91,7 @@ let settings = [
 			
 		</div>
 		<div class=" pr-3">
+			<LightSwitch class="mr-6" />
 		<button class=" cursor-pointer px-5 py-4 border-2 border-gray-900 rounded-full  font-bold hover:shadow-white hover:text-gray-900 hover:bg-white transition duration-400">
 			Abmelden <i class="fa-solid fa-right-from-bracket ml-10"></i>
 		</button>
@@ -88,25 +100,51 @@ let settings = [
 </div>
 </Drawer>
 
-
-<AppShell class="transition-transform {positionClasses}">
-	<svelte:fragment slot="header" >
-		<AppBar shadow="shadow-xl" gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
+		<AppBar shadow="shadow-2xl">
 			<svelte:fragment slot="lead">
-				<img class="w-20" src="/static/Logo.jpg" alt="">
-				
+				<img class="w-16" src="/static/Logo.jpg" alt="">
+				<p class="m-3 font-medium text-xl">FitnessHub</p>
+				<button class="btn-icon btn-icon-sm lg:!hidden" use:popup={popupNavigation}>
+					<i class="fa-solid fa-bars text-2xl" />
+				</button>
+				<!-- popup -->
+			<div class="card p-4 w-60 shadow-xl lg:!hidden" data-popup="popupNavigation">
+				<nav class="list-nav">
+					<ul>
+						<li>
+							<a href="/">
+								<span class="text-xl dark:text-white text-black">Home</span>
+							</a>
+						</li>
+						<li>
+							<a href="/kategorie">
+								<span class="text-xl dark:text-white text-black">Workouts</span>
+							</a>
+						</li>
+						<li>
+							<a href="/progress">
+								<span class="text-xl dark:text-white text-black">Progress</span>
+							</a>
+						</li>
+						<li>
+							<a href="/nutrition">
+								<span class="text-xl dark:text-white text-black">Ernährungstagebuch</span>
+							</a>
+						</li>
+					</ul>
+			
 		
 			</svelte:fragment>
-			<div class="flex flex-row justify-center align-center ">
+			<div class="list-nav relative hidden relative hidden lg:flex flex-row justify-center">
 						
-				<a class="m-5  font-semibold font-sans text-xl  " href="/">Home</a>
-				<a class="m-5 font-semibold font-sans text-xl " href="/kategorie">Workouts</a>
-				<a class="m-5 font-semibold font-sans text-xl " href="/progress">Progress</a>
-				<a class="m-5 font-semibold font-sans text-xl " href="/nutrition">Ernährungsplan</a>
+				<a href="/"><span class="font-medium text-xl dark:text-white text-black">Home</span></a>
+				<a href="/kategorie"><span class="font-medium text-xl dark:text-white text-black">Workouts</span></a>
+				<a href="/progress"><span class="font-medium text-xl dark:text-white text-black">Progress</span></a>
+				<a href="/nutrition">
+				<span class="font-medium text-xl dark:text-white text-black">Ernährungsplan</span></a>
 			</div>
 			
 			<svelte:fragment slot="trail">
-				<LightSwitch class="mr-6" />
 				
 			<Avatar
 			src="/static/profile.jpg" fallback="/static/profile.jpg"
@@ -115,10 +153,6 @@ let settings = [
 		</svelte:fragment>
 		
 		</AppBar>
-	</svelte:fragment>
-	
-
-</AppShell>
 
 
 
