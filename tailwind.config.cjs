@@ -8,8 +8,8 @@ const config = {
 
 	theme: {
 		extend: {
-		
-		}
+			
+			}
 	},
 
 	plugins: [...require('@skeletonlabs/skeleton/tailwind/skeleton.cjs')()]
