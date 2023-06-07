@@ -1,19 +1,127 @@
-<script>
+<script lang="ts">
 	import { AppBar } from '@skeletonlabs/skeleton';
+	import { Avatar } from '@skeletonlabs/skeleton';
+	import { AppShell } from '@skeletonlabs/skeleton';
+	import { Drawer, drawerStore } from '@skeletonlabs/skeleton';
+import type { DrawerSettings } from '@skeletonlabs/skeleton';
+import { LightSwitch } from '@skeletonlabs/skeleton';
+
+$: positionClasses = $drawerStore.open ? 'translate-x-[31%]' : '';
+
+const drawerSettings: DrawerSettings = {
+	id: 'example-1',
+	// Provide your property overrides:
+	
+	width: 'w-[280px] md:w-[480px]',
+	// padding: 'p-4',
+	rounded: 'rounded',
+};
+
+let settings = [
+		{
+			referencing: '/',
+			setting: 'Persönliche Daten',
+			icon: 'fa-solid fa-user'
+		},
+		{
+			referencing: 'profile/change-password',
+			setting: 'Passwort ändern',
+			icon: 'fa-solid fa-key'
+		},
+		{
+			referencing: '',
+			setting: 'Einstellungen',
+			icon: 'fa-solid fa-gear'
+		}
+	];
+
+	let testUser = {
+		name: 'Georgiev, Aleks'
+	};
+
 </script>
 
-<AppBar>
-	<svelte:fragment slot="lead">
-		<img class="w-20" src="/static/Logo.jpg" alt="">
-		<h1>FitnessHub</h1>
+<Drawer> 
+<div class="flex flex-col justify-center items-center">
+
+	
+	<div class="flex flex-row justify-center items-center">
+
+		<div class=" w-32 h-30  m-8 border-2 border-white rounded-full shadow-lg">
+			<Avatar
+			src="/static/profile.jpg"
+			fallback="/static/profile.jpg"
+			class="h-full w-full object-cover rounded-full"
+			:border="['border-4', 'border-surface-300-600-token', 'hover:!border-primary-500']"
+			:cursor="['cursor-pointer']"
+			/>
+		</div>
+		<p class="text-xl mt-10">{testUser.name}</p>
+	</div>
+		<span class="bar block mx-20 mt-4 rounded-full bg-white h-1 w-3/5"></span>
+	  
+		<div class="flex flex-col  w-full mt-7 text-white ">
+			{#each settings as setting}
+			
+
+				<a href={setting.referencing} class="flex flex-row items-center m-6">
+					<div class=" mr-5  hover:text-blue-300">
+						<i class='{setting.icon} ml-32 textg-gray-700 dark:text-white'></i>
+					</div>
+					<p class=" text-gray-700 dark:text-white">{setting.setting}</p>
+				</a>
+				{/each}
+				
+		  </div>
+		  
+	<div class="flex-grow" > </div>
+	<div class="exit-wrapper flex flex-row justify-between w-full h-9  mb-20 mr-50">
+		<div class="close-icon w-49 h-26 text-white text-36 mx-0 my-6">
+			
+		</div>
+		<div class=" pr-3">
+		<button class=" cursor-pointer px-5 py-4 border-2 border-gray-900 rounded-full  font-bold hover:shadow-white hover:text-gray-900 hover:bg-white transition duration-400">
+			Abmelden <i class="fa-solid fa-right-from-bracket ml-10"></i>
+		</button>
+		</div>
+	</div>
+</div>
+</Drawer>
+
+
+<AppShell class="transition-transform {positionClasses}">
+	<svelte:fragment slot="header" >
+		<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
+			<svelte:fragment slot="lead">
+				<img class="w-20" src="/static/Logo.jpg" alt="">
+				
+		
+			</svelte:fragment>
+			<div class="flex flex-row justify-center align-center ">
+						
+				<a class="m-5  font-semibold font-sans text-xl  " href="/">Home</a>
+				<a class="m-5 font-semibold font-sans text-xl " href="/kategorie">Workouts</a>
+				<a class="m-5 font-semibold font-sans text-xl " href="/progress">Progress</a>
+				<a class="m-5 font-semibold font-sans text-xl " href="/nutrition">Ernährungsplan</a>
+			</div>
+			
+			<svelte:fragment slot="trail">
+				<LightSwitch class="mr-6" />
+				
+			<Avatar
+			src="/static/profile.jpg" fallback="/static/profile.jpg"
+			border="border-4 	border-surface-300-600-token hover:!border-primary-500"
+			cursor="cursor-pointer" on:click={() => drawerStore.open(drawerSettings)}/>
+		</svelte:fragment>
+		
+		</AppBar>
 	</svelte:fragment>
-	<svelte:fragment slot="trail">
-		<a href="/">Home</a>
-		<a href="/kategorie">Workouts</a>
-		<a href="/progress">Progress</a>
-		<a href="/nutrition">Ernährungsplan</a>
-	</svelte:fragment>
-</AppBar>
+	
+
+</AppShell>
+
+
+
 <!-- <script>
 	import { onMount } from 'svelte/internal';
 

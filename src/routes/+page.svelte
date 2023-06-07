@@ -45,36 +45,41 @@
 <!-- <body>
 	<main> -->
 		<!-- hero class -->
-		<section class="bg-gray-200 p-10 text-center">
+		<body class="flex flex-col  justify-center items-center ">
+			
+
+		
+		<section class=" p-10 text-center">
 			<h2 class="h2 text-4xl mb-5">Welcome to Fitness Tracker</h2>
 			<p class="text-lg mb-10">Track your fitness progress and achieve your goals.</p>
 			<!-- btn class -->
 			<a href="/getStarted" class="btn variant-filled inline-block px-4 py-2 transition duration-300 ease-in-out hover:bg-blue-500">Get Started</a>
 		</section>
+		<div class="bg-gray-700 w-3/4 h-2 m-5 rounded-full dark:bg-white"></div>
 		<!-- courses class -->
-		<section class="py-12 text-center bg-gray-500">
+		<section class="py-12 text-center ">
 			<h2 class="h2">Unsere Kurse</h2>
 			<!-- all div are course class -->
-			<div class="block card card-hover inline-block w-1/5 px-4 py-5 m-5 bg-white">
+			<div class="block card card-hover inline-block w-1/5 px-4 py-5 m-5 ">
 				<header class="card-header">
 				<img class="w-full" src="workout1.jpg" alt="Kurs 1" /></header>
 				<section class="p-4 mb-3"><h3 class="h3 mb-3">Pilates</h3><p class="overflow-hidden">Ein Ganzkörpertraining zur Verbesserung von Flexibilität, Kraft und Körperhaltung.</p></section>
 				</div>
-				<div class="block card card-hover inline-block w-1/5 px-4 py-5 m-5 bg-white">
+				<div class="block card card-hover inline-block w-1/5 px-4 py-5 m-5 ">
 					<header class="card-header"><img class="w-full" src="workout1.jpg" alt="Kurs 1" /></header>
 					<section class="p-4 mb-3"><h3 class="h3 mb-3">Pilates</h3><p class="overflow-hidden">Ein Ganzkörpertraining zur Verbesserung von Flexibilität, Kraft und Körperhaltung.</p></section>
 					</div>
-					<div class="block card card-hover inline-block w-1/5 px-4 py-5 m-5 bg-white">
+					<div class="block card card-hover inline-block w-1/5 px-4 py-5 m-5">
 						<header class="card-header"><img class="w-full" src="workout1.jpg" alt="Kurs 1" /></header>
 						<section class="p-4 mb-3"><h3 class="h3 mb-3">Pilates</h3><p class="overflow-hidden">Ein Ganzkörpertraining zur Verbesserung von Flexibilität, Kraft und Körperhaltung.</p></section>
 						</div>
 
 					</section>
 	
-		<!-- headTestimonials class -->
-		<h2 class="h2 bg-gray-100 text-center mb-0 py-5 px-4">Was unsere Kunden sagen</h2>
-		<!-- testemonials class -->
-		<section class="text-center items-center justify-between flex bg-gray-100 py-20">
+		
+		<h2 class="h2  text-center mb-0 py-5 px-4">Was unsere Kunden sagen</h2>
+		
+		<section class="text-center items-center justify-between flex  py-20">
 			<!-- arrow class -->
 			<div class="mx-7" on:click={handleNext}><i class="fa-solid fa-arrow-left fa-3x" /></div>
 			{#each visibleItems as item (item.id)} 
@@ -90,12 +95,12 @@
 			<div class="mx-7" on:click={handlePrevious}><i class="fa-solid fa-arrow-right fa-3x" /></div>
 		</section>
 
-		
+	</body>
 		
 
 
 		<!-- contact class -->
-		<section class="text-center py-7 bg-white">
+		<section class="text-center py-7 ">
 			<h2 class="h2 mb-3">Kontaktieren Sie uns</h2>
 			<form class="my-0 mx-auto max-w-lg">
 				<input class="input block w-full p-2 mb-2" type="text" name="name" placeholder="Name" required />

@@ -251,7 +251,7 @@
 					<div class="mt-4">
 						<h3 class="mb-3  text-lg font-bold">{plan.title}</h3>
 						<p class="mb-3 text-sm text-gray-700">{plan.description}</p>
-						<button on:click={() => setPlan(plan)} class="select-button text-white bg-gray-900 border border-gray-900 rounded-md py-2 px-4 mt-2 transition duration-500 ease-in-out hover:bg-white hover:text-gray-900 hover:border-gray-900">
+						<button on:click={() => setPlan(plan)} class="btn variant-filled">
 							<Label>Auswählen</Label>
 						</button>
 					</div>
