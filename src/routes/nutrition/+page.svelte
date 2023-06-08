@@ -9,6 +9,7 @@
 	import Head from '../../components/Head.svelte';
 	import Footer from '../../components/Footer.svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
+	//import { valueOrDefault } from 'chart.js/dist/helpers/helpers.core';
 
 	export let data: PageData;
 	let allcalories = data.allcalories;
@@ -43,10 +44,14 @@
 			calories: 30
 		}
 	];
+	let mealData = data.mealsforCards;
+	console.log(mealData);
+
 	let usedCalories = data.chartdata.datasets[0].data[6];
 
 	let amount = usedCalories / allcalories;
 	const progress = amount;
+	let image: string;
 
 	const editCard: MouseEventHandler<HTMLButtonElement> = (event) => {
 		console.log(event.currentTarget.getAttribute('id'));
@@ -81,11 +86,11 @@
 		<p class="textTitle">Mahlzeiten</p>
 		<div class="rowAllCards">
 			<div class="cardGeneral">
-				{#each mealTimes as meal}
+				{#each mealData as meal}
 					<div class="cardContent">
 						<div class="rowMealtitleButton">
 							<div class="textMealTitle">
-								<h2>{meal.title}</h2>
+								<h2>{meal.time}</h2>
 							</div>
 							<div>
 								<button
@@ -100,11 +105,11 @@
 							</div>
 						</div>
 						<div class="imageCard">
-							<img src={meal.icon} alt="Meal Icon" height="150px" width="200px" />
+							<img src={meal.dish.imagePath} alt="Meal Icon" height="150px" width="200px" />
 						</div>
 						<div class="textMealDescription">
-							<p>{meal.meal}</p>
-							<p>{meal.calories} kcal</p>
+							<p>{meal.dish.name}</p>
+							<p>{meal.dish.nutritionalValues?.carbohydrates} kcal</p>
 						</div>
 					</div>
 				{/each}

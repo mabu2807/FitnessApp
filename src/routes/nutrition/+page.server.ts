@@ -1,5 +1,5 @@
 import prisma from '$lib/prisma';
-import type { PageServerLoad } from '../$types';
+import type { PageServerLoad } from './$types';
 import { initChartData } from './initChartData';
 
 //types
@@ -27,7 +27,7 @@ function calcallcalories(userDetails: userdetail) {
 export const load = (async () => {
 	let responseUserDetails;
 	let responseUsermeals;
-	let responedaymeal;
+	let responsedaymeal;
 	try {
 		//all calories request
 		responseUserDetails = await prisma.userDetails.findUnique({
@@ -62,7 +62,7 @@ export const load = (async () => {
 		// Calc on week before
 		const todayMidnight = new Date();
 		todayMidnight.setHours(2,0,0,0);
-		responedaymeal = await prisma.meal.findMany({
+		responsedaymeal = await prisma.meal.findMany({
 			where:{
 				day:{
 					gt: todayMidnight
@@ -113,6 +113,7 @@ export const load = (async () => {
 	}
 	const chartdata = initChartData(allCalories, calperday);
 	
+	
 	// -------------------------- return -------------------------------------------
-	return {allcalories: allCalories, chartdata:chartdata, mealsforCards: responedaymeal};
+	return {allcalories: allCalories, chartdata:chartdata, mealsforCards: responsedaymeal};
 }) satisfies PageServerLoad;
