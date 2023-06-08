@@ -6,7 +6,6 @@ import type { DrawerSettings } from '@skeletonlabs/skeleton';
 import type { PopupSettings } from '@skeletonlabs/skeleton';
 import { LightSwitch } from '@skeletonlabs/skeleton';
 
-
 			
 
 
@@ -39,11 +38,11 @@ let settings = [
 			setting: 'Passwort ändern',
 			icon: 'fa-solid fa-key'
 		},
-		{
-			referencing: '',
-			setting: 'Einstellungen',
-			icon: 'fa-solid fa-gear'
-		}
+		// {
+		// 	referencing: '',
+		// 	setting: 'Einstellungen',
+		// 	icon: 'fa-solid fa-gear'
+		// }
 	];
 
 	let testUser = {
@@ -58,46 +57,48 @@ let settings = [
 	
 	<div class="flex flex-row justify-center items-center">
 
-		<div class=" w-20 m-8 border-2 border-white rounded-full shadow-lg">
+		<div class=" md:w-20 w-16 md:my-8 md:mx-6 my-6 mx-2 border-2 border-white rounded-full shadow-lg">
 			<Avatar
 			src="/static/profile.jpg"
-			fallback="/static/profile.jpg"
 			class="h-full w-full object-cover rounded-full"
-			:border="['border-4', 'border-surface-300-600-token', 'hover:!border-primary-500']"
-			:cursor="['cursor-pointer']"
 			/>
 		</div>
-		<p class="text-xl mt-10">{testUser.name}</p>
+		<p class="md:text-xl text-base m-2 font-bold">{testUser.name}</p>
 	</div>
-		<span class="bar block mx-20 mt-4 rounded-full bg-white h-1 w-3/5"></span>
+		<span class="bar block mt-4 rounded-full bg-black dark:bg-white h-1 w-3/5"></span>
 	  
-		<div class="flex flex-col  w-full mt-7 text-white ">
-			{#each settings as setting}
-			
+		<div class="flex flex-col w-full mt-8 items-center">
+			{#each settings as tool}
 
-				<a href={setting.referencing} class="flex flex-row items-center m-6">
-					<div class=" mr-5  hover:text-blue-300">
-						<i class='{setting.icon} ml-32 textg-gray-700 dark:text-white'></i>
-					</div>
-					<p class=" text-gray-700 dark:text-white">{setting.setting}</p>
+			<div class="flex flex-row items-center m-3 md:m-5">
+			<div class="mr-3 text-base md:text-lg dark:text-white text-black">
+				<i class="{tool.icon}"></i>
+			</div>
+
+				<a href={tool.referencing}>
+					<p class="text-base md:text-lg dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">{tool.setting}</p>
 				</a>
+			</div>
 				{/each}
+
+				<div class="flex flex-row items-center m-3 md:m-5">
+					<div class="mr-3 text-base md:text-lg dark:text-white text-black">
+						<LightSwitch/>
+					</div>
+		
+						<a href="/">
+							<p class="text-base md:text-lg dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Einstellungen</p>
+						</a>
+					</div>
 				
 		  </div>
 		  
-	<div class="flex-grow" > </div>
-	<div class="exit-wrapper flex flex-row justify-between w-full h-9  mb-20 mr-50">
-		<div class="close-icon w-49 h-26 text-white text-36 mx-0 my-6">
-			
-		</div>
-		<div class=" pr-3">
-			<LightSwitch class="mr-6" />
-		<button class=" cursor-pointer px-5 py-4 border-2 border-gray-900 rounded-full  font-bold hover:shadow-white hover:text-gray-900 hover:bg-white transition duration-400">
-			Abmelden <i class="fa-solid fa-right-from-bracket ml-10"></i>
+		<div class="mt-12">
+		<button class="cursor-pointer px-5 py-3 border-2 border-black dark:border-white rounded-full font-bold hover:bg-tertiary-500 transition duration-400 dark:hover:bg-primary-500">
+			Abmelden <i class="fa-solid fa-right-from-bracket md:ml-10 ml-6"></i>
 		</button>
 		</div>
 	</div>
-</div>
 </Drawer>
 
 		<AppBar shadow="shadow-2xl">
@@ -105,50 +106,51 @@ let settings = [
 				<img class="w-16" src="/static/Logo.jpg" alt="">
 				<p class="m-3 font-medium text-xl">FitnessHub</p>
 				<button class="btn-icon btn-icon-sm lg:!hidden" use:popup={popupNavigation}>
-					<i class="fa-solid fa-bars text-2xl" />
+					<i class="fa-solid fa-bars text-2xl hover:text-tertiary-500 dark:hover:text-primary-500" />
 				</button>
 				<!-- popup -->
 			<div class="card p-4 w-60 shadow-xl lg:!hidden" data-popup="popupNavigation">
-				<nav class="list-nav">
+				<!-- list-nav as class -->
+				<nav>
 					<ul>
-						<li>
+						<li class="m-3">
 							<a href="/">
-								<span class="text-xl dark:text-white text-black">Home</span>
+								<span class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Home</span>
 							</a>
 						</li>
-						<li>
+						<li class="m-3">
 							<a href="/kategorie">
-								<span class="text-xl dark:text-white text-black">Workouts</span>
+								<span class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Workouts</span>
 							</a>
 						</li>
-						<li>
+						<li class="m-3">
 							<a href="/progress">
-								<span class="text-xl dark:text-white text-black">Progress</span>
+								<span class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Progress</span>
 							</a>
 						</li>
-						<li>
+						<li class="m-3">
 							<a href="/nutrition">
-								<span class="text-xl dark:text-white text-black">Ernährungstagebuch</span>
+								<span class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Ernährungstagebuch</span>
 							</a>
 						</li>
 					</ul>
 			
 		
 			</svelte:fragment>
-			<div class="list-nav relative hidden relative hidden lg:flex flex-row justify-center">
+			<div class="p-5 hidden relative hidden lg:flex flex-row justify-center">
 						
-				<a href="/"><span class="font-medium text-xl dark:text-white text-black">Home</span></a>
-				<a href="/kategorie"><span class="font-medium text-xl dark:text-white text-black">Workouts</span></a>
-				<a href="/progress"><span class="font-medium text-xl dark:text-white text-black">Progress</span></a>
+				<a href="/"><span class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Home</span></a>
+				<a href="/kategorie"><span class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Workouts</span></a>
+				<a href="/progress"><span class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Progress</span></a>
 				<a href="/nutrition">
-				<span class="font-medium text-xl dark:text-white text-black">Ernährungsplan</span></a>
+				<span class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Ernährungsplan</span></a>
 			</div>
 			
 			<svelte:fragment slot="trail">
 				
 			<Avatar
 			src="/static/profile.jpg" fallback="/static/profile.jpg"
-			border="border-4 	border-surface-300-600-token hover:!border-primary-500"
+			border="border-4 border-surface-300-600-token dark:hover:!border-primary-500 hover:!border-tertiary-500"
 			cursor="cursor-pointer" on:click={() => drawerStore.open(drawerSettings)}/>
 		</svelte:fragment>
 		
