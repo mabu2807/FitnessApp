@@ -1,16 +1,18 @@
-export function initChartData(allCalories: number, calperday: number[]) {
-	const bgColors = changeBgColors(allCalories, calperday);
+import type { userdetail } from "./nutritionTypes";
+
+export function initChartData(maxCalories: number, calperday: number[]) {
 	const week = calcWeekArray();
-	const borderColor = changeBorderColors(allCalories, calperday);
+	
 	const data = {
 		labels: week,
 		datasets: [
 			{
 				label: 'kcal',
 				data: calperday,
-				backgroundColor: bgColors,
+				backgroundColor: changeBgColors(maxCalories, calperday),
 				borderWidth: 1,
-				borderColor: borderColor
+				borderColor: changeBgColors(maxCalories, calperday),
+				hidden:true
 			}
 		]
 	};
@@ -44,7 +46,7 @@ function calcWeekArray() {
 	return week;
 }
 
-function changeBgColors(allCalories: number, calperday: number[]) {
+function changeBgColors(maxCalories: number, calperday: number[]) {
 	const backgroundColor = [
 		'rgba(98,  182, 239,0.4)',
 		'rgba(113, 205, 205,0.4)',
@@ -57,13 +59,13 @@ function changeBgColors(allCalories: number, calperday: number[]) {
 
 	const red = 'rgb(255, 99, 132)';
 	for (let i = 0; i < calperday.length; i++) {
-		if (calperday[i] > Number(allCalories)) {
+		if (calperday[i] > Number(maxCalories)) {
 			backgroundColor[i] = red;
 		}
 	}
 	return backgroundColor;
 }
-function changeBorderColors(allCalories: number, calperday: number[]) {
+function changeBorderColors(maxCalories: number, calperday: number[]) {
 	const borderColor = [
 		'rgba(98,  182, 239, 1)',
 		'rgba(113, 205, 205, 1)',
@@ -75,9 +77,28 @@ function changeBorderColors(allCalories: number, calperday: number[]) {
 	];
 	const red = 'rgb(255, 99, 132, 0.4)';
 	for (let i = 0; i < calperday.length; i++) {
-		if (calperday[i] > Number(allCalories)) {
+		if (calperday[i] > Number(maxCalories)) {
 			borderColor[i] = red;
 		}
 	}
 	return borderColor;
+}
+
+
+export function allmaxvalues(userDetails:userdetail, maxCalories:number){
+	const salt = 6
+	const fat = (65/2000)*maxCalories
+	const sugar = (50/2000)*maxCalories
+	const protein = 0.8*userDetails.weight
+	const saturatedFat = 22
+	let carbohydrates = 0
+	if(userDetails.gender == "male"){
+		carbohydrates = 225
+	}else{
+		carbohydrates = 275
+	}
+
+	const allmaxValues = {calories:maxCalories,fat:fat,sugar:sugar,salt:salt,protein:protein,carbohydrates:carbohydrates,saturatedFat:saturatedFat}
+	return allmaxValues
+
 }

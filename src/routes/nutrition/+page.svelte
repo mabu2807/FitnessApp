@@ -9,61 +9,31 @@
 	import Head from '../../components/Head.svelte';
 	import Footer from '../../components/Footer.svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
+	import { allmaxvalues } from './initChartData';
 	//import { valueOrDefault } from 'chart.js/dist/helpers/helpers.core';
 
 	export let data: PageData;
-	let allcalories = data.allcalories;
-
-	let mealTimes = [
-		{
-			id: 1,
-			title: 'Frühstück',
-			icon: 'src/assets/breakfast2.webp',
-			meal: 'Eier mit Speck und dazu eine Banane',
-			calories: 820
-		},
-		{
-			id: 2,
-			title: 'Mittagessen',
-			icon: 'src/assets/lunch2.jpeg',
-			meal: 'Nudeln mit Spinat',
-			calories: 600
-		},
-		{
-			id: 3,
-			title: 'Abendessen',
-			icon: 'src/assets/dinner2.jpeg',
-			meal: 'Kartoffeln mit Brokkoli und Hähnchen',
-			calories: 500
-		},
-		{
-			id: 4,
-			title: 'Snack',
-			icon: 'src/assets/snack.jpg',
-			meal: 'Reiswaffel',
-			calories: 30
-		}
-	];
+	let maxCalories = data.allmaxValues.calories;
 	let mealData = data.mealsforCards;
-	console.log(mealData);
+	let usedCalories = data.allChartValues.calories[6];
 
-	let usedCalories = data.chartdata.datasets[0].data[6];
-
-	let amount = usedCalories / allcalories;
-	const progress = amount;
+	let amount = usedCalories / maxCalories;
+	let progress = amount;
 	let image: string;
+	let buttonID:string|null = "";
+	let selected:string = "energy";
+	let chartData = data.chartdata;
 
 	const editCard: MouseEventHandler<HTMLButtonElement> = (event) => {
 		console.log(event.currentTarget.getAttribute('id'));
+		buttonID = event.currentTarget.getAttribute('id');
 	};
 	function addMeal(event: any) {
 		console.log('Add Meal');
-	}
+	};
 </script>
 
-<Head />
-
-<div>
+<main>
 	<section>
 		<h2>Ernährungstagebuch</h2>
 	</section>
@@ -73,13 +43,13 @@
 				<p class="textTitle">Tages-Kalorienverbrauch</p>
 				<div style="align-items: center;">
 					<CircleProgressBar {progress} />
-					<p>{usedCalories}/ {allcalories} kcal</p>
+					<p>{usedCalories}/ {maxCalories} kcal</p>
 				</div>
 			</div>
 		</div>
 		<div class="columnWeek">
 			<p class="textTitle">Wochenübersicht</p>
-			<Chart value={allcalories} chartdata={data.chartdata} />
+			<Chart value={maxCalories} bind:chartdata={chartData} />
 		</div>
 	</div>
 	<div>
@@ -101,7 +71,7 @@
 								>
 									<img src="src/assets/Edit_Pencil.png" alt="Edit Meal" />
 								</button>
-								<Dialog bind:dialog />
+								<Dialog bind:dialog mealdata={meal} value={buttonID}/>
 							</div>
 						</div>
 						<div class="imageCard">
@@ -109,7 +79,7 @@
 						</div>
 						<div class="textMealDescription">
 							<p>{meal.dish.name}</p>
-							<p>{meal.dish.nutritionalValues?.carbohydrates} kcal</p>
+							<p>{meal.dish.nutritionalValues?.energy} kcal</p>
 						</div>
 					</div>
 				{/each}
@@ -123,8 +93,10 @@
 			</div>
 		</div>
 	</div>
-</div>
-<Footer />
+</main>
+
+<Footer/>
+
 
 <style>
 	section {
@@ -135,8 +107,8 @@
 		color: white;
 	}
 	.rowCaloriesWeek {
-		display: -flex;
 		display: flex;
+
 	}
 	.rowMealtitleButton {
 		display: flex;
@@ -153,7 +125,6 @@
 		-ms-flex: 1;
 		flex: 1;
 		display: flex;
-		padding: 20px;
 		text-align: center;
 		align-content: center;
 	}
