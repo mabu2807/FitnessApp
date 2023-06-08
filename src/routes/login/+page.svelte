@@ -14,37 +14,43 @@
 
 <Head></Head>
 
-<body>
-	<section class="flex items-center justify-center h-screen">
-		<div class="w-11/12 md:w-7/12 lg:w-6/12 xl:w-5/12 2xl:w-4/12 bg-white rounded-lg shadow-md flex">
-			<div class="w-1/2 p-8">
-				<div class="mb-8">
-					<div class="flex items-center mb-6">
-						<a href="/"><img src="Logo.jpg" alt="Logo" class="w-1/2" /></a>
-					</div>
-					<h3 class="text-2xl font-semibold mb-4">Benutzer Login</h3>
-				</div>
-				<form method="post" class="mb-8">
-					<input name="email" placeholder="Email" type="text" value={form?.email ?? ''} class="w-full py-3 px-2 mb-4 border border-gray-300 rounded-md" />
-					<input name="password" placeholder="Passwort" type="password" value={form?.password ?? ''} class="w-full py-3 px-2 mb-4 border border-gray-300 rounded-md" />
+
+	<section class="flex items-center justify-center">
+		<div class="card w-3/4 sm:flex my-20">
+			<div class="sm:w-1/2 w-full p-8">
+	
+						<h3 class="md:text-2xl md:mx-3 lg:mx-4 sm:text-xl text-2xl font-semibold mb-8 mx-2">Benutzer Login</h3>
+				
+		
+				<form method="post" class="mb-8 md:mx-3 lg:mx-4 mx-2">
+					<input name="email" placeholder="Email" type="text" value={form?.email ?? ''} class="input p-2 mb-4 md:text-base text-base sm:text-sm text-black dark:text-primary-500 dark:placeholder-white" />
+					<input name="password" placeholder="Passwort" type="password" value={form?.password ?? ''} class="input p-2 mb-6 md:text-base text-base sm:text-sm text-black dark:text-primary-500 dark:placeholder-white" />
 					{#if form?.missing}<p class="text-red-500 text-sm ml-2">Bitte füllen Sie die Felder aus!</p>{/if}
-					<button type="submit" class="w-full py-3 px-2 bg-gray-700 text-white font-bold rounded-md hover:bg-white hover:text-gray-700 transition duration-500">Sign In</button>
+					<button type="submit" class="btn variant-filled w-full md:text-base text-base sm:text-sm md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500">Sign In</button>
 					<div class="mt-6 text-sm">
-						<p>Noch keinen Account? Dann <a href="/register" class="text-gray-700 font-semibold">Registriere</a> dich jetzt!</p>
+						<p>Du hast noch keinen Account? Dann <a href="/register"><span class="text-tertiary-500 hover:text-secondary-500 dark:hover:text-primary-500 font-bold">Registriere</span></a> dich jetzt!</p>
 					</div>
 				</form>
 			</div>
-			<div class="w-1/2 bg-gray-100 flex flex-col justify-center items-center">
+			<div class="sm:w-1/2 w-full flex flex-col justify-center items-center right-gradient shadow-xl">
+				<div class="h-1 w-3/5 bg-black dark:bg-white rounded-full sm:mb-14 mb-5 sm:mt-0 mt-10"></div>
 				<div class="mb-6">
-					<h2 class="text-3xl font-semibold mb-4">Willkommen bei FitnessHub</h2>
-					<h5 class="text-lg font-light text-gray-500 mx-8">Von Cardio Carsten zu Markus Masse, wir bitten jeden zur Kasse!</h5>
+					<h2 class="md:text-3xl text-2xl font-semibold mb-6 mx-6 text-center dark:text-primary-500">Willkommen bei FitnessHub</h2>
+					<h5 class="text-base dark:text-white text-center mx-10">Von Cardio Carsten zu Markus Masse, wir bitten jeden zur Kasse!</h5>
 				</div>
-				<div class="h-2 w-10/12 bg-black rounded-full mb-4"></div>
-				<div class="h-2 w-10/12 bg-black rounded-full"></div>
+				<div class="h-1 w-3/5 bg-black dark:bg-white rounded-full sm:mb-0 mb-10 sm:mt-5"></div>
 			</div>
 		</div>
 	</section>
-</body>
+
+
+	<style>
+		.right-gradient {
+		background-image:
+			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.50) 0px, transparent 50%),
+			radial-gradient(at 100% 100%,  rgba(var(--color-primary-500) / 0.24) 0px, transparent 50%);
+	}
+	</style>
 
 
 <!-- <body>
