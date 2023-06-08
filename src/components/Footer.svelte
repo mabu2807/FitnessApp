@@ -1,7 +1,7 @@
-<footer class="w-full h-20 px-6 shadow-inner"> 
+<footer class="w-full h-20 px-6"> 
 	<div class="flex items-center justify-center h-full">
-	  <p class="text-sm md:text-base">© 2023 FitnessHub. All rights reserved.</p>
-	  <div class="flex ml-10">
+	  <p class="text-sm md:text-base font-bold">© 2023 FitnessHub. All rights reserved.</p>
+	  <div class="flex ml-6">
 		<a class="mr-2" href="https://www.youtube.com/@RoswitaRuhl">
 			<i class="fab fa-youtube text-black text-3xl dark:text-white hover:text-tertiary-500 dark:hover:text-primary-500"></i>
 		</a>

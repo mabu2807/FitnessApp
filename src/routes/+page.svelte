@@ -42,22 +42,15 @@
 
 <!-- Transform is missing  -->
 
-<!-- <body>
-	<main> -->
-		<!-- hero class -->
-		<body class="flex flex-col  justify-center items-center ">
-			
-
-		
-		<section class="text-center w-full mx-auto p-4 py-16 md:py-24 bg-surface-100-800-token hero-gradient">
-			<h2 class="h2 text-4xl mb-5">Willkommen bei FitnessHub</h2>
-			<p class="text-lg mb-10">Track your fitness progress and achieve your goals.</p>
+		<!-- hero class -->	
+		<section class="text-center w-full mx-auto p-4 py-14 md:py-20 top-gradient shadow-inner">
+			<h2 class="h2 text-lg md:text-3xl mb-5">"Gestern noch vom Sixpack geträumt, heute schon geholt."</h2>
+			<p class="text-sm md:text-lg mb-12">Träume nicht dein Leben, sondern lebe deinen Traum!</p>
 			<!-- btn class -->
-			<a href="/getStarted" class="btn variant-filled inline-block px-4 py-2 transition duration-300 ease-in-out hover:bg-blue-500"><span class="text-white">Get Started</span></a>
+			<a href="/getStarted" class="btn variant-filled inline-block px-4 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500"><span class="dark:text-black text-white">Get Started</span></a>
 		</section>
-		<!-- <div class="bg-gray-700 w-3/4 h-2 m-5 rounded-full dark:bg-white"></div> -->
 		<!-- courses class -->
-		<section class="py-12 text-center ">
+		<section class="w-full py-12 text-center shadow-2xl">
 			<h2 class="h2">Unsere Kurse</h2>
 			<!-- all div are course class -->
 			<div class="block card card-hover inline-block w-1/5 px-4 py-5 m-5 ">
@@ -77,9 +70,8 @@
 					</section>
 	
 		
-		<h2 class="h2  text-center mb-0 py-5 px-4">Was unsere Kunden sagen</h2>
-		
-		<section class="text-center items-center justify-between flex  py-20">
+		<section class="w-full text-center items-center justify-between flex py-20 mid-gradient">
+			<h2 class="h2  text-center mb-0 py-5 px-4">Was unsere Kunden sagen</h2>
 			<!-- arrow class -->
 			<div class="mx-7" on:click={handleNext}><i class="fa-solid fa-arrow-left fa-3x" /></div>
 			{#each visibleItems as item (item.id)} 
@@ -94,13 +86,10 @@
 			{/each}
 			<div class="mx-7" on:click={handlePrevious}><i class="fa-solid fa-arrow-right fa-3x" /></div>
 		</section>
-
-	</body>
 		
 
-
 		<!-- contact class -->
-		<section class="text-center py-7 ">
+		<section class="text-center py-7 bottom-gradient shadow">
 			<h2 class="h2 mb-3">Kontaktieren Sie uns</h2>
 			<form class="my-0 mx-auto max-w-lg">
 				<input class="input block w-full p-2 mb-2" type="text" name="name" placeholder="Name" required />
@@ -114,46 +103,33 @@
 
 <style>
 	
-	/* Hero Gradient */
-	/* prettier-ignore */
-	.hero-gradient {
+	/* .red-gradient {
 		background-image:
 			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 50%),
 			radial-gradient(at 98% 1%, rgba(var(--color-error-500) / 0.33) 0px, transparent 50%);
 	}
-	/* SvelteKit Gradient */
-	/* prettier-ignore */
-	.sveltekit-gradient {
+
+	.backup-gradient {
 		background-image:
 			radial-gradient(at 0% 100%, rgba(var(--color-secondary-500) / 0.50) 0px, transparent 50%);
-	}
-	/* SvelteKit Gradient */
-	/* prettier-ignore */
-	.tailwind-gradient {
+	} */
+	
+	.top-gradient {
 		background-image:
 			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.50) 0px, transparent 50%),
 			radial-gradient(at 100% 100%,  rgba(var(--color-primary-500) / 0.24) 0px, transparent 50%);
 	}
-	/* Features Gradient */
-	/* prettier-ignore */
-	.features-gradient {
+	
+	.mid-gradient {
 		background-image:
 			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 50%),
 			radial-gradient(at 100% 0%,  rgba(var(--color-primary-500) / 0.33) 0px, transparent 50%);
 	}
-	/* Sponsors Gradient */
-	/* prettier-ignore */
-	.sponsors-gradient {
+	
+	.bottom-gradient {
 		background-image:
 		radial-gradient(at 0% 99%, rgba(var(--color-error-500) / 0.23) 0px, transparent 50%),
 		radial-gradient(at 100% 100%, rgba(var(--color-primary-500) / 0.19) 0px, transparent 50%);
-	}
-	/* Radial */
-	/* prettier-ignore */
-	.bottom-cta-gradient {
-		background-image:
-		radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.75) 0px, transparent 40%),
-		radial-gradient(at 100% 100%, rgba(var(--color-secondary-500) / 0.75) 0px, transparent 40%);
 	}
 </style>
 
