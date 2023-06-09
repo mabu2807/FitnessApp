@@ -25,6 +25,7 @@ export const load = (async () => {
 	let responseUsermeals;
 	let responsedaymeal;
 	let responseFoodDiaryID;
+	let responseAllDishes;
 	try {
 		//all calories request
 		responseUserDetails = await prisma.userDetails.findUnique({
@@ -86,6 +87,11 @@ export const load = (async () => {
 					},
 					
 				}
+			}
+		})
+		responseAllDishes = await prisma.dish.findMany({
+			include: {
+				nutritionalValues: true
 			}
 		})
 	} catch (error) {
@@ -151,13 +157,14 @@ export const load = (async () => {
 		sugarperday = sugarperdayunsorted;
 		carbohydratesperday = carbohydratesperdayunsorted;
 	}
-	const chartdata = initChartData(maxCalories, calperday);
+	const allValues = {calories:calperday,fat:fatperday,sugar:sugarperday,salt:saltperday,protein:proteinperday,carbohydrates:carbohydratesperday,saturatedFat:saturatedFatperday}
 	const allmaxValues = allmaxvalues(responseUserDetails,maxCalories);
-	const allChartValues = {calories:calperday,fat:fatperday,sugar:sugarperday,salt:saltperday,protein:proteinperday,carbohydrates:carbohydratesperday,saturatedFat:saturatedFatperday}
+
+	const chartdata = initChartData(allmaxValues, allValues);
 	
 	
 	
 	// -------------------------- return -------------------------------------------
-	return {chartdata:chartdata, mealsforCards: responsedaymeal, allmaxValues:allmaxValues, allChartValues: allChartValues};
+	return {chartdata:chartdata, mealsforCards: responsedaymeal, allmaxValues:allmaxValues, allValues: allValues, allDishes: responseAllDishes};
 }) satisfies PageServerLoad;
 

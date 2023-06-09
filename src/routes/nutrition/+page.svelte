@@ -15,7 +15,7 @@
 	export let data: PageData;
 	let maxCalories = data.allmaxValues.calories;
 	let mealData = data.mealsforCards;
-	let usedCalories = data.allChartValues.calories[6];
+	let usedCalories = data.allValues.calories[6];
 
 	let amount = usedCalories / maxCalories;
 	let progress = amount;
@@ -86,13 +86,14 @@
 			</div>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div class="cardGeneral" on:click={addMeal} on:click={() => dialogAdd.showModal()}>
-				<DialogAdd bind:dialogAdd />
+				<DialogAdd bind:dialogAdd data={data}/>
 				<div class="cardContent">
 					<h2 class="textAddMealTitle">Hier klicken um neue Mahlzeit hinzuzufügen</h2>
 				</div>
 			</div>
 		</div>
 	</div>
+	<a href="/nutrition/nutritiontipps">NutritionTipps</a>
 </main>
 
 <Footer/>
@@ -169,8 +170,7 @@
 		border-radius: 10%;
 		margin-bottom: 5vh;
 	}
-	.textMealDescription {
-	}
+
 	.textMealTitle {
 		font: 400;
 		font-weight: bold;

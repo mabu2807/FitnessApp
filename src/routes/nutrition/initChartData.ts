@@ -1,6 +1,6 @@
-import type { userdetail } from "./nutritionTypes";
+import type { allValues, allmaxValues, userdetail } from "./nutritionTypes";
 
-export function initChartData(maxCalories: number, calperday: number[]) {
+export function initChartData(allmaxValues:allmaxValues, allValues:allValues) {
 	const week = calcWeekArray();
 	
 	const data = {
@@ -8,12 +8,61 @@ export function initChartData(maxCalories: number, calperday: number[]) {
 		datasets: [
 			{
 				label: 'kcal',
-				data: calperday,
-				backgroundColor: changeBgColors(maxCalories, calperday),
+				data: allValues.calories,
+				backgroundColor: changeBgColors(allmaxValues.calories, allValues.calories),
 				borderWidth: 1,
-				borderColor: changeBgColors(maxCalories, calperday),
+				borderColor: changeBorderColors(allmaxValues.calories, allValues.calories)
+			},
+			{
+				label: 'Fett',
+				data: allValues.fat,
+				backgroundColor: changeBgColors(allmaxValues.fat,allValues.fat),
+				borderWidth: 1,
+				borderColor: changeBorderColors(allmaxValues.fat,allValues.fat),
+				hidden:true
+			},
+			{
+				label: 'Zucker',
+				data: allValues.sugar,
+				backgroundColor: changeBgColors(allmaxValues.sugar,allValues.sugar),
+				borderWidth: 1,
+				borderColor: changeBorderColors(allmaxValues.sugar,allValues.sugar),
+				hidden:true
+			},
+			{
+				label: 'Salz',
+				data: allValues.salt,
+				backgroundColor: changeBgColors(allmaxValues.salt,allValues.salt),
+				borderWidth: 1,
+				borderColor: changeBorderColors(allmaxValues.salt,allValues.salt),
 				hidden:true
 			}
+			,
+			{
+				label: 'Eiweiß',
+				data: allValues.protein,
+				backgroundColor: changeBgColors(allmaxValues.protein,allValues.protein),
+				borderWidth: 1,
+				borderColor: changeBorderColors(allmaxValues.protein,allValues.protein),
+				hidden:true
+			},
+			{
+				label: 'Kohlenhydrate',
+				data: allValues.carbohydrates,
+				backgroundColor: changeBgColors(allmaxValues.carbohydrates,allValues.carbohydrates),
+				borderWidth: 1,
+				borderColor: changeBorderColors(allmaxValues.carbohydrates,allValues.carbohydrates),
+				hidden:true
+			},
+			{
+				label: 'gesätigte Fettsäuren',
+				data: allValues.saturatedFat,
+				backgroundColor: changeBgColors(allmaxValues.saturatedFat,allValues.saturatedFat),
+				borderWidth: 1,
+				borderColor: changeBorderColors(allmaxValues.saturatedFat,allValues.saturatedFat),
+				hidden:true
+			}
+
 		]
 	};
 	return data;
@@ -46,7 +95,7 @@ function calcWeekArray() {
 	return week;
 }
 
-function changeBgColors(maxCalories: number, calperday: number[]) {
+function changeBgColors(maxValue: number, calperday: number[]) {
 	const backgroundColor = [
 		'rgba(98,  182, 239,0.4)',
 		'rgba(113, 205, 205,0.4)',
@@ -59,7 +108,7 @@ function changeBgColors(maxCalories: number, calperday: number[]) {
 
 	const red = 'rgb(255, 99, 132)';
 	for (let i = 0; i < calperday.length; i++) {
-		if (calperday[i] > Number(maxCalories)) {
+		if (calperday[i] > Number(maxValue)) {
 			backgroundColor[i] = red;
 		}
 	}

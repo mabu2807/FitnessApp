@@ -1,4 +1,6 @@
-type nutritionalValues = {
+
+
+export type nutritionalValues = {
     id: number,
     energy: number,
     fat: number,
@@ -8,7 +10,7 @@ type nutritionalValues = {
     protein: number,
     salt: number
 }
-type Dish = {
+export type Dish = {
     id: number,
     name: string,
     imagePath: string,
@@ -36,3 +38,23 @@ export type userdetail = {
     weight: number;
     height: number;
 };
+
+export type allmaxValues = {
+    calories: number,
+    fat: number,
+    sugar: number,
+    salt: number;
+    protein: number,
+    carbohydrates: number,
+    saturatedFat: number,
+}
+
+export type allValues =  {
+    calories: number[],
+    fat: number[],
+    sugar: number[],
+    salt: number[],
+    protein: number[],
+    carbohydrates: number[],
+    saturatedFat: number[],
+}
