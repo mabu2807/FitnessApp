@@ -1,10 +1,15 @@
 <script lang="ts">
-	import { AppBar } from '@skeletonlabs/skeleton';
+	import { AppBar, SlideToggle } from '@skeletonlabs/skeleton';
 	import { Avatar } from '@skeletonlabs/skeleton';
-	import { Drawer, drawerStore, popup} from '@skeletonlabs/skeleton';
+	import { Drawer, Modal, drawerStore, popup} from '@skeletonlabs/skeleton';
 import type { DrawerSettings } from '@skeletonlabs/skeleton';
 import type { PopupSettings } from '@skeletonlabs/skeleton';
 import { LightSwitch } from '@skeletonlabs/skeleton';
+import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton';
+	import { modalStore } from '@skeletonlabs/skeleton';
+	import { Label } from '@smui/button';
+	import PasswordModal from './PasswordModal.svelte';
+	import PersonalModal from './PersonalModal.svelte';
 
 			
 
@@ -27,29 +32,45 @@ const popupNavigation: PopupSettings = {
 	placement: 'bottom',
 };
 
-let settings = [
-		{
-			referencing: '/',
-			setting: 'Persönliche Daten',
-			icon: 'fa-solid fa-user'
-		},
-		{
-			referencing: 'profile/change-password',
-			setting: 'Passwort ändern',
-			icon: 'fa-solid fa-key'
-		},
-		// {
-		// 	referencing: '',
-		// 	setting: 'Einstellungen',
-		// 	icon: 'fa-solid fa-gear'
-		// }
-	];
+
+const modalChange: ModalComponent = {
+	ref: PasswordModal,
+};
+
+const modalData: ModalComponent = {
+	ref: PersonalModal,
+};
+
+function modalPersonal(): void {
+		const modal: ModalSettings = {
+			type: 'component',
+			component: modalData,
+		};
+		modalStore.trigger(modal);
+	}
+									
+
+function modalPassword(): void {
+		const modal: ModalSettings = {
+			type: 'component',
+			component: modalChange,
+		};
+		modalStore.trigger(modal);
+	}
+
 
 	let testUser = {
 		name: 'Georgiev, Aleks'
 	};
 
+	let checkMode = false;
+
+
 </script>
+
+
+<Modal/>
+
 
 <Drawer position="right"> 
 <div class="flex flex-col justify-center items-center">
@@ -68,27 +89,34 @@ let settings = [
 		<span class="bar block mt-4 rounded-full bg-black dark:bg-white h-1 w-3/5"></span>
 	  
 		<div class="flex flex-col w-full mt-8 items-center">
-			{#each settings as tool}
 
 			<div class="flex flex-row items-center m-3 md:m-5">
 			<div class="mr-3 text-base md:text-lg dark:text-white text-black">
-				<i class="{tool.icon}"></i>
+				<i class="fa-solid fa-user"></i>
 			</div>
 
-				<a href={tool.referencing}>
-					<p class="text-base md:text-lg dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">{tool.setting}</p>
-				</a>
+				<button on:click={modalPersonal}>
+					<p class="text-base md:text-lg dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Persönliche Daten</p>
+				</button>
 			</div>
-				{/each}
+			<div class="flex flex-row items-center m-3 md:m-5">
+				<div class="mr-3 text-base md:text-lg dark:text-white text-black">
+					<i class="fa-solid fa-key"></i>
+				</div>
+	
+					<button on:click={modalPassword}>
+						<p class="text-base md:text-lg dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Passwort ändern</p>
+					</button>
+				</div>
+		
 
 				<div class="flex flex-row items-center m-3 md:m-5">
 					<div class="mr-3 text-base md:text-lg dark:text-white text-black">
-						<LightSwitch/>
+						<LightSwitch on:click={()=>checkMode=!checkMode}/>
 					</div>
 		
-						<a href="/">
-							<p class="text-base md:text-lg dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Einstellungen</p>
-						</a>
+							<p class="text-base md:text-lg dark:text-white text-black">{checkMode ? 'Light' : 'Dark'} Mode</p>
+					
 					</div>
 				
 		  </div>
