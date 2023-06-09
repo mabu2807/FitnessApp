@@ -11,58 +11,66 @@
 	<link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
-	<section class="register">
-		<div class="register_box">
-			<div class="left">
-				<div class="contact">
+
+	<section>
+		<div class="card flex relative overflow-hidden m-10">
+			<div class="w-2/5">
+				<div>
 					<form method="post">
-						<div class="title-wrapper">
-							<div class="top_link">
+						<div class="flex flex-row">
+							<div class="w-16 m-8 overflow-hidden rounded bg-black">
 								<a href="/"><img src="Logo.jpg" alt="Logo" /></a>
 							</div>
 
 							<h3>Erstelle einen Account</h3>
 						</div>
-						<input
+						<input class="input"
 							name="username"
 							type="text"
 							placeholder="Benutzername"
 							value={form?.username ?? ''}
 						/>
-						<input name="email" type="email" placeholder="Email" value={form?.email ?? ''} />
-						<input
+						<input class="input" name="email" type="email" placeholder="Email" value={form?.email ?? ''} />
+						<input class="input"
 							name="password"
 							type="password"
 							placeholder="Passwort"
 							value={form?.password ?? ''}
 						/>
-						<input
+						<input class="input"
 							name="passwordConfirm"
 							type="password"
 							placeholder="Bestätige Passwort"
 							value={form?.passwordConfirm ?? ''}
 						/>
-						<div class="error">
+						<!-- <div class="error">
 							{#if form?.missing}<p>Bitte füllen sie die Felder aus!</p>{/if}
-						</div>
+						</div> -->
 						<button type="submit" class="submit">Registrieren</button>
 					</form>
 				</div>
 			</div>
-			<div class="right">
-				<div class="right-text">
-					<h2>Join FitnessHub</h2>
-					<h5>Komm in die Gruppe und werde zu einem Halbgott!</h5>
+			<div class="w-3/5 right-gradient">
+				<div class="relative">
+					<h2 class="h2 text-center">Join FitnessHub</h2>
+					<h5 class="h5 text-center">Komm in die Gruppe und werde zu einem Halbgott!</h5>
 				</div>
-				<div class="right-indicator" />
+				<div class="indicator absolute w-7 h-2 rounded-full" />
 			</div>
 		</div>
 	</section>
-</body>
+
 
 <style>
-	body {
+	.right-gradient {
+		background-image:
+			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 50%),
+			radial-gradient(at 100% 0%,  rgba(var(--color-primary-500) / 0.33) 0px, transparent 50%);
+}
+</style>
+
+<!-- <style>
+	/* body {
 		margin: 0;
 		padding: 0;
 		font-family: Arial, sans-serif;
@@ -71,16 +79,16 @@
 	.error {
 		margin-left: 0.9vw;
 		font-size: 1.1vw;
-	}
+	}  */
 
-	.register {
+	/* .register {
 		height: 100vh;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
 
-	.register_box {
+	/* .register_box {
 		width: 90vw;
 		height: 80vh;
 
@@ -113,14 +121,14 @@
 		margin-top: 3vh;
 
 		color: var(--black);
-	}
+	} */
 
-	.left .title-wrapper {
+	/* .left .title-wrapper {
 		display: flex;
 		flex-direction: row;
-	}
+	} */
 
-	.left .top_link {
+	/* .left .top_link {
 		background-color: var(--black);
 		width: 18%;
 
@@ -137,9 +145,9 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-	}
+	} */
 
-	.left input {
+	/* .left input {
 		width: 90%;
 		padding: 1.3vh 0.5vw;
 		margin-left: 0.7vw;
@@ -212,17 +220,10 @@
 		color: var(--black);
 	}
 
-	.right-indicator {
-		position: absolute;
+	.indicator {
 		bottom: 20px;
 		left: 50%;
 		transform: translateX(-50%);
-
-		width: 10vw;
-		height: 0.7vh;
-
-		background-color: var(--black);
-		border-radius: 10px;
 		animation: indicator 1.5s ease-in-out infinite alternate;
 	}
 	@keyframes indicator {
@@ -279,4 +280,4 @@
 			display: none;
 		}
 	}
-</style>
+</style> */ -->
