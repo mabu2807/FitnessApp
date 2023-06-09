@@ -1,8 +1,18 @@
 <script lang="ts">
 	import Head from '../../components/Head.svelte';
 	import type { ActionData } from './$types';
+	import { Toast, toastStore } from '@skeletonlabs/skeleton';
+	import type { ToastSettings } from '@skeletonlabs/skeleton';	
 
 	export let form: ActionData;
+
+// 	const t: ToastSettings = {
+// 	message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit...',
+
+// };
+// function alert(){
+// 	toastStore.trigger(t);
+// };
 </script>
 
 <!-- <head>
@@ -22,10 +32,10 @@
 						<h3 class="md:text-2xl md:mx-3 lg:mx-4 sm:text-xl text-2xl font-semibold mb-8 mx-2">Benutzer Login</h3>
 				
 		
-				<form method="post" class="mb-8 md:mx-3 lg:mx-4 mx-2">
+				<form id="form" method="post" class="mb-8 md:mx-3 lg:mx-4 mx-2">
 					<input name="email" placeholder="Email" type="text" value={form?.email ?? ''} class="input p-2 mb-4 md:text-base text-base sm:text-sm text-black dark:text-primary-500 dark:placeholder-white" />
 					<input name="password" placeholder="Passwort" type="password" value={form?.password ?? ''} class="input p-2 mb-6 md:text-base text-base sm:text-sm text-black dark:text-primary-500 dark:placeholder-white" />
-					{#if form?.missing}<p class="text-red-500 text-sm ml-2">Bitte füllen Sie die Felder aus!</p>{/if}
+					<!-- {#if form?.missing}<p>TEst</p>{/if} -->
 					<button type="submit" class="btn variant-filled w-full md:text-base text-base sm:text-sm md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500">Sign In</button>
 					<div class="mt-6 text-sm">
 						<p>Du hast noch keinen Account? Dann <a href="/register"><span class="text-tertiary-500 hover:text-secondary-500 dark:hover:text-primary-500 font-bold">Registriere</span></a> dich jetzt!</p>

@@ -94,7 +94,6 @@
 			<button class="md:ml-20 ml-10 hover:text-tertiary-500 dark:hover:text-primary-500" on:click={handleNext}><i class="fa-solid fa-arrow-left fa-3x" /></button>
 			<div class="grid grid-cols-2 gap-10 xl:mx-40 lg:mx-30 mx-auto">
 			{#each visibleItems as item (item.id)} 
-				<!-- svelte-ignore missing-declaration -->
 				<!-- testamionials class -->
 				<div class="card overflow-hidden" transition:fly={{ x: -100, opacity: 0 }}
 				animate:fly={{ x: 0, opacity: 1 }}>
@@ -115,8 +114,8 @@
 			<form class="my-0 sm:mx-auto mx-14 max-w-lg">
 				<input class="input sm:p-2 p-1 mb-2 text-black dark:text-primary-500 dark:placeholder-white" type="text" name="name" placeholder="Name" required />
 				<input class="input sm:p-2 p-1 mb-2 text-black dark:text-primary-500 dark:placeholder-white" type="email" name="email" placeholder="E-Mail-Adresse" required />
-				<textarea class="textarea block w-full p-2 mb-3 text-black dark:text-primary-500 dark:placeholder-white" name="message" placeholder="Nachricht" required />
-				<button type="submit" class="btn variant-filled inline-block md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500">Senden</button> 
+				<textarea class="textarea p-2 mb-3 text-black dark:text-primary-500 dark:placeholder-white" name="message" placeholder="Nachricht" required />
+				<button type="submit" class="btn variant-filled md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500">Senden</button> 
 			</form>
 		</section>
 	<!-- </main>

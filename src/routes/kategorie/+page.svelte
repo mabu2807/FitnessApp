@@ -120,7 +120,7 @@
 	</div>
 
 
-	<div class="flex flex-wrap justify-center gap-3 mt-5">
+	<div class="card flex flex-wrap justify-center gap-3 mt-5">
 		{#each selectedData as button}
 			<a href={button.link} class="flex flex-col items-center justify-center w-64 h-80 bg-white rounded-md shadow-xl no-underline text-gray-400 mt-3 hover:w-72 transition-all duration-900 ease-in ">
 				<div class="w-full h-full rounded-md">
