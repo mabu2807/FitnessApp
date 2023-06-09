@@ -88,18 +88,19 @@
 	
 		
 		<section class="w-full py-8 mid-gradient">
-			<h2 class="md:h2 h1 text-center mb-0 py-5 px-4">Was unsere Kunden sagen</h2>
+			<h2 class="md:h2 h1 text-center mb-6 py-5 px-4">Was unsere Kunden sagen</h2>
 			<div class="text-center items-center justify-between flex">
 			<!-- arrow class -->
 			<button class="md:ml-20 ml-10 hover:text-tertiary-500 dark:hover:text-primary-500" on:click={handleNext}><i class="fa-solid fa-arrow-left fa-3x" /></button>
-			<div class="grid grid-cols-2 gap-10 xl:mx-40 lg:mx-30 mx-auto">
+			<div class="grid grid-cols-1 gap-10 lg:mx-20 xl:mx-40 lg:grid-cols-2 sm:mx-20 mx-7">
 			{#each visibleItems as item (item.id)} 
 				<!-- testamionials class -->
 				<div class="card overflow-hidden" transition:fly={{ x: -100, opacity: 0 }}
 				animate:fly={{ x: 0, opacity: 1 }}>
-					<header class="card-header"><img class="object-cover w-24 h-24 rounded-full mb-2" src={'test.jpeg'} alt="Kunde {item.id}" /></header>
-					<section><p class="mb-2 overflow-hidden">{item.text}</p></section>
-					<footer class="card-footer"><cite class="italic text-gray-500 overflow-hidden">{item.name}</cite></footer>
+					<header class="card-header flex flex-row m-1"><img class="object-cover md:w-16 w-12 sm:14 h-full rounded-full" src={'test.jpeg'} alt="Kunde {item.id}" />
+						<p class="sm:text-base text-sm ml-7 overflow-hidden">{item.text}</p></header>
+					<!-- <section><p class="mb-2 overflow-hidden">{item.text}</p></section> -->
+					<footer class="card-footer mt-7 sm:text-base text-sm"><cite class="cite text-gray-500 overflow-hidden">{item.name}</cite></footer>
 				</div>
 			{/each}
 		</div>
