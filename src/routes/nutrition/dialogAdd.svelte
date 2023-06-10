@@ -7,6 +7,7 @@
 	let time: string;
 	let calories: number;
 	let allDishes = data.allDishes
+	let selected = [allDishes[1]]
 
 	const closeClick = () => {
 		dialogAdd.close();
@@ -16,11 +17,12 @@
 		console.log(mealtext);
 		console.log(time);
 		console.log(calories);
+		console.log(selected)
 	}
-	function selectDish(){
-		let id = document.getElementById("rowDish");
-		console.log(id)
-	}
+	// function selectDish(){
+	// 	let id = document.querySelector('input[name="selectDish":checked]').value
+	// 	console.log(id)
+	// }
 </script>
 
 <dialog bind:this={dialogAdd} on:close>
@@ -52,7 +54,7 @@
 				<td>{dish.nutritionalValues.energy}</td>
 				<td>
 					<div>
-                        <label><input type="radio" id='regular' name="selectDish" on:click={selectDish}></label>
+                        <label><input type="radio"  bind:group={selected} name="selectDish" value={dish}></label>
                     </div> 
 				</td>
 			</tr>
