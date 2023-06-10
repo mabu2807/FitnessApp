@@ -9,7 +9,7 @@
 		{ title:'divers', imgSrc: 'Adrain.png'}
 	];
 
-	function selectCard(value) {
+	function selectCard(value: string) {
 		$getStartedData[4].value = value;
 	}
 </script>

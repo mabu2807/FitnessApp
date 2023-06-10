@@ -28,7 +28,7 @@
 
 <section class="flex justify-center">
     <div class="card w-3/4 m-10 shadow-xl p-8 items-center">
-    <Stepper on:next={onNextHandler} on:step={onStepHandler} on:back={onBackHandler} on:complete={onCompleteHandler}>
+    <Stepper buttonNext="btn variant-filled transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500" on:next={onNextHandler} on:step={onStepHandler} on:back={onBackHandler} on:complete={onCompleteHandler}>
         <Step class="text-center">
             <svelte:fragment slot="header">Wähle zunächst dein Ziel aus!</svelte:fragment>
             <Goal/>

@@ -3,12 +3,12 @@
 	import { onMount } from 'svelte';
 
 	let picsource = 'final15.png';
-	let sliderValue;
+	let sliderValue: string;
 
-	function updateSliderValue(event) {
+	function updateSliderValue(event:Event) {
 		$getStartedData[2].value = sliderValue;
-		sliderValue = event.target.value;
-		let val = parseInt(event.target.value);
+		sliderValue = (event.target as HTMLInputElement).value;
+		let val = parseInt((event.target as HTMLInputElement).value);
 		if (val < 60) {
 			picsource = 'final5.png';
 		} else if (val < 70) {

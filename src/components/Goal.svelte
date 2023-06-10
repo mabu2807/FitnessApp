@@ -7,7 +7,7 @@
 		{ title: 'Stay Fit', description: 'Allgemeine Fitness erhalten und verbessern' }
 	];
 
-	function selectCard(value) {
+	function selectCard(value:string) {
 		$getStartedData[0].value = value;
 	}
 </script>

@@ -2,10 +2,10 @@
 	import { onMount } from 'svelte';
 	import { getStartedData } from '../routes/getStarted/Data'; 
 
-	let sliderValue;
+	let sliderValue:string;
 
-	function updateSliderValue(event) {
-		sliderValue = event.target.value;
+	function updateSliderValue(event: Event) {
+		sliderValue = (event.target as HTMLInputElement).value;
 		$getStartedData[1].value = sliderValue;
 	}
 
