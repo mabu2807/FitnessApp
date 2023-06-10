@@ -9,7 +9,7 @@
 <main>
     <div class="content">
         <div class="banner">
-            <img class="img" src="/bannerNutrition.jpg" alt="test">            
+            <img class="img" src="/bannerNutrition.png" alt="test">            
         </div>
         <div class="articles">
             {#each articles as article}
