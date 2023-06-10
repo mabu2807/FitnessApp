@@ -78,7 +78,8 @@ export const load = (async () => {
 			where:{
 				day:{
 					gt: todayMidnight
-				}
+				},
+				foodDiaryId: responseFoodDiaryID?.id
 			},
 			include: {
 				dish: {
@@ -121,7 +122,8 @@ export const load = (async () => {
 				sugarperdayunsorted[i] = sugarperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.sugar;	
 				saturatedFatperdayunsorted[i] = saturatedFatperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.saturatedFat;	
 				carbohydratesperdayunsorted[i] = carbohydratesperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.carbohydrates;	
-				fatperdayunsorted[i] = fatperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.fat;					
+				fatperdayunsorted[i] = fatperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.fat;
+				proteinperdayunsorted[i] = proteinperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.protein;						
 			}
 		}
 	}
@@ -161,6 +163,7 @@ export const load = (async () => {
 	const allmaxValues = allmaxvalues(responseUserDetails,maxCalories);
 
 	const chartdata = initChartData(allmaxValues, allValues);
+	console.log(allValues.protein)
 	
 	
 	

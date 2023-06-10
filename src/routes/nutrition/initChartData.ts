@@ -1,3 +1,4 @@
+
 import type { allValues, allmaxValues, userdetail } from "./nutritionTypes";
 
 export function initChartData(allmaxValues:allmaxValues, allValues:allValues) {
@@ -65,6 +66,7 @@ export function initChartData(allmaxValues:allmaxValues, allValues:allValues) {
 
 		]
 	};
+	
 	return data;
 }
 
@@ -81,7 +83,7 @@ function calcWeekArray() {
 	const day = new Date();
 
 	let weekday = day.getDay();
-	if (weekday == 7) {
+	if (weekday == 6) {
 		weekday = -1;
 	}
 	const week: string[] = [];
