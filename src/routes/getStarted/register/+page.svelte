@@ -19,7 +19,7 @@
 					<form method="post">
 						<div class="title-wrapper">
 							<div class="top_link">
-								<a href="/"><img src="src/assets/Logo.jpg" alt="Logo" /></a>
+								<a href="/"><img src="Logo.jpg" alt="Logo" /></a>
 							</div>
 
 							<h3>Erstelle einen Account</h3>
@@ -85,9 +85,9 @@
 		height: 80vh;
 
 		position: relative;
-		background: #fff;
+		background: var(--white);
 		border-radius: 10px;
-		box-shadow: 1px 4px 22px -8px #0004;
+		box-shadow: 1px 4px 22px -8px var(--black);
 		display: flex;
 		overflow: hidden;
 	}
@@ -96,13 +96,13 @@
 		width: 43%;
 		height: 100%;
 		padding: 1vw 1vh;
-		background-color: #fff;
+		background-color: var(--white);
 	}
 
 	.register_box .right {
 		width: 57%;
 		height: 100%;
-		background-color: #000;
+		background-color: var(--black);
 	}
 
 	.left h3 {
@@ -112,7 +112,7 @@
 		margin-bottom: 1.5vh;
 		margin-top: 3vh;
 
-		color: #000;
+		color: var(--black);
 	}
 
 	.left .title-wrapper {
@@ -121,7 +121,7 @@
 	}
 
 	.left .top_link {
-		background-color: #000;
+		background-color: var(--black);
 		width: 18%;
 
 		height: 24%;
@@ -144,7 +144,7 @@
 		padding: 1.3vh 0.5vw;
 		margin-left: 0.7vw;
 		margin-bottom: 3vh;
-		border: 1px solid #ccc;
+		border: 1px solid var(--lightgrey-input);
 		overflow: hidden;
 		background: transparent;
 		font-weight: 600;
@@ -158,28 +158,28 @@
 		height: 6vh;
 		padding: 1vh 0.7vw;
 
-		border: 2px solid #393e46;
+		border: 2px solid var(--darkgrey);
 		border-radius: 8px;
 		display: block;
 		margin: auto;
 
 		margin-top: 7vh;
-		background: #393e46;
-		color: #fff;
+		background: var(--darkgrey);
+		color: var(--white);
 		font-weight: bold;
 		font-size: 1.1vw;
 	}
 
 	.register .submit:hover {
-		color: black;
-		background-color: white;
+		color: var(--black);
+		background-color: var(--white);
 		box-shadow: 0px 10px 20px -6px rgba(0, 0, 0, 0.627);
 		transition: 0.5s ease all;
 	}
 
 	.right {
-		background: radial-gradient(circle at center, #999999, #cccccc);
-		color: #000;
+		background: radial-gradient(circle at center, var(--grey-border), var(--lightgrey-input));
+		color: var(--black);
 		mix-blend-mode: difference;
 		position: relative;
 	}
@@ -199,7 +199,7 @@
 
 		font-size: 4vw;
 		font-weight: 500;
-		color: #000;
+		color: var(--black);
 	}
 
 	.right-text h5 {
@@ -209,7 +209,7 @@
 
 		font-size: 1.5vw;
 		font-weight: 400;
-		color: #000;
+		color: var(--black);
 	}
 
 	.right-indicator {
@@ -221,7 +221,7 @@
 		width: 10vw;
 		height: 0.7vh;
 
-		background-color: #000;
+		background-color: var(--black);
 		border-radius: 10px;
 		animation: indicator 1.5s ease-in-out infinite alternate;
 	}

@@ -6,10 +6,13 @@
 	import { element } from 'svelte/internal';
 	import Head from '../../components/Head.svelte';
 	import Footer from '../../components/Footer.svelte';
+	import type { PageData } from './$types'
 
 	let open = false;
 	let removeDisabled = true;
 	let addDisabled = true;
+
+	export let data: PageData
 
 	function addOn() {
 		open = true;
@@ -82,15 +85,15 @@
 	let selectedData = [
 		{
 			title: 'Krafttraining',
-			imageSrc: 'src/assets/workout2.jpg',
+			imageSrc: 'workout2.jpg',
 			description:
 				' Sed do eiusmod temporrem ipsum dolor sit ametorididunt ut labore et dolore magna aliqua. ',
-			link: 'liftingplan',
+			link: 'liftingplans',
 			selected: false
 		},
 		{
 			title: 'Cardio',
-			imageSrc: 'src/assets/workout1.jpg',
+			imageSrc: 'workout1.jpg',
 			description:
 				' labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqu',
 			link: 'https://example.com/button2',
@@ -101,7 +104,7 @@
 	let availableData = [
 		{
 			title: 'Yoga',
-			imageSrc: 'src/assets/workout3.jpg',
+			imageSrc: 'workout3.jpg',
 			description:
 				'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. minim veniam, quis nostrud exercita',
 			link: 'https://example.com/button3',

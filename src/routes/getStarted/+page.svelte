@@ -3,7 +3,7 @@
 		<div class="first-wrapper">
 			<div class="first-title-wrapper">
 				<h2 class="first-title">Willkommen</h2>
-				<img src="src/assets/Logo.jpg" alt="logo" />
+				<img src="Logo.jpg" alt="logo" />
 			</div>
 
 			<div class="first-description-wrapper">

@@ -24,6 +24,7 @@
 	let selected:string = "energy";
 	let chartData = data.chartdata;
 
+
 	const editCard: MouseEventHandler<HTMLButtonElement> = (event) => {
 		console.log(event.currentTarget.getAttribute('id'));
 		buttonID = event.currentTarget.getAttribute('id');
@@ -69,7 +70,7 @@
 									on:click={() => dialog.showModal()}
 									class="button"
 								>
-									<img src="src/assets/Edit_Pencil.png" alt="Edit Meal" />
+									<img src="Edit_Pencil.png" alt="Edit Meal" />
 								</button>
 								<Dialog bind:dialog mealdata={meal} value={buttonID}/>
 							</div>

@@ -3,193 +3,9 @@
 	import Dialog, { Header, Title, Content, Actions } from '@smui/dialog';
 	import IconButton from '@smui/icon-button';
 	import Button, { Label } from '@smui/button';
+	import type { PageData } from './$types'
 
-	// export let data;
-
-	export let plans = [
-		{
-			id: '0',
-			title: 'Trainingsplan 1: Muskelaufbau',
-			description: 'Ein intensiver Trainingsplan für Fettverbrennung und Ausdauersteigerung.',
-			image: 'src/assets/plan1.jpg',
-			plan: [
-				{
-					id: 1,
-					exercise: 'Bankdrücken',
-					description:
-						'Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.',
-					imagePath: 'src/assets/plan1.jpg',
-					sets: '3',
-					repetitions: '18',
-					weigth: '120'
-				},
-				{
-					id: 2,
-					exercise: 'Butterfly',
-					description:
-						'Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.',
-					imagePath: 'src/assets/plan2.jpg',
-					sets: '3',
-					repetitions: '18',
-					weigth: '120'
-				},
-				{
-					id: 1,
-					exercise: 'Bankdrücken',
-					description:
-						'Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.',
-					imagePath: 'src/assets/plan1.jpg',
-					sets: '3',
-					repetitions: '18',
-					weigth: '120'
-				},
-				{
-					id: 2,
-					exercise: 'Butterfly',
-					description:
-						'Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.',
-					imagePath: 'src/assets/plan2.jpg',
-					sets: '3',
-					repetitions: '18',
-					weigth: '120'
-				},
-				{
-					id: 1,
-					exercise: 'Bankdrücken',
-					description:
-						'Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.',
-					imagePath: 'src/assets/plan1.jpg',
-					sets: '3',
-					repetitions: '18',
-					weigth: '120'
-				},
-				{
-					id: 2,
-					exercise: 'Butterfly',
-					description:
-						'Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.',
-					imagePath: 'src/assets/plan2.jpg',
-					sets: '3',
-					repetitions: '18',
-					weigth: '120'
-				}
-			]
-		},
-		{
-			id: '1',
-			title: 'Trainingsplan 2: Fettverbrennung',
-			description: 'Ein intensiver Trainingsplan für Fettverbrennung und Ausdauersteigerung.',
-			image: 'src/assets/plan2.jpg',
-			plan: [
-				{
-					id: 1,
-					exercise: 'Bankdrücken',
-					description:
-						'Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.',
-					imagePath: 'src/assets/plan1.jpg',
-					sets: '3',
-					repetitions: '18',
-					weigth: '120'
-				},
-				{
-					id: 2,
-					exercise: 'Butterfly',
-					description:
-						'Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.',
-					imagePath: 'src/assets/plan2.jpg',
-					sets: '3',
-					repetitions: '18',
-					weigth: '120'
-				},
-				{
-					id: 1,
-					exercise: 'Bankdrücken',
-					description:
-						'Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.',
-					imagePath: 'src/assets/plan1.jpg',
-					sets: '3',
-					repetitions: '18',
-					weigth: '120'
-				},
-				{
-					id: 2,
-					exercise: 'Butterfly',
-					description:
-						'Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.',
-					imagePath: 'src/assets/plan2.jpg',
-					sets: '3',
-					repetitions: '18',
-					weigth: '120'
-				},
-				{
-					id: 1,
-					exercise: 'Bankdrücken',
-					description:
-						'Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.',
-					imagePath: 'src/assets/plan1.jpg',
-					sets: '3',
-					repetitions: '18',
-					weigth: '120'
-				},
-				{
-					id: 2,
-					exercise: 'Butterfly',
-					description:
-						'Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.',
-					imagePath: 'src/assets/plan2.jpg',
-					sets: '3',
-					repetitions: '18',
-					weigth: '120'
-				}
-			]
-		},
-		{
-			id: '2',
-			title: 'Trainingsplan 3: Flexibilität',
-			description: 'Ein flexibler Trainingsplan für Ganzkörperfitness und Beweglichkeit.',
-			image: 'src/assets/plan3.jpg',
-			plan: [
-				{
-					id: 1,
-					exercise: 'Bankdrücken',
-					description:
-						'Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.',
-					imagePath: 'src/assets/plan1.jpg'
-				},
-				{
-					id: 2,
-					exercise: 'Butterfly',
-					description:
-						'Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.',
-					imagePath: 'src/assets/plan2.jpg'
-				}
-			]
-		},
-		{
-			id: '3',
-			title: 'Trainingsplan 4: Beweglichkeit',
-			description: 'Ein umfassender Trainingsplan für die Beweglichkeit.',
-			image: 'src/assets/plan4.jpg',
-			plan: [
-				{
-					id: 1,
-					exercise: 'Bankdrücken',
-					description:
-						'Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.',
-					imagePath: 'src/assets/plan1.jpg'
-				},
-				{
-					id: 2,
-					exercise: 'Butterfly',
-					description:
-						'Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.',
-					imagePath: 'src/assets/plan2.jpg'
-				}
-			]
-		}
-	];
-
-	$: plength = plans.length;
+	export let data: PageData
 
 	let open = false;
 	let showPlan: any;
@@ -207,15 +23,15 @@
 </script>
 
 <main>
-	{#if plength > 0}
+	{#if data}
 		<div class="category">
 			<h1 class="category-title">Wähle einen Trainingsplan</h1>
 			<p class="category-description">Entdecke unsere vielfältigen Trainingsmöglichkeiten</p>
 		</div>
 		<div class="plan-container">
-			{#each plans as plan}
+			{#each data.feed as plan}
 				<div class="plan-card">
-					<img src={plan.image} alt={plan.title} class="plan-image" />
+					<img src={plan.imagePath} alt={plan.title} class="plan-image" />
 					<div class="plan-content">
 						<h3 class="plan-title">{plan.title}</h3>
 						<p class="plan-description">{plan.description}</p>
