@@ -8,7 +8,7 @@ export function initChartData(allmaxValues:allmaxValues, allValues:allValues) {
 		labels: week,
 		datasets: [
 			{
-				label: 'kcal',
+				label: 'Kalorien',
 				data: allValues.calories,
 				backgroundColor: changeBgColors(allmaxValues.calories, allValues.calories),
 				borderWidth: 1,

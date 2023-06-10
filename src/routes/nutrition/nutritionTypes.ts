@@ -27,10 +27,6 @@ export type Meal = {
     dishId: number
     
 }
-// type FoodDiary ={
-//     id: number,
-//     userId: number,
-//    }
 
 export type userdetail = {
     userId: number;

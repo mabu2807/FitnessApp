@@ -18,12 +18,11 @@
 	let usedCalories = data.allValues.calories[6];
 
 	let amount = usedCalories / maxCalories;
-	let progress = amount;
+	let progress:number = amount;
 	let image: string;
-	let buttonID:string|null = "";
-	let selected:string = "energy";
+	let buttonID: string | null = '';
+	let selected: string = 'energy';
 	let chartData = data.chartdata;
-
 
 	const editCard: MouseEventHandler<HTMLButtonElement> = (event) => {
 		console.log(event.currentTarget.getAttribute('id'));
@@ -31,7 +30,7 @@
 	};
 	function addMeal(event: any) {
 		console.log('Add Meal');
-	};
+	}
 </script>
 
 <main>
@@ -50,7 +49,7 @@
 		</div>
 		<div class="columnWeek">
 			<p class="textTitle">Wochenübersicht</p>
-			<Chart value={maxCalories} bind:chartdata={chartData} />
+			<Chart bind:chartdata={chartData} />
 		</div>
 	</div>
 	<div>
@@ -72,7 +71,7 @@
 								>
 									<img src="Edit_Pencil.png" alt="Edit Meal" />
 								</button>
-								<Dialog bind:dialog mealdata={meal} value={buttonID}/>
+								<Dialog bind:dialog mealdata={meal} value={buttonID} />
 							</div>
 						</div>
 						<div class="imageCard">
@@ -87,7 +86,7 @@
 			</div>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div class="cardGeneral" on:click={addMeal} on:click={() => dialogAdd.showModal()}>
-				<DialogAdd bind:dialogAdd data={data}/>
+				<DialogAdd bind:dialogAdd {data} />
 				<div class="cardContent">
 					<h2 class="textAddMealTitle">Hier klicken um neue Mahlzeit hinzuzufügen</h2>
 				</div>
@@ -97,8 +96,7 @@
 	<a href="/nutrition/nutritiontipps">NutritionTipps</a>
 </main>
 
-<Footer/>
-
+<Footer />
 
 <style>
 	section {
@@ -110,7 +108,6 @@
 	}
 	.rowCaloriesWeek {
 		display: flex;
-
 	}
 	.rowMealtitleButton {
 		display: flex;
