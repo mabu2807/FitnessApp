@@ -1,38 +1,29 @@
-# create-svelte
+# Projekt Klonen
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-## Creating a project
 
-If you're seeing this, you've probably already done this step. Congrats!
+## pnpm
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+Wir benutzen den package-manager pnpm. Stelle sicher das dieser Installiert ist
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Repo Klonen
+Für den befehl in deiner Konsole aus: 
 
-## Developing
+git clone <repo_url>
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## pnpm init
 
-```bash
-npm run dev
+- Navigiere in deiner Konsole in den repo Ordner (cd <Repo_name>)
+- Gib in die Konsole: "pnpm install"
+- Wenn beendet -> "pnpm prisma generate"
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## Projekt starten
 
-## Building
+Um das Projekt zu starten benutze den Befehl:
+"pnpm dev"
 
-To create a production version of your app:
+Desweiteren kannst du die den aktuellen main-branch auch immer unter folgendem Link anschauen:
 
-```bash
-npm run build
-```
+https://fitness-app-seven-nu.vercel.app/
 
-You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
