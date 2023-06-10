@@ -12,7 +12,7 @@
 	}
 </script>
 
-<section>
+<section class="h-80">
 
 	<div class="flex justify-center gap-6 my-12">
 		{#each goalsBackend as goal}

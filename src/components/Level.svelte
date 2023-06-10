@@ -17,9 +17,9 @@
 	onMount(startValue);
 </script>
 
-<section>
+<section class="h-80">
 		<select
-			class="select w-1/3 mt-3 mb-10"
+			class="select w-1/3 mt-3"
 			value={sliderValue}
 			on:input={updateSliderValue}
 		>

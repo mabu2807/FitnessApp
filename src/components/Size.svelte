@@ -17,7 +17,7 @@
 	onMount(startValue);
 </script>
 
-<section>
+<section class="h-80">
 
 	
 		<h2 class="h2 text-center mt-12 mb-7">{sliderValue} cm</h2>

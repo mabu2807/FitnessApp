@@ -35,7 +35,7 @@
 	onMount(startValue);
 </script>
 
-<section>
+<section class="h-80">
 
 	<div class="flex justify-center gap-6 mt-12 mb-7">
 			<img class="w-28" src={picsource} alt="person" />

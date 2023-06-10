@@ -3,7 +3,7 @@
 
 </script>
 
-<section>
+<section class="h-80">
 
 
 	<div class="overview">
