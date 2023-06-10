@@ -111,11 +111,6 @@
 </body>
 
 <style>
-	body {
-		font-family: Arial, sans-serif;
-		margin: 0;
-		padding: 0;
-	}
 	#courses {
 		text-align: center;
 		padding: 50px 0;
