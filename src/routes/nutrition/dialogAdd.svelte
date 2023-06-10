@@ -17,7 +17,10 @@
 		console.log(time);
 		console.log(calories);
 	}
-	console.log(allDishes)
+	function selectDish(){
+		let id = document.getElementById("rowDish");
+		console.log(id)
+	}
 </script>
 
 <dialog bind:this={dialogAdd} on:close>
@@ -41,11 +44,17 @@
 		<tr>
 			<th>Name</th>
 			<th>Kalorien</th>
+			<th>Auswahl</th>
 		</tr>
 		{#each allDishes as dish}
-			<tr>
+			<tr id={dish.id.toString()}>
 				<td>{dish.name}</td>
 				<td>{dish.nutritionalValues.energy}</td>
+				<td>
+					<div>
+                        <label><input type="radio" id='regular' name="selectDish" on:click={selectDish}></label>
+                    </div> 
+				</td>
 			</tr>
 		{/each}
 	</table>

@@ -58,3 +58,11 @@ export type allValues =  {
     carbohydrates: number[],
     saturatedFat: number[],
 }
+export type article = {
+    id: number,
+    link: string,
+    title: string,
+    Text: string,
+    imagePath: string
+
+}
