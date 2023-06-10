@@ -23,8 +23,6 @@
 </head> -->
 
 <Head></Head>
-
-
 	<section class="flex items-center justify-center">
 		<div class="card w-3/4 sm:flex my-20">
 			<div class="sm:w-1/2 w-full p-8">

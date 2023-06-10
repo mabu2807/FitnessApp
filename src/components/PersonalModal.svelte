@@ -11,6 +11,7 @@
 		size: "175",
 		weight: "90",
 		birth: "2001-09-11",
+		gender: "1",
 		activity: "3",
 	}
 
@@ -42,6 +43,14 @@
 			<label class="label mb-5">
 				<span>Geburtstag</span>
 				<input class="input py-1 px-3" type="date" value="{testData.birth}"/>
+			</label>
+			<label class="label mb-5">
+				<span>Geschlecht</span>
+				<select value="{testData.gender}" class="select">
+					<option value="1">weiblich</option>
+					<option value="2">männlich</option>
+					<option value="3">divers</option>
+				</select>
 			</label>
 			<label class="label mb-10">
 				<span>Aktivitätslevel</span>

@@ -19,7 +19,7 @@
 
 			<div class="flex justify-between">
 				<a href="/login"><span class="btn variant-filled md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500">Melde dich an!</span></a>
-				<a href="/getStarted/goals"><span class="btn variant-filled md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500">Registrierung</span></a>
+				<a href="/registration"><span class="btn variant-filled md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500">Registrierung</span></a>
 			</div>
 		</section>
 
