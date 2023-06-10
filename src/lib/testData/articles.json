@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "link": "https://blog.gonature.de/nachhaltig-leben/umweltfreundliche-ernaehrung/?utm_source=google&utm_medium=googlegrants&utm_campaign=13881982998&utm_content=121581090221&utm_term=tipps%20f%C3%BCr%20gesunde%20ern%C3%A4hrung&gad=1&gclid=CjwKCAjwvpCkBhB4EiwAujULMpIkhSSe0orus3FXX8hkHxP6BrRHm3eymC51iicGRysC3KLVsBDpzhoCOS8QAvD_BwE",
+        "title": "Essen was du möchtest und trotzdem gesund?",
+        "Text": "Essen, was du möchtest und trotzdem gesund bleiben - eine Herausforderung, die viele beschäftigt. Die Lösung liegt in einer ausgewogenen Ernährung und bewusstem Genuss. Wähle frische, unverarbeitete Lebensmittel wie Obst, Gemüse und Vollkornprodukte. Achte auf deine Portionsgrößen und höre auf dein Sättigungsgefühl. Körperliche Aktivität ist ebenfalls wichtig. Ein gesunder Lebensstil erfordert langfristige Gewohnheiten. Finde die Balance zwischen Genuss und Gesundheit für ein erfülltes Leben.",
+        "imagePath": "/Food1.jpg"
+        
+    },
+    {
+        "id": 2,
+        "link": "https://www.brigitte.de/rezepte/diaet-rezepte/brigitte-diaet--gesunde-rezepte-zum-abnehmen-10012946.html",
+        "title": "Repzepte für gesunde Ernährung",
+        "Text": "Rezepte für gesunde Ernährung bieten eine Fülle von Möglichkeiten, um deinen Körper mit wertvollen Nährstoffen zu versorgen und gleichzeitig den Genuss am Essen nicht zu vernachlässigen. Von bunten Salaten und frischen Smoothies über vollwertige Hauptgerichte bis hin zu leckeren Snacks – diese Rezepte zeigen, dass gesunde Ernährung keineswegs langweilig sein muss. Mit frischen Zutaten, ausgewogenen Kombinationen und einer Prise Kreativität kannst du schmackhafte Mahlzeiten zaubern, die deinem Körper guttun und dich fit und energiegeladen fühlen lassen. Entdecke die Vielfalt gesunder Rezepte und finde heraus, wie einfach es ist, dich gesund zu ernähren, ohne auf den Genuss zu verzichten.",
+        "imagePath": "/Shopping1.jpg"
+        
+    },
+    {
+        "id": 3,
+        "link": "https://www.rewe.de/rezepte",
+        "title": "Rewe Rezepte",
+        "Text": "REWE Rezepte sind vielfältig und einfach nachzukochen. Von gesunden Gerichten mit frischen Zutaten bis hin zu köstlichen Leckereien für besondere Anlässe - hier findest du immer die passende Inspiration. Egal, ob du dich gesund ernähren möchtest oder etwas Besonderes zaubern willst, REWE hat die perfekten Rezepte für dich. Probiere sie aus und entdecke die Freude am Kochen mit REWE!",
+        "imagePath": "/Shopping2.jpg"
+        
+    }
+]

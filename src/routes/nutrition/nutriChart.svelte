@@ -11,6 +11,4 @@
 	let data = chartdata;
 </script>
 
-<canvas id="myChart" />
-
 <Bar {data} options={{ responsive: true }} />

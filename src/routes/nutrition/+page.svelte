@@ -9,56 +9,32 @@
 	import Head from '../../components/Head.svelte';
 	import Footer from '../../components/Footer.svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
+	import { allmaxvalues } from './initChartData';
+	//import { valueOrDefault } from 'chart.js/dist/helpers/helpers.core';
 
 	export let data: PageData;
-	let allcalories = data.allcalories;
+	let maxCalories = data.allmaxValues.calories;
+	let mealData = data.mealsforCards;
+	let usedCalories = data.allValues.calories[6];
 
-	let mealTimes = [
-		{
-			id: 1,
-			title: 'Frühstück',
-			icon: 'breakfast2.webp',
-			meal: 'Eier mit Speck und dazu eine Banane',
-			calories: 820
-		},
-		{
-			id: 2,
-			title: 'Mittagessen',
-			icon: 'lunch2.jpeg',
-			meal: 'Nudeln mit Spinat',
-			calories: 600
-		},
-		{
-			id: 3,
-			title: 'Abendessen',
-			icon: 'dinner2.jpeg',
-			meal: 'Kartoffeln mit Brokkoli und Hähnchen',
-			calories: 500
-		},
-		{
-			id: 4,
-			title: 'Snack',
-			icon: 'snack.jpg',
-			meal: 'Reiswaffel',
-			calories: 30
-		}
-	];
-	let usedCalories = data.chartdata.datasets[0].data[6];
+	let amount = usedCalories / maxCalories;
+	let progress = amount;
+	let image: string;
+	let buttonID:string|null = "";
+	let selected:string = "energy";
+	let chartData = data.chartdata;
 
-	let amount = usedCalories / allcalories;
-	const progress = amount;
 
 	const editCard: MouseEventHandler<HTMLButtonElement> = (event) => {
 		console.log(event.currentTarget.getAttribute('id'));
+		buttonID = event.currentTarget.getAttribute('id');
 	};
 	function addMeal(event: any) {
 		console.log('Add Meal');
-	}
+	};
 </script>
 
-<Head />
-
-<div>
+<main>
 	<section>
 		<h2>Ernährungstagebuch</h2>
 	</section>
@@ -68,24 +44,24 @@
 				<p class="textTitle">Tages-Kalorienverbrauch</p>
 				<div style="align-items: center;">
 					<CircleProgressBar {progress} />
-					<p>{usedCalories}/ {allcalories} kcal</p>
+					<p>{usedCalories}/ {maxCalories} kcal</p>
 				</div>
 			</div>
 		</div>
 		<div class="columnWeek">
 			<p class="textTitle">Wochenübersicht</p>
-			<Chart value={allcalories} chartdata={data.chartdata} />
+			<Chart value={maxCalories} bind:chartdata={chartData} />
 		</div>
 	</div>
 	<div>
 		<p class="textTitle">Mahlzeiten</p>
 		<div class="rowAllCards">
 			<div class="cardGeneral">
-				{#each mealTimes as meal}
+				{#each mealData as meal}
 					<div class="cardContent">
 						<div class="rowMealtitleButton">
 							<div class="textMealTitle">
-								<h2>{meal.title}</h2>
+								<h2>{meal.time}</h2>
 							</div>
 							<div>
 								<button
@@ -96,30 +72,33 @@
 								>
 									<img src="Edit_Pencil.png" alt="Edit Meal" />
 								</button>
-								<Dialog bind:dialog />
+								<Dialog bind:dialog mealdata={meal} value={buttonID}/>
 							</div>
 						</div>
 						<div class="imageCard">
-							<img src={meal.icon} alt="Meal Icon" height="150px" width="200px" />
+							<img src={meal.dish.imagePath} alt="Meal Icon" height="150px" width="200px" />
 						</div>
 						<div class="textMealDescription">
-							<p>{meal.meal}</p>
-							<p>{meal.calories} kcal</p>
+							<p>{meal.dish.name}</p>
+							<p>{meal.dish.nutritionalValues?.energy} kcal</p>
 						</div>
 					</div>
 				{/each}
 			</div>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div class="cardGeneral" on:click={addMeal} on:click={() => dialogAdd.showModal()}>
-				<DialogAdd bind:dialogAdd />
+				<DialogAdd bind:dialogAdd data={data}/>
 				<div class="cardContent">
 					<h2 class="textAddMealTitle">Hier klicken um neue Mahlzeit hinzuzufügen</h2>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<Footer />
+	<a href="/nutrition/nutritiontipps">NutritionTipps</a>
+</main>
+
+<Footer/>
+
 
 <style>
 	section {
@@ -130,8 +109,8 @@
 		color: white;
 	}
 	.rowCaloriesWeek {
-		display: -flex;
 		display: flex;
+
 	}
 	.rowMealtitleButton {
 		display: flex;
@@ -148,7 +127,6 @@
 		-ms-flex: 1;
 		flex: 1;
 		display: flex;
-		padding: 20px;
 		text-align: center;
 		align-content: center;
 	}
@@ -193,8 +171,7 @@
 		border-radius: 10%;
 		margin-bottom: 5vh;
 	}
-	.textMealDescription {
-	}
+
 	.textMealTitle {
 		font: 400;
 		font-weight: bold;
