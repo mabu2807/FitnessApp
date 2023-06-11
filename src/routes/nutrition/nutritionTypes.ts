@@ -27,10 +27,6 @@ export type Meal = {
     dishId: number
     
 }
-// type FoodDiary ={
-//     id: number,
-//     userId: number,
-//    }
 
 export type userdetail = {
     userId: number;
@@ -62,7 +58,7 @@ export type article = {
     id: number,
     link: string,
     title: string,
-    Text: string,
+    text: string,
     imagePath: string
 
 }

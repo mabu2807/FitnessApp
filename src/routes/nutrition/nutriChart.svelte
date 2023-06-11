@@ -5,7 +5,6 @@
 
 	Chart.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
-	export let value;
 	export let chartdata;
 
 	let data = chartdata;
