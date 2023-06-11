@@ -68,19 +68,19 @@ let settings = [
 					<div class=" mr-5  hover:text-blue-300">
 						<i class='{setting.icon} ml-32 textg-gray-700 dark:text-white'></i>
 					</div>
-					<p class=" text-gray-700 dark:text-white">{setting.setting}</p>
+					<p class="hover:text-blue-600 font-semibold text-gray-700 dark:text-white">{setting.setting}</p>
 				</a>
 				{/each}
 				
 		  </div>
 		  
 	<div class="flex-grow" > </div>
-	<div class="exit-wrapper flex flex-row justify-between w-full h-9  mb-20 mr-50">
-		<div class="close-icon w-49 h-26 text-white text-36 mx-0 my-6">
+	<div class=" flex flex-row justify-between w-full h-9  mb-20 mr-50">
+		<div class=" w-49 h-26 text-white text-36 mx-0 my-6">
 			
 		</div>
 		<div class=" pr-3">
-		<button class=" cursor-pointer px-5 py-4 border-2 border-gray-900 rounded-full  font-bold hover:shadow-white hover:text-gray-900 hover:bg-white transition duration-400">
+		<button class=" cursor-pointer mt-40 mr-8 px-3 py-2 border-2 border-gray-900 rounded-full white:hover:shadow-black font-bold hover:shadow-2xl hover:border-opacity-0 hover:shadow-white hover:text-gray-900 hover:bg-white transition duration-400">
 			Abmelden <i class="fa-solid fa-right-from-bracket ml-10"></i>
 		</button>
 		</div>

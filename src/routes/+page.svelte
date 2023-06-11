@@ -45,7 +45,7 @@
 <!-- <body>
 	<main> -->
 		<!-- hero class -->
-		<body class="flex flex-col  justify-center items-center ">
+		<body class="flex flex-col  justify-center items-center  ">
 			
 
 		
