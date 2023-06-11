@@ -159,3 +159,10 @@ model NutritionalValues {
   protein       Float
   salt          Float
 }
+model NutritionTippsArticels {
+  id            Int @id @default(autoincrement())
+  title         String
+  text          String @db.LongText
+  imagePath     String
+  link          String
+}

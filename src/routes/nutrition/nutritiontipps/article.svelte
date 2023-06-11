@@ -2,13 +2,14 @@
 	import type { article } from '../nutritionTypes';
 
 	export let data: article;
+	console.log(data)
 </script>
 
 <main class="article">
 	<img src={data.imagePath} alt={data.title} />
 	<div class="textContent">
 		<h2>{data.title}</h2>
-		<p>{data.Text}</p>
+		<p>{data.text}</p>
 		<a href={data.link} target="_blank">Weiterlesen...</a>
 	</div>
 </main>

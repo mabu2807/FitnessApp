@@ -58,7 +58,7 @@ export type article = {
     id: number,
     link: string,
     title: string,
-    Text: string,
+    text: string,
     imagePath: string
 
 }

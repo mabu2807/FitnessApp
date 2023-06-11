@@ -3,6 +3,8 @@
 	import articles from '../../../lib/testData/articles.json';
 	import Article from './article.svelte';
 	import Footer from '../../../components/Footer.svelte';
+	import type { PageData } from './$types';
+	export let data:PageData
 </script>
 
 <main>
@@ -11,7 +13,7 @@
 			<img class="img" src="/bannerNutrition.png" alt="test" />
 		</div>
 		<div class="articles">
-			{#each articles as article}
+			{#each data.articles as article}
 				<Article data={article} />
 			{/each}
 		</div>

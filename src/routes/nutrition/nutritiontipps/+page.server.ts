@@ -1,7 +1,21 @@
-import type { Actions } from './$types';
+import type { PageServerLoad } from './$types';
+import prisma from '$lib/prisma';
+import { fail } from '@sveltejs/kit';
 
-export const actions = {
-    add: async (event) => {
-        console.log("Hello World")
+
+
+export const load = (async () => {
+    let responseArticle;
+
+    try {
+        responseArticle = await prisma.nutritionTippsArticels.findMany()
+    } catch (error) {
+        return fail(404, {message: "No article found"})        
     }
-} satisfies Actions;
+
+    
+
+    console.log(responseArticle)
+    return {articles: responseArticle}
+    
+}) satisfies PageServerLoad;
