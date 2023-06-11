@@ -15,6 +15,21 @@
 		{ id: 2, name: 'Hampelmann Hagen', text: 'einfach gut', imgSrc: 'customer1.jpg' },
 		{ id: 3, name: 'Jane Smith', text: 'einwandfrei', imgSrc: 'customer2.jpg' }
 	];
+
+	let courses = [
+		{
+			id: 1, name: 'Cardio', description: 'Davon wird man durchsichtig. Also bitte Cardio meiden.', imgSrc: 'workout1.jpg'
+		},
+{
+		id: 2, name: 'Krafttraining', description: 'Ein Ganzkörpertraining zur Verbesserung von Flexibilität, Kraft und Körperhaltung.', imgSrc: 'workout2.jpg'
+		},
+{
+		id: 3, name: 'Yoga', description: 'Entspannung für Geist und Seele.', imgSrc: 'workout3.jpg'
+		},
+		{id: 4, name: 'Yoga', description: 'Entspannung für Geist und Seele.', imgSrc: 'workout3.jpg'
+		}
+	];
+
 	let currentIndex = 0;
 	/**
 	 * @type {any[]}
@@ -42,75 +57,102 @@
 
 <!-- Transform is missing  -->
 
-<!-- <body>
-	<main> -->
-		<!-- hero class -->
-		<body class="flex flex-col  justify-center items-center  ">
-			
-
-		
-		<section class=" p-10 text-center">
-			<h2 class="h2 text-4xl mb-5">Welcome to Fitness Tracker</h2>
-			<p class="text-lg mb-10">Track your fitness progress and achieve your goals.</p>
+		<!-- hero class -->	
+		<section class="text-center w-full mx-auto p-4 py-14 md:py-20 top-gradient shadow-inner">
+			<h2 class="h2 text-lg md:text-3xl mb-5">"Gestern noch vom Sixpack geträumt, heute schon geholt."</h2>
+			<p class="text-sm md:text-lg mb-12">Träume nicht dein Leben, sondern lebe deinen Traum!</p>
 			<!-- btn class -->
-			<a href="/getStarted" class="btn variant-filled inline-block px-4 py-2 transition duration-300 ease-in-out hover:bg-blue-500">Get Started</a>
+			<a href="/getStarted" class="btn variant-filled inline-block px-4 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500"><span class="dark:text-black text-white">Get Started</span></a>
 		</section>
-		<div class="bg-gray-700 w-3/4 h-2 m-5 rounded-full dark:bg-white"></div>
 		<!-- courses class -->
-		<section class="py-12 text-center ">
-			<h2 class="h2">Unsere Kurse</h2>
+		<section class="w-full py-12 text-center shadow-2xl">
+			<h2 class="md:h2 h1">Unsere Kurse</h2>
+			<div class="grid grid-cols-2 xl:grid-cols-4 md:grid-cols-3 xl:gap-10 md:gap-8 gap-6 lg:my-10 md:my-8 my-6 mx-14">
 			<!-- all div are course class -->
-			<div class="block card card-hover inline-block w-1/5 px-4 py-5 m-5 ">
-				<header class="card-header">
-				<img class="w-full" src="workout1.jpg" alt="Kurs 1" /></header>
-				<section class="p-4 mb-3"><h3 class="h3 mb-3">Pilates</h3><p class="overflow-hidden">Ein Ganzkörpertraining zur Verbesserung von Flexibilität, Kraft und Körperhaltung.</p></section>
-				</div>
-				<div class="block card card-hover inline-block w-1/5 px-4 py-5 m-5 ">
-					<header class="card-header"><img class="w-full" src="workout1.jpg" alt="Kurs 1" /></header>
-					<section class="p-4 mb-3"><h3 class="h3 mb-3">Pilates</h3><p class="overflow-hidden">Ein Ganzkörpertraining zur Verbesserung von Flexibilität, Kraft und Körperhaltung.</p></section>
-					</div>
-					<div class="block card card-hover inline-block w-1/5 px-4 py-5 m-5">
-						<header class="card-header"><img class="w-full" src="workout1.jpg" alt="Kurs 1" /></header>
-						<section class="p-4 mb-3"><h3 class="h3 mb-3">Pilates</h3><p class="overflow-hidden">Ein Ganzkörpertraining zur Verbesserung von Flexibilität, Kraft und Körperhaltung.</p></section>
-						</div>
+			{#each courses as course}
 
+			<div class="card card-hover overflow-hidden card-gradient">
+				<header class="card-header">
+				<img class="aspect-[15/7] border-2 border-white rounded" src={course.imgSrc} alt="" /></header>
+				<div class="p-4 space-y-4">
+					<h3 class="md:h3 h4">{course.name}</h3>
+					<article>
+						<p class="text-sm md:text-base">{course.description}</p>
+					</article>
+				</div>
+			</div>
+				
+			{/each}
+		</div>
 					</section>
 	
 		
-		<h2 class="h2  text-center mb-0 py-5 px-4">Was unsere Kunden sagen</h2>
-		
-		<section class="text-center items-center justify-between flex  py-20">
+		<section class="w-full py-8 mid-gradient">
+			<h2 class="md:h2 h1 text-center mb-6 py-5 px-4">Was unsere Kunden sagen</h2>
+			<div class="text-center items-center justify-between flex">
 			<!-- arrow class -->
-			<div class="mx-7" on:click={handleNext}><i class="fa-solid fa-arrow-left fa-3x" /></div>
+			<button class="md:ml-20 ml-10 hover:text-tertiary-500 dark:hover:text-primary-500" on:click={handleNext}><i class="fa-solid fa-arrow-left fa-3x" /></button>
+			<div class="grid grid-cols-1 gap-10 lg:mx-20 xl:mx-40 lg:grid-cols-2 sm:mx-20 mx-7">
 			{#each visibleItems as item (item.id)} 
-				<!-- svelte-ignore missing-declaration -->
 				<!-- testamionials class -->
-				<div class="card inline-block h-84 w-72 p-4 m-8 bg-white rounded-lg shadow-md transition duration-500 ease-in-out transform" transition:fly={{ x: -100, opacity: 0 }}
+				<div class="card overflow-hidden" transition:fly={{ x: -100, opacity: 0 }}
 				animate:fly={{ x: 0, opacity: 1 }}>
-					<header class="card-header"><img class="object-cover w-24 h-24 rounded-full mb-2" src={'test.jpeg'} alt="Kunde {item.id}" /></header>
-					<section><p class="mb-2 overflow-hidden">{item.text}</p></section>
-					<footer class="card-footer"><cite class="italic text-gray-500 overflow-hidden">{item.name}</cite></footer>
+					<header class="card-header flex flex-row m-1"><img class="object-cover md:w-16 w-12 sm:14 h-full rounded-full" src={'test.jpeg'} alt="Kunde {item.id}" />
+						<p class="sm:text-base text-sm ml-7 overflow-hidden">{item.text}</p></header>
+					<!-- <section><p class="mb-2 overflow-hidden">{item.text}</p></section> -->
+					<footer class="card-footer mt-7 sm:text-base text-sm"><cite class="cite text-gray-500 overflow-hidden">{item.name}</cite></footer>
 				</div>
 			{/each}
-			<div class="mx-7" on:click={handlePrevious}><i class="fa-solid fa-arrow-right fa-3x" /></div>
+		</div>
+			<button class="md:mr-20 mr-10 hover:text-tertiary-500 dark:hover:text-primary-500" on:click={handlePrevious}><i class="fa-solid fa-arrow-right fa-3x" /></button>
+		</div>
 		</section>
-
-	</body>
 		
 
-
 		<!-- contact class -->
-		<section class="text-center py-7 ">
-			<h2 class="h2 mb-3">Kontaktieren Sie uns</h2>
-			<form class="my-0 mx-auto max-w-lg">
-				<input class="input block w-full p-2 mb-2" type="text" name="name" placeholder="Name" required />
-				<input class="input block w-full p-2 mb-2" type="email" name="email" placeholder="E-Mail-Adresse" required />
-				<textarea class="textarea block w-full p-2 mb-2" name="message" placeholder="Nachricht" required />
-				<button type="submit" class="btn variant-filled">Senden</button> 
+		<section class="text-center md:mt-20 mt-14 pb-12 bottom-gradient">
+			<h2 class="h2 mb-5">Kontaktieren Sie uns</h2>
+			<form class="my-0 sm:mx-auto mx-14 max-w-lg">
+				<input class="input sm:p-2 p-1 mb-2 text-black dark:text-primary-500 dark:placeholder-white" type="text" name="name" placeholder="Name" required />
+				<input class="input sm:p-2 p-1 mb-2 text-black dark:text-primary-500 dark:placeholder-white" type="email" name="email" placeholder="E-Mail-Adresse" required />
+				<textarea class="textarea p-2 mb-3 text-black dark:text-primary-500 dark:placeholder-white" name="message" placeholder="Nachricht" required />
+				<button type="submit" class="btn variant-filled md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500">Senden</button> 
 			</form>
 		</section>
 	<!-- </main>
 </body> -->
+
+<style>
+	
+	/* .red-gradient {
+		background-image:
+			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 50%),
+			radial-gradient(at 98% 1%, rgba(var(--color-error-500) / 0.33) 0px, transparent 50%);
+	} */
+
+	.card-gradient {
+		background-image:
+			radial-gradient(at 0% 100%, rgba(var(--color-secondary-500) / 0.50) 0px, transparent 50%);
+	}
+	
+	.top-gradient {
+		background-image:
+			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.50) 0px, transparent 50%),
+			radial-gradient(at 100% 100%,  rgba(var(--color-primary-500) / 0.24) 0px, transparent 50%);
+	}
+	
+	.mid-gradient {
+		background-image:
+			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 50%),
+			radial-gradient(at 100% 0%,  rgba(var(--color-primary-500) / 0.33) 0px, transparent 50%);
+	}
+	
+	.bottom-gradient {
+		background-image:
+		radial-gradient(at 0% 99%, rgba(var(--color-error-500) / 0.23) 0px, transparent 50%),
+		radial-gradient(at 100% 100%, rgba(var(--color-primary-500) / 0.19) 0px, transparent 50%);
+	}
+</style>
 
 <!-- <style>
 	body {

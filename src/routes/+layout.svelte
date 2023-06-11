@@ -3,6 +3,11 @@
 	import Head from '../components/Head.svelte';
 	import Footer from '../components/Footer.svelte';
 	import Navbar from '../components/Navbar.svelte';
+	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
+
+import { storePopup } from '@skeletonlabs/skeleton';
+storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
+			
 	// Your selected Skeleton theme:
 	import '../theme.postcss';
 	// import '@skeletonlabs/skeleton/themes/theme-skeleton.css';

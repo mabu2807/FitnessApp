@@ -1,12 +1,18 @@
 <script lang="ts">
-	import { AppBar } from '@skeletonlabs/skeleton';
+	import { AppBar, SlideToggle } from '@skeletonlabs/skeleton';
 	import { Avatar } from '@skeletonlabs/skeleton';
-	import { AppShell } from '@skeletonlabs/skeleton';
-	import { Drawer, drawerStore } from '@skeletonlabs/skeleton';
+	import { Drawer, Modal, drawerStore, popup} from '@skeletonlabs/skeleton';
 import type { DrawerSettings } from '@skeletonlabs/skeleton';
+import type { PopupSettings } from '@skeletonlabs/skeleton';
 import { LightSwitch } from '@skeletonlabs/skeleton';
+import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton';
+	import { modalStore } from '@skeletonlabs/skeleton';
+	import { Label } from '@smui/button';
+	import PasswordModal from './PasswordModal.svelte';
+	import PersonalModal from './PersonalModal.svelte';
 
-$: positionClasses = $drawerStore.open ? 'translate-x-[31%]' : '';
+			
+
 
 const drawerSettings: DrawerSettings = {
 	id: 'example-1',
@@ -17,108 +23,166 @@ const drawerSettings: DrawerSettings = {
 	rounded: 'rounded',
 };
 
-let settings = [
-		{
-			referencing: '/',
-			setting: 'Persönliche Daten',
-			icon: 'fa-solid fa-user'
-		},
-		{
-			referencing: 'profile/change-password',
-			setting: 'Passwort ändern',
-			icon: 'fa-solid fa-key'
-		},
-		{
-			referencing: '',
-			setting: 'Einstellungen',
-			icon: 'fa-solid fa-gear'
-		}
-	];
+const popupNavigation: PopupSettings = {
+	// Represents the type of event that opens/closed the popup
+	event: 'click',
+	// Matches the data-popup value on your popup element
+	target: 'popupNavigation',
+	// Defines which side of your trigger the popup will appear
+	placement: 'bottom',
+};
+
+
+const modalChange: ModalComponent = {
+	ref: PasswordModal,
+};
+
+const modalData: ModalComponent = {
+	ref: PersonalModal,
+};
+
+function modalPersonal(): void {
+		const modal: ModalSettings = {
+			type: 'component',
+			component: modalData,
+		};
+		modalStore.trigger(modal);
+	}
+									
+
+function modalPassword(): void {
+		const modal: ModalSettings = {
+			type: 'component',
+			component: modalChange,
+		};
+		modalStore.trigger(modal);
+	}
+
 
 	let testUser = {
 		name: 'Georgiev, Aleks'
 	};
 
+	let checkMode = false;
+
+
 </script>
 
-<Drawer> 
+
+<Modal/>
+
+
+<Drawer position="right"> 
 <div class="flex flex-col justify-center items-center">
 
 	
 	<div class="flex flex-row justify-center items-center">
 
-		<div class=" w-32 h-30  m-8 border-2 border-white rounded-full shadow-lg">
+		<div class=" md:w-20 w-16 md:my-8 md:mx-6 my-6 mx-2 border-2 border-white rounded-full shadow-lg">
 			<Avatar
 			src="/static/profile.jpg"
-			fallback="/static/profile.jpg"
 			class="h-full w-full object-cover rounded-full"
-			:border="['border-4', 'border-surface-300-600-token', 'hover:!border-primary-500']"
-			:cursor="['cursor-pointer']"
 			/>
 		</div>
-		<p class="text-xl mt-10">{testUser.name}</p>
+		<p class="md:text-xl text-base m-2 font-bold">{testUser.name}</p>
 	</div>
-		<span class="bar block mx-20 mt-4 rounded-full bg-white h-1 w-3/5"></span>
+		<span class="bar block mt-4 rounded-full bg-black dark:bg-white h-1 w-3/5"></span>
 	  
-		<div class="flex flex-col  w-full mt-7 text-white ">
-			{#each settings as setting}
-			
+		<div class="flex flex-col w-full mt-8 items-center">
 
-				<a href={setting.referencing} class="flex flex-row items-center m-6">
-					<div class=" mr-5  hover:text-blue-300">
-						<i class='{setting.icon} ml-32 textg-gray-700 dark:text-white'></i>
+			<div class="flex flex-row items-center m-3 md:m-5">
+			<div class="mr-3 text-base md:text-lg dark:text-white text-black">
+				<i class="fa-solid fa-user"></i>
+			</div>
+
+				<button on:click={modalPersonal}>
+					<p class="text-base md:text-lg dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Persönliche Daten</p>
+				</button>
+			</div>
+			<div class="flex flex-row items-center m-3 md:m-5">
+				<div class="mr-3 text-base md:text-lg dark:text-white text-black">
+					<i class="fa-solid fa-key"></i>
+				</div>
+	
+					<button on:click={modalPassword}>
+						<p class="text-base md:text-lg dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Passwort ändern</p>
+					</button>
+				</div>
+		
+
+				<div class="flex flex-row items-center m-3 md:m-5">
+					<div class="mr-3 text-base md:text-lg dark:text-white text-black">
+						<LightSwitch on:click={()=>checkMode=!checkMode}/>
 					</div>
-					<p class="hover:text-blue-600 font-semibold text-gray-700 dark:text-white">{setting.setting}</p>
-				</a>
-				{/each}
+		
+							<p class="text-base md:text-lg dark:text-white text-black">{checkMode ? 'Light' : 'Dark'} Mode</p>
+					
+					</div>
 				
 		  </div>
 		  
-	<div class="flex-grow" > </div>
-	<div class=" flex flex-row justify-between w-full h-9  mb-20 mr-50">
-		<div class=" w-49 h-26 text-white text-36 mx-0 my-6">
-			
-		</div>
-		<div class=" pr-3">
-		<button class=" cursor-pointer mt-40 mr-8 px-3 py-2 border-2 border-gray-900 rounded-full white:hover:shadow-black font-bold hover:shadow-2xl hover:border-opacity-0 hover:shadow-white hover:text-gray-900 hover:bg-white transition duration-400">
-			Abmelden <i class="fa-solid fa-right-from-bracket ml-10"></i>
+		<div class="mt-12">
+		<button class="cursor-pointer px-5 py-3 border-2 border-black dark:border-white rounded-full font-bold hover:bg-tertiary-500 transition duration-400 dark:hover:bg-primary-500">
+			Abmelden <i class="fa-solid fa-right-from-bracket md:ml-10 ml-6"></i>
 		</button>
 		</div>
 	</div>
-</div>
 </Drawer>
 
-
-<AppShell class="transition-transform {positionClasses}">
-	<svelte:fragment slot="header" >
-		<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
+		<AppBar shadow="shadow-2xl">
 			<svelte:fragment slot="lead">
-				<img class="w-20" src="/static/Logo.jpg" alt="">
-				
+				<img class="w-16" src="/static/Logo.jpg" alt="">
+				<p class="m-3 font-medium text-xl">FitnessHub</p>
+				<button class="btn-icon btn-icon-sm lg:!hidden" use:popup={popupNavigation}>
+					<i class="fa-solid fa-bars text-2xl hover:text-tertiary-500 dark:hover:text-primary-500" />
+				</button>
+				<!-- popup -->
+			<div class="card p-4 w-60 shadow-xl lg:!hidden" data-popup="popupNavigation">
+				<!-- list-nav as class -->
+				<nav>
+					<ul>
+						<li class="m-3">
+							<a href="/">
+								<span class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Home</span>
+							</a>
+						</li>
+						<li class="m-3">
+							<a href="/kategorie">
+								<span class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Workouts</span>
+							</a>
+						</li>
+						<li class="m-3">
+							<a href="/progress">
+								<span class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Progress</span>
+							</a>
+						</li>
+						<li class="m-3">
+							<a href="/nutrition">
+								<span class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Ernährungstagebuch</span>
+							</a>
+						</li>
+					</ul>
+			
 		
 			</svelte:fragment>
-			<div class="flex flex-row justify-center align-center ">
+			<div class="p-5 hidden relative hidden lg:flex flex-row justify-center">
 						
-				<a class="m-5  font-semibold font-sans text-xl  " href="/">Home</a>
-				<a class="m-5 font-semibold font-sans text-xl " href="/kategorie">Workouts</a>
-				<a class="m-5 font-semibold font-sans text-xl " href="/progress">Progress</a>
-				<a class="m-5 font-semibold font-sans text-xl " href="/nutrition">Ernährungsplan</a>
+				<a href="/"><span class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Home</span></a>
+				<a href="/kategorie"><span class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Workouts</span></a>
+				<a href="/progress"><span class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Progress</span></a>
+				<a href="/nutrition">
+				<span class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Ernährungsplan</span></a>
 			</div>
 			
 			<svelte:fragment slot="trail">
-				<LightSwitch class="mr-6" />
 				
 			<Avatar
 			src="/static/profile.jpg" fallback="/static/profile.jpg"
-			border="border-4 	border-surface-300-600-token hover:!border-primary-500"
+			border="border-4 border-surface-300-600-token dark:hover:!border-primary-500 hover:!border-tertiary-500"
 			cursor="cursor-pointer" on:click={() => drawerStore.open(drawerSettings)}/>
 		</svelte:fragment>
 		
 		</AppBar>
-	</svelte:fragment>
-	
-
-</AppShell>
 
 
 
