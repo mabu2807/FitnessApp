@@ -16,6 +16,9 @@
 			{/each}
 		</div>
 	</div>
+    <form method="POST" action="add">
+        <button type="submit">Test</button>
+    </form>
 </main>
 <Footer />
 

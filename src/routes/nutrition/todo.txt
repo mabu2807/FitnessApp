@@ -1,0 +1,10 @@
+---nutrition
+- actions add meal
+- actions edit meal
+- CircleProgressBar for diffrent values
+- layout überarbeiten
+
+
+
+--- nutrition-tipps 
+- article in DB
