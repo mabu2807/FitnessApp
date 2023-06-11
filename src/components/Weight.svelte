@@ -37,13 +37,11 @@
 
 <section class="h-80">
 
-	<div class="flex justify-center gap-6 mt-12 mb-7">
-			<img class="w-28" src={picsource} alt="person" />
+	<div class="flex justify-center md:gap-6 sm:gap-4 gap-2 sm:my-12 my-8">
+			<img class="w-24" src={picsource} alt="person" />
 			<h2 class="h2 flex items-center">{sliderValue} kg</h2>
 		</div>
 	
-	
-	<div class="mb-7">
 		<input
 			type="range"
 			min="50"
@@ -51,7 +49,7 @@
 			bind:value={sliderValue}
 			on:input={updateSliderValue}
 		/>
-	</div>
+
 
 
 	

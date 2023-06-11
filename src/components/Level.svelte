@@ -18,8 +18,9 @@
 </script>
 
 <section class="h-80">
+	<div class="sm:my-12 my-8">
 		<select
-			class="select w-1/3 mt-3"
+			class="select card card-hover bg-white dark:bg-white text-black dark:text-black w-48 h-10 sm:text-lg text-base"
 			value={sliderValue}
 			on:input={updateSliderValue}
 		>
@@ -29,6 +30,7 @@
 					<option value="ADHS">ADHS</option>
 					<option value="Erlege Bären mit der bloßen Hand">Erlege Bären mit der bloßen Hand</option>
 </select>
+</div>
 
 </section>
 

@@ -19,11 +19,9 @@
 
 <section class="h-80">
 
+	<div class="sm:my-12 my-8">
+		<h2 class="h2 text-center mb-7">{sliderValue} cm</h2>
 	
-		<h2 class="h2 text-center mt-12 mb-7">{sliderValue} cm</h2>
-	
-
-	<div class="mb-7">
 		<input
 			type="range"
 			min="140"
@@ -31,7 +29,8 @@
 			bind:value={sliderValue}
 			on:input={updateSliderValue}
 		/>
-	</div>
+
+</div>
 
 
 </section>

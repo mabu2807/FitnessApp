@@ -27,38 +27,38 @@
 </script>
 
 <section class="flex justify-center">
-    <div class="card w-3/4 m-10 shadow-xl p-8 items-center">
+    <div class="card w-3/4 m-10 shadow-xl sm:p-8 p-4 items-center bottom-gradient">
     <Stepper buttonNext="btn variant-filled transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500" on:next={onNextHandler} on:step={onStepHandler} on:back={onBackHandler} on:complete={onCompleteHandler}>
         <Step class="text-center">
-            <svelte:fragment slot="header">Wähle zunächst dein Ziel aus!</svelte:fragment>
+            <svelte:fragment slot="header"><h3 class="h3 mt-10">Wähle zunächst dein Ziel aus!</h3></svelte:fragment>
             <Goal/>
         </Step>
         <Step class="text-center">
-            <svelte:fragment slot="header">Wähle deine Körpergröße aus!</svelte:fragment>
+            <svelte:fragment slot="header"><h3 class="h3 mt-10">Wähle deine Körpergröße aus!</h3></svelte:fragment>
             <Size/>
         </Step>
         <Step class="text-center">
-            <svelte:fragment slot="header">Wähle dein Gewicht aus!</svelte:fragment>
+            <svelte:fragment slot="header"><h3 class="h3 mt-10">Wähle dein Gewicht aus!</h3></svelte:fragment>
             <Weight/>
         </Step>
         <Step class="text-center">
-            <svelte:fragment slot="header">Wähle deinen Geburtstag aus!</svelte:fragment>
+            <svelte:fragment slot="header"><h3 class="h3 mt-10">Wähle deinen Geburtstag aus!</h3></svelte:fragment>
             <Birth/>
         </Step>
         <Step class="text-center">
-            <svelte:fragment slot="header">Wähle dein Geschlecht aus!</svelte:fragment>
+            <svelte:fragment slot="header"><h3 class="h3 mt-10">Wähle dein Geschlecht aus!</h3></svelte:fragment>
             <Gender/>
         </Step>
         <Step class="text-center">
-            <svelte:fragment slot="header">Wähle dein Aktivitätslevel aus!</svelte:fragment>
+            <svelte:fragment slot="header"><h3 class="h3 mt-10">Wähle dein Aktivitätslevel aus!</h3></svelte:fragment>
             <Level/>
         </Step>
         <Step class="text-center">
-            <svelte:fragment slot="header">Bitte überprüfe deine Angaben!</svelte:fragment>
+            <svelte:fragment slot="header"><h3 class="h3 mt-10">Überprüfe deine Angaben!</h3></svelte:fragment>
             <Overview/>
         </Step>
         <Step class="text-center">
-            <svelte:fragment slot="header">Registrierung</svelte:fragment>
+            <svelte:fragment slot="header"><h3 class="h3 mt-10">Registrierung</h3></svelte:fragment>
             finale Registrierung
             <!-- <Register/> -->
         </Step>
@@ -66,5 +66,13 @@
 </div>
 
 </section>
+
+<style>
+    .bottom-gradient {
+		background-image:
+		radial-gradient(at 0% 99%, rgba(var(--color-error-500) / 0.23) 0px, transparent 50%),
+		radial-gradient(at 100% 100%, rgba(var(--color-primary-500) / 0.19) 0px, transparent 50%);
+	}
+</style>
 
 

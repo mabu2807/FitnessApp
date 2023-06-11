@@ -6,7 +6,7 @@
 <section class="h-80">
 
 
-	<div class="overview">
+	<div class="my-12 overview">
 		{#each $getStartedData as page, i}
 			<div class="overview-wrapper">
 				<div class="overview-link">{page.title}</div>
