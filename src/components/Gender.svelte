@@ -16,9 +16,8 @@
 
 <section class="h-80">
 
-	<div class="flex justify-center gap-6 my-12">
+	<div class="flex justify-center md:gap-6 sm:gap-4 gap-2 sm:my-12 my-8">
 		{#each genderPics as pic}
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<button
 				class="card card-hover flex flex-col items-center justify-center border p-4 w-52 h-42 {$getStartedData[4].value === pic.title ? "bg-tertiary-500 border-tertiary-500 dark:bg-primary-500 dark:border-primary-500" : "bg-white dark:bg-white border-black"}"
 				on:click={() => selectCard(pic.title)}
