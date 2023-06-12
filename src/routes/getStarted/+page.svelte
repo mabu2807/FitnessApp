@@ -2,7 +2,7 @@
 	<div class="flex flex-col ">
 
 	
-	<section class="flex items-center justify-center mt-40 mb-20">
+	<section class="flex items-center justify-center mt-32 mb-40">
 		<!-- class first-wrapper -->
 		<div class="card red-gradient lg:w-2/3 xl:w-1/2 w-3/4 m-10 py-10 sm:px-12 px-8 shadow-xl">
 			<div class="text-center mb-8">
