@@ -8,3 +8,7 @@ export const getStartedData = writable([
 	{ title: 'Geschlecht', value: ''},
 	{ title: 'Aktivitätslevel', value: '' }
 ]);
+
+export const lockedGoal = writable(true);
+
+export const lockedGender = writable(true);

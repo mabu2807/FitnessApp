@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getStartedData } from '../routes/getStarted/Data';
+	import { getStartedData, lockedGoal } from '../routes/getStarted/Data';
 
 	let goalsBackend = [
 		{ title: 'Lose Weight', description: 'Gewicht reduzieren und Fett abbauen' },
@@ -9,6 +9,7 @@
 
 	function selectCard(value:string) {
 		$getStartedData[0].value = value;
+		lockedGoal.set(false);
 	}
 </script>
 

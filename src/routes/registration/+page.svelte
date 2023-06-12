@@ -8,6 +8,7 @@
 	import Level from "../../components/Level.svelte";
 	import Register from "../../components/Register.svelte";
 	import Overview from "../../components/Overview.svelte";
+    import { lockedGoal, lockedGender} from '../getStarted/Data';
 
 
 
@@ -31,7 +32,7 @@
 <section class="flex justify-center mt-32 mb-20">
     <div class="card w-3/4 m-10 shadow-xl sm:p-8 p-4 items-center bottom-gradient">
     <Stepper buttonBack="btn variant-ghost hover:bg-secondary-500 hover:text-white" buttonNext="btn variant-filled transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500" on:next={onNextHandler} on:step={onStepHandler} on:back={onBackHandler} on:complete={onCompleteHandler}>
-        <Step class="text-center">
+        <Step locked={$lockedGoal} class="text-center">
             <svelte:fragment slot="header"><h3 class="h3 mt-10">Wähle zunächst dein Ziel aus!</h3></svelte:fragment>
             <Goal/>
         </Step>
@@ -47,7 +48,7 @@
             <svelte:fragment slot="header"><h3 class="h3 mt-10">Wähle deinen Geburtstag aus!</h3></svelte:fragment>
             <Birth/>
         </Step>
-        <Step class="text-center">
+        <Step locked={$lockedGender} class="text-center">
             <svelte:fragment slot="header"><h3 class="h3 mt-10">Wähle dein Geschlecht aus!</h3></svelte:fragment>
             <Gender/>
         </Step>
