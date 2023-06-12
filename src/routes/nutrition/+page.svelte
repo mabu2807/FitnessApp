@@ -5,7 +5,7 @@
 	import DialogAdd from './dialogAdd.svelte';
 	let dialog: HTMLDialogElement;
 	let dialogAdd: HTMLDialogElement;
-	import type { PageData } from './$types';
+	import type { PageData, ActionData } from './$types';
 	import Head from '../../components/Head.svelte';
 	import Footer from '../../components/Footer.svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
@@ -13,6 +13,7 @@
 	//import { valueOrDefault } from 'chart.js/dist/helpers/helpers.core';
 
 	export let data: PageData;
+	export let form: ActionData
 	let maxCalories = 0;
 	let mealData = data.mealsforCards;
 	let usedCalories = 0
@@ -78,7 +79,7 @@
 								>
 									<img src="Edit_Pencil.png" alt="Edit Meal" />
 								</button>
-								<Dialog bind:dialog mealdata={meal} value={buttonID} />
+								<Dialog form={form} bind:dialog mealdata={meal} value={buttonID} />
 							</div>
 						</div>
 						<div class="imageCard">

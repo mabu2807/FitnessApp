@@ -24,7 +24,7 @@
 			
 		</div>
 	</div>
-    <form method="POST">
+    <form action="?/add" method="POST">
         <button type="submit">Test</button>
     </form>
 </main>

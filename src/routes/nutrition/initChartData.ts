@@ -154,11 +154,11 @@ export function allmaxvalues(userDetails:userdetail, maxCalories:number){
 
 
 
-	// Salz 6 g
-	// Fett 65g bei 2000 kcal
-	// Zucker 50 g bei 2000 kcal
+	// Salz 6 g pro Tag
+	// Fett 65g bei 2000 kcal pro Tag
+	// Zucker 50 g bei 2000 kcal pro Tag
 	// Protein ca. 75 Gramm 0,8 g/kg Körpergewicht
-	// Kohlenhydrate 200
-	// gesättigte Fettsäuren 22 g   
+	// Kohlenhydrate 200 g pro Tag
+	// gesättigte Fettsäuren 22 g pro Tag  
 
 }

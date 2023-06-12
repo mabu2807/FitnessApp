@@ -1,8 +1,9 @@
 import prisma from '$lib/prisma';
 import { fail } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
+import type { PageServerLoad , Actions } from './$types';
 import { initChartData , allmaxvalues} from './initChartData';
 import type { userdetail } from './nutritionTypes';
+import type { Prisma } from '@prisma/client';
 
 
 
@@ -173,11 +174,45 @@ export const load = (async () => {
 	const allmaxValues = allmaxvalues(responseUserDetails,maxCalories);
 
 	const chartdata = initChartData(allmaxValues, allValues);
-	console.log(allValues.protein)
 	
 	
 	
 	// -------------------------- return -------------------------------------------
 	return {chartdata:chartdata, mealsforCards: responsedaymeal, allmaxValues:allmaxValues, allValues: allValues, allDishes: responseAllDishes};
 }) satisfies PageServerLoad;
+
+
+export const actions: Actions = {
+    createMeal: async ({request}) => {
+			const data = await request.formData()
+			const selectDish = data.get('selectDish');
+			let category = data.get('category')?.toString();
+			if(category == undefined){
+				category = 'Snack'
+			}
+            const day = new Date
+			const  foodID = 1
+			if(selectDish!= null){
+				const meal: Prisma.MealUncheckedCreateInput = {
+					dishId: Number(selectDish),
+					day: day,
+					time: category,
+					foodDiaryId: foodID 
+				}
+				try {
+					await prisma.meal.create({
+                    data: meal
+                })
+				} catch (error) {
+					return fail(400, {message: "Es gab leider ein Problem bitte versuchen sie es nochmal"})
+				}
+			}
+            
+    },
+	updateMeal: async ({request}) =>{
+		const data = await request.formData()
+		console.log(data)
+	}
+    
+}satisfies Actions;
 

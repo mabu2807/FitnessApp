@@ -18,16 +18,13 @@
 	};
 
 	function saveChanges() {
-		console.log(mealtext);
-		console.log(time);
-		console.log(calories);
-		console.log(selected);
+		dialogAdd.close()
 	}
 </script>
 
 <dialog bind:this={dialogAdd} on:close>
 	<p>Neue Mahlzeit hinzufügen</p>
-	<form method="saveChanges">
+	<form method="POST" action="?/createMeal">
 		<div class="inputDishGeneral">
 			<div class="rowsInput">
 				<label for="category">Wähle eine Kategorie:</label>
@@ -41,11 +38,11 @@
 					<option value="Abendessen">Abendessen</option>
 					<option value="Snack">Snack</option>
 				</select>
-				<input type="text" id="meal2" bind:value={mealtext} />
-				<input type="text" id="calories" bind:value={calories} />
+				<input name="mealText" type="text" id="meal2" bind:value={mealtext} />
+				<input name="calories" type="text" id="calories" bind:value={calories} />
 			</div>
 		</div>
-	</form>
+	
 	<p>Oder Vorlage auswählen:</p>
 	<table class="tableDishes" id="tableDishes">
 		<tr>
@@ -61,7 +58,7 @@
 				<td>
 					<div>
 						<label
-							><input type="radio" bind:group={selected} name="selectDish" value={dish} /></label
+							><input type="radio" bind:group={selected} name="selectDish" value={dish.id} /></label
 						>
 					</div>
 				</td>
@@ -72,6 +69,7 @@
 
 	<button id="btnCloseAdd" on:click={closeClick}>Close</button>
 	<button type="submit" on:click={saveChanges} on:click={closeClick}>Save</button>
+</form>
 </dialog>
 
 <style>
