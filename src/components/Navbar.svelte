@@ -7,7 +7,6 @@ import type { PopupSettings } from '@skeletonlabs/skeleton';
 import { LightSwitch } from '@skeletonlabs/skeleton';
 import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton';
 	import { modalStore } from '@skeletonlabs/skeleton';
-	import { Label } from '@smui/button';
 	import PasswordModal from './PasswordModal.svelte';
 	import PersonalModal from './PersonalModal.svelte';
 

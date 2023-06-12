@@ -10,7 +10,7 @@
 	}
 
 	function startValue() {
-		dob = $getStartedData[3].value === '' ? '2001-09-11' : $getStartedData[3].value;
+		dob = $getStartedData[3].value === '' ? '2001-09-12' : $getStartedData[3].value;
 		$getStartedData[3].value = dob;
 	}
 
