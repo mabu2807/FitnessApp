@@ -131,7 +131,9 @@ function modalPassword(): void {
 
 		<AppBar class="fixed w-full" shadow="shadow-2xl">
 			<svelte:fragment slot="lead">
+				<a href="/">
 				<img class="w-16" src="/static/Logo.jpg" alt="">
+			</a>
 				<p class="m-3 font-medium text-xl">FitnessHub</p>
 				<button class="btn-icon btn-icon-sm lg:!hidden" use:popup={popupNavigation}>
 					<i class="fa-solid fa-bars text-2xl hover:text-tertiary-500 dark:hover:text-primary-500" />

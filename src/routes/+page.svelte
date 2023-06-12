@@ -1,9 +1,7 @@
 <script>
 	// @ts-nocheck
 	import { onMount } from 'svelte';
-	import { fade, fly } from 'svelte/transition';
-	import Head from '../components/Head.svelte';
-	import Footer from '../components/Footer.svelte';
+	import { fly } from 'svelte/transition';
 
 	let items = [
 		{
@@ -25,6 +23,9 @@
 		},
 {
 		id: 3, name: 'Yoga', description: 'Entspannung für Geist und Seele.', imgSrc: 'workout3.jpg'
+		},
+{
+		id: 4, name: 'Pilates', description: 'Macht einfach Spaß', imgSrc: 'final40.png'
 		}
 	];
 
@@ -66,9 +67,9 @@
 		</section>
 		<!-- courses class -->
 		<div class="w-72 h-1  rounded-full bg-gray-900 dark:bg-white "></div>
-		<section class="flex justify-center items-center flex-col w-full py-12 text-center mid-gradiant  mb-16">
+		<section class="flex justify-center items-center flex-col w-full py-12 text-center mid-gradiant">
 			<h2 class="md:h2 h1">Unsere Kurse</h2>
-			<div class=" grid grid-cols-2 xl:grid-cols-4 md:grid-cols-3 xl:gap-10  md:gap-8 gap-6 lg:my-10 md:my-8 my-6 mx-14">
+			<div class="grid grid-cols-2 xl:grid-cols-4 md:grid-cols-3 xl:gap-10  md:gap-8 gap-6 lg:my-10 md:my-8 my-6 mx-14">
 			<!-- all div are course class -->
 			{#each courses as course}
 			
@@ -89,8 +90,8 @@
 					</section>
 	
 		
-		<section class="w-full py-8 m-16">
-			<h2 class="md:h2 h1 text-center mb-16 py-5 px-4">Was unsere Kunden sagen</h2>
+		<section class="w-full py-8 sm:my-10 mx-14 my-6">
+			<h2 class="md:h2 h1 text-center mb-6 py-5 px-4">Was unsere Kunden sagen</h2>
 			<div class="text-center items-center justify-between flex">
 			<!-- arrow class -->
 			<button class="md:ml-20 ml-10 hover:text-tertiary-500 dark:hover:text-primary-500" on:click={handleNext}><i class="fa-solid fa-arrow-left fa-3x" /></button>
@@ -112,13 +113,13 @@
 		
 
 		<!-- contact class -->
-		<section class="text-center md:mt-20  pb-12 ">
-			<h2 class="h2 mb-12">Kontaktieren Sie uns</h2>
+		<section class="text-center md:mt-20 mt-12 pb-12 ">
+			<h2 class="md:h2 h1 mb-6">Kontaktieren Sie uns</h2>
 			<form class="my-0 sm:mx-auto mx-14 max-w-lg m-12">
 				<input class="input sm:p-2 p-1 mb-2 text-black dark:text-primary-500 dark:placeholder-white" type="text" name="name" placeholder="Name" required />
 				<input class="input sm:p-2 p-1 mb-2 text-black dark:text-primary-500 dark:placeholder-white" type="email" name="email" placeholder="E-Mail-Adresse" required />
 				<textarea class="textarea p-2 mb-3 text-black dark:text-primary-500 dark:placeholder-white" name="message" placeholder="Nachricht" required />
-				<button type="submit" class="btn variant-filled mt-8 md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500">Senden</button> 
+				<button type="submit" class="btn variant-filled mt-2 md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500">Senden</button> 
 			</form>
 		</section>
 
@@ -134,10 +135,10 @@
 			radial-gradient(at 98% 1%, rgba(var(--color-error-500) / 0.33) 0px, transparent 50%);
 	} */
 
-	.card-gradient {
+	/* .card-gradient {
 		background-image:
 			radial-gradient(at 0% 100%, rgba(var(--color-secondary-500) / 0.50) 0px, transparent 50%);
-	}
+	} */
 	
 	.top-gradient {
 		background-image:
@@ -146,7 +147,7 @@
 			/* background-image: radial-gradient(at 0% 0%,rgba(var(--color-secondary-500) / .33) 0px,transparent 50%),radial-gradient(at 98% 1%,rgba(var(--color-error-500) / .33) 0px,transparent 50%); */
 		}
 		
-	.mid-gradient {
+	/* .mid-gradient {
 		background-image:
 			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 50%),
 			radial-gradient(at 100% 0%,  rgba(var(--color-primary-500) / 0.33) 0px, transparent 50%);
@@ -156,7 +157,7 @@
 		background-image:
 		radial-gradient(at 0% 99%, rgba(var(--color-error-500) / 0.23) 0px, transparent 50%),
 		radial-gradient(at 100% 100%, rgba(var(--color-primary-500) / 0.19) 0px, transparent 50%);
-	}
+	} */
 </style>
 
 <!-- <style>
