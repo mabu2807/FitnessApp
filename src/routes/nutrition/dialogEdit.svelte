@@ -2,7 +2,7 @@
 	import type { ActionData } from './$types';
 	import type { Meal } from './nutritionTypes';
 
-	export let form: ActionData
+	export let form:ActionData
 
 	export let mealdata: Meal;
 	export let dialog: HTMLDialogElement;
