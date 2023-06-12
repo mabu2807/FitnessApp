@@ -59,8 +59,7 @@
         </Step>
         <Step class="text-center">
             <svelte:fragment slot="header"><h3 class="h3 mt-10">Registrierung</h3></svelte:fragment>
-            finale Registrierung
-            <!-- <Register/> -->
+            <Register/> 
         </Step>
     </Stepper>
 </div>
