@@ -26,7 +26,7 @@
 
 </script>
 
-<section class="flex justify-center">
+<section class="flex justify-center mt-32">
     <div class="card w-3/4 m-10 shadow-xl sm:p-8 p-4 items-center bottom-gradient">
     <Stepper buttonBack="btn variant-ghost hover:bg-secondary-500 hover:text-white" buttonNext="btn variant-filled transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500" on:next={onNextHandler} on:step={onStepHandler} on:back={onBackHandler} on:complete={onCompleteHandler}>
         <Step class="text-center">

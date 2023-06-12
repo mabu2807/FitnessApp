@@ -39,7 +39,10 @@
 
 	<div class="flex justify-center md:gap-6 sm:gap-4 gap-2 sm:my-12 my-8">
 			<img class="w-24" src={picsource} alt="person" />
-			<h2 class="h2 flex items-center">{sliderValue} kg</h2>
+			<div class="flex items-center justidy-center w-28">
+
+				<h2 class="h2 flex items-center">{sliderValue} kg</h2>
+			</div>
 		</div>
 	
 		<input

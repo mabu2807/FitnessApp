@@ -1,5 +1,8 @@
 
-	<section class="flex items-center justify-center">
+	<div class="flex flex-col ">
+
+	
+	<section class="flex items-center justify-center mt-40 mb-20">
 		<!-- class first-wrapper -->
 		<div class="card red-gradient lg:w-2/3 xl:w-1/2 w-3/4 m-10 py-10 sm:px-12 px-8 shadow-xl">
 			<div class="text-center mb-8">
@@ -22,7 +25,8 @@
 				<a href="/registration"><span class="btn variant-filled md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500">Registrierung</span></a>
 			</div>
 		</section>
-
+	</div>
+	<div class="flex-grow"></div>
 
 <style>
 

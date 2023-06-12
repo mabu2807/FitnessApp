@@ -24,11 +24,11 @@
 			value={sliderValue}
 			on:input={updateSliderValue}
 		>
-		<option value="Magerquark">Magerquark</option>
-					<option value="Stets bemüht">Stets bemüht</option>
-					<option value="Solide">Solide</option>
-					<option value="ADHS">ADHS</option>
-					<option value="Erlege Bären mit der bloßen Hand">Erlege Bären mit der bloßen Hand</option>
+		<option class="text-black dark:text-white " value="Magerquark">Magerquark</option>
+					<option class="text-black dark:text-white" value="Stets bemüht">Stets bemüht</option>
+					<option class="text-black dark:text-white" value="Solide">Solide</option>
+					<option class="text-black dark:text-white" value="ADHS">ADHS</option>
+					<option class="text-black dark:text-white" value="Erlege Bären mit der bloßen Hand">Erlege Bären mit der bloßen Hand</option>
 </select>
 </div>
 
