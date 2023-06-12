@@ -129,7 +129,7 @@ function modalPassword(): void {
 	</div>
 </Drawer>
 
-		<AppBar shadow="shadow-2xl">
+		<AppBar class="fixed w-full" shadow="shadow-2xl">
 			<svelte:fragment slot="lead">
 				<img class="w-16" src="/static/Logo.jpg" alt="">
 				<p class="m-3 font-medium text-xl">FitnessHub</p>
