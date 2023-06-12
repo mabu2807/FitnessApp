@@ -1,4 +1,5 @@
 import prisma from '$lib/prisma';
+import { fail } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { initChartData , allmaxvalues} from './initChartData';
 import type { userdetail } from './nutritionTypes';
@@ -96,13 +97,22 @@ export const load = (async () => {
 			}
 		})
 	} catch (error) {
-		throw new Error('DB request faild ');
+		return fail(400, {message: "Bad request"});
 	}
 	if (responseUserDetails == null) {
-		throw new Error('UserID does not exist');
+		return fail(404, {message: "UserID does not exist"})
 	}
 	if (responseUsermeals == null) {
-		throw new Error('User have no meals :)');
+		return fail(404, {message: "User have no meals"})
+	}
+	if (responseAllDishes == null) {
+		return fail(404, {message: "User have no dishes"})
+	}
+	if (responsedaymeal == null) {
+		return fail(404, {message: "User have no meals"})
+	}
+	if (responseFoodDiaryID == null) {
+		return fail(404, {message: "User have no food diary"})
 	}
 	const maxCalories = calcMaxCalories(responseUserDetails);
 

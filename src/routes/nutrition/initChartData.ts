@@ -152,4 +152,13 @@ export function allmaxvalues(userDetails:userdetail, maxCalories:number){
 	const allmaxValues = {calories:maxCalories,fat:fat,sugar:sugar,salt:salt,protein:protein,carbohydrates:carbohydrates,saturatedFat:saturatedFat}
 	return allmaxValues
 
+
+
+	// Salz 6 g
+	// Fett 65g bei 2000 kcal
+	// Zucker 50 g bei 2000 kcal
+	// Protein ca. 75 Gramm 0,8 g/kg Körpergewicht
+	// Kohlenhydrate 200
+	// gesättigte Fettsäuren 22 g   
+
 }

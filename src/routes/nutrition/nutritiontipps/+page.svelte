@@ -13,12 +13,18 @@
 			<img class="img" src="/bannerNutrition.png" alt="test" />
 		</div>
 		<div class="articles">
-			{#each data.articles as article}
-				<Article data={article} />
-			{/each}
+			{#if data.articles != undefined}
+				{#each data.articles as article}
+					<Article data={article} />
+				{/each}
+				{:else}
+				<p>Keine Artikel gefunden!</p>
+			{/if}
+			
+			
 		</div>
 	</div>
-    <form method="POST" action="add">
+    <form method="POST">
         <button type="submit">Test</button>
     </form>
 </main>
