@@ -88,7 +88,7 @@
 			imageSrc: 'workout2.jpg',
 			description:
 				' Sed do eiusmod temporrem ipsum dolor sit ametorididunt ut labore et dolore magna aliqua. ',
-			link: 'liftingplans',
+			link: 'liftingplan',
 			selected: false
 		},
 		{
