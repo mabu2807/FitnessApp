@@ -6,7 +6,7 @@
 
 	let trainingPlans = [
 		{
-			name: 'Plan 1',
+			name: 'Krafttraining',
 			exercises: [
 				{
 					name: 'Übung 1',
@@ -28,7 +28,7 @@
 					]
 				},
 				{
-					name: 'Übung 2',
+					name: 'Übung 3',
 					weight: [
 						{ x: 5, y: 20 },
 						{ x: 10, y: 15 },
@@ -38,7 +38,7 @@
 					]
 				},
 				{
-					name: 'Übung 2',
+					name: 'Übung 4',
 					weight: [
 						{ x: 5, y: 20 },
 						{ x: 10, y: 15 },
@@ -50,17 +50,17 @@
 			]
 		},
 		{
-			name: 'Plan 2',
+			name: 'Ausdauer',
 			exercises: [
 				{
-					name: 'Übung 3',
+					name: 'Übung 1',
 					weight: [
 						{ x: 30, y: 15 },
 						{ x: 40, y: 20 }
 					]
 				},
 				{
-					name: 'Übung 4',
+					name: 'Übung 2',
 					weight: [
 						{ x: 15, y: 7 },
 						{ x: 25, y: 12 }
@@ -192,65 +192,76 @@
 
 <Head />
 
-<main>
-	<div class="category">
-		<h1 class="category-title">Verfolge deine Trainingspläne</h1>
-		<p class="category-description">
-			Nutze die Möglichkeit deinen Trainingsplan zu verfolgen und deine entdecke deine Stärken und
-			Schwächen!
-		</p>
+<section class="text-center w-full mx-auto px-6 py-10 md:py-16 mt-24 red-gradient">
+	<h2 class="h2 mb-5">Verfolge deine Trainingspläne</h2>
+	<p class="text-sm md:text-lg mb-12">Nutze die Möglichkeit deinen Trainingsplan zu verfolgen und deine entdecke deine Stärken und
+		Schwächen!</p>
+		<div class="flex justify-center">
+		<div class="w-72 h-1 rounded-full bg-black dark:bg-white "></div>
 	</div>
+</section>
 
+<div class="bottom-gradient pt-7 pb-14">
 	{#each trainingPlans as trainingPlan, planIndex}
-		<section class="section-wrapper">
-			<div class="title-wrapper">
-				<h2>{trainingPlan.name}</h2>
-			</div>
-			<div class="container">
+	<!-- selection wrapper -->
+		<section class="flex justify-center items-center mb-14 flex-col text-center">
+			<h2 class="md:h2 h1">{trainingPlan.name}</h2>
+			<div class="grid md:grid-cols-2 grid-cols-1 md:gap-12 gap-6 lg:my-10 md:my-8 my-6 mx-12">
 				{#each trainingPlan.exercises as exercise, exerciseIndex}
+				<!-- exercise-container class -->
 					<div
-						class="exercise-container"
+						class="card bg-surface-100 p-3 exercise-container"
 						on:keydown={() => {
 							selectedTrainingPlan = trainingPlan;
 							selectedExerciseIndex = exerciseIndex;
 						}}
 					>
-						<div class="exc-title-wrapper">
-							<h3>{exercise.name}</h3>
-						</div>
-						<div class="input-container">
-							<input
+							<h3 class="h3 mt-3 mb-5">{exercise.name}</h3>
+						<div class="p-3">
+							<input class="input bg-white px-3 py-1 mb-2 lg:text-base text-sm dark:placeholder-white"
 								type="number"
 								placeholder="Wiederholungen"
 								bind:value={weightInput[planIndex][exerciseIndex]}
 							/>
 							<input
+							class="input bg-white px-3 py-1 lg:text-base text-sm dark:placeholder-white"
 								type="number"
 								placeholder="Gewicht"
 								bind:value={weightInput2[planIndex][exerciseIndex]}
 							/>
-							<div class="button-wrapper">
-								<button class="button" on:click={() => addWeight(planIndex, exerciseIndex)}
+							<div class="mt-3 flex justify-between gap-2"> 
+								<button class="btn variant-filled overflow-hidden lg:text-base text-sm transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500" on:click={() => addWeight(planIndex, exerciseIndex)}
 									>Hinzufügen</button
 								>
 								<button
-									class="typ-button"
+									class="btn variant-ghost overflow-hidden lg:text-base text-sm transition duration-400 hover:bg-secondary-500"
 									on:click={() => toggleChartType(planIndex, exerciseIndex)}
-									>Diagrammtyp Ändern</button
+									>Diagrammtyp ändern</button
 								>
 							</div>
-							<canvas />
+							<canvas class="card bg-white dark:bg-white mt-10"/>
 						</div>
 					</div>
 				{/each}
 			</div>
 		</section>
 	{/each}
-</main>
-<Footer />
+	</div>
+
 
 <style>
-	.category {
+
+	.red-gradient {
+		background-image:
+			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 50%),
+			radial-gradient(at 98% 1%, rgba(var(--color-error-500) / 0.33) 0px, transparent 50%);
+	}
+	.bottom-gradient {
+		background-image:
+		radial-gradient(at 0% 99%, rgba(var(--color-error-500) / 0.23) 0px, transparent 50%),
+		radial-gradient(at 100% 100%, rgba(var(--color-primary-500) / 0.19) 0px, transparent 50%);
+	}
+	/* .category {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -274,13 +285,13 @@
 		margin-bottom: 5px;
 		text-align: center;
 		color: rgb(144, 144, 144);
-	}
+	} */
 
-	.title-wrapper {
+	/* .title-wrapper {
 		padding-top: 15px;
 		background-color: #f5f5f5;
 		text-align: center;
-		/* border-radius: 20px; */
+		border-radius: 20px;
 	}
 
 	.title-wrapper h2 {
@@ -298,50 +309,50 @@
 
 	.container {
 		display: flex;
-		/* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+		display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: center;
 		gap: 20px;
 		padding: 20px;
 		width: 100%;
-	}
+	} */
 
-	.exercise-container {
+	/* .exercise-container {
 		background-color: rgb(221, 221, 221);
 		border-radius: 10px;
 		border: 2px solid rgb(169, 169, 169);
 		padding: 20px;
 		transition: background-color 0.3s ease;
 		width: 33%;
-	}
+	} */
 
-	.exc-title-wrapper {
+	/* .exc-title-wrapper {
 		width: 100%;
 		text-align: center;
-	}
+	} */
 
-	h2,
+	/* h2,
 	h3 {
 		margin-top: 0;
-	}
+	} */
 
-	.input-container {
+	/* .input-container {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-	}
+	} */
 
-	input[type='number'] {
-		width: 96%;
+	/* input[type='number'] {
+		width: 100%;
 		padding: 10px;
 		margin-bottom: 10px;
 		border: 1px solid #ccc;
 		border-radius: 5px;
-	}
+	} */
 
-	.button-wrapper {
+	/* .button-wrapper {
 		display: flex;
 		justify-content: space-between;
 
@@ -379,13 +390,13 @@
 		color: white;
 		background-color: #333;
 		transition: all 0.4s ease-in-out;
-	}
+	} */
 
-	canvas {
+	/* canvas {
 		margin-top: 20px;
 		border: 1px solid #ccc;
 		border-radius: 8px;
 		color: white;
 		background-color: rgb(253, 253, 253);
-	}
+	} */
 </style>
