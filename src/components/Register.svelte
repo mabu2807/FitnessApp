@@ -1,0 +1,44 @@
+<script lang="ts">
+	import type { ActionData } from "../routes/register/$types";
+
+	export let form: ActionData;
+</script>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Fitness Registration</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+
+	<section class="h-80">
+		<div class="sm:my-12 my-8 xl:px-64 lg:px-48 md:px-32 sm:px-20 px-14">
+					<form method="post">
+						<input class="input p-1 px-3 mt-6 mb-2 sm:text-base text-sm text-black dark:text-primary-500 dark:placeholder-white"
+							name="username"
+							type="text"
+							placeholder="Benutzername"
+							value={form?.username ?? ''}
+						/>
+						<input class="input py-1 px-3 mb-10 sm:text-base text-sm text-black dark:text-primary-500 dark:placeholder-white" name="email" type="email" placeholder="Email" value={form?.email ?? ''} />
+						<input class="input p-1 px-3 mb-2 sm:text-base text-sm text-black dark:text-primary-500 dark:placeholder-white"
+							name="password"
+							type="password"
+							placeholder="Passwort"
+							value={form?.password ?? ''}
+						/>
+						<input class="input p-1 px-3 sm:text-base text-sm text-black dark:text-primary-500 dark:placeholder-white"
+							name="passwordConfirm"
+							type="password"
+							placeholder="Bestätige Passwort"
+							value={form?.passwordConfirm ?? ''}
+						/>
+						<!-- <div class="error">
+							{#if form?.missing}<p>Bitte füllen sie die Felder aus!</p>{/if}
+						</div> -->
+					</form>
+			</div>
+	</section>
+
+

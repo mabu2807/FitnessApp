@@ -1,9 +1,6 @@
 import prisma from '$lib/prisma';
-import type { PageServerLoad } from './$types';
-import { initChartData , allmaxvalues} from './initChartData';
-import type { userdetail } from './nutritionTypes';
-
-
+import type { PageServerLoad } from '../$types';
+import { initChartData } from './initChartData';
 
 
 //calculation max calories for the user per day
@@ -40,21 +37,9 @@ export const load = (async () => {
 		const eineWocheZuvor = new Date();
 		eineWocheZuvor.setDate(heute.getDate() - 7);
 		eineWocheZuvor.setHours(2,0,0,0);
-
-		responseFoodDiaryID = await prisma.foodDiary.findUnique({
-			where:{
-				userId: responseUserDetails?.userId
-			}
-		})
-		let foodDiary = 0
-		if(responseFoodDiaryID != undefined){
-			foodDiary = responseFoodDiaryID.id
-		}
-
-
 		// Chart data request
 		responseUsermeals = await prisma.meal.findMany({
-			where:{
+			where: {
 				day: {
 					gt: eineWocheZuvor
 				},
@@ -66,8 +51,7 @@ export const load = (async () => {
 				dish: {
 					include: {
 						nutritionalValues: true
-					},
-					
+					}
 				}
 			}
 		});
@@ -85,14 +69,8 @@ export const load = (async () => {
 				dish: {
 					include: {
 						nutritionalValues: true
-					},
-					
+					}
 				}
-			}
-		})
-		responseAllDishes = await prisma.dish.findMany({
-			include: {
-				nutritionalValues: true
 			}
 		})
 	} catch (error) {
@@ -117,13 +95,7 @@ export const load = (async () => {
 	for (let i = 0; i < 7; i++) {
 		for (let j = 0; j < responseUsermeals.length; j++) {
 			if (responseUsermeals[j].day.getDay() == i) {
-				calperdayunsorted[i] = calperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.energy;
-				saltperdayunsorted[i] = saltperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.salt;	
-				sugarperdayunsorted[i] = sugarperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.sugar;	
-				saturatedFatperdayunsorted[i] = saturatedFatperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.saturatedFat;	
-				carbohydratesperdayunsorted[i] = carbohydratesperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.carbohydrates;	
-				fatperdayunsorted[i] = fatperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.fat;
-				proteinperdayunsorted[i] = proteinperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.protein;						
+				calperdayunsorted[i] = calperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.energy;				
 			}
 		}
 	}
@@ -159,13 +131,7 @@ export const load = (async () => {
 		sugarperday = sugarperdayunsorted;
 		carbohydratesperday = carbohydratesperdayunsorted;
 	}
-	const allValues = {calories:calperday,fat:fatperday,sugar:sugarperday,salt:saltperday,protein:proteinperday,carbohydrates:carbohydratesperday,saturatedFat:saturatedFatperday}
-	const allmaxValues = allmaxvalues(responseUserDetails,maxCalories);
-
-	const chartdata = initChartData(allmaxValues, allValues);
-	console.log(allValues.protein)
-	
-	
+	const chartdata = initChartData(allCalories, calperday);
 	
 	// -------------------------- return -------------------------------------------
 	return {chartdata:chartdata, mealsforCards: responsedaymeal, allmaxValues:allmaxValues, allValues: allValues, allDishes: responseAllDishes};
