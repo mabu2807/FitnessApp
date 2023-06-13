@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import Dialog, { Header, Title, Content, Actions } from '@smui/dialog';
-	import IconButton from '@smui/icon-button';
 	import Button, { Label } from '@smui/button';
 	import { element } from 'svelte/internal';
 	import Head from '../../components/Head.svelte';
-	import Footer from '../../components/Footer.svelte';
 	import type { PageData } from './$types'
+	import { type ModalComponent, type ModalSettings, modalStore } from '@skeletonlabs/skeleton';
+	import AddCategoryModal from '../../components/AddCategoryModal.svelte';
+	import {categoryData} from '../getStarted/Data'
 
 	let open = false;
 	let removeDisabled = true;
@@ -18,60 +18,75 @@
 		open = true;
 	}
 
-	function add() {
-		let iconToMove = [];
-		availableData.forEach((element) => {
-			if (element.selected == true) {
-				iconToMove.push(element);
-			}
-		});
-		iconToMove.forEach((item) => {
-			selectedData.push(item);
-			availableData.splice(availableData.indexOf(item), 1);
-		});
-		selectedData.forEach((item) => {
-			item.selected = false;
-		});
-		availableData.forEach((item) => {
-			item.selected = false;
-		});
-		selectedData = selectedData;
-		availableData = availableData;
-		removeDisabled = true;
-		addDisabled = true;
+	let testData = {
+			title: 'Yoga',
+			imageSrc: 'workout3.jpg',
+			description:
+				'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. minim veniam, quis nostrud exercita',
+			link: 'https://example.com/button3',
+			selected: false
+		};
+
+	function test() {
+		$categoryData[1].picked=true;
+
+
 	}
 
-	function remove() {
-		let iconToMove = [];
-		selectedData.forEach((element) => {
-			if (element.selected == true) {
-				iconToMove.push(element);
-			}
-		});
-		iconToMove.forEach((item) => {
-			availableData.push(item);
-			selectedData.splice(selectedData.indexOf(element), 1);
-		});
-		availableData.forEach((item) => {
-			item.selected = false;
-		});
-		selectedData.forEach((item) => {
-			item.selected = false;
-		});
-		selectedData = selectedData;
-		availableData = availableData;
-		removeDisabled = true;
-		addDisabled = true;
-	}
+	// function add() {
+	// 	let iconToMove = [];
+	// 	availableData.forEach((element) => {
+	// 		if (element.selected == true) {
+	// 			iconToMove.push(element);
+	// 		}
+	// 	});
+	// 	iconToMove.forEach((item) => {
+	// 		selectedData.push(item);
+	// 		availableData.splice(availableData.indexOf(item), 1);
+	// 	});
+	// 	selectedData.forEach((item) => {
+	// 		item.selected = false;
+	// 	});
+	// 	availableData.forEach((item) => {
+	// 		item.selected = false;
+	// 	});
+	// 	selectedData = selectedData;
+	// 	availableData = availableData;
+	// 	removeDisabled = true;
+	// 	addDisabled = true;
+	// }
 
-	function buttonRemoveDisabled() {
-		removeDisabled = true;
-		selectedData.forEach((element) => {
-			if (element.selected == true) {
-				removeDisabled = false;
-			}
-		});
-	}
+	// function remove() {
+	// 	let iconToMove = [];
+	// 	selectedData.forEach((element) => {
+	// 		if (element.selected == true) {
+	// 			iconToMove.push(element);
+	// 		}
+	// 	});
+	// 	iconToMove.forEach((item) => {
+	// 		availableData.push(item);
+	// 		selectedData.splice(selectedData.indexOf(element), 1);
+	// 	});
+	// 	availableData.forEach((item) => {
+	// 		item.selected = false;
+	// 	});
+	// 	selectedData.forEach((item) => {
+	// 		item.selected = false;
+	// 	});
+	// 	selectedData = selectedData;
+	// 	availableData = availableData;
+	// 	removeDisabled = true;
+	// 	addDisabled = true;
+	// }
+
+	// function buttonRemoveDisabled() {
+	// 	removeDisabled = true;
+	// 	selectedData.forEach((element) => {
+	// 		if (element.selected == true) {
+	// 			removeDisabled = false;
+	// 		}
+	// 	});
+	// }
 
 	function buttonAddDisabled() {
 		addDisabled = true;
@@ -82,24 +97,24 @@
 		});
 	}
 
-	let selectedData = [
-		{
-			title: 'Krafttraining',
-			imageSrc: 'workout2.jpg',
-			description:
-				' Sed do eiusmod temporrem ipsum dolor sit ametorididunt ut labore et dolore magna aliqua. ',
-			link: 'liftingplan',
-			selected: false
-		},
-		{
-			title: 'Cardio',
-			imageSrc: 'workout1.jpg',
-			description:
-				' labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqu',
-			link: 'https://example.com/button2',
-			selected: false
-		}
-	];
+	// let selectedData = [
+	// 	{
+	// 		title: 'Krafttraining',
+	// 		imageSrc: 'workout2.jpg',
+	// 		description:
+	// 			' Sed do eiusmod temporrem ipsum dolor sit ametorididunt ut labore et dolore magna aliqua. ',
+	// 		link: 'liftingplan',
+	// 		selected: false
+	// 	},
+	// 	{
+	// 		title: 'Cardio',
+	// 		imageSrc: 'workout1.jpg',
+	// 		description:
+	// 			' labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqu',
+	// 		link: 'https://example.com/button2',
+	// 		selected: false
+	// 	}
+	// ];
 
 	let availableData = [
 		{
@@ -111,20 +126,33 @@
 			selected: false
 		}
 	];
+
+	const modalAddCategory: ModalComponent = {
+	ref: AddCategoryModal,
+};
+
+function addCategory(): void {
+		const modal: ModalSettings = {
+			type: 'component',
+			component: modalAddCategory,
+		};
+		modalStore.trigger(modal);
+	}
 </script>
 
 <Head />
 
 
-<main>
-	<div class="flex flex-col items-center p-5 bg-gray-300 font-bold text-center font-sans">
-		<h1 class="text-3xl">Wähle eine Trainingskategorie</h1>
-		<p class="font-sans text-lg mb-1 text-center text-gray-600">Entdecke unsere vielfältigen Trainingsmöglichkeiten</p>
-	</div>
+<div class="mt-24">
+	<section class="flex flex-col items-center p-5 bg-gray-300 font-bold text-center font-sans">
+		<h1 class="text-3xl">Deine Trainingspläne</h1>
+		<p class="font-sans text-lg mb-1 text-center text-gray-600">Bleib dran und zieh durch!</p>
+	</section>
 
 
 	<div class="card flex flex-wrap justify-center gap-3 mt-5">
-		{#each selectedData as button}
+		{#each $categoryData as button}
+		{#if button.picked}
 			<a href={button.link} class="flex flex-col items-center justify-center w-64 h-80 bg-white rounded-md shadow-xl no-underline text-gray-400 mt-3 hover:w-72 transition-all duration-900 ease-in ">
 				<div class="w-full h-full rounded-md">
 					<img class="w-full h-full object-cover rounded-tl-md rounded-tr-md" src={button.imageSrc} alt="Button Image" />
@@ -134,6 +162,7 @@
 					<p class="font-sans text-sm mt-0 text-gray-400 overflow-ellipsis">{button.description}</p>
 				</div>
 			</a>
+			{/if}
 		{/each}
 	</div>
 
@@ -145,7 +174,7 @@
 		</p>
 		<div class="flex items-center justify-center">
 			<button class="flex items-center justify-center text-lg pt-3 pb-5 mb-5 transition-all duration-900 ease-in text-gray-800 bg-gray-200 rounded-md border-2 border-solid border-gray-700
-			hover:text-white hover:bg-gray-700" on:click={addOn}>
+			hover:text-white hover:bg-gray-700" on:click={addCategory}>
 		
 				<div class="subscribe-container-text">
 					<p class="text-lg ml-4 font-semibold">Jetzt Abonnieren</p>
@@ -157,7 +186,7 @@
 		</div>
 	</div>
 
-	<Dialog
+	<!-- <Dialog
 		bind:open
 		aria-labelledby="large-scroll-title"
 		aria-describedby="large-scroll-content"
@@ -166,7 +195,7 @@
 		<Title id="large-scroll-title">{'Erweitere dein Training'}</Title>
 		<Content id="large-scroll-content">
 			<hr />
-			<h2>Füge neue Sportarten hinzu</h2>
+			<h2>Füge neue Sportarten hinzu</h2> -->
 			<!-- .icon-card {
 		display: flex;
 		flex-direction: column;
@@ -187,14 +216,14 @@
 		margin: 10px;
 		cursor: pointer;
 	} -->
-			<div class="flex items-center">
+			<!-- <div class="flex items-center">
 				{#each { length: availableData.length } as _, i}
 					<div>
 						<button
 							style={availableData[i].selected
 								? 'box-shadow: 0 0 10px black; border-radius: 8px; transition: .5s ease all;'
 								: 'outline-style: none;'}
-							class=" flex flex-col items-center justify-center w-40 h-40 bg-gray-200 rounded-lg border-none overflow-hidden text-decoration-none text-gray-700 m-5 cursor-pointer hover:shadow-xl transition-all duration-200 ease-in"
+							class="lex flex-col items-center justify-center w-40 h-40 bg-gray-200 rounded-lg border-none overflow-hidden text-decoration-none text-gray-700 m-5 cursor-pointer hover:shadow-xl transition-all duration-200 ease-in"
 							on:click={() => {
 								availableData[i].selected = !availableData[i].selected;
 								buttonAddDisabled();
@@ -244,8 +273,8 @@
 				<Label>Add</Label>
 			</Button>
 		</Actions>
-	</Dialog>
-</main>
+	</Dialog> -->
+</div>
 
 
 <!-- <style>

@@ -1,7 +1,6 @@
 <!-- App.svelte -->
 <script lang="ts">
 	import Dialog, { Header, Title, Content, Actions } from '@smui/dialog';
-	import IconButton from '@smui/icon-button';
 	import Button, { Label } from '@smui/button';
 
 	// export let data;
