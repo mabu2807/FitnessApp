@@ -1,3 +1,4 @@
+
 <script lang="ts">
 	import CircleProgressBar from './CircleProgressBar.svelte';
 	import Chart from './nutriChart.svelte';
@@ -5,7 +6,7 @@
 	import DialogAdd from './dialogAdd.svelte';
 	let dialog: HTMLDialogElement;
 	let dialogAdd: HTMLDialogElement;
-	import type { PageData } from './$types';
+	import type { PageData, ActionData } from './$types';
 	import Head from '../../components/Head.svelte';
 	import Footer from '../../components/Footer.svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
@@ -13,9 +14,16 @@
 	//import { valueOrDefault } from 'chart.js/dist/helpers/helpers.core';
 
 	export let data: PageData;
-	let maxCalories = data.allmaxValues.calories;
+	export let form: ActionData;
+	let maxCalories = 0;
 	let mealData = data.mealsforCards;
-	let usedCalories = data.allValues.calories[6];
+	let usedCalories = 0
+	if(data.allValues != undefined){
+	usedCalories = data.allValues.calories[6];
+	}
+	if(data.allmaxValues != undefined){
+		maxCalories = data.allmaxValues.calories;
+	}
 
 	let amount = usedCalories / maxCalories;
 	let progress:number = amount;
@@ -56,6 +64,7 @@
 		<p class="textTitle">Mahlzeiten</p>
 		<div class="rowAllCards">
 			<div class="cardGeneral">
+				{#if mealData != undefined}
 				{#each mealData as meal}
 					<div class="cardContent">
 						<div class="rowMealtitleButton">
@@ -83,6 +92,9 @@
 						</div>
 					</div>
 				{/each}
+				{:else}
+				<p>Heute noch nichts gegessen</p>
+				{/if}
 			</div>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div class="cardGeneral" on:click={addMeal} on:click={() => dialogAdd.showModal()}>
