@@ -149,7 +149,7 @@ function modalPassword(): void {
 							</a>
 						</li>
 						<li class="m-3">
-							<a href="/kategorie">
+							<a href="/category">
 								<span class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Workouts</span>
 							</a>
 						</li>
@@ -170,7 +170,7 @@ function modalPassword(): void {
 			<div class="p-5 hidden relative hidden lg:flex flex-row justify-center">
 						
 				<a href="/"><span class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Home</span></a>
-				<a href="/kategorie"><span class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Workouts</span></a>
+				<a href="/category"><span class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Workouts</span></a>
 				<a href="/progress"><span class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Progress</span></a>
 				<a href="/nutrition">
 				<span class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500">Ernährungsplan</span></a>
