@@ -59,7 +59,7 @@
 
 	
 		<!-- hero class -->	
-		<section class="text-center w-full mx-auto p-4 py-14 md:py-20  mt-24">
+		<section class="text-center w-full mx-auto px-6 py-14 md:py-20  mt-24">
 			<h2 class="h2 text-lg md:text-3xl mb-5">"Gestern noch vom Sixpack geträumt, heute schon geholt."</h2>
 			<p class="text-sm md:text-lg mb-12">Träume nicht dein Leben, sondern lebe deinen Traum!</p>
 			<!-- btn class -->
