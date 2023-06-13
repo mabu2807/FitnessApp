@@ -1,9 +1,7 @@
 <script>
 	// @ts-nocheck
 	import { onMount } from 'svelte';
-	import { fade, fly } from 'svelte/transition';
-	import Head from '../components/Head.svelte';
-	import Footer from '../components/Footer.svelte';
+	import { fly } from 'svelte/transition';
 
 	let items = [
 		{
@@ -15,6 +13,22 @@
 		{ id: 2, name: 'Hampelmann Hagen', text: 'einfach gut', imgSrc: 'customer1.jpg' },
 		{ id: 3, name: 'Jane Smith', text: 'einwandfrei', imgSrc: 'customer2.jpg' }
 	];
+
+	let courses = [
+		{
+			id: 1, name: 'Cardio', description: 'Davon wird man durchsichtig. Also bitte Cardio meiden.', imgSrc: 'workout1.jpg'
+		},
+{
+		id: 2, name: 'Krafttraining', description: 'Ein Ganzkörpertraining zur Verbesserung von Flexibilität, Kraft und Körperhaltung.', imgSrc: 'workout2.jpg'
+		},
+{
+		id: 3, name: 'Yoga', description: 'Entspannung für Geist und Seele.', imgSrc: 'workout3.jpg'
+		},
+{
+		id: 4, name: 'Pilates', description: 'Macht einfach Spaß', imgSrc: 'final40.png'
+		}
+	];
+
 	let currentIndex = 0;
 	/**
 	 * @type {any[]}
@@ -40,77 +54,118 @@
 	});
 </script>
 
-<!-- <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Transform is missing  -->
+	<div class="top-gradient flex flex-col justify-center items-center">
 
-	<title>Fitness Tracker</title>
-</head> -->
-<Head />
-<body>
-	<main>
-		<section class="hero">
-			<h2>Welcome to Fitness Tracker</h2>
-			<p>Track your fitness progress and achieve your goals.</p>
-			<a href="/getStarted" class="btn">Get Started</a>
+	
+		<!-- hero class -->	
+		<section class="text-center w-full mx-auto px-6 py-14 md:py-20  mt-24">
+			<h2 class="h2 text-lg md:text-3xl mb-5">"Gestern noch vom Sixpack geträumt, heute schon geholt."</h2>
+			<p class="text-sm md:text-lg mb-12">Träume nicht dein Leben, sondern lebe deinen Traum!</p>
+			<!-- btn class -->
+			<a href="/getStarted" class="btn variant-filled inline-block px-4 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500"><span class="dark:text-black text-white">Get Started</span></a>
 		</section>
+		<!-- courses class -->
+		<div class="w-72 h-1  rounded-full bg-gray-900 dark:bg-white "></div>
+		<section class="flex justify-center items-center flex-col w-full py-12 text-center mid-gradiant">
+			<h2 class="md:h2 h1">Unsere Kurse</h2>
+			<div class="grid grid-cols-2 xl:grid-cols-4 md:grid-cols-3 xl:gap-10  md:gap-8 gap-6 lg:my-10 md:my-8 my-6 mx-14">
+			<!-- all div are course class -->
+			{#each courses as course}
+			
 
-		<section id="courses">
-			<h2>Unsere Kurse</h2>
-			<div class="course">
-				<img src="workout1.jpg" alt="Kurs 1" />
-				<h3>Pilates</h3>
-				<p>Ein Ganzkörpertraining zur Verbesserung von Flexibilität, Kraft und Körperhaltung.</p>
-			</div>
-			<div class="course">
-				<img src="workout2.jpg" alt="Kurs 2" />
-				<h3>Yoga</h3>
-				<p>
-					Entspannen Sie Ihren Geist und stärken Sie Ihren Körper mit verschiedenen Yoga-Übungen.
-				</p>
-			</div>
-			<div class="course">
-				<img src="workout3.jpg" alt="Kurs 3" />
-				<h3>HIIT</h3>
-				<p>
-					Eine intensive Trainingsform mit abwechselnden Phasen von hoher Intensität und kurzen
-					Ruhephasen.
-				</p>
-			</div>
-		</section>
-
-		<h2 class="headTestimonials">Was unsere Kunden sagen</h2>
-		<section id="testimonials">
-			<div class="arrow" on:click={handleNext}><i class="fa-solid fa-arrow-left fa-3x" /></div>
-			{#each visibleItems as item (item.id)}
-				<!-- svelte-ignore missing-declaration -->
-				<div
-					class="testimonial out in"
-					transition:fly={{ x: -100, opacity: 0 }}
-					animate:fly={{ x: 0, opacity: 1 }}
-				>
-					<img src={'test.jpeg'} alt="Kunde {item.id}" />
-					<p>{item.text}</p>
-					<cite>{item.name}</cite>
+				<div class="card card-hover overflow-hidden ">
+					<header class="card-header">
+						<img class="aspect-[16/9] border-2 border-white rounded" src={course.imgSrc} alt="" /></header>
+						<div class="p-4 space-y-4">
+							<h3 class="md:h3 h4">{course.name}</h3>
+							<article>
+								<p class="text-sm md:text-base">{course.description}</p>
+							</article>
+						</div>
+					</div>
+				
+			{/each}
+		</div>
+					</section>
+	
+		
+		<section class="w-full py-8 sm:my-10 mx-14 my-6">
+			<h2 class="md:h2 h1 text-center mb-6 py-5 px-4">Was unsere Kunden sagen</h2>
+			<div class="text-center items-center justify-between flex">
+			<!-- arrow class -->
+			<button class="md:ml-20 ml-10 hover:text-tertiary-500 dark:hover:text-primary-500" on:click={handleNext}><i class="fa-solid fa-arrow-left fa-3x" /></button>
+			<div class="grid grid-cols-1 gap-10 lg:mx-20 xl:mx-40 lg:grid-cols-2 sm:mx-20 mx-7">
+			{#each visibleItems as item (item.id)} 
+				<!-- testamionials class -->
+				<div class="card overflow-hidden" transition:fly={{ x: -100, opacity: 0 }}
+				animate:fly={{ x: 0, opacity: 1 }}>
+					<header class="card-header flex flex-row m-1"><img class="object-cover md:w-16 w-12 sm:14 h-full rounded-full" src={'test.jpeg'} alt="Kunde {item.id}" />
+						<p class="sm:text-base text-sm ml-7 overflow-hidden">{item.text}</p></header>
+					<!-- <section><p class="mb-2 overflow-hidden">{item.text}</p></section> -->
+					<footer class="card-footer mt-7 sm:text-base text-sm"><cite class="cite text-gray-500 overflow-hidden">{item.name}</cite></footer>
 				</div>
 			{/each}
-			<div class="arrow" on:click={handlePrevious}><i class="fa-solid fa-arrow-right fa-3x" /></div>
+		</div>
+			<button class="md:mr-20 mr-10 hover:text-tertiary-500 dark:hover:text-primary-500" on:click={handlePrevious}><i class="fa-solid fa-arrow-right fa-3x" /></button>
+		</div>
 		</section>
+		
 
-		<section id="contact">
-			<h2>Kontaktieren Sie uns</h2>
-			<form>
-				<input type="text" name="name" placeholder="Name" required />
-				<input type="email" name="email" placeholder="E-Mail-Adresse" required />
-				<textarea name="message" placeholder="Nachricht" required />
-				<button type="submit">Senden</button>
+		<!-- contact class -->
+		<section class="text-center md:mt-20 mt-12 pb-12 ">
+			<h2 class="md:h2 h1 mb-6">Kontaktieren Sie uns</h2>
+			<form class="my-0 sm:mx-auto mx-14 max-w-lg m-12">
+				<input class="input sm:p-2 p-1 mb-2 text-black dark:text-primary-500 dark:placeholder-white" type="text" name="name" placeholder="Name" required />
+				<input class="input sm:p-2 p-1 mb-2 text-black dark:text-primary-500 dark:placeholder-white" type="email" name="email" placeholder="E-Mail-Adresse" required />
+				<textarea class="textarea p-2 mb-3 text-black dark:text-primary-500 dark:placeholder-white" name="message" placeholder="Nachricht" required />
+				<button type="submit" class="btn variant-filled mt-2 md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500">Senden</button> 
 			</form>
 		</section>
-	</main>
-	<Footer />
-</body>
+
+	</div>
+	<!-- </main>
+</body> -->
 
 <style>
+	
+	/* .red-gradient {
+		background-image:
+			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 50%),
+			radial-gradient(at 98% 1%, rgba(var(--color-error-500) / 0.33) 0px, transparent 50%);
+	} */
+
+	/* .card-gradient {
+		background-image:
+			radial-gradient(at 0% 100%, rgba(var(--color-secondary-500) / 0.50) 0px, transparent 50%);
+	} */
+	
+	.top-gradient {
+		background-image:
+			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.50) 0px, transparent 50%),
+			radial-gradient(at 100% 100%,  rgba(var(--color-primary-500) / 0.24) 0px, transparent 50%);
+			/* background-image: radial-gradient(at 0% 0%,rgba(var(--color-secondary-500) / .33) 0px,transparent 50%),radial-gradient(at 98% 1%,rgba(var(--color-error-500) / .33) 0px,transparent 50%); */
+		}
+		
+	/* .mid-gradient {
+		background-image:
+			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 50%),
+			radial-gradient(at 100% 0%,  rgba(var(--color-primary-500) / 0.33) 0px, transparent 50%);
+	}
+	
+	.bottom-gradient {
+		background-image:
+		radial-gradient(at 0% 99%, rgba(var(--color-error-500) / 0.23) 0px, transparent 50%),
+		radial-gradient(at 100% 100%, rgba(var(--color-primary-500) / 0.19) 0px, transparent 50%);
+	} */
+</style>
+
+<!-- <style>
+	body {
+		font-family: Arial, sans-serif;
+		margin: 0;
+		padding: 0;
+	}
 	#courses {
 		text-align: center;
 		padding: 50px 0;
@@ -264,4 +319,4 @@
 	button[type='submit']:hover {
 		background-color: #555;
 	}
-</style>
+</style>   -->

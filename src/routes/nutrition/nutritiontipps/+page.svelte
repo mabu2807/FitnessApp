@@ -28,7 +28,7 @@
         <button type="submit">Test</button>
     </form>
 </main>
-<Footer />
+
 
 <style lang="css">
 	.content {

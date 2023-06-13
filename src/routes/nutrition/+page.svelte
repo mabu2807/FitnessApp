@@ -1,3 +1,4 @@
+
 <script lang="ts">
 	import CircleProgressBar from './CircleProgressBar.svelte';
 	import Chart from './nutriChart.svelte';
@@ -13,7 +14,7 @@
 	//import { valueOrDefault } from 'chart.js/dist/helpers/helpers.core';
 
 	export let data: PageData;
-	export let form: ActionData
+	export let form: ActionData;
 	let maxCalories = 0;
 	let mealData = data.mealsforCards;
 	let usedCalories = 0
@@ -106,8 +107,6 @@
 	</div>
 	<a href="/nutrition/nutritiontipps">NutritionTipps</a>
 </main>
-
-<Footer />
 
 <style>
 	section {

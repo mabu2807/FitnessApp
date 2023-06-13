@@ -115,38 +115,43 @@
 
 <Head />
 
+
 <main>
-	<div class="category">
-		<h1 class="category-title">Wähle eine Trainingskategorie</h1>
-		<p class="category-description">Entdecke unsere vielfältigen Trainingsmöglichkeiten</p>
+	<div class="flex flex-col items-center p-5 bg-gray-300 font-bold text-center font-sans">
+		<h1 class="text-3xl">Wähle eine Trainingskategorie</h1>
+		<p class="font-sans text-lg mb-1 text-center text-gray-600">Entdecke unsere vielfältigen Trainingsmöglichkeiten</p>
 	</div>
-	<div class="button-cards">
+
+
+	<div class="card flex flex-wrap justify-center gap-3 mt-5">
 		{#each selectedData as button}
-			<a href={button.link} class="button-card">
-				<div class="image-container">
-					<img src={button.imageSrc} alt="Button Image" />
+			<a href={button.link} class="flex flex-col items-center justify-center w-64 h-80 bg-white rounded-md shadow-xl no-underline text-gray-400 mt-3 hover:w-72 transition-all duration-900 ease-in ">
+				<div class="w-full h-full rounded-md">
+					<img class="w-full h-full object-cover rounded-tl-md rounded-tr-md" src={button.imageSrc} alt="Button Image" />
 				</div>
-				<div class="card-details">
-					<h2>{button.title}</h2>
-					<p class="description">{button.description}</p>
+				<div class="p-3 text-center">
+					<h2 class="font-sans text-lg mt-1 mb-3 text-black font-semibold">{button.title}</h2>
+					<p class="font-sans text-sm mt-0 text-gray-400 overflow-ellipsis">{button.description}</p>
 				</div>
 			</a>
 		{/each}
 	</div>
 
-	<div class="info-container">
-		<h2 class="info-title">Weitere Trainingspläne abonnieren</h2>
-		<p class="info-text">
+	<div class="bg-gray-300 p-5 text-center mt-12">
+		<h2 class="text-2xl mb-3 ">Weitere Trainingspläne abonnieren</h2>
+		<p class="text-base mb-5">
 			Erhalte Zugriff auf eine Vielzahl von zusätzlichen Trainingsplänen, um dein Fitnessziel zu
 			erreichen.
 		</p>
-		<div class="button-container">
-			<button class="subscribe-button" on:click={addOn}>
+		<div class="flex items-center justify-center">
+			<button class="flex items-center justify-center text-lg pt-3 pb-5 mb-5 transition-all duration-900 ease-in text-gray-800 bg-gray-200 rounded-md border-2 border-solid border-gray-700
+			hover:text-white hover:bg-gray-700" on:click={addOn}>
+		
 				<div class="subscribe-container-text">
-					<p class="subscribe-text">Jetzt Abonnieren</p>
+					<p class="text-lg ml-4 font-semibold">Jetzt Abonnieren</p>
 				</div>
-				<div class="subscribe-container-plus">
-					<span class="plus-icon">+</span>
+				<div class="ml-5 ">
+					<span class="inline-block w-5 h-5 bg-gray-700 text-white rounded-full relative -translate-x-2/4 ml-2">+</span>
 				</div>
 			</button>
 		</div>
@@ -162,50 +167,70 @@
 		<Content id="large-scroll-content">
 			<hr />
 			<h2>Füge neue Sportarten hinzu</h2>
-			<div class="icon-container">
+			<!-- .icon-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 130px;
+		height: 130px;
+		background-color: #fff;
+		border: none;
+		/* border-radius: 8px; */
+		overflow: hidden;
+		/* outline-style: solid;
+    outline-color: black; */
+		/* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease-in-out; */
+		text-decoration: none;
+		color: inherit;
+		margin: 10px;
+		cursor: pointer;
+	} -->
+			<div class="flex items-center">
 				{#each { length: availableData.length } as _, i}
 					<div>
 						<button
 							style={availableData[i].selected
 								? 'box-shadow: 0 0 10px black; border-radius: 8px; transition: .5s ease all;'
 								: 'outline-style: none;'}
-							class="icon-card"
+							class=" flex flex-col items-center justify-center w-40 h-40 bg-gray-200 rounded-lg border-none overflow-hidden text-decoration-none text-gray-700 m-5 cursor-pointer hover:shadow-xl transition-all duration-200 ease-in"
 							on:click={() => {
 								availableData[i].selected = !availableData[i].selected;
 								buttonAddDisabled();
 							}}
 						>
 							<img
-								class="image-container"
+								class="w-full h-full overflow-hidden object-cover"
 								src={availableData[i].imageSrc}
 								alt={availableData[i].imageSrc}
 							/>
-							<div class="icon-title">{availableData[i].title}</div>
+							<div class=" mt-5 text-center text-xs mb-5">{availableData[i].title}</div>
 						</button>
 					</div>
 				{/each}
 			</div>
 			<hr />
 			<h2>Lösche ausgewählte Sportarten</h2>
-			<div class="icon-container">
+			<div class="flex items-center">
 				{#each { length: selectedData.length } as _, i}
 					<div>
 						<button
 							style={selectedData[i].selected
 								? 'box-shadow: 0 0 10px black; border-radius: 8px; transition: .5s ease all;'
 								: 'outline-style: none;'}
-							class="icon-card"
+							class=" flex flex-col items-center justify-center w-40 h-40 bg-gray-200 rounded-lg border-none overflow-hidden text-decoration-none text-gray-700 m-5 cursor-pointer hover:shadow-xl transition-all duration-200 ease-in"
 							on:click={() => {
 								selectedData[i].selected = !selectedData[i].selected;
 								buttonRemoveDisabled();
 							}}
 						>
 							<img
-								class="image-container"
+								class="w-full h-full overflow-hidden object-cover"
 								src={selectedData[i].imageSrc}
 								alt={selectedData[i].imageSrc}
 							/>
-							<div class="icon-title">{selectedData[i].title}</div>
+							<div class="mt-5 text-center text-xs mb-5">{selectedData[i].title}</div>
 						</button>
 					</div>
 				{/each}
@@ -221,9 +246,9 @@
 		</Actions>
 	</Dialog>
 </main>
-<Footer />
 
-<style>
+
+<!-- <style>
 	.icon-container {
 		display: flex;
 		align-items: center;
@@ -286,26 +311,7 @@
 		margin: 10px;
 	}
 
-	.icon-card {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		width: 130px;
-		height: 130px;
-		background-color: #fff;
-		border: none;
-		/* border-radius: 8px; */
-		overflow: hidden;
-		/* outline-style: solid;
-    outline-color: black; */
-		/* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.3s ease-in-out; */
-		text-decoration: none;
-		color: inherit;
-		margin: 10px;
-		cursor: pointer;
-	}
+	
 
 	.icon-card:hover {
 		border-radius: 8px;
@@ -479,4 +485,4 @@
 		font-size: 14px;
 		margin: 0;
 	}
-</style>
+</style> -->

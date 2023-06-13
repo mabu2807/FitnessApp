@@ -1,15 +1,13 @@
 [
 	{
 		"userId": 1,
-        "gender": "male",
+		"gender": "male",
 		"weight": 130,
-        "height": 180,
-		"dob": "1978-10-10",
-		"activityLevel": 10
+        "height": 180
 	},
 	{
 		"userId": 2,
-        "gender": "male",
+		"gender": "male",
 		"weight": 78.5,
         "height": 185,
 		"dob": "1995-08-05",

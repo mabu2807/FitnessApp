@@ -1,10 +1,14 @@
 import { writable } from 'svelte/store';
 
 export const getStartedData = writable([
-	{ title: 'Ziele', link: '/getStarted/goals', value: '' , unit:''},
-	{ title: 'Körpergröße', link: '/getStarted/size', value: '', unit:' cm' },
-	{ title: 'Gewicht', link: '/getStarted/weight', value: '', unit:' kg' },
-	{ title: 'Geburtsdatum', link: '/getStarted/dob', value: '', unit:'' },
-	{ title: 'Geschlecht', link: '/getStarted/gender', value: '', unit:''},
-	{ title: 'Aktivitätslevel', link: '/getStarted/level', value: '', unit:'' }
+	{ title: 'Ziele', value: '' },
+	{ title: 'Körpergröße', value: '' },
+	{ title: 'Gewicht', value: '' },
+	{ title: 'Geburtsdatum', value: '' },
+	{ title: 'Geschlecht', value: ''},
+	{ title: 'Aktivitätslevel', value: '' }
 ]);
+
+export const lockedGoal = writable(true);
+
+export const lockedGender = writable(true);

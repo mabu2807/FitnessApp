@@ -16,7 +16,11 @@ export const actions = {
 			return fail(400, { oldPassword, newPassword, newPasswordRepeated, missing: true });
 		}
 
-		if (typeof oldPassword != 'string' || typeof newPassword != 'string' || typeof newPasswordRepeated != 'string') {
+		if (
+			typeof oldPassword != 'string' ||
+			typeof newPassword != 'string' ||
+			typeof newPasswordRepeated != 'string'
+		) {
 			return fail(400, { incorrect: true });
 		}
 
@@ -27,8 +31,8 @@ export const actions = {
 			return fail(404, { email });
 		}
 
-		if (newPassword !== newPasswordRepeated){
-			return fail(401, {newPassword, newPasswordRepeated});
+		if (newPassword !== newPasswordRepeated) {
+			return fail(401, { newPassword, newPasswordRepeated });
 		}
 
 		if (user.password !== oldPassword) {
@@ -37,12 +41,12 @@ export const actions = {
 
 		await prisma.user.update({
 			where: {
-			  id: user.id,
+				id: user.id
 			},
 			data: {
-			  password: newPassword,
-			},
-		  })
+				password: newPassword
+			}
+		});
 
 		console.log('Changed password successfully!');
 

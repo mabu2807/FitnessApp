@@ -18,11 +18,12 @@
 				<div class="contact">
 					<form method="post">
 						<h3 style="font-weight: 700;">Passwort ändern</h3>
-						<input 
-							name="oldPassword" 
-							placeholder="Bisheriges Passwort" 
-							type="password" 
-							value={form?.oldPassword ?? ''} />
+						<input
+							name="oldPassword"
+							placeholder="Bisheriges Passwort"
+							type="password"
+							value={form?.oldPassword ?? ''}
+						/>
 						<input
 							name="newPassword"
 							placeholder="Neues Passwort"
@@ -48,8 +49,10 @@
 				</div>
 				<div class="bottom-indicator" />
 			</div>
+		</div>
 	</section>
 </body>
+
 <style>
 	body {
 		margin: 0;
@@ -94,8 +97,6 @@
 		position: relative;
 	}
 
-	
-
 	.left h3 {
 		font-size: 2vw;
 		font-weight: 500;
@@ -103,7 +104,6 @@
 		margin-top: 2vh;
 	}
 
-	
 	.left input {
 		width: 90%;
 		padding: 1.3vh 0.5vw;
@@ -128,7 +128,6 @@
 		font-weight: bold;
 		cursor: pointer;
 	}
-	
 
 	.left .submit:hover {
 		color: #393e46;
