@@ -80,7 +80,7 @@
 								>
 									<img src="Edit_Pencil.png" alt="Edit Meal" />
 								</button>
-								<Dialog bind:dialog mealdata={meal} value={buttonID} />
+								<Dialog form={form} bind:dialog mealdata={meal} value={buttonID} />
 							</div>
 						</div>
 						<div class="imageCard">

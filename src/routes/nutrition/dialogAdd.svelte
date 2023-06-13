@@ -1,29 +1,30 @@
 <script lang="ts">
+	import type { Dish} from './nutritionTypes';
 	import type { PageData } from './$types';
 
 	export let dialogAdd: HTMLDialogElement;
 	export let data: PageData;
 	let mealtext: string;
-	let time: string;
+	let time: string; 
 	let calories: number;
 	let allDishes = data.allDishes;
-	let selected = [allDishes[1]];
+	let selected :Dish[];
+	if(allDishes !=undefined){
+	selected = [allDishes[1]];
+	}
 
 	const closeClick = () => {
 		dialogAdd.close();
 	};
 
 	function saveChanges() {
-		console.log(mealtext);
-		console.log(time);
-		console.log(calories);
-		console.log(selected);
+		dialogAdd.close()
 	}
 </script>
 
 <dialog bind:this={dialogAdd} on:close>
 	<p>Neue Mahlzeit hinzufügen</p>
-	<form method="saveChanges">
+	<form method="POST" action="?/createMeal">
 		<div class="inputDishGeneral">
 			<div class="rowsInput">
 				<label for="category">Wähle eine Kategorie:</label>
@@ -37,11 +38,11 @@
 					<option value="Abendessen">Abendessen</option>
 					<option value="Snack">Snack</option>
 				</select>
-				<input type="text" id="meal2" bind:value={mealtext} />
-				<input type="text" id="calories" bind:value={calories} />
+				<input name="mealText" type="text" id="meal2" bind:value={mealtext} />
+				<input name="calories" type="text" id="calories" bind:value={calories} />
 			</div>
 		</div>
-	</form>
+	
 	<p>Oder Vorlage auswählen:</p>
 	<table class="tableDishes" id="tableDishes">
 		<tr>
@@ -49,6 +50,7 @@
 			<th>Kalorien</th>
 			<th>Auswahl</th>
 		</tr>
+		{#if allDishes != undefined}
 		{#each allDishes as dish}
 			<tr id={dish.id.toString()}>
 				<td>{dish.name}</td>
@@ -56,16 +58,18 @@
 				<td>
 					<div>
 						<label
-							><input type="radio" bind:group={selected} name="selectDish" value={dish} /></label
+							><input type="radio" bind:group={selected} name="selectDish" value={dish.id} /></label
 						>
 					</div>
 				</td>
 			</tr>
 		{/each}
+		{/if}
 	</table>
 
 	<button id="btnCloseAdd" on:click={closeClick}>Close</button>
 	<button type="submit" on:click={saveChanges} on:click={closeClick}>Save</button>
+</form>
 </dialog>
 
 <style>
