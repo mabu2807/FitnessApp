@@ -108,8 +108,6 @@
 	<a href="/nutrition/nutritiontipps">NutritionTipps</a>
 </main>
 
-<Footer />
-
 <style>
 	section {
 		background-color: #666;
