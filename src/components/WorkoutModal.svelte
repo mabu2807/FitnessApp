@@ -71,24 +71,24 @@
 
 
 {#if $modalStore[0]}
-<div class="card p-5 shadow-xl bg-white">
+<div class="card p-7 shadow-xl bg-white mt-36">
 	<div class="flex justify-end">
 		<button on:click={()=>modalStore.close()}>
 			<i class="fa-solid fa-circle-xmark text-2xl hover:text-secondary-500"></i>
 	</button>
 	</div>
     {#each testExercise as exercise}
-        <h2>Übung {exercise.id}: {exercise.exercise}</h2>
-        <div class="flex flex-row text-center">
-            <div class="w-20">
-                <img class="w-full h-full object-cover" src={exercise.imagePath} alt={exercise.imagePath} />
+        <h6 class="h6 font-bold">Übung {exercise.id}: {exercise.exercise}</h6>
+        <div class="flex flex-row gap-7 mb-6 mt-2">
+            <div class="w-40">
+                <img class="rounded" src={exercise.imagePath} alt={exercise.imagePath} />
             </div>
-            <div class="w-full ">
-                <p class="text-sm">
+            <div class="w-full">
+                <p class="sm:text-base text-sm">
                     <b> {exercise.sets} </b> Sätze x <b> {exercise.repetitions} </b>
-                    Wiederholungen (Gewicht: Langhantel mit zusätzlichen
-                    <b> {exercise.weigth}kg </b>)
                 </p>
+				<p class="sm:text-base text-sm"> Wiederholungen (Gewicht: Langhantel mit zusätzlichen
+                    <b> {exercise.weigth}kg</b>)</p>
 
                 <!-- <h4>Hinweise zur Ausführung:</h4>
                 <p class="text-sm">{exercise.description}</p> -->
