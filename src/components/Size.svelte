@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { getStartedData } from '../routes/getStarted/Data';
+	import { getStartedData } from '../stores/Data';
 
 	let sliderValue: string;
 

@@ -2,7 +2,7 @@
 	import Head from '../../components/Head.svelte';
 	import { type ModalComponent, type ModalSettings, modalStore } from '@skeletonlabs/skeleton';
 	import AddCategoryModal from '../../components/AddCategoryModal.svelte';
-	import { categoryData } from '../getStarted/Data';
+	import { categoryData } from '../../stores/Data';
 
 	const modalAddCategory: ModalComponent = {
 		ref: AddCategoryModal

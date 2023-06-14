@@ -8,7 +8,7 @@
 	import Level from '../../components/Level.svelte';
 	import Register from '../../components/Register.svelte';
 	import Overview from '../../components/Overview.svelte';
-	import { lockedGoal, lockedGender } from '../getStarted/Data';
+	import { lockedGoal, lockedGender } from '../../stores/Data';
 
 	function onNextHandler(e: CustomEvent): void {
 		console.log('event:next', e.detail);

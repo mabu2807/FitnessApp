@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getStartedData, lockedGoal } from '../routes/getStarted/Data';
+	import { getStartedData, lockedGoal } from '../stores/Data';
 
 	let goalsBackend = [
 		{ title: 'Lose Weight', description: 'Gewicht reduzieren und Fett abbauen' },

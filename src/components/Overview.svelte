@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getStartedData } from '../routes/getStarted/Data';
+	import { getStartedData } from '../stores/Data';
 </script>
 
 <section class="h-80">

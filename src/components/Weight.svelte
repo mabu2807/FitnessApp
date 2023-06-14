@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getStartedData } from '../routes/getStarted/Data';
+	import { getStartedData } from '../stores/Data';
 	import { onMount } from 'svelte';
 
 	let picsource = 'final15.png';

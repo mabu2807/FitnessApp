@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { modalStore } from '@skeletonlabs/skeleton';
-	import { categoryData } from '../routes/getStarted/Data';
+	import { categoryData } from '../stores/Data';
 
 	let addDisabled = true;
 	let removeDisabled = true;

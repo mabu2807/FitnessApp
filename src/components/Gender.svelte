@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getStartedData, lockedGender } from '../routes/getStarted/Data';
+	import { getStartedData, lockedGender } from '../stores/Data';
 
 	let genderPics = [
 		// fa-solid fa-person fa-lg
