@@ -2,17 +2,17 @@
 	import Head from '../../components/Head.svelte';
 	import type { ActionData } from './$types';
 	import { Toast, toastStore } from '@skeletonlabs/skeleton';
-	import type { ToastSettings } from '@skeletonlabs/skeleton';	
+	import type { ToastSettings } from '@skeletonlabs/skeleton';
 
 	export let form: ActionData;
 
-// 	const t: ToastSettings = {
-// 	message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit...',
+	// 	const t: ToastSettings = {
+	// 	message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit...',
 
-// };
-// function alert(){
-// 	toastStore.trigger(t);
-// };
+	// };
+	// function alert(){
+	// 	toastStore.trigger(t);
+	// };
 </script>
 
 <!-- <head>
@@ -22,44 +22,61 @@
 	<link rel="stylesheet" href="style.css" />
 </head> -->
 
-<Head></Head>
-	<section class="flex items-center justify-center mt-32 mb-40">
-		<div class="card w-3/4 sm:flex my-20">
-			<div class="sm:w-1/2 w-full p-8">
-	
-						<h3 class="md:text-2xl md:mx-3 lg:mx-4 sm:text-xl text-2xl font-semibold mb-8 mx-2">Benutzer Login</h3>
-				
-		
-				<form id="form" method="post" class="mb-8 md:mx-3 lg:mx-4 mx-2">
-					<input name="email" placeholder="Email" type="text" value={form?.email ?? ''} class="input p-2 mb-4 md:text-base text-base sm:text-sm text-black dark:text-primary-500 dark:placeholder-white" />
-					<input name="password" placeholder="Passwort" type="password" value={form?.password ?? ''} class="input p-2 mb-6 md:text-base text-base sm:text-sm text-black dark:text-primary-500 dark:placeholder-white" />
-					<!-- {#if form?.missing}<p>TEst</p>{/if} -->
-					<button type="submit" class="btn variant-filled w-full md:text-base text-base sm:text-sm md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500">Sign In</button>
-					<div class="mt-6 text-sm">
-						<p>Du hast noch keinen Account? Dann <a href="/register"><span class="text-tertiary-500 hover:text-secondary-500 dark:hover:text-primary-500 font-bold">Registriere</span></a> dich jetzt!</p>
-					</div>
-				</form>
-			</div>
-			<div class="sm:w-1/2 w-full flex flex-col justify-center items-center right-gradient shadow-xl">
-				<div class="h-1 w-3/5 bg-black dark:bg-white rounded-full sm:mb-14 mb-5 sm:mt-0 mt-10"></div>
-				<div class="mb-6">
-					<h2 class="md:text-3xl text-2xl font-semibold mb-6 mx-6 text-center dark:text-primary-500">Willkommen bei FitnessHub</h2>
-					<h5 class="text-base dark:text-white text-center mx-10">Von Cardio Carsten zu Markus Masse, wir bitten jeden zur Kasse!</h5>
+<Head />
+<section class="flex items-center justify-center mt-32 mb-40">
+	<div class="card w-3/4 sm:flex my-20">
+		<div class="sm:w-1/2 w-full p-8">
+			<h3 class="md:text-2xl md:mx-3 lg:mx-4 sm:text-xl text-2xl font-semibold mb-8 mx-2">
+				Benutzer Login
+			</h3>
+
+			<form id="form" method="post" class="mb-8 md:mx-3 lg:mx-4 mx-2">
+				<input
+					name="email"
+					placeholder="Email"
+					type="text"
+					value={form?.email ?? ''}
+					class="input p-2 mb-4 md:text-base text-base sm:text-sm text-black dark:text-primary-500 dark:placeholder-white"
+				/>
+				<input
+					name="password"
+					placeholder="Passwort"
+					type="password"
+					value={form?.password ?? ''}
+					class="input p-2 mb-6 md:text-base text-base sm:text-sm text-black dark:text-primary-500 dark:placeholder-white"
+				/>
+				<!-- {#if form?.missing}<p>TEst</p>{/if} -->
+				<button
+					type="submit"
+					class="btn variant-filled w-full md:text-base text-base sm:text-sm md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500"
+					>Sign In</button
+				>
+				<div class="mt-6 text-sm">
+					<p>
+						Du hast noch keinen Account? Dann <a href="/register"
+							><span
+								class="text-tertiary-500 hover:text-secondary-500 dark:hover:text-primary-500 font-bold"
+								>Registriere</span
+							></a
+						> dich jetzt!
+					</p>
 				</div>
-				<div class="h-1 w-3/5 bg-black dark:bg-white rounded-full sm:mb-0 mb-10 sm:mt-5"></div>
-			</div>
+			</form>
 		</div>
-	</section>
-
-
-	<style>
-		.right-gradient {
-			background-image:
-		radial-gradient(at 0% 99%, rgba(var(--color-error-500) / 0.23) 0px, transparent 50%),
-		radial-gradient(at 100% 100%, rgba(var(--color-primary-500) / 0.19) 0px, transparent 50%);
-	}
-	</style>
-
+		<div class="sm:w-1/2 w-full flex flex-col justify-center items-center right-gradient shadow-xl">
+			<div class="h-1 w-3/5 bg-black dark:bg-white rounded-full sm:mb-14 mb-5 sm:mt-0 mt-10" />
+			<div class="mb-6">
+				<h2 class="md:text-3xl text-2xl font-semibold mb-6 mx-6 text-center dark:text-primary-500">
+					Willkommen bei FitnessHub
+				</h2>
+				<h5 class="text-base dark:text-white text-center mx-10">
+					Von Cardio Carsten zu Markus Masse, wir bitten jeden zur Kasse!
+				</h5>
+			</div>
+			<div class="h-1 w-3/5 bg-black dark:bg-white rounded-full sm:mb-0 mb-10 sm:mt-5" />
+		</div>
+	</div>
+</section>
 
 <!-- <body>
 	<section class="login">
@@ -352,3 +369,14 @@
 		}
 	}
 </style> -->
+
+<style>
+	.right-gradient {
+		background-image: radial-gradient(
+				at 0% 99%,
+				rgba(var(--color-error-500) / 0.23) 0px,
+				transparent 50%
+			),
+			radial-gradient(at 100% 100%, rgba(var(--color-primary-500) / 0.19) 0px, transparent 50%);
+	}
+</style>

@@ -7,9 +7,7 @@ const config = {
 	],
 
 	theme: {
-		extend: {
-			
-			}
+		extend: {}
 	},
 
 	plugins: [...require('@skeletonlabs/skeleton/tailwind/skeleton.cjs')()]

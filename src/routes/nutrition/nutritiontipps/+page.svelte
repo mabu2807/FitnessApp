@@ -4,7 +4,7 @@
 	import Article from './article.svelte';
 	import Footer from '../../../components/Footer.svelte';
 	import type { PageData } from './$types';
-	export let data:PageData
+	export let data: PageData;
 </script>
 
 <main>
@@ -17,18 +17,15 @@
 				{#each data.articles as article}
 					<Article data={article} />
 				{/each}
-				{:else}
+			{:else}
 				<p>Keine Artikel gefunden!</p>
 			{/if}
-			
-			
 		</div>
 	</div>
-    <form action="?/add" method="POST">
-        <button type="submit">Test</button>
-    </form>
+	<form action="?/add" method="POST">
+		<button type="submit">Test</button>
+	</form>
 </main>
-
 
 <style lang="css">
 	.content {

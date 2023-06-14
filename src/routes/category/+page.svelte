@@ -2,18 +2,16 @@
 	import Head from '../../components/Head.svelte';
 	import { type ModalComponent, type ModalSettings, modalStore } from '@skeletonlabs/skeleton';
 	import AddCategoryModal from '../../components/AddCategoryModal.svelte';
-	import {categoryData} from '../getStarted/Data'
-
-	
+	import { categoryData } from '../getStarted/Data';
 
 	const modalAddCategory: ModalComponent = {
-	ref: AddCategoryModal,
-};
+		ref: AddCategoryModal
+	};
 
-function addCategory(): void {
+	function addCategory(): void {
 		const modal: ModalSettings = {
 			type: 'component',
-			component: modalAddCategory,
+			component: modalAddCategory
 		};
 		modalStore.trigger(modal);
 	}
@@ -26,43 +24,46 @@ function addCategory(): void {
 	<p class="text-lg">Bleib dran und zieh durch!</p>
 </section>
 
-
-	<section class="flex flex-wrap justify-center gap-8 p-12 mid-gradient shadow-xl">
-		{#each $categoryData as item}
+<section class="flex flex-wrap justify-center gap-8 p-12 mid-gradient shadow-xl">
+	{#each $categoryData as item}
 		{#if item.picked}
-			<a href={item.link} class="card card-hover flex flex-col items-center justify-center w-56 h-72 bg-white">
-			
-					<img class="w-full h-36 object-cover rounded-tl-md rounded-tr-md" src={item.imageSrc} alt="" />
-				
+			<a
+				href={item.link}
+				class="card card-hover flex flex-col items-center justify-center w-56 h-72 bg-white"
+			>
+				<img
+					class="w-full h-36 object-cover rounded-tl-md rounded-tr-md"
+					src={item.imageSrc}
+					alt=""
+				/>
+
 				<div class="p-3 text-center">
 					<h2 class="text-lg mt-1 mb-3 text-black dark:text-white font-semibold">{item.title}</h2>
 					<p class="text-black dark:text-white text-sm overflow-ellipsis">{item.description}</p>
 				</div>
 			</a>
-			{/if}
-		{/each}
-		</section>
+		{/if}
+	{/each}
+</section>
 
-	<section class="p-8 text-center mt-12 mb-6">
-		<h2 class="text-2xl mb-3 ">Weitere Sportarten hinzufügen</h2>
-		<p class="text-base mb-5">Du hast eine neue Sportart für dich entdeckt? Dann füge sie einfach hinzu...</p>
-		<div class="flex items-center justify-center mt-8">
-			<button class="btn variant-filled inline-block px-4 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500" on:click={addCategory}>	
-				<span class="dark:text-black text-white">Hinzufügen<i class="fa-solid fa-circle-plus ml-2"></i></span>
-			</button>
-		</div>
-	</section>
+<section class="p-8 text-center mt-12 mb-6">
+	<h2 class="text-2xl mb-3">Weitere Sportarten hinzufügen</h2>
+	<p class="text-base mb-5">
+		Du hast eine neue Sportart für dich entdeckt? Dann füge sie einfach hinzu...
+	</p>
+	<div class="flex items-center justify-center mt-8">
+		<button
+			class="btn variant-filled inline-block px-4 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500"
+			on:click={addCategory}
+		>
+			<span class="dark:text-black text-white"
+				>Hinzufügen<i class="fa-solid fa-circle-plus ml-2" /></span
+			>
+		</button>
+	</div>
+</section>
 
-
-	<style>
-		.mid-gradient {
-		background-image:
-			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 50%),
-			radial-gradient(at 100% 0%,  rgba(var(--color-primary-500) / 0.33) 0px, transparent 50%);
-	}
-	</style>
-
-	<!-- <Dialog
+<!-- <Dialog
 		bind:open
 		aria-labelledby="large-scroll-title"
 		aria-describedby="large-scroll-content"
@@ -72,7 +73,7 @@ function addCategory(): void {
 		<Content id="large-scroll-content">
 			<hr />
 			<h2>Füge neue Sportarten hinzu</h2> -->
-			<!-- .icon-card {
+<!-- .icon-card {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -92,7 +93,7 @@ function addCategory(): void {
 		margin: 10px;
 		cursor: pointer;
 	} -->
-			<!-- <div class="flex items-center">
+<!-- <div class="flex items-center">
 				{#each { length: availableData.length } as _, i}
 					<div>
 						<button
@@ -150,7 +151,6 @@ function addCategory(): void {
 			</Button>
 		</Actions>
 	</Dialog> -->
-
 
 <!-- <style>
 	.icon-container {
@@ -390,3 +390,14 @@ function addCategory(): void {
 		margin: 0;
 	}
 </style> -->
+
+<style>
+	.mid-gradient {
+		background-image: radial-gradient(
+				at 0% 0%,
+				rgba(var(--color-secondary-500) / 0.33) 0px,
+				transparent 50%
+			),
+			radial-gradient(at 100% 0%, rgba(var(--color-primary-500) / 0.33) 0px, transparent 50%);
+	}
+</style>

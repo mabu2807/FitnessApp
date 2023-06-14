@@ -1,16 +1,16 @@
 <script lang="ts">
-	import type { Dish} from './nutritionTypes';
+	import type { Dish } from './nutritionTypes';
 	import type { PageData } from './$types';
 
 	export let dialogAdd: HTMLDialogElement;
 	export let data: PageData;
 	let mealtext: string;
-	let time: string; 
+	let time: string;
 	let calories: number;
 	let allDishes = data.allDishes;
-	let selected :Dish[];
-	if(allDishes !=undefined){
-	selected = [allDishes[1]];
+	let selected: Dish[];
+	if (allDishes != undefined) {
+		selected = [allDishes[1]];
 	}
 
 	const closeClick = () => {
@@ -18,7 +18,7 @@
 	};
 
 	function saveChanges() {
-		dialogAdd.close()
+		dialogAdd.close();
 	}
 </script>
 
@@ -42,34 +42,39 @@
 				<input name="calories" type="text" id="calories" bind:value={calories} />
 			</div>
 		</div>
-	
-	<p>Oder Vorlage auswählen:</p>
-	<table class="tableDishes" id="tableDishes">
-		<tr>
-			<th>Name</th>
-			<th>Kalorien</th>
-			<th>Auswahl</th>
-		</tr>
-		{#if allDishes != undefined}
-		{#each allDishes as dish}
-			<tr id={dish.id.toString()}>
-				<td>{dish.name}</td>
-				<td>{dish.nutritionalValues.energy}</td>
-				<td>
-					<div>
-						<label
-							><input type="radio" bind:group={selected} name="selectDish" value={dish.id} /></label
-						>
-					</div>
-				</td>
-			</tr>
-		{/each}
-		{/if}
-	</table>
 
-	<button id="btnCloseAdd" on:click={closeClick}>Close</button>
-	<button type="submit" on:click={saveChanges} on:click={closeClick}>Save</button>
-</form>
+		<p>Oder Vorlage auswählen:</p>
+		<table class="tableDishes" id="tableDishes">
+			<tr>
+				<th>Name</th>
+				<th>Kalorien</th>
+				<th>Auswahl</th>
+			</tr>
+			{#if allDishes != undefined}
+				{#each allDishes as dish}
+					<tr id={dish.id.toString()}>
+						<td>{dish.name}</td>
+						<td>{dish.nutritionalValues.energy}</td>
+						<td>
+							<div>
+								<label
+									><input
+										type="radio"
+										bind:group={selected}
+										name="selectDish"
+										value={dish.id}
+									/></label
+								>
+							</div>
+						</td>
+					</tr>
+				{/each}
+			{/if}
+		</table>
+
+		<button id="btnCloseAdd" on:click={closeClick}>Close</button>
+		<button type="submit" on:click={saveChanges} on:click={closeClick}>Save</button>
+	</form>
 </dialog>
 
 <style>
@@ -77,11 +82,11 @@
 		table-layout: auto;
 		width: 100%;
 	}
-	.inputDishGeneral{
+	.inputDishGeneral {
 		display: flex;
 		justify-content: space-between;
-	}	
-	.rowsInput{
+	}
+	.rowsInput {
 		display: flex;
 		flex-direction: column;
 		align-items: start;

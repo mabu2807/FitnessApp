@@ -5,7 +5,7 @@
 	let picsource = 'final15.png';
 	let sliderValue: string;
 
-	function updateSliderValue(event:Event) {
+	function updateSliderValue(event: Event) {
 		$getStartedData[2].value = sliderValue;
 		sliderValue = (event.target as HTMLInputElement).value;
 		let val = parseInt((event.target as HTMLInputElement).value);
@@ -36,25 +36,12 @@
 </script>
 
 <section class="h-80">
-
 	<div class="flex justify-center md:gap-6 sm:gap-4 gap-2 sm:my-12 my-8">
-			<img class="w-24" src={picsource} alt="person" />
-			<div class="flex items-center justidy-center w-28">
-
-				<h2 class="h2 flex items-center">{sliderValue} kg</h2>
-			</div>
+		<img class="w-24" src={picsource} alt="person" />
+		<div class="flex items-center justidy-center w-28">
+			<h2 class="h2 flex items-center">{sliderValue} kg</h2>
 		</div>
-	
-		<input
-			type="range"
-			min="50"
-			max="130"
-			bind:value={sliderValue}
-			on:input={updateSliderValue}
-		/>
+	</div>
 
-
-
-	
+	<input type="range" min="50" max="130" bind:value={sliderValue} on:input={updateSliderValue} />
 </section>
-
