@@ -17,7 +17,7 @@
 	function buttonAddDisabled() {
 		addDisabled = true;
 		$categoryData.forEach((element) => {
-			if (element.selected == true) {
+			if (element.selected == true && element.picked == false) {
 				addDisabled = false;
 			}
 		});
@@ -36,7 +36,7 @@
 	function buttonRemoveDisabled() {
 		removeDisabled = true;
 		$categoryData.forEach((element) => {
-			if (element.selected == true) {
+			if (element.selected == true && element.picked == true) {
 				removeDisabled = false;
 			}
 		});
@@ -49,15 +49,17 @@
 
 {#if $modalStore[0]}
 <div class="card p-5 w-modal shadow-xl card-gradient">
-<div class="flex items-center">
+	<h3 class="h3 text-center mt-3 mb-7">Deine Sportarten</h3>
+<div class="flex justify-center">
+	<div class="grid sm:grid-cols-4 grid-cols-3 sm:gap-5 gap-4">
 	{#each $categoryData as available}
 	{#if !available.picked}
 
 			<button
 				style={available.selected
-					? 'box-shadow: 0 0 10px black; border-radius: 8px;'
+					? 'box-shadow: 0 0 20px green; border-radius: 8px;'
 					: ''}
-				class="card flex flex-col items-center justify-center bg-white w-32 h-32 overflow-hidden m-5"
+				class="card flex flex-col items-center justify-center bg-white aspect-[1/1] sm:w-32 w-28 overflow-hidden"
 				on:click={() => {
 					available.selected = !available.selected;
 					buttonAddDisabled();
@@ -68,22 +70,24 @@
 					src={available.imageSrc}
 					alt={available.imageSrc}
 				/>
-				<div class="my-3 text-center text-sm">{available.title}</div>
+				<div class="my-2 text-center text-sm">{available.title}</div>
 			</button>
 	
 		{/if}
 	{/each}
 </div>
-<hr />
-<h2>Lösche ausgewählte Sportarten</h2>
-<div class="flex items-center">
+</div>
+<hr class="mt-14 h-1 rounded-full bg-gray-900 dark:bg-white"/>
+<h3 class="h3 text-center mt-3 mb-7">Lösche ausgewählte Sportarten</h3>
+<div class="flex justify-center">
+<div class="grid sm:grid-cols-4 grid-cols-3 sm:gap-5 gap-4">
 	{#each $categoryData as selected}
 	{#if selected.picked}
 			<button 
 				style={selected.selected
-					? 'box-shadow: 0 0 10px black; border-radius: 8px;'
+					? 'box-shadow: 0 0 20px green; border-radius: 8px;'
 					: 'outline-style: none;'}
-				class="card flex flex-col items-center justify-center bg-white w-32 h-32 overflow-hidden m-5"
+				class="card flex flex-col items-center justify-center bg-white aspect-[1/1] sm:w-32 w-28 overflow-hidden"
 				on:click={() => {
 					selected.selected = !selected.selected;
 					buttonRemoveDisabled();
@@ -95,17 +99,22 @@
 					src={selected.imageSrc}
 					alt={selected.imageSrc}
 				/>
-				<div class="my-3 text-center text-sm">{selected.title}</div>
+				<div class="my-2 text-center text-sm">{selected.title}</div>
 			</button>
 		{/if}
 	{/each}
 </div>
 </div>
+<footer class="flex justify-between mt-14">
+	<div>
+	<button class="btn variant-filled md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500" on:click={add} disabled={addDisabled}>Hinzufügen</button>
+	<button class="btn variant-filled md:px-7 px-5 py-2 transition duration-400 bg-secondary-500 dark:bg-secondary-500 hover:bg-tertiary-500 dark:hover:bg-primary-500" on:click={remove} disabled={removeDisabled}>Löschen</button>
+</div>
+<button class="btn variant-soft hover:bg-secondary-400 md:px-7 px-5 py-2" on:click={()=>modalStore.close()}>Abbrechen</button>
+</footer>
+</div>
 {/if}
-<footer class="flex justify-between">
-        <button class="btn variant-filled md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500" on:click={add} disabled={addDisabled}>Hinzufügen</button>
-		<button class="btn variant-filled md:px-7 px-5 py-2 transition duration-400 bg-secondary-500 dark:bg-secondary-500 hover:bg-tertiary-500 dark:hover:bg-primary-500" on:click={remove} disabled={removeDisabled}>Löschen</button>
-    </footer>
+
 
 <style>
 	.card-gradient {

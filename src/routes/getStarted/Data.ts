@@ -40,7 +40,8 @@ export const categoryData = writable([
 				link: 'https://example.com/button3',
 				selected: false,
 				picked: true
-			}
+			},
+			
 ]
 
 )
