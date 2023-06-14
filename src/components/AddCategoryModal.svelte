@@ -49,9 +49,8 @@
 
 {#if $modalStore[0]}
 <div class="card p-5 w-modal shadow-xl card-gradient">
-	<h3 class="h3 text-center mt-3 mb-7">Deine Sportarten</h3>
-<div class="flex justify-center">
-	<div class="grid sm:grid-cols-4 grid-cols-3 sm:gap-5 gap-4">
+	<h3 class="h3 text-center mt-3 mb-7">Verfügbare Sportarten</h3>
+	<div class="flex flex-wrap gap-4">
 	{#each $categoryData as available}
 	{#if !available.picked}
 
@@ -76,11 +75,10 @@
 		{/if}
 	{/each}
 </div>
-</div>
+
 <hr class="mt-14 h-1 rounded-full bg-gray-900 dark:bg-white"/>
 <h3 class="h3 text-center mt-3 mb-7">Lösche ausgewählte Sportarten</h3>
-<div class="flex justify-center">
-<div class="grid sm:grid-cols-4 grid-cols-3 sm:gap-5 gap-4">
+<div class="flex flex-wrap gap-4">
 	{#each $categoryData as selected}
 	{#if selected.picked}
 			<button 
@@ -103,7 +101,6 @@
 			</button>
 		{/if}
 	{/each}
-</div>
 </div>
 <footer class="flex justify-between mt-14">
 	<div>

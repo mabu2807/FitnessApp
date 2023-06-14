@@ -21,49 +21,46 @@ function addCategory(): void {
 
 <Head />
 
-
-<div class="mt-24">
-	<section class="flex flex-col items-center p-5 bg-gray-300 font-bold text-center font-sans">
-		<h1 class="text-3xl">Deine Trainingspläne</h1>
-		<p class="font-sans text-lg mb-1 text-center text-gray-600">Bleib dran und zieh durch!</p>
-	</section>
+<section class="text-center px-6 py-10 md:py-14 mt-24 shadow-xl">
+	<h1 class="h1 font-bold text-3xl mb-8">Deine Lieblingssportarten</h1>
+	<p class="text-lg">Bleib dran und zieh durch!</p>
+</section>
 
 
-	<div class="card flex flex-wrap justify-center gap-3 mt-5">
+	<section class="flex flex-wrap justify-center gap-8 p-12 mid-gradient shadow-xl">
 		{#each $categoryData as item}
 		{#if item.picked}
-			<a href={item.link} class="flex flex-col items-center justify-center w-64 h-80 bg-white rounded-md shadow-xl no-underline text-gray-400 mt-3 hover:w-72 transition-all duration-900 ease-in ">
-				<div class="w-full h-full rounded-md">
-					<img class="w-full h-full object-cover rounded-tl-md rounded-tr-md" src={item.imageSrc} alt="" />
-				</div>
+			<a href={item.link} class="card card-hover flex flex-col items-center justify-center w-56 h-72 bg-white">
+			
+					<img class="w-full h-36 object-cover rounded-tl-md rounded-tr-md" src={item.imageSrc} alt="" />
+				
 				<div class="p-3 text-center">
-					<h2 class="font-sans text-lg mt-1 mb-3 text-black font-semibold">{item.title}</h2>
-					<p class="font-sans text-sm mt-0 text-gray-400 overflow-ellipsis">{item.description}</p>
+					<h2 class="text-lg mt-1 mb-3 text-black dark:text-white font-semibold">{item.title}</h2>
+					<p class="text-black dark:text-white text-sm overflow-ellipsis">{item.description}</p>
 				</div>
 			</a>
 			{/if}
 		{/each}
-	</div>
+		</section>
 
-	<div class="bg-gray-300 p-5 text-center mt-12">
-		<h2 class="text-2xl mb-3 ">Weitere Trainingspläne abonnieren</h2>
-		<p class="text-base mb-5">
-			Erhalte Zugriff auf eine Vielzahl von zusätzlichen Trainingsplänen, um dein Fitnessziel zu
-			erreichen.
-		</p>
-		<div class="flex items-center justify-center">
-			<button class="flex items-center justify-center text-lg pt-3 pb-5 mb-5 transition-all duration-900 ease-in text-gray-800 bg-gray-200 rounded-md border-2 border-solid border-gray-700
-			hover:text-white hover:bg-gray-700" on:click={addCategory}>
-		
-				<div class="subscribe-container-text">
-					<p class="text-lg ml-4 font-semibold">Jetzt Abonnieren</p>
-				</div>
-				<div class="ml-5 ">
-					<span class="inline-block w-5 h-5 bg-gray-700 text-white rounded-full relative -translate-x-2/4 ml-2">+</span>
-				</div>
+	<section class="p-8 text-center mt-12 mb-6">
+		<h2 class="text-2xl mb-3 ">Weitere Sportarten hinzufügen</h2>
+		<p class="text-base mb-5">Du hast eine neue Sportart für dich entdeckt? Dann füge sie einfach hinzu...</p>
+		<div class="flex items-center justify-center mt-8">
+			<button class="btn variant-filled inline-block px-4 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500" on:click={addCategory}>	
+				<span class="dark:text-black text-white">Hinzufügen<i class="fa-solid fa-circle-plus ml-2"></i></span>
 			</button>
 		</div>
-	</div>
+	</section>
+
+
+	<style>
+		.mid-gradient {
+		background-image:
+			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 50%),
+			radial-gradient(at 100% 0%,  rgba(var(--color-primary-500) / 0.33) 0px, transparent 50%);
+	}
+	</style>
 
 	<!-- <Dialog
 		bind:open
@@ -153,7 +150,6 @@ function addCategory(): void {
 			</Button>
 		</Actions>
 	</Dialog> -->
-</div>
 
 
 <!-- <style>
