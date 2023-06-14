@@ -1,131 +1,10 @@
 <script lang="ts">
-	import Dialog, { Header, Title, Content, Actions } from '@smui/dialog';
-	import Button, { Label } from '@smui/button';
-	import { element } from 'svelte/internal';
 	import Head from '../../components/Head.svelte';
-	import type { PageData } from './$types'
 	import { type ModalComponent, type ModalSettings, modalStore } from '@skeletonlabs/skeleton';
 	import AddCategoryModal from '../../components/AddCategoryModal.svelte';
 	import {categoryData} from '../getStarted/Data'
 
-	let open = false;
-	let removeDisabled = true;
-	let addDisabled = true;
-
-	export let data: PageData
-
-	function addOn() {
-		open = true;
-	}
-
-	let testData = {
-			title: 'Yoga',
-			imageSrc: 'workout3.jpg',
-			description:
-				'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. minim veniam, quis nostrud exercita',
-			link: 'https://example.com/button3',
-			selected: false
-		};
-
-	function test() {
-		$categoryData[1].picked=true;
-
-
-	}
-
-	// function add() {
-	// 	let iconToMove = [];
-	// 	availableData.forEach((element) => {
-	// 		if (element.selected == true) {
-	// 			iconToMove.push(element);
-	// 		}
-	// 	});
-	// 	iconToMove.forEach((item) => {
-	// 		selectedData.push(item);
-	// 		availableData.splice(availableData.indexOf(item), 1);
-	// 	});
-	// 	selectedData.forEach((item) => {
-	// 		item.selected = false;
-	// 	});
-	// 	availableData.forEach((item) => {
-	// 		item.selected = false;
-	// 	});
-	// 	selectedData = selectedData;
-	// 	availableData = availableData;
-	// 	removeDisabled = true;
-	// 	addDisabled = true;
-	// }
-
-	// function remove() {
-	// 	let iconToMove = [];
-	// 	selectedData.forEach((element) => {
-	// 		if (element.selected == true) {
-	// 			iconToMove.push(element);
-	// 		}
-	// 	});
-	// 	iconToMove.forEach((item) => {
-	// 		availableData.push(item);
-	// 		selectedData.splice(selectedData.indexOf(element), 1);
-	// 	});
-	// 	availableData.forEach((item) => {
-	// 		item.selected = false;
-	// 	});
-	// 	selectedData.forEach((item) => {
-	// 		item.selected = false;
-	// 	});
-	// 	selectedData = selectedData;
-	// 	availableData = availableData;
-	// 	removeDisabled = true;
-	// 	addDisabled = true;
-	// }
-
-	// function buttonRemoveDisabled() {
-	// 	removeDisabled = true;
-	// 	selectedData.forEach((element) => {
-	// 		if (element.selected == true) {
-	// 			removeDisabled = false;
-	// 		}
-	// 	});
-	// }
-
-	function buttonAddDisabled() {
-		addDisabled = true;
-		availableData.forEach((element) => {
-			if (element.selected == true) {
-				addDisabled = false;
-			}
-		});
-	}
-
-	// let selectedData = [
-	// 	{
-	// 		title: 'Krafttraining',
-	// 		imageSrc: 'workout2.jpg',
-	// 		description:
-	// 			' Sed do eiusmod temporrem ipsum dolor sit ametorididunt ut labore et dolore magna aliqua. ',
-	// 		link: 'liftingplan',
-	// 		selected: false
-	// 	},
-	// 	{
-	// 		title: 'Cardio',
-	// 		imageSrc: 'workout1.jpg',
-	// 		description:
-	// 			' labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqu',
-	// 		link: 'https://example.com/button2',
-	// 		selected: false
-	// 	}
-	// ];
-
-	let availableData = [
-		{
-			title: 'Yoga',
-			imageSrc: 'workout3.jpg',
-			description:
-				'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. minim veniam, quis nostrud exercita',
-			link: 'https://example.com/button3',
-			selected: false
-		}
-	];
+	
 
 	const modalAddCategory: ModalComponent = {
 	ref: AddCategoryModal,
@@ -151,15 +30,15 @@ function addCategory(): void {
 
 
 	<div class="card flex flex-wrap justify-center gap-3 mt-5">
-		{#each $categoryData as button}
-		{#if button.picked}
-			<a href={button.link} class="flex flex-col items-center justify-center w-64 h-80 bg-white rounded-md shadow-xl no-underline text-gray-400 mt-3 hover:w-72 transition-all duration-900 ease-in ">
+		{#each $categoryData as item}
+		{#if item.picked}
+			<a href={item.link} class="flex flex-col items-center justify-center w-64 h-80 bg-white rounded-md shadow-xl no-underline text-gray-400 mt-3 hover:w-72 transition-all duration-900 ease-in ">
 				<div class="w-full h-full rounded-md">
-					<img class="w-full h-full object-cover rounded-tl-md rounded-tr-md" src={button.imageSrc} alt="Button Image" />
+					<img class="w-full h-full object-cover rounded-tl-md rounded-tr-md" src={item.imageSrc} alt="" />
 				</div>
 				<div class="p-3 text-center">
-					<h2 class="font-sans text-lg mt-1 mb-3 text-black font-semibold">{button.title}</h2>
-					<p class="font-sans text-sm mt-0 text-gray-400 overflow-ellipsis">{button.description}</p>
+					<h2 class="font-sans text-lg mt-1 mb-3 text-black font-semibold">{item.title}</h2>
+					<p class="font-sans text-sm mt-0 text-gray-400 overflow-ellipsis">{item.description}</p>
 				</div>
 			</a>
 			{/if}

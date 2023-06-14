@@ -20,7 +20,7 @@ export const categoryData = writable([
 				description:
 					' Sed do eiusmod temporrem ipsum dolor sit ametorididunt ut labore et dolore magna aliqua. ',
 				link: 'liftingplan',
-				selected: true,
+				selected: false,
 				picked: true
 			},
 			{
@@ -29,7 +29,7 @@ export const categoryData = writable([
 				description:
 					' labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqu',
 				link: 'https://example.com/button2',
-				selected: true,
+				selected: false,
 				picked: false
 			},
 			{
@@ -38,7 +38,7 @@ export const categoryData = writable([
 				description:
 					'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. minim veniam, quis nostrud exercita',
 				link: 'https://example.com/button3',
-				selected: true,
+				selected: false,
 				picked: true
 			}
 ]
