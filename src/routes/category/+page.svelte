@@ -1,163 +1,68 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import Dialog, { Header, Title, Content, Actions } from '@smui/dialog';
-	import IconButton from '@smui/icon-button';
-	import Button, { Label } from '@smui/button';
-	import { element } from 'svelte/internal';
 	import Head from '../../components/Head.svelte';
-	import Footer from '../../components/Footer.svelte';
-	import type { PageData } from './$types'
+	import { type ModalComponent, type ModalSettings, modalStore } from '@skeletonlabs/skeleton';
+	import AddCategoryModal from '../../components/AddCategoryModal.svelte';
+	import {categoryData} from '../getStarted/Data'
 
-	let open = false;
-	let removeDisabled = true;
-	let addDisabled = true;
+	
 
-	export let data: PageData
+	const modalAddCategory: ModalComponent = {
+	ref: AddCategoryModal,
+};
 
-	function addOn() {
-		open = true;
+function addCategory(): void {
+		const modal: ModalSettings = {
+			type: 'component',
+			component: modalAddCategory,
+		};
+		modalStore.trigger(modal);
 	}
-
-	function add() {
-		let iconToMove = [];
-		availableData.forEach((element) => {
-			if (element.selected == true) {
-				iconToMove.push(element);
-			}
-		});
-		iconToMove.forEach((item) => {
-			selectedData.push(item);
-			availableData.splice(availableData.indexOf(item), 1);
-		});
-		selectedData.forEach((item) => {
-			item.selected = false;
-		});
-		availableData.forEach((item) => {
-			item.selected = false;
-		});
-		selectedData = selectedData;
-		availableData = availableData;
-		removeDisabled = true;
-		addDisabled = true;
-	}
-
-	function remove() {
-		let iconToMove = [];
-		selectedData.forEach((element) => {
-			if (element.selected == true) {
-				iconToMove.push(element);
-			}
-		});
-		iconToMove.forEach((item) => {
-			availableData.push(item);
-			selectedData.splice(selectedData.indexOf(element), 1);
-		});
-		availableData.forEach((item) => {
-			item.selected = false;
-		});
-		selectedData.forEach((item) => {
-			item.selected = false;
-		});
-		selectedData = selectedData;
-		availableData = availableData;
-		removeDisabled = true;
-		addDisabled = true;
-	}
-
-	function buttonRemoveDisabled() {
-		removeDisabled = true;
-		selectedData.forEach((element) => {
-			if (element.selected == true) {
-				removeDisabled = false;
-			}
-		});
-	}
-
-	function buttonAddDisabled() {
-		addDisabled = true;
-		availableData.forEach((element) => {
-			if (element.selected == true) {
-				addDisabled = false;
-			}
-		});
-	}
-
-	let selectedData = [
-		{
-			title: 'Krafttraining',
-			imageSrc: 'workout2.jpg',
-			description:
-				' Sed do eiusmod temporrem ipsum dolor sit ametorididunt ut labore et dolore magna aliqua. ',
-			link: 'liftingplans',
-			selected: false
-		},
-		{
-			title: 'Cardio',
-			imageSrc: 'workout1.jpg',
-			description:
-				' labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqu',
-			link: 'https://example.com/button2',
-			selected: false
-		}
-	];
-
-	let availableData = [
-		{
-			title: 'Yoga',
-			imageSrc: 'workout3.jpg',
-			description:
-				'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. minim veniam, quis nostrud exercita',
-			link: 'https://example.com/button3',
-			selected: false
-		}
-	];
 </script>
 
 <Head />
 
-
-<main>
-	<div class="flex flex-col items-center p-5 bg-gray-300 font-bold text-center font-sans">
-		<h1 class="text-3xl">Wähle eine Trainingskategorie</h1>
-		<p class="font-sans text-lg mb-1 text-center text-gray-600">Entdecke unsere vielfältigen Trainingsmöglichkeiten</p>
-	</div>
+<section class="text-center px-6 py-10 md:py-14 mt-24 shadow-xl">
+	<h1 class="h1 font-bold text-3xl mb-8">Deine Lieblingssportarten</h1>
+	<p class="text-lg">Bleib dran und zieh durch!</p>
+</section>
 
 
-	<div class="card flex flex-wrap justify-center gap-3 mt-5">
-		{#each selectedData as button}
-			<a href={button.link} class="flex flex-col items-center justify-center w-64 h-80 bg-white rounded-md shadow-xl no-underline text-gray-400 mt-3 hover:w-72 transition-all duration-900 ease-in ">
-				<div class="w-full h-full rounded-md">
-					<img class="w-full h-full object-cover rounded-tl-md rounded-tr-md" src={button.imageSrc} alt="Button Image" />
-				</div>
+	<section class="flex flex-wrap justify-center gap-8 p-12 mid-gradient shadow-xl">
+		{#each $categoryData as item}
+		{#if item.picked}
+			<a href={item.link} class="card card-hover flex flex-col items-center justify-center w-56 h-72 bg-white">
+			
+					<img class="w-full h-36 object-cover rounded-tl-md rounded-tr-md" src={item.imageSrc} alt="" />
+				
 				<div class="p-3 text-center">
-					<h2 class="font-sans text-lg mt-1 mb-3 text-black font-semibold">{button.title}</h2>
-					<p class="font-sans text-sm mt-0 text-gray-400 overflow-ellipsis">{button.description}</p>
+					<h2 class="text-lg mt-1 mb-3 text-black dark:text-white font-semibold">{item.title}</h2>
+					<p class="text-black dark:text-white text-sm overflow-ellipsis">{item.description}</p>
 				</div>
 			</a>
+			{/if}
 		{/each}
-	</div>
+		</section>
 
-	<div class="bg-gray-300 p-5 text-center mt-12">
-		<h2 class="text-2xl mb-3 ">Weitere Trainingspläne abonnieren</h2>
-		<p class="text-base mb-5">
-			Erhalte Zugriff auf eine Vielzahl von zusätzlichen Trainingsplänen, um dein Fitnessziel zu
-			erreichen.
-		</p>
-		<div class="flex items-center justify-center">
-			<button class="flex items-center justify-center text-lg pt-3 pb-5 mb-5 transition-all duration-900 ease-in text-gray-800 bg-gray-200 rounded-md border-2 border-solid border-gray-700
-			hover:text-white hover:bg-gray-700" on:click={addOn}>
-		
-				<div class="subscribe-container-text">
-					<p class="text-lg ml-4 font-semibold">Jetzt Abonnieren</p>
-				</div>
-				<div class="ml-5 ">
-					<span class="inline-block w-5 h-5 bg-gray-700 text-white rounded-full relative -translate-x-2/4 ml-2">+</span>
-				</div>
+	<section class="p-8 text-center mt-12 mb-6">
+		<h2 class="text-2xl mb-3 ">Weitere Sportarten hinzufügen</h2>
+		<p class="text-base mb-5">Du hast eine neue Sportart für dich entdeckt? Dann füge sie einfach hinzu...</p>
+		<div class="flex items-center justify-center mt-8">
+			<button class="btn variant-filled inline-block px-4 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500" on:click={addCategory}>	
+				<span class="dark:text-black text-white">Hinzufügen<i class="fa-solid fa-circle-plus ml-2"></i></span>
 			</button>
 		</div>
-	</div>
+	</section>
 
-	<Dialog
+
+	<style>
+		.mid-gradient {
+		background-image:
+			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 50%),
+			radial-gradient(at 100% 0%,  rgba(var(--color-primary-500) / 0.33) 0px, transparent 50%);
+	}
+	</style>
+
+	<!-- <Dialog
 		bind:open
 		aria-labelledby="large-scroll-title"
 		aria-describedby="large-scroll-content"
@@ -166,7 +71,7 @@
 		<Title id="large-scroll-title">{'Erweitere dein Training'}</Title>
 		<Content id="large-scroll-content">
 			<hr />
-			<h2>Füge neue Sportarten hinzu</h2>
+			<h2>Füge neue Sportarten hinzu</h2> -->
 			<!-- .icon-card {
 		display: flex;
 		flex-direction: column;
@@ -187,14 +92,14 @@
 		margin: 10px;
 		cursor: pointer;
 	} -->
-			<div class="flex items-center">
+			<!-- <div class="flex items-center">
 				{#each { length: availableData.length } as _, i}
 					<div>
 						<button
 							style={availableData[i].selected
 								? 'box-shadow: 0 0 10px black; border-radius: 8px; transition: .5s ease all;'
 								: 'outline-style: none;'}
-							class=" flex flex-col items-center justify-center w-40 h-40 bg-gray-200 rounded-lg border-none overflow-hidden text-decoration-none text-gray-700 m-5 cursor-pointer hover:shadow-xl transition-all duration-200 ease-in"
+							class="lex flex-col items-center justify-center w-40 h-40 bg-gray-200 rounded-lg border-none overflow-hidden text-decoration-none text-gray-700 m-5 cursor-pointer hover:shadow-xl transition-all duration-200 ease-in"
 							on:click={() => {
 								availableData[i].selected = !availableData[i].selected;
 								buttonAddDisabled();
@@ -244,8 +149,7 @@
 				<Label>Add</Label>
 			</Button>
 		</Actions>
-	</Dialog>
-</main>
+	</Dialog> -->
 
 
 <!-- <style>
