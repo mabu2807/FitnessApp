@@ -11,63 +11,62 @@
 	<link rel="stylesheet" href="style.css" />
 </head>
 
-
-	<section>
-		<div class="card flex relative overflow-hidden m-10">
-			<div class="w-2/5">
-				<div>
-					<form method="post">
-						<div class="flex flex-row">
-							<div class="w-16 m-8 overflow-hidden rounded bg-black">
-								<a href="/"><img src="Logo.jpg" alt="Logo" /></a>
-							</div>
-
-							<h3>Erstelle einen Account</h3>
+<section>
+	<div class="card flex relative overflow-hidden m-10">
+		<div class="w-2/5">
+			<div>
+				<form method="post">
+					<div class="flex flex-row">
+						<div class="w-16 m-8 overflow-hidden rounded bg-black">
+							<a href="/"><img src="Logo.jpg" alt="Logo" /></a>
 						</div>
-						<input class="input"
-							name="username"
-							type="text"
-							placeholder="Benutzername"
-							value={form?.username ?? ''}
-						/>
-						<input class="input" name="email" type="email" placeholder="Email" value={form?.email ?? ''} />
-						<input class="input"
-							name="password"
-							type="password"
-							placeholder="Passwort"
-							value={form?.password ?? ''}
-						/>
-						<input class="input"
-							name="passwordConfirm"
-							type="password"
-							placeholder="Bestätige Passwort"
-							value={form?.passwordConfirm ?? ''}
-						/>
-						<!-- <div class="error">
+
+						<h3>Erstelle einen Account</h3>
+					</div>
+					<input
+						class="input"
+						name="username"
+						type="text"
+						placeholder="Benutzername"
+						value={form?.username ?? ''}
+					/>
+					<input
+						class="input"
+						name="email"
+						type="email"
+						placeholder="Email"
+						value={form?.email ?? ''}
+					/>
+					<input
+						class="input"
+						name="password"
+						type="password"
+						placeholder="Passwort"
+						value={form?.password ?? ''}
+					/>
+					<input
+						class="input"
+						name="passwordConfirm"
+						type="password"
+						placeholder="Bestätige Passwort"
+						value={form?.passwordConfirm ?? ''}
+					/>
+					<!-- <div class="error">
 							{#if form?.missing}<p>Bitte füllen sie die Felder aus!</p>{/if}
 						</div> -->
-						<button type="submit" class="submit">Registrieren</button>
-					</form>
-				</div>
-			</div>
-			<div class="w-3/5 right-gradient">
-				<div class="relative">
-					<h2 class="h2 text-center">Join FitnessHub</h2>
-					<h5 class="h5 text-center">Komm in die Gruppe und werde zu einem Halbgott!</h5>
-				</div>
-				<div class="indicator absolute w-7 h-2 rounded-full" />
+					<button type="submit" class="submit">Registrieren</button>
+				</form>
 			</div>
 		</div>
-	</section>
-
-
-<style>
-	.right-gradient {
-		background-image:
-			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 50%),
-			radial-gradient(at 100% 0%,  rgba(var(--color-primary-500) / 0.33) 0px, transparent 50%);
-}
-</style>
+		<div class="w-3/5 right-gradient">
+			<div class="relative">
+				<h2 class="h2 text-center">Join FitnessHub</h2>
+				<h5 class="h5 text-center">Komm in die Gruppe und werde zu einem Halbgott!</h5>
+			</div>
+			<div class="indicator absolute w-7 h-2 rounded-full" />
+		</div>
+	</div>
+</section>
 
 <!-- <style>
 	/* body {
@@ -281,3 +280,14 @@
 		}
 	}
 </style> */ -->
+
+<style>
+	.right-gradient {
+		background-image: radial-gradient(
+				at 0% 0%,
+				rgba(var(--color-secondary-500) / 0.33) 0px,
+				transparent 50%
+			),
+			radial-gradient(at 100% 0%, rgba(var(--color-primary-500) / 0.33) 0px, transparent 50%);
+	}
+</style>

@@ -2,7 +2,6 @@
 	import { onMount, onDestroy } from 'svelte';
 	import Chart from 'chart.js/auto';
 	import Head from '../../components/Head.svelte';
-	import Footer from '../../components/Footer.svelte';
 
 	let trainingPlans = [
 		{
@@ -194,21 +193,23 @@
 
 <section class="text-center w-full mx-auto px-6 py-10 md:py-16 mt-24 red-gradient">
 	<h2 class="h2 mb-5">Verfolge deine Trainingspläne</h2>
-	<p class="text-sm md:text-lg mb-12">Nutze die Möglichkeit deinen Trainingsplan zu verfolgen und deine entdecke deine Stärken und
-		Schwächen!</p>
-		<div class="flex justify-center">
-		<div class="w-72 h-1 rounded-full bg-black dark:bg-white "></div>
+	<p class="text-sm md:text-lg mb-12">
+		Nutze die Möglichkeit deinen Trainingsplan zu verfolgen und deine entdecke deine Stärken und
+		Schwächen!
+	</p>
+	<div class="flex justify-center">
+		<div class="w-72 h-1 rounded-full bg-black dark:bg-white" />
 	</div>
 </section>
 
 <div class="bottom-gradient pt-7 pb-14">
 	{#each trainingPlans as trainingPlan, planIndex}
-	<!-- selection wrapper -->
+		<!-- selection wrapper -->
 		<section class="flex justify-center items-center mb-14 flex-col text-center">
 			<h2 class="md:h2 h1">{trainingPlan.name}</h2>
 			<div class="grid md:grid-cols-2 grid-cols-1 md:gap-12 gap-6 lg:my-10 md:my-8 my-6 mx-12">
 				{#each trainingPlan.exercises as exercise, exerciseIndex}
-				<!-- exercise-container class -->
+					<!-- exercise-container class -->
 					<div
 						class="card bg-surface-100 p-3 exercise-container"
 						on:keydown={() => {
@@ -216,22 +217,24 @@
 							selectedExerciseIndex = exerciseIndex;
 						}}
 					>
-							<h3 class="h3 mt-3 mb-5">{exercise.name}</h3>
+						<h3 class="h3 mt-3 mb-5">{exercise.name}</h3>
 						<div class="p-3">
-							<input class="input bg-white px-3 py-1 mb-2 lg:text-base text-sm dark:placeholder-white"
+							<input
+								class="input bg-white px-3 py-1 mb-2 lg:text-base text-sm dark:placeholder-white"
 								type="number"
 								placeholder="Wiederholungen"
 								bind:value={weightInput[planIndex][exerciseIndex]}
 							/>
 							<input
-							class="input bg-white px-3 py-1 lg:text-base text-sm dark:placeholder-white"
+								class="input bg-white px-3 py-1 lg:text-base text-sm dark:placeholder-white"
 								type="number"
 								placeholder="Gewicht"
 								bind:value={weightInput2[planIndex][exerciseIndex]}
 							/>
-							<div class="mt-3 flex justify-between gap-2"> 
-								<button class="btn variant-filled overflow-hidden lg:text-base text-sm transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500" on:click={() => addWeight(planIndex, exerciseIndex)}
-									>Hinzufügen</button
+							<div class="mt-3 flex justify-between gap-2">
+								<button
+									class="btn variant-filled overflow-hidden lg:text-base text-sm transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500"
+									on:click={() => addWeight(planIndex, exerciseIndex)}>Hinzufügen</button
 								>
 								<button
 									class="btn variant-ghost overflow-hidden lg:text-base text-sm transition duration-400 hover:bg-secondary-500"
@@ -239,27 +242,31 @@
 									>Diagrammtyp ändern</button
 								>
 							</div>
-							<canvas class="card bg-white dark:bg-white mt-10"/>
+							<canvas class="card bg-white dark:bg-white mt-10" />
 						</div>
 					</div>
 				{/each}
 			</div>
 		</section>
 	{/each}
-	</div>
-
+</div>
 
 <style>
-
 	.red-gradient {
-		background-image:
-			radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 50%),
+		background-image: radial-gradient(
+				at 0% 0%,
+				rgba(var(--color-secondary-500) / 0.33) 0px,
+				transparent 50%
+			),
 			radial-gradient(at 98% 1%, rgba(var(--color-error-500) / 0.33) 0px, transparent 50%);
 	}
 	.bottom-gradient {
-		background-image:
-		radial-gradient(at 0% 99%, rgba(var(--color-error-500) / 0.23) 0px, transparent 50%),
-		radial-gradient(at 100% 100%, rgba(var(--color-primary-500) / 0.19) 0px, transparent 50%);
+		background-image: radial-gradient(
+				at 0% 99%,
+				rgba(var(--color-error-500) / 0.23) 0px,
+				transparent 50%
+			),
+			radial-gradient(at 100% 100%, rgba(var(--color-primary-500) / 0.19) 0px, transparent 50%);
 	}
 	/* .category {
 		display: flex;

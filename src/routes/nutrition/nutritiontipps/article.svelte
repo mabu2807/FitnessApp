@@ -2,7 +2,7 @@
 	import type { article } from '../nutritionTypes';
 
 	export let data: article;
-	console.log(data)
+	console.log(data);
 </script>
 
 <main class="article">

@@ -2,7 +2,7 @@
 	import type { ActionData } from './$types';
 	import type { Meal } from './nutritionTypes';
 
-	export let form:ActionData
+	export let form: ActionData;
 
 	export let mealdata: Meal;
 	export let dialog: HTMLDialogElement;
@@ -25,7 +25,7 @@
 	<p>Hier können die Mahlzeiten geändert werden</p>
 	<form method="POST" action="?/updateMeal">
 		<label for="meal">Mahlzeit</label>
-		<input  name="Meal" type="text" id="meal" bind:value={inputValueName} /><br /><br />
+		<input name="Meal" type="text" id="meal" bind:value={inputValueName} /><br /><br />
 		<label for="calories">Kalorien</label>
 		<input
 			name="calories"
@@ -33,7 +33,7 @@
 			id="calories"
 			placeholder="alte Kalorien"
 			bind:value={inputvalueCalories}
-		/><br/><br />
+		/><br /><br />
 		<div>
 			<button id="btnCloseEdit" on:click={closeClick}>Close</button>
 			<button type="submit" on:click={saveChanges} on:click={closeClick}>Save</button>

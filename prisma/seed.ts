@@ -28,24 +28,24 @@ async function main() {
 		});
 	}
 
-  for (const userDetails of userDetailsData) {
-    await prisma.userDetails.create({
-      data: {
-        userId: userDetails.userId,
-        gender: userDetails.gender,
-        weight: userDetails.weight,
-        height: userDetails.height
-      }
-    })
-  }
+	for (const userDetails of userDetailsData) {
+		await prisma.userDetails.create({
+			data: {
+				userId: userDetails.userId,
+				gender: userDetails.gender,
+				weight: userDetails.weight,
+				height: userDetails.height
+			}
+		});
+	}
 
-  for (const trainingPlan of trainingPlanData) {
-    await prisma.trainingPlan.create({
-      data: {
-        id: trainingPlan.id
-      }
-    })
-  }
+	for (const trainingPlan of trainingPlanData) {
+		await prisma.trainingPlan.create({
+			data: {
+				id: trainingPlan.id
+			}
+		});
+	}
 
 	for (const userTrainingPlan of userTrainingPlanData) {
 		await prisma.userTrainingPlan.create({
@@ -57,28 +57,28 @@ async function main() {
 		});
 	}
 
-  for (const category of categoryData) {
-    await prisma.category.create({
-      data: {
-        id: category.id,
-        name: category.name,
-        description: category.description
-      }
-    })
-  }
+	for (const category of categoryData) {
+		await prisma.category.create({
+			data: {
+				id: category.id,
+				name: category.name,
+				description: category.description
+			}
+		});
+	}
 
-  for (const sessionTemplate of sessionTemplateData) {
-    await prisma.sessionTemplate.create({
-      data: {
-        id: sessionTemplate.id,
-        description: sessionTemplate.description,
-        categoryId: sessionTemplate.categoryId,
-        trainingPlans: {
-          connect: [{id: sessionTemplate.trainingPlanId}]
-        }
-      }
-    })
-  }
+	for (const sessionTemplate of sessionTemplateData) {
+		await prisma.sessionTemplate.create({
+			data: {
+				id: sessionTemplate.id,
+				description: sessionTemplate.description,
+				categoryId: sessionTemplate.categoryId,
+				trainingPlans: {
+					connect: [{ id: sessionTemplate.trainingPlanId }]
+				}
+			}
+		});
+	}
 
 	for (const session of sessionData) {
 		await prisma.session.create({

@@ -1,13 +1,10 @@
 <script lang="ts">
 	import { modalStore } from '@skeletonlabs/skeleton';
 
-
 	function changePassword(): void {
 		modalStore.close();
 	}
-
 </script>
-
 
 {#if $modalStore[0]}
 	<div class="card p-8 w-modal shadow-xl">
