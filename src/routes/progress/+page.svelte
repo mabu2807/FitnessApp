@@ -2,7 +2,6 @@
 	import { onMount, onDestroy } from 'svelte';
 	import Chart from 'chart.js/auto';
 	import Head from '../../components/Head.svelte';
-	import Footer from '../../components/Footer.svelte';
 
 	let trainingPlans = [
 		{
