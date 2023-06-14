@@ -71,7 +71,12 @@
 
 
 {#if $modalStore[0]}
-<div class="card p-5 w-modal shadow-xl">
+<div class="card p-5 shadow-xl bg-white">
+	<div class="flex justify-end">
+		<button on:click={()=>modalStore.close()}>
+			<i class="fa-solid fa-circle-xmark text-2xl hover:text-secondary-500"></i>
+	</button>
+	</div>
     {#each testExercise as exercise}
         <h2>Übung {exercise.id}: {exercise.exercise}</h2>
         <div class="flex flex-row text-center">
@@ -85,8 +90,8 @@
                     <b> {exercise.weigth}kg </b>)
                 </p>
 
-                <h4>Hinweise zur Ausführung:</h4>
-                <p class="text-sm">{exercise.description}</p>
+                <!-- <h4>Hinweise zur Ausführung:</h4>
+                <p class="text-sm">{exercise.description}</p> -->
             </div>
         </div>
         {/each}

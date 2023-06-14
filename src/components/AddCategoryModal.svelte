@@ -48,7 +48,12 @@
 
 
 {#if $modalStore[0]}
-<div class="card p-5 w-modal shadow-xl card-gradient">
+<div class="card p-5 shadow-xl card-gradient">
+	<div class="flex justify-end">
+	<button on:click={()=>modalStore.close()}>
+		<i class="fa-solid fa-circle-xmark text-2xl hover:text-secondary-500"></i>
+</button>
+</div>
 	<h3 class="h3 text-center mt-3 mb-7">Verfügbare Sportarten</h3>
 	<div class="flex flex-wrap gap-4">
 	{#each $categoryData as available}
@@ -102,12 +107,10 @@
 		{/if}
 	{/each}
 </div>
-<footer class="flex justify-between mt-14">
-	<div>
+<footer class="flex mt-14 gap-2">
 	<button class="btn variant-filled md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500" on:click={add} disabled={addDisabled}>Hinzufügen</button>
 	<button class="btn variant-filled md:px-7 px-5 py-2 transition duration-400 bg-secondary-500 dark:bg-secondary-500 hover:bg-tertiary-500 dark:hover:bg-primary-500" on:click={remove} disabled={removeDisabled}>Löschen</button>
-</div>
-<button class="btn variant-soft hover:bg-secondary-400 md:px-7 px-5 py-2" on:click={()=>modalStore.close()}>Abbrechen</button>
+
 </footer>
 </div>
 {/if}
