@@ -67,7 +67,7 @@
 			<div
 				class=" md:w-20 w-16 md:my-8 md:mx-6 my-6 mx-2 border-2 border-white rounded-full shadow-lg"
 			>
-				<Avatar src="/static/profile.jpg" class="h-full w-full object-cover rounded-full" />
+				<Avatar src="profile.jpg" class="h-full w-full object-cover rounded-full" />
 			</div>
 			<p class="md:text-xl text-base m-2 font-bold">{testUser.name}</p>
 		</div>
@@ -125,7 +125,7 @@
 <AppBar class="fixed w-full" shadow="shadow-2xl">
 	<svelte:fragment slot="lead">
 		<a href="/">
-			<img class="w-16" src="/static/Logo.jpg" alt="" />
+			<img class="w-16" src="Logo.jpg" alt="" />
 		</a>
 		<p class="m-3 font-medium text-xl">FitnessHub</p>
 		<button class="btn-icon btn-icon-sm lg:!hidden" use:popup={popupNavigation}>
@@ -201,7 +201,7 @@
 
 	<svelte:fragment slot="trail">
 		<Avatar
-			src="/static/profile.jpg"
+			src="profile.jpg"
 			fallback="/static/profile.jpg"
 			border="border-4 border-surface-300-600-token dark:hover:!border-primary-500 hover:!border-tertiary-500"
 			cursor="cursor-pointer"

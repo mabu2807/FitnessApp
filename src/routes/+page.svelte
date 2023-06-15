@@ -18,8 +18,7 @@
 		{ id: 3, name: 'Jane Smith', text: 'einwandfrei', imgSrc: 'customer2.jpg' }
 	];
 
-	let courses = data.feed;
-	console.log(courses);
+	const courses = data.feed;
 
 	let currentIndex = 0;
 	/**
