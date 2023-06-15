@@ -62,7 +62,7 @@
 			{#each courses as course}
 				<div class="card card-hover overflow-hidden">
 					<header class="card-header">
-						<img class="aspect-[16/9] border-2 border-white rounded" src={course.imgSrc} alt="" />
+						<img class="aspect-[16/9] border-2 border-white rounded" src={course.imagePath} alt="" />
 					</header>
 					<div class="p-4 space-y-4">
 						<h3 class="md:h3 h4">{course.name}</h3>

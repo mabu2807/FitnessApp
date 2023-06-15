@@ -3,18 +3,18 @@
 		"id": 1,
 		"name": "Wachstum",
 		"description": "Muskelaufbau über allem anderen",
-		"imagePath": "Logo.jpg"
+		"imagePath": "workout2.jpg"
 	},
 	{
 		"id": 2,
 		"name": "Ausdauer",
 		"description": "Werde ausdauernd!",
-		"imagePath": "Logo.jpg"
+		"imagePath": "workout1.jpg"
 	},
 	{
 		"id": 3,
 		"name": "Gelenkschonende Aquagymnastik",
 		"description": "Fit wie ein Fisch",
-		"imagePath": "Logo.jpg"
+		"imagePath": "workout3.jpg"
 	}
 ]
