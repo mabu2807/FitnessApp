@@ -3,7 +3,9 @@
 		"userId": 1,
 		"gender": "male",
 		"weight": 130,
-		"height": 180
+		"height": 180,
+		"dob": "1995-08-05",
+		"activityLevel": 6
 	},
 	{
 		"userId": 2,

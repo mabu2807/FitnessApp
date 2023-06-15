@@ -1,70 +1,50 @@
-<script>
+<script lang="ts">
 	// @ts-nocheck
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 
-	let items = [
-		{
-			id: 1,
-			name: 'John Doe',
-			text: 'Die FitnessApp hat mein Training auf ein ganz neues Level gebracht. Ich liebe die Vielfalt der Kurse und die Möglichkeit, meinen Fortschritt zu verfolgen.',
-			imgSrc: 'customer1.jpg'
-		},
-		{ id: 2, name: 'Hampelmann Hagen', text: 'einfach gut', imgSrc: 'customer1.jpg' },
-		{ id: 3, name: 'Jane Smith', text: 'einwandfrei', imgSrc: 'customer2.jpg' }
-	];
+	import type { ActionData, PageData } from "./$types";
 
-	let courses = [
-		{
-			id: 1,
-			name: 'Cardio',
-			description: 'Davon wird man durchsichtig. Also bitte Cardio meiden.',
-			imgSrc: 'workout1.jpg'
-		},
-		{
-			id: 2,
-			name: 'Krafttraining',
-			description:
-				'Ein Ganzkörpertraining zur Verbesserung von Flexibilität, Kraft und Körperhaltung.',
-			imgSrc: 'workout2.jpg'
-		},
-		{
-			id: 3,
-			name: 'Yoga',
-			description: 'Entspannung für Geist und Seele.',
-			imgSrc: 'workout3.jpg'
-		},
-		{
-			id: 4,
-			name: 'Pilates',
-			description: 'Macht einfach Spaß',
-			imgSrc: 'final40.png'
-		}
-	];
+	export let form: ActionData;
+	export let data: PageData;
+
+	let reviews = data.reviews;
+	let courses = data.categories;
+	let timeoutButton = false;
 
 	let currentIndex = 0;
 	/**
 	 * @type {any[]}
 	 */
-	let visibleItems = [];
-	const showItems = () => {
-		if (items.length <= 2) {
-			visibleItems = items;
+	let visibleReviews = [];
+	const showReviews = () => {
+		if (reviews.length <= 2) {
+			visibleReviews = reviews;
 		} else {
-			visibleItems = [items[currentIndex], items[(currentIndex + 1) % items.length]];
+			visibleReviews = [reviews[currentIndex], reviews[(currentIndex + 1) % reviews.length]];
 		}
 	};
 	const handlePrevious = () => {
-		currentIndex = (currentIndex - 1 + items.length) % items.length;
-		showItems();
+		currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
+		showReviews();
+		timeoutButton = true;
+		setTimeout(function() {
+        timeoutButton = false;
+    }, 500);		
 	};
 	const handleNext = () => {
-		currentIndex = (currentIndex + 1) % items.length;
-		showItems();
+		currentIndex = (currentIndex + 1) % reviews.length;
+		showReviews();
+		timeoutButton = true;
+		setTimeout(function() {
+        timeoutButton = false;
+    }, 500);		
 	};
 	onMount(() => {
-		showItems();
+		showReviews();
 	});
+
+
 </script>
 
 <!-- Transform is missing  -->
@@ -93,7 +73,7 @@
 			{#each courses as course}
 				<div class="card card-hover overflow-hidden">
 					<header class="card-header">
-						<img class="aspect-[16/9] border-2 border-white rounded" src={course.imgSrc} alt="" />
+						<img class="aspect-[16/9] border-2 border-white rounded" src={course.imagePath} alt="" />
 					</header>
 					<div class="p-4 space-y-4">
 						<h3 class="md:h3 h4">{course.name}</h3>
@@ -112,10 +92,11 @@
 			<!-- arrow class -->
 			<button
 				class="md:ml-20 ml-10 hover:text-tertiary-500 dark:hover:text-primary-500"
-				on:click={handleNext}><i class="fa-solid fa-arrow-left fa-3x" /></button
+				on:click={handleNext}
+				disabled={timeoutButton}><i class="fa-solid fa-arrow-left fa-3x" /></button
 			>
 			<div class="grid grid-cols-1 gap-10 lg:mx-20 xl:mx-40 lg:grid-cols-2 sm:mx-20 mx-7">
-				{#each visibleItems as item (item.id)}
+				{#each visibleReviews as review (review.id)}
 					<!-- testamionials class -->
 					<div
 						class="card overflow-hidden"
@@ -126,20 +107,21 @@
 							<img
 								class="object-cover md:w-16 w-12 sm:14 h-full rounded-full"
 								src={'test.jpeg'}
-								alt="Kunde {item.id}"
+								alt="Kunde {review.id}"
 							/>
-							<p class="sm:text-base text-sm ml-7 overflow-hidden">{item.text}</p>
+							<p class="sm:text-base text-sm ml-7 overflow-hidden">{review.text}</p>
 						</header>
 						<!-- <section><p class="mb-2 overflow-hidden">{item.text}</p></section> -->
 						<footer class="card-footer mt-7 sm:text-base text-sm">
-							<cite class="cite text-gray-500 overflow-hidden">{item.name}</cite>
+							<cite class="cite text-gray-500 overflow-hidden">{review.userName}</cite>
 						</footer>
 					</div>
 				{/each}
 			</div>
 			<button
 				class="md:mr-20 mr-10 hover:text-tertiary-500 dark:hover:text-primary-500"
-				on:click={handlePrevious}><i class="fa-solid fa-arrow-right fa-3x" /></button
+				on:click={handlePrevious}
+				disabled={timeoutButton}><i class="fa-solid fa-arrow-right fa-3x" /></button
 			>
 		</div>
 	</section>
@@ -147,15 +129,9 @@
 	<!-- contact class -->
 	<section class="text-center md:mt-20 mt-12 pb-12">
 		<h2 class="md:h2 h1 mb-6">Kontaktieren Sie uns</h2>
-		<form class="my-0 sm:mx-auto mx-14 max-w-lg m-12">
+		<form method="post" class="my-0 sm:mx-auto mx-14 max-w-lg m-12">
 			<input
-				class="input sm:p-2 p-1 mb-2 text-black dark:text-primary-500 dark:placeholder-white"
-				type="text"
-				name="name"
-				placeholder="Name"
-				required
-			/>
-			<input
+				value={form?.email ?? ''}
 				class="input sm:p-2 p-1 mb-2 text-black dark:text-primary-500 dark:placeholder-white"
 				type="email"
 				name="email"
@@ -163,6 +139,7 @@
 				required
 			/>
 			<textarea
+				value={form?.text ?? ''}
 				class="textarea p-2 mb-3 text-black dark:text-primary-500 dark:placeholder-white"
 				name="message"
 				placeholder="Nachricht"
@@ -170,7 +147,7 @@
 			/>
 			<button
 				type="submit"
-				class="btn variant-filled mt-2 md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500"
+				class="submit btn variant-filled mt-2 md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500"
 				>Senden</button
 			>
 		</form>

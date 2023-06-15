@@ -13,6 +13,7 @@ import mealData from '../src/lib/testdata/Meal.json' assert { type: 'json' };
 import dishData from '../src/lib/testdata/Dish.json' assert { type: 'json' };
 import foodDiaryData from '../src/lib/testdata/FoodDiary.json' assert { type: 'json' };
 import nutritionalValuesData from '../src/lib/testdata/NutritionalValues.json' assert { type: 'json' };
+import reviewData from '../src/lib/testdata/Reviews.json' assert { type: 'json' };
 
 const prisma = new PrismaClient();
 
@@ -34,7 +35,30 @@ async function main() {
 				userId: userDetails.userId,
 				gender: userDetails.gender,
 				weight: userDetails.weight,
-				height: userDetails.height
+				height: userDetails.height,
+				dob: new Date(userDetails.dob),
+				activityLevel: userDetails.activityLevel
+			}
+		});
+	}
+
+	for (const category of categoryData) {
+		await prisma.category.create({
+			data: {
+				id: category.id,
+				name: category.name,
+				description: category.description,
+				imagePath: category.imagePath
+			}
+		});
+	}
+
+	for (const review of reviewData) {
+		await prisma.review.create({
+			data: {
+				id: review.id,
+				userName: review.userName,
+				text: review.text
 			}
 		});
 	}
@@ -42,7 +66,11 @@ async function main() {
 	for (const trainingPlan of trainingPlanData) {
 		await prisma.trainingPlan.create({
 			data: {
-				id: trainingPlan.id
+				id: trainingPlan.id,
+				title: trainingPlan.title,
+				description: trainingPlan.description,
+				imagePath: trainingPlan.imagePath,
+				categoryId: trainingPlan.categoryId
 			}
 		});
 	}
@@ -53,16 +81,6 @@ async function main() {
 				userId: userTrainingPlan.userId,
 				trainingPlanId: userTrainingPlan.trainigPlanId,
 				active: userTrainingPlan.active
-			}
-		});
-	}
-
-	for (const category of categoryData) {
-		await prisma.category.create({
-			data: {
-				id: category.id,
-				name: category.name,
-				description: category.description
 			}
 		});
 	}
