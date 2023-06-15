@@ -10,6 +10,7 @@
 
 	let reviews = data.reviews;
 	let courses = data.categories;
+	let timeoutButton = false;
 
 	let currentIndex = 0;
 	/**
@@ -26,14 +27,24 @@
 	const handlePrevious = () => {
 		currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
 		showReviews();
+		timeoutButton = true;
+		setTimeout(function() {
+        timeoutButton = false;
+    }, 500);		
 	};
 	const handleNext = () => {
 		currentIndex = (currentIndex + 1) % reviews.length;
 		showReviews();
+		timeoutButton = true;
+		setTimeout(function() {
+        timeoutButton = false;
+    }, 500);		
 	};
 	onMount(() => {
 		showReviews();
 	});
+
+
 </script>
 
 <!-- Transform is missing  -->
@@ -81,7 +92,8 @@
 			<!-- arrow class -->
 			<button
 				class="md:ml-20 ml-10 hover:text-tertiary-500 dark:hover:text-primary-500"
-				on:click={handleNext}><i class="fa-solid fa-arrow-left fa-3x" /></button
+				on:click={handleNext}
+				disabled={timeoutButton}><i class="fa-solid fa-arrow-left fa-3x" /></button
 			>
 			<div class="grid grid-cols-1 gap-10 lg:mx-20 xl:mx-40 lg:grid-cols-2 sm:mx-20 mx-7">
 				{#each visibleReviews as review (review.id)}
@@ -108,7 +120,8 @@
 			</div>
 			<button
 				class="md:mr-20 mr-10 hover:text-tertiary-500 dark:hover:text-primary-500"
-				on:click={handlePrevious}><i class="fa-solid fa-arrow-right fa-3x" /></button
+				on:click={handlePrevious}
+				disabled={timeoutButton}><i class="fa-solid fa-arrow-right fa-3x" /></button
 			>
 		</div>
 	</section>
