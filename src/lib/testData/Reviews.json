@@ -1,17 +1,17 @@
 [
     {
         "id": "1",
-        "userId": 1,
-        "text": "Schlechte App, Gewicht geht nur bis 200kg, ich habe aber 300kg reine Muskelmasse und kann daher nicht ordentlich meine Fortschritte tracken. 400kg ist das Ziel!"
+        "userName": "Markus Masse",
+        "text": "Schlechte App, Gewicht geht nur bis 200kg, ist zu wenig für mich."
     },
     {
         "id": "2",
-        "userId": 2,
+        "userName": "Cardio Carsten",
         "text": "Mein zweitliebster Hub im Internet ;)"
     },
     {
         "id": "3",
-        "userId": 3,
+        "userName": "Anja Aquagymnastik",
         "text": "Seit ich den Fitnesshub benutze mit deren gelenkschondenden Übungen, habe ich keine Schmerzen mehr in den Knien. Danke Fitnesshub!"
     }
 ]

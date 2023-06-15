@@ -6,43 +6,31 @@
 	import type { PageData } from "./$types";
 	export let data: PageData;
 
-
-	let items = [
-		{
-			id: 1,
-			name: 'John Doe',
-			text: 'Die FitnessApp hat mein Training auf ein ganz neues Level gebracht. Ich liebe die Vielfalt der Kurse und die Möglichkeit, meinen Fortschritt zu verfolgen.',
-			imgSrc: 'customer1.jpg'
-		},
-		{ id: 2, name: 'Hampelmann Hagen', text: 'einfach gut', imgSrc: 'customer1.jpg' },
-		{ id: 3, name: 'Jane Smith', text: 'einwandfrei', imgSrc: 'customer2.jpg' }
-	];
-
-	let courses = data.feed;
-	console.log(courses);
+	let reviews = data.reviews;
+	let courses = data.categories;
 
 	let currentIndex = 0;
 	/**
 	 * @type {any[]}
 	 */
-	let visibleItems = [];
-	const showItems = () => {
-		if (items.length <= 2) {
-			visibleItems = items;
+	let visibleReviews = [];
+	const showReviews = () => {
+		if (reviews.length <= 2) {
+			visibleReviews = reviews;
 		} else {
-			visibleItems = [items[currentIndex], items[(currentIndex + 1) % items.length]];
+			visibleReviews = [reviews[currentIndex], reviews[(currentIndex + 1) % reviews.length]];
 		}
 	};
 	const handlePrevious = () => {
-		currentIndex = (currentIndex - 1 + items.length) % items.length;
-		showItems();
+		currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
+		showReviews();
 	};
 	const handleNext = () => {
-		currentIndex = (currentIndex + 1) % items.length;
-		showItems();
+		currentIndex = (currentIndex + 1) % reviews.length;
+		showReviews();
 	};
 	onMount(() => {
-		showItems();
+		showReviews();
 	});
 </script>
 
@@ -94,7 +82,7 @@
 				on:click={handleNext}><i class="fa-solid fa-arrow-left fa-3x" /></button
 			>
 			<div class="grid grid-cols-1 gap-10 lg:mx-20 xl:mx-40 lg:grid-cols-2 sm:mx-20 mx-7">
-				{#each visibleItems as item (item.id)}
+				{#each visibleReviews as review (review.id)}
 					<!-- testamionials class -->
 					<div
 						class="card overflow-hidden"
@@ -105,13 +93,13 @@
 							<img
 								class="object-cover md:w-16 w-12 sm:14 h-full rounded-full"
 								src={'test.jpeg'}
-								alt="Kunde {item.id}"
+								alt="Kunde {review.id}"
 							/>
-							<p class="sm:text-base text-sm ml-7 overflow-hidden">{item.text}</p>
+							<p class="sm:text-base text-sm ml-7 overflow-hidden">{review.text}</p>
 						</header>
 						<!-- <section><p class="mb-2 overflow-hidden">{item.text}</p></section> -->
 						<footer class="card-footer mt-7 sm:text-base text-sm">
-							<cite class="cite text-gray-500 overflow-hidden">{item.name}</cite>
+							<cite class="cite text-gray-500 overflow-hidden">{review.userName}</cite>
 						</footer>
 					</div>
 				{/each}

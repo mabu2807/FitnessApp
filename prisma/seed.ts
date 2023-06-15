@@ -57,7 +57,7 @@ async function main() {
 		await prisma.review.create({
 			data: {
 				id: review.id,
-				userId: review.userId,
+				userName: review.userName,
 				text: review.text
 			}
 		});
