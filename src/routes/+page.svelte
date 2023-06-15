@@ -1,7 +1,11 @@
-<script>
+<script lang="ts">
 	// @ts-nocheck
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
+
+	import type { PageData } from "./$types";
+	export let data: PageData;
+
 
 	let items = [
 		{
@@ -14,33 +18,8 @@
 		{ id: 3, name: 'Jane Smith', text: 'einwandfrei', imgSrc: 'customer2.jpg' }
 	];
 
-	let courses = [
-		{
-			id: 1,
-			name: 'Cardio',
-			description: 'Davon wird man durchsichtig. Also bitte Cardio meiden.',
-			imgSrc: 'workout1.jpg'
-		},
-		{
-			id: 2,
-			name: 'Krafttraining',
-			description:
-				'Ein Ganzkörpertraining zur Verbesserung von Flexibilität, Kraft und Körperhaltung.',
-			imgSrc: 'workout2.jpg'
-		},
-		{
-			id: 3,
-			name: 'Yoga',
-			description: 'Entspannung für Geist und Seele.',
-			imgSrc: 'workout3.jpg'
-		},
-		{
-			id: 4,
-			name: 'Pilates',
-			description: 'Macht einfach Spaß',
-			imgSrc: 'final40.png'
-		}
-	];
+	let courses = data.feed;
+	console.log(courses);
 
 	let currentIndex = 0;
 	/**
