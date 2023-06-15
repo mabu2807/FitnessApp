@@ -3,7 +3,9 @@
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 
-	import type { PageData } from "./$types";
+	import type { ActionData, PageData } from "./$types";
+
+	export let form: ActionData;
 	export let data: PageData;
 
 	let reviews = data.reviews;
@@ -114,15 +116,9 @@
 	<!-- contact class -->
 	<section class="text-center md:mt-20 mt-12 pb-12">
 		<h2 class="md:h2 h1 mb-6">Kontaktieren Sie uns</h2>
-		<form class="my-0 sm:mx-auto mx-14 max-w-lg m-12">
+		<form method="post" class="my-0 sm:mx-auto mx-14 max-w-lg m-12">
 			<input
-				class="input sm:p-2 p-1 mb-2 text-black dark:text-primary-500 dark:placeholder-white"
-				type="text"
-				name="name"
-				placeholder="Name"
-				required
-			/>
-			<input
+				value={form?.email ?? ''}
 				class="input sm:p-2 p-1 mb-2 text-black dark:text-primary-500 dark:placeholder-white"
 				type="email"
 				name="email"
@@ -130,6 +126,7 @@
 				required
 			/>
 			<textarea
+				value={form?.text ?? ''}
 				class="textarea p-2 mb-3 text-black dark:text-primary-500 dark:placeholder-white"
 				name="message"
 				placeholder="Nachricht"
@@ -137,7 +134,7 @@
 			/>
 			<button
 				type="submit"
-				class="btn variant-filled mt-2 md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500"
+				class="submit btn variant-filled mt-2 md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500"
 				>Senden</button
 			>
 		</form>
