@@ -9,20 +9,6 @@
 	import Register from '../../components/Register.svelte';
 	import Overview from '../../components/Overview.svelte';
 	import { lockedGoal, lockedGender } from '../../stores/Data';
-
-	function onNextHandler(e: CustomEvent): void {
-		console.log('event:next', e.detail);
-	}
-	function onBackHandler(e: CustomEvent): void {
-		console.log('event:prev', e.detail);
-	}
-	function onStepHandler(e: CustomEvent): void {
-		console.log('event:step', e.detail);
-	}
-	function onCompleteHandler(e: CustomEvent): void {
-		console.log('event:complete', e.detail);
-		alert('Complete!');
-	}
 </script>
 
 <section class="flex justify-center mt-32 mb-20">
@@ -30,10 +16,7 @@
 		<Stepper
 			buttonBack="btn variant-ghost hover:bg-secondary-500 hover:text-white"
 			buttonNext="btn variant-filled transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500"
-			on:next={onNextHandler}
-			on:step={onStepHandler}
-			on:back={onBackHandler}
-			on:complete={onCompleteHandler}
+			on:complete={() => (location.href = '/')}
 		>
 			<Step locked={$lockedGoal} class="text-center">
 				<svelte:fragment slot="header"
