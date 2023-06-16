@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 
-	import type { ActionData, PageData } from "./$types";
+	import type { ActionData, PageData } from './$types';
 
 	export let form: ActionData;
 	export let data: PageData;
@@ -28,23 +28,21 @@
 		currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
 		showReviews();
 		timeoutButton = true;
-		setTimeout(function() {
-        timeoutButton = false;
-    }, 500);		
+		setTimeout(function () {
+			timeoutButton = false;
+		}, 500);
 	};
 	const handleNext = () => {
 		currentIndex = (currentIndex + 1) % reviews.length;
 		showReviews();
 		timeoutButton = true;
-		setTimeout(function() {
-        timeoutButton = false;
-    }, 500);		
+		setTimeout(function () {
+			timeoutButton = false;
+		}, 500);
 	};
 	onMount(() => {
 		showReviews();
 	});
-
-
 </script>
 
 <!-- Transform is missing  -->
@@ -73,7 +71,11 @@
 			{#each courses as course}
 				<div class="card card-hover overflow-hidden">
 					<header class="card-header">
-						<img class="aspect-[16/9] border-2 border-white rounded" src={course.imagePath} alt="" />
+						<img
+							class="aspect-[16/9] border-2 border-white rounded"
+							src={course.imagePath}
+							alt=""
+						/>
 					</header>
 					<div class="p-4 space-y-4">
 						<h3 class="md:h3 h4">{course.name}</h3>

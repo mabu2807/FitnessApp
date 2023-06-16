@@ -5,12 +5,12 @@ import nodemailMailgun from 'nodemailer-mailgun-transport';
 
 const auth = {
 	auth: {
-		api_key: "key-932948cd2a0ea3fcfac84d84cc8813fb",
-		domain: "sandboxa14a572d73a449609d199e892b0a238e.mailgun.org"
+		api_key: 'key-932948cd2a0ea3fcfac84d84cc8813fb',
+		domain: 'sandboxa14a572d73a449609d199e892b0a238e.mailgun.org'
 	}
-}
+};
 
-const transporter = nodemailer.createTransport( nodemailMailgun(auth) );
+const transporter = nodemailer.createTransport(nodemailMailgun(auth));
 
 export async function sendEmail(email: string, username: string) {
 	const emailHtml = render({
