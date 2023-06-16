@@ -114,7 +114,7 @@
 
 		<div class="mt-12">
 			<button
-				class="cursor-pointer px-5 py-3 border-2 border-black dark:border-white bg-success-400 font-bold hover:bg-primary-500 rounded-xl"
+				class="cursor-pointer px-5 py-3 border-2 border-black dark:text-black dark:border-white bg-success-400 font-bold hover:bg-primary-500 rounded-xl"
 			>
 				Abmelden <i class="fa-solid fa-right-from-bracket md:ml-10 ml-6" />
 			</button>
