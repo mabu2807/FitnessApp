@@ -136,14 +136,12 @@
 				type="email"
 				name="email"
 				placeholder="E-Mail-Adresse"
-				required
 			/>
 			<textarea
 				value={form?.text ?? ''}
 				class="textarea p-2 mb-3 text-black dark:text-primary-500 dark:placeholder-white"
 				name="message"
 				placeholder="Nachricht"
-				required
 			/>
 			<button
 				type="submit"

@@ -21,14 +21,14 @@ export const actions = {
         const data = Object.fromEntries(await request.formData());
 
         const email = data.email;
-        const text = data.text;
+        const message = data.message;
 
-        if (!email || !text) {
-            return fail(400, { email, text, missing: true });
+        if (!email || !message) {
+            return fail(400, { email, message, missing: true });
         }
-
+    
         if (
-            typeof email != 'string' || typeof text != 'string' 
+            typeof email != 'string' || typeof message != 'string' 
         ) {
             return fail(400, { incorrect: true });
         }
@@ -37,7 +37,8 @@ export const actions = {
             return fail(422, { email });
         }
 
-        await sendEmail(email, text);
+
+        await sendEmail(email, message);
 
 
         throw redirect(303, '/');
