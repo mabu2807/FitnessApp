@@ -1,6 +1,6 @@
 import prisma from '$lib/prisma';
 import type { PageServerLoad } from './$types';
-import { fail, redirect } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import { sendEmail } from '$lib/emails/SendContactMail';
 
@@ -19,22 +19,22 @@ export const actions = {
 		const data = Object.fromEntries(await request.formData());
 
 		const email = data.email;
-		const message = data.message;
+		const text = data.text;
 
-		if (!email || !message) {
-			return fail(400, { email, message, missing: true });
+		if (!email || !text) {
+			return { email, message: 'empty fields' };
 		}
 
-		if (typeof email != 'string' || typeof message != 'string') {
-			return fail(400, { incorrect: true });
+		if (typeof email != 'string' || typeof text != 'string') {
+			return { message: 'no string' };
+			// return fail(400);
 		}
 
-		if (!validateEmail) {
-			return fail(422, { email });
+		if (!validateEmail(email)) {
+			return { text, message: 'invalid email' };
 		}
 
-		await sendEmail(email, message);
-
-		throw redirect(303, '/');
+		await sendEmail(email, text);
+		return { message: 'alright' };
 	}
 } satisfies Actions;

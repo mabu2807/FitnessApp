@@ -2,8 +2,9 @@
 	// @ts-nocheck
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
-
 	import type { ActionData, PageData } from './$types';
+	import { Toast, toastStore } from '@skeletonlabs/skeleton';
+	import type { ToastSettings } from '@skeletonlabs/skeleton';
 
 	export let form: ActionData;
 	export let data: PageData;
@@ -40,11 +41,38 @@
 			timeoutButton = false;
 		}, 500);
 	};
+
+	function formMessage() {
+		if (form?.message == 'empty fields') {
+			return 'Bitte fülle alle Felder aus!';
+		}
+		if (form?.message == 'no string') {
+			return 'Inputs sind keine Strings!';
+		}
+		if (form?.message == 'invalid email') {
+			return 'Email hat keine korrekte Form!';
+		}
+		if (form?.message == 'alright') {
+			return 'Danke für deine Nachricht!';
+		}
+	}
+
+	function throwToast() {
+		if (formMessage() != null) {
+			const t: ToastSettings = {
+				message: formMessage()
+			};
+			toastStore.trigger(t);
+		}
+	}
+
 	onMount(() => {
 		showReviews();
+		throwToast();
 	});
 </script>
 
+<Toast />
 <!-- Transform is missing  -->
 <div class="top-gradient flex flex-col justify-center items-center">
 	<!-- hero class -->
@@ -135,14 +163,13 @@
 			<input
 				value={form?.email ?? ''}
 				class="input sm:p-2 p-1 mb-2 text-black dark:text-primary-500 dark:placeholder-white"
-				type="email"
 				name="email"
 				placeholder="E-Mail-Adresse"
 			/>
 			<textarea
 				value={form?.text ?? ''}
 				class="textarea p-2 mb-3 text-black dark:text-primary-500 dark:placeholder-white"
-				name="message"
+				name="text"
 				placeholder="Nachricht"
 			/>
 			<button

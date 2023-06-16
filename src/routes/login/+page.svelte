@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Head from '../../components/Head.svelte';
 	import type { ActionData } from './$types';
 	import { Toast, toastStore } from '@skeletonlabs/skeleton';
@@ -6,23 +7,41 @@
 
 	export let form: ActionData;
 
-	// 	const t: ToastSettings = {
-	// 	message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit...',
+	function formMessage() {
+		if (form?.message == 'empty fields') {
+			return 'Bitte fülle alle Felder aus!';
+		}
+		if (form?.message == 'no string') {
+			return 'Inputs sind keine Strings!';
+		}
+		if (form?.message == 'invalid email') {
+			return 'Email hat keine korrekte Form!';
+		}
+		if (form?.message == 'alright') {
+			return 'Danke für deine Nachricht!';
+		}
+		if (form?.message == 'login error') {
+			return 'Email oder Passwort ist falsch!';
+		}
+	}
 
-	// };
-	// function alert(){
-	// 	toastStore.trigger(t);
-	// };
+	function throwToast() {
+		if (formMessage() != null) {
+			const t: ToastSettings = {
+				message: formMessage(),
+				timeout: 2000
+			};
+			toastStore.trigger(t);
+		}
+	}
+
+	onMount(() => {
+		throwToast();
+	});
 </script>
 
-<!-- <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Fitness Login</title>
-	<link rel="stylesheet" href="style.css" />
-</head> -->
-
 <Head />
+<Toast />
 <section class="flex items-center justify-center mt-32 mb-40">
 	<div class="card w-3/4 sm:flex my-20">
 		<div class="sm:w-1/2 w-full p-8">
@@ -45,7 +64,6 @@
 					value={form?.password ?? ''}
 					class="input p-2 mb-6 md:text-base text-base sm:text-sm text-black dark:text-primary-500 dark:placeholder-white"
 				/>
-				<!-- {#if form?.missing}<p>TEst</p>{/if} -->
 				<button
 					type="submit"
 					class="btn variant-filled w-full md:text-base text-base sm:text-sm md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500"
