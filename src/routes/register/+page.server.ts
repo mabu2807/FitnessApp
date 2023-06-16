@@ -97,8 +97,6 @@ export const actions = {
 			return fail(401, { email, username, password });
 		}
 
-		// await sendEmail(email, username);
-
 		//Check if email already exists
 		const user = await prisma.user.findUnique({
 			where: { email: email }
@@ -115,7 +113,7 @@ export const actions = {
 			}
 		});
 
-		// await sendEmail(email, username);
+		await sendEmail(email, username);
 
 		throw redirect(303, `/`);
 	}
