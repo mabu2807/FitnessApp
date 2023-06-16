@@ -1,6 +1,7 @@
 import prisma from '$lib/prisma';
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
+import { sendEmail } from '$lib/emails/SendVerificationMail';
 
 const validateEmail = (email: string) => {
 	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -8,12 +9,12 @@ const validateEmail = (email: string) => {
 
 export const actions = {
 	default: async ({ request }) => {
-		const data = await request.formData();
+		const data = Object.fromEntries(await request.formData());
 
-		const email = data.get('email');
-		const username = data.get('username');
-		const password = data.get('password');
-		const passwordConfirm = data.get('passwordConfirm');
+		const email = data.email;
+		const username = data.username;
+		const password = data.password;
+		const passwordConfirm = data.passwordConfirm;
 
 		if (!email || !username || !password || !passwordConfirm) {
 			return fail(400, { email, username, password, passwordConfirm, missing: true });
@@ -51,6 +52,8 @@ export const actions = {
 				password: password
 			}
 		});
+
+		await sendEmail(email, username);
 
 		throw redirect(303, `/`);
 	}
