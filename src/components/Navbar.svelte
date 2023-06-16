@@ -81,7 +81,7 @@
 
 				<button on:click={modalPersonal}>
 					<p
-						class="text-base md:text-lg dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+						class="text-base md:text-lg dark:text-white text-black hover:text-primary-500 dark:hover:text-primary-500"
 					>
 						Persönliche Daten
 					</p>
@@ -94,7 +94,7 @@
 
 				<button on:click={modalPassword}>
 					<p
-						class="text-base md:text-lg dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+						class="text-base md:text-lg dark:text-white text-black hover:text-primary-500 dark:hover:text-primary-500"
 					>
 						Passwort ändern
 					</p>
@@ -114,7 +114,7 @@
 
 		<div class="mt-12">
 			<button
-				class="cursor-pointer px-5 py-3 border-2 border-black dark:border-white rounded-full font-bold hover:bg-tertiary-500 transition duration-400 dark:hover:bg-primary-500"
+				class="cursor-pointer px-5 py-3 border-2 border-black dark:border-white rounded-full font-bold hover:bg-primary-500"
 			>
 				Abmelden <i class="fa-solid fa-right-from-bracket md:ml-10 ml-6" />
 			</button>
@@ -129,7 +129,7 @@
 		</a>
 		<p class="m-3 font-medium text-xl">FitnessHub</p>
 		<button class="btn-icon btn-icon-sm lg:!hidden" use:popup={popupNavigation}>
-			<i class="fa-solid fa-bars text-2xl hover:text-tertiary-500 dark:hover:text-primary-500" />
+			<i class="fa-solid fa-bars text-2xl hover:text-primary-500" />
 		</button>
 		<!-- popup -->
 		<div class="card p-4 w-60 shadow-xl lg:!hidden" data-popup="popupNavigation">
@@ -139,7 +139,7 @@
 					<li class="m-3">
 						<a href="/">
 							<span
-								class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+								class="text-xl dark:text-white text-black hover:text-primary-500"
 								>Home</span
 							>
 						</a>
@@ -147,7 +147,7 @@
 					<li class="m-3">
 						<a href="/category">
 							<span
-								class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+								class="text-xl dark:text-white text-black hover:text-primary-500"
 								>Workouts</span
 							>
 						</a>
@@ -155,7 +155,7 @@
 					<li class="m-3">
 						<a href="/progress">
 							<span
-								class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+								class="text-xl dark:text-white text-black hover:text-primary-500"
 								>Progress</span
 							>
 						</a>
@@ -163,7 +163,7 @@
 					<li class="m-3">
 						<a href="/nutrition">
 							<span
-								class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+								class="text-xl dark:text-white text-black hover:text-primary-500"
 								>Ernährungstagebuch</span
 							>
 						</a>
@@ -175,25 +175,25 @@
 	<div class="p-5 hidden relative hidden lg:flex flex-row justify-center">
 		<a href="/"
 			><span
-				class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+				class="m-3 font-medium text-xl dark:text-white text-black hover:text-primary-500 dark:hover:text-primary-500"
 				>Home</span
 			></a
 		>
 		<a href="/category"
 			><span
-				class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+				class="m-3 font-medium text-xl dark:text-white text-black hover:text-primary-500 dark:hover:text-primary-500"
 				>Workouts</span
 			></a
 		>
 		<a href="/progress"
 			><span
-				class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+				class="m-3 font-medium text-xl dark:text-white text-black hover:text-primary-500 dark:hover:text-primary-500"
 				>Progress</span
 			></a
 		>
 		<a href="/nutrition">
 			<span
-				class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+				class="m-3 font-medium text-xl dark:text-white text-black hover:text-primary-500 dark:hover:text-primary-500"
 				>Ernährungsplan</span
 			></a
 		>
@@ -202,8 +202,8 @@
 	<svelte:fragment slot="trail">
 		<Avatar
 			src="profile.jpg"
-			fallback="/static/profile.jpg"
-			border="border-4 border-surface-300-600-token dark:hover:!border-primary-500 hover:!border-tertiary-500"
+			fallback="profile.jpg"
+			border="border-4 border-tertiary-400 dark:hover:!border-primary-500 hover:!border-primary-500"
 			cursor="cursor-pointer"
 			on:click={() => drawerStore.open(drawerSettings)}
 		/>
