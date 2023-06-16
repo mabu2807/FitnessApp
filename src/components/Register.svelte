@@ -46,7 +46,10 @@
 							{#if form?.missing}<p>Bitte füllen sie die Felder aus!</p>{/if}
 						</div> -->
 
-			<button class="btn variant-filled mt-5 md:px-7 px-5 py-2 sm:text-base text-sm hover:bg-tertiary-500 dark:hover:bg-primary-500" type="submit">Registrieren</button>
+			<button
+				class="btn variant-filled mt-5 md:px-7 px-5 py-2 sm:text-base text-sm hover:bg-tertiary-500 dark:hover:bg-primary-500"
+				type="submit">Registrieren</button
+			>
 		</form>
 	</div>
 </section>

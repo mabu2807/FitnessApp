@@ -1,4 +1,4 @@
-import registrationMail from '$lib/emails/verification-mail.svelte';
+import contactMail from '$lib/emails/contact-mail.svelte';
 import { render } from 'svelte-email';
 import nodemailer from 'nodemailer';
 import nodemailMailgun from 'nodemailer-mailgun-transport';
@@ -12,18 +12,18 @@ const auth = {
 
 const transporter = nodemailer.createTransport(nodemailMailgun(auth));
 
-export async function sendEmail(email: string, username: string) {
+export async function sendEmail(email: string, message: string) {
 	const emailHtml = render({
-		template: registrationMail,
+		template: contactMail,
 		props: {
-			name: username
+			text: message
 		}
 	});
 
 	const options = {
-		from: 'registration@fitnesshub.com',
-		to: email,
-		subject: 'Willkommen bei FitnessHub',
+		from: email,
+		to: 'adrian-hagen@web.de',
+		subject: 'Beschwerde an Hagen',
 		text: 'Plaintext version of the message',
 		html: emailHtml
 	};
