@@ -2,6 +2,7 @@ import prisma from '$lib/prisma';
 import type { PageServerLoad } from './$types';
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
+import { sendEmail } from '$lib/emails/SendContactMail';
 
 export const load = (async () => {
 	const categoryResponse = await prisma.category.findMany();
@@ -36,7 +37,7 @@ export const actions = {
             return fail(422, { email });
         }
 
-        // await sendEmail(email, text);
+        await sendEmail(email, text);
 
 
         throw redirect(303, '/');
