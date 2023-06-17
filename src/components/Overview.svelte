@@ -8,7 +8,7 @@
 			{#each $getStartedData as page, i}
 				<div>
 					<p class="sm:text-base text-sm font-bold">{page.title}</p>
-					<p class="sm:text-base text-sm text-surface-400 dark:text-primary-500">{page.value}</p>
+					<p class="sm:text-base text-sm text-secondary-400 dark:text-secondary-300">{page.value}</p>
 				</div>
 			{/each}
 		</div>

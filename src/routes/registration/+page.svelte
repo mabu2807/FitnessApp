@@ -14,8 +14,8 @@
 <section class="flex justify-center mt-32 mb-20">
 	<div class="card w-3/4 m-10 shadow-xl sm:p-8 p-4 items-center bottom-gradient">
 		<Stepper
-			buttonBack="btn variant-ghost hover:bg-secondary-500 hover:text-white"
-			buttonNext="btn variant-filled transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500"
+			buttonBack="btn variant-ghost hover:bg-tertiary-400 dark:hover:bg-primary-400"
+			buttonNext="btn variant-filled hover:bg-tertiary-500 dark:hover:bg-primary-500"
 			on:complete={() => (location.href = '/')}
 		>
 			<Step locked={$lockedGoal} class="text-center">
@@ -72,9 +72,9 @@
 	.bottom-gradient {
 		background-image: radial-gradient(
 				at 0% 99%,
-				rgba(var(--color-error-500) / 0.23) 0px,
-				transparent 50%
+				rgba(var(--color-secondary-500) / 0.23) 0px,
+				transparent 70%
 			),
-			radial-gradient(at 100% 100%, rgba(var(--color-primary-500) / 0.19) 0px, transparent 50%);
+			radial-gradient(at 100% 100%, rgba(var(--color-success-400) / 0.19) 0px, transparent 30%);
 	}
 </style>

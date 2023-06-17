@@ -21,8 +21,8 @@
 			<button
 				class="card card-hover flex flex-col items-center justify-center border p-4 w-52 h-42 {$getStartedData[4]
 					.value === pic.title
-					? 'bg-tertiary-400 border-tertiary-700 dark:bg-primary-500 dark:border-primary-700'
-					: 'bg-white dark:bg-white border-black'}"
+					? 'bg-tertiary-500 border-tertiary-700 dark:bg-primary-500 dark:border-primary-700'
+					: 'bg-success-400 dark:bg-success-400 border-black dark:border-white'}"
 				on:click={() => selectCard(pic.title)}
 			>
 				<img class="aspect-[1/1] w-20" src={pic.imgSrc} alt="" />
