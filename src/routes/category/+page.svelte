@@ -19,7 +19,7 @@
 
 <Head />
 
-<section class="text-center px-6 py-10 md:py-14 mt-24 shadow-xl bg-success-400 dark:bg-surface-500">
+<section class="text-center px-6 py-10 md:py-14 mt-24 shadow-xl bg-success-400 dark:bg-surface-800">
 	<h1 class="h2 font-semibold mb-8">Deine Lieblingssportarten</h1>
 	<p class="text-lg">Bleib dran und zieh durch!</p>
 </section>
@@ -54,7 +54,7 @@
 	</p>
 	<div class="flex items-center justify-center mt-8">
 		<button
-			class="btn variant-filled inline-block px-4 py-2 hover:bg-primary-500 dark:hover:bg-primary-500"
+			class="btn variant-filled inline-block px-4 py-2 hover:bg-tertiary-500 dark:hover:bg-primary-500"
 			on:click={addCategory}
 		>
 			<span class="dark:text-black text-white"

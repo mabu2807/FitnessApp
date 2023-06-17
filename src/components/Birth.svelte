@@ -20,7 +20,7 @@
 <section class="h-80">
 	<div class="sm:my-12 my-8">
 		<input
-			class="card card-hover bg-white dark:bg-white dark:text-black w-48 h-10 sm:text-xl text-lg p-5"
+			class="card card-hover bg-success-400 dark:bg-success-400 dark:text-black w-48 h-10 sm:text-xl text-lg p-5"
 			type="date"
 			id="dob"
 			bind:value={dob}

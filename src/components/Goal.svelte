@@ -19,8 +19,8 @@
 			<button
 				class="card card-hover flex flex-col items-center justify-center p-3 border w-52 h-52 {$getStartedData[0]
 					.value === goal.title
-					? 'bg-tertiary-400 border-tertiary-700 dark:bg-primary-500 dark:border-primary-700'
-					: 'bg-white dark:bg-gray-300 dark:text-white border-black '}"
+					? 'bg-tertiary-500 border-tertiary-700 dark:bg-primary-500 dark:border-primary-700'
+					: 'bg-success-400 dark:bg-success-400 border-black dark:border-white'}"
 				on:click={() => selectCard(goal.title)}
 			>
 				<h5 class="h5 dark:text-black font-bold">{goal.title}</h5>

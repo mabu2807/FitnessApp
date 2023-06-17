@@ -52,7 +52,7 @@
 				</div>
 				<button
 					on:click={modalPlan}
-					class="btn variant-filled text-sm p-2 my-2 hover:bg-primary-500 dark:hover:bg-primary-500"
+					class="btn variant-filled text-sm p-2 my-2 hover:bg-tertiary-500 dark:hover:bg-primary-500"
 				>
 					Mehr Details...
 				</button>

@@ -101,7 +101,7 @@
 		</div>
 		<footer class="flex justify-between mt-28 gap-2">
 			<button
-				class="btn variant-filled md:px-7 px-5 py-2 hover:bg-primary-500 dark:hover:bg-primary-500"
+				class="btn variant-filled md:px-7 px-5 py-2 hover:bg-tertiary-500 dark:hover:bg-primary-500"
 				on:click={add}
 				disabled={addDisabled}>Hinzufügen</button
 			>

@@ -233,11 +233,11 @@
 							/>
 							<div class="mt-3 flex justify-between gap-2">
 								<button
-									class="btn variant-filled overflow-hidden lg:text-base text-sm hover:bg-primary-500 dark:hover:bg-primary-500"
+									class="btn variant-filled overflow-hidden lg:text-base text-sm hover:bg-tertiary-500 dark:hover:bg-primary-500"
 									on:click={() => addWeight(planIndex, exerciseIndex)}>Hinzufügen</button
 								>
 								<button
-									class="btn variant-soft overflow-hidden lg:text-base text-sm hover:bg-primary-500 dark:hover:bg-primary-500"
+									class="btn variant-soft overflow-hidden lg:text-base text-sm hover:bg-tertiary-400 dark:hover:bg-primary-400"
 									on:click={() => toggleChartType(planIndex, exerciseIndex)}
 									>Diagrammtyp ändern</button
 								>

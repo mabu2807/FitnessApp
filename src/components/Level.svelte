@@ -20,7 +20,7 @@
 <section class="h-80">
 	<div class="sm:my-12 my-8">
 		<select
-			class="select card card-hover bg-white dark:bg-white text-black dark:text-black w-48 h-10 sm:text-lg text-base"
+			class="select card card-hover bg-success-400 dark:bg-success-400 text-black dark:text-black w-48 h-10 sm:text-lg text-base"
 			value={sliderValue}
 			on:input={updateSliderValue}
 		>
