@@ -44,6 +44,4 @@
 			),
 			radial-gradient(at 98% 1%, rgba(var(--color-secondary-200) / 0.33) 0px, transparent 50%);
 	}
-
-
 </style>

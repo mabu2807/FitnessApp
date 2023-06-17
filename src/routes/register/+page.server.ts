@@ -34,7 +34,7 @@ export const actions = {
 		}
 
 		if (password !== passwordConfirm) {
-			return {email, username, password, message: 'passwords not matching'};
+			return { email, username, password, message: 'passwords not matching' };
 		}
 
 		//Check if email already exists
@@ -42,7 +42,7 @@ export const actions = {
 			where: { email: email }
 		});
 		if (user) {
-			return {message: 'already registered'}
+			return { message: 'already registered' };
 		}
 
 		await prisma.user.create({

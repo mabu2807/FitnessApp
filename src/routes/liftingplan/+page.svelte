@@ -61,8 +61,6 @@
 	</section>
 </div>
 
-
-
 <style>
 	.bg-gradient {
 		background-image: radial-gradient(
