@@ -220,13 +220,13 @@
 						<h3 class="h3 mt-3 mb-5">{exercise.name}</h3>
 						<div class="p-3">
 							<input
-								class="input bg-secondary-100 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white px-3 py-1 mb-2 lg:text-base text-sm"
+								class="input bg-secondary-100 dark:bg-surface-500 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white px-3 py-1 mb-2 lg:text-base text-sm"
 								type="number"
 								placeholder="Wiederholungen"
 								bind:value={weightInput[planIndex][exerciseIndex]}
 							/>
 							<input
-								class="input bg-secondary-100 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white px-3 py-1 lg:text-base text-sm"
+								class="input bg-secondary-100 dark:bg-surface-500 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white px-3 py-1 lg:text-base text-sm"
 								type="number"
 								placeholder="Gewicht"
 								bind:value={weightInput2[planIndex][exerciseIndex]}
@@ -242,7 +242,7 @@
 									>Diagrammtyp ändern</button
 								>
 							</div>
-							<canvas class="card bg-secondary-100 text-black dark:text-white mt-10" />
+							<canvas class="card bg-secondary-100 dark:bg-surface-500 text-black dark:text-white mt-10" />
 						</div>
 					</div>
 				{/each}
