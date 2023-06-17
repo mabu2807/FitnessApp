@@ -41,7 +41,7 @@
 </script>
 
 <Head />
-<Toast />
+<Toast background="variant-filled-error"/>
 <section class="flex items-center justify-center mt-32 mb-40">
 	<div class="card w-3/4 sm:flex my-20">
 		<div class="sm:w-1/2 w-full p-8">
