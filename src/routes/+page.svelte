@@ -12,6 +12,7 @@
 	let reviews = data.reviews;
 	let courses = data.categories;
 	let timeoutButton = false;
+	let direction;
 
 	let currentIndex = 0;
 	/**
@@ -26,6 +27,7 @@
 		}
 	};
 	const handlePrevious = () => {
+		direction=100;
 		currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
 		showReviews();
 		timeoutButton = true;
@@ -34,6 +36,7 @@
 		}, 500);
 	};
 	const handleNext = () => {
+		direction=-100
 		currentIndex = (currentIndex + 1) % reviews.length;
 		showReviews();
 		timeoutButton = true;
@@ -126,7 +129,7 @@
 				{#each visibleReviews as review (review.id)}
 					<div
 						class="card variant-soft-secondary dark:bg-surface-500 overflow-hidden"
-						transition:fly={{ y: 100, opacity: 0 }}
+						transition:fly={{ y: direction, opacity: 0 }}
 						animate:fly={{ y: 0, opacity: 1 }}
 					>
 						<header class="card-header flex flex-row m-1">
@@ -192,7 +195,6 @@
 		background: linear-gradient(
 			180deg, rgb(var(--color-success-400)) 35%, rgb(var(--color-secondary-500)) 65%
 			)
-		/* background-image: radial-gradient(at 0% 0%,rgba(var(--color-secondary-500) / .33) 0px,transparent 50%),radial-gradient(at 98% 1%,rgba(var(--color-error-500) / .33) 0px,transparent 50%); */
 	}
 
 	/* .mid-gradient {
