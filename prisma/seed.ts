@@ -13,6 +13,7 @@ import mealData from '../src/lib/testdata/Meal.json' assert { type: 'json' };
 import dishData from '../src/lib/testdata/Dish.json' assert { type: 'json' };
 import foodDiaryData from '../src/lib/testdata/FoodDiary.json' assert { type: 'json' };
 import nutritionalValuesData from '../src/lib/testdata/NutritionalValues.json' assert { type: 'json' };
+import reviewData from '../src/lib/testdata/Reviews.json' assert { type: 'json' };
 
 const prisma = new PrismaClient();
 
@@ -28,24 +29,51 @@ async function main() {
 		});
 	}
 
-  for (const userDetails of userDetailsData) {
-    await prisma.userDetails.create({
-      data: {
-        userId: userDetails.userId,
-        gender: userDetails.gender,
-        weight: userDetails.weight,
-        height: userDetails.height
-      }
-    })
-  }
+	for (const userDetails of userDetailsData) {
+		await prisma.userDetails.create({
+			data: {
+				userId: userDetails.userId,
+				gender: userDetails.gender,
+				weight: userDetails.weight,
+				height: userDetails.height,
+				dob: new Date(userDetails.dob),
+				activityLevel: userDetails.activityLevel
+			}
+		});
+	}
 
-  for (const trainingPlan of trainingPlanData) {
-    await prisma.trainingPlan.create({
-      data: {
-        id: trainingPlan.id
-      }
-    })
-  }
+	for (const category of categoryData) {
+		await prisma.category.create({
+			data: {
+				id: category.id,
+				name: category.name,
+				description: category.description,
+				imagePath: category.imagePath
+			}
+		});
+	}
+
+	for (const review of reviewData) {
+		await prisma.review.create({
+			data: {
+				id: review.id,
+				userName: review.userName,
+				text: review.text
+			}
+		});
+	}
+
+	for (const trainingPlan of trainingPlanData) {
+		await prisma.trainingPlan.create({
+			data: {
+				id: trainingPlan.id,
+				title: trainingPlan.title,
+				description: trainingPlan.description,
+				imagePath: trainingPlan.imagePath,
+				categoryId: trainingPlan.categoryId
+			}
+		});
+	}
 
 	for (const userTrainingPlan of userTrainingPlanData) {
 		await prisma.userTrainingPlan.create({
@@ -57,28 +85,18 @@ async function main() {
 		});
 	}
 
-  for (const category of categoryData) {
-    await prisma.category.create({
-      data: {
-        id: category.id,
-        name: category.name,
-        description: category.description
-      }
-    })
-  }
-
-  for (const sessionTemplate of sessionTemplateData) {
-    await prisma.sessionTemplate.create({
-      data: {
-        id: sessionTemplate.id,
-        description: sessionTemplate.description,
-        categoryId: sessionTemplate.categoryId,
-        trainingPlans: {
-          connect: [{id: sessionTemplate.trainingPlanId}]
-        }
-      }
-    })
-  }
+	for (const sessionTemplate of sessionTemplateData) {
+		await prisma.sessionTemplate.create({
+			data: {
+				id: sessionTemplate.id,
+				description: sessionTemplate.description,
+				categoryId: sessionTemplate.categoryId,
+				trainingPlans: {
+					connect: [{ id: sessionTemplate.trainingPlanId }]
+				}
+			}
+		});
+	}
 
 	for (const session of sessionData) {
 		await prisma.session.create({

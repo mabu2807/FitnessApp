@@ -32,6 +32,12 @@ model UserDetails {
   session       Session[]
 }
 
+model Review {
+  id       String @id @default(uuid())
+  userName String
+  text     String
+}
+
 model TrainingPlan {
   id               Int                @id @default(autoincrement())
   title            String
@@ -149,7 +155,7 @@ model Dish {
 }
 
 model NutritionalValues {
-  id            Int    @id @default(autoincrement())
+  id            Int   @id @default(autoincrement())
   Dish          Dish?
   energy        Int
   fat           Float
@@ -159,10 +165,11 @@ model NutritionalValues {
   protein       Float
   salt          Float
 }
+
 model NutritionTippsArticels {
-  id            Int @id @default(autoincrement())
-  title         String
-  text          String @db.LongText
-  imagePath     String
-  link          String
+  id        Int    @id @default(autoincrement())
+  title     String
+  text      String @db.LongText
+  imagePath String
+  link      String
 }

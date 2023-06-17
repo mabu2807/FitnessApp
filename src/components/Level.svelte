@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { getStartedData } from '../routes/getStarted/Data';
+	import { getStartedData } from '../stores/Data';
 
 	let sliderValue: string;
 
-	function updateSliderValue(event:Event) {
+	function updateSliderValue(event: Event) {
 		sliderValue = (event.target as HTMLInputElement).value;
 		$getStartedData[5].value = sliderValue;
 	}
@@ -20,17 +20,17 @@
 <section class="h-80">
 	<div class="sm:my-12 my-8">
 		<select
-			class="select card card-hover bg-white dark:bg-white text-black dark:text-black w-48 h-10 sm:text-lg text-base"
+			class="select card card-hover bg-success-400 dark:bg-success-400 text-black dark:text-black w-48 h-10 sm:text-lg text-base"
 			value={sliderValue}
 			on:input={updateSliderValue}
 		>
-		<option class="text-black dark:text-white " value="Magerquark">Magerquark</option>
-					<option class="text-black dark:text-white" value="Stets bemüht">Stets bemüht</option>
-					<option class="text-black dark:text-white" value="Solide">Solide</option>
-					<option class="text-black dark:text-white" value="ADHS">ADHS</option>
-					<option class="text-black dark:text-white" value="Erlege Bären mit der bloßen Hand">Erlege Bären mit der bloßen Hand</option>
-</select>
-</div>
-
+			<option class="text-black dark:text-white" value="Magerquark">Magerquark</option>
+			<option class="text-black dark:text-white" value="Stets bemüht">Stets bemüht</option>
+			<option class="text-black dark:text-white" value="Solide">Solide</option>
+			<option class="text-black dark:text-white" value="ADHS">ADHS</option>
+			<option class="text-black dark:text-white" value="Erlege Bären mit der bloßen Hand"
+				>Erlege Bären mit der bloßen Hand</option
+			>
+		</select>
+	</div>
 </section>
-

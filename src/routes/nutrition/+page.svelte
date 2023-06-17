@@ -1,4 +1,3 @@
-
 <script lang="ts">
 	import CircleProgressBar from './CircleProgressBar.svelte';
 	import Chart from './nutriChart.svelte';
@@ -14,16 +13,16 @@
 	export let form: ActionData;
 	let maxCalories = 0;
 	let mealData = data.mealsforCards;
-	let usedCalories = 0
-	if(data.allValues != undefined){
-	usedCalories = data.allValues.calories[6];
+	let usedCalories = 0;
+	if (data.allValues != undefined) {
+		usedCalories = data.allValues.calories[6];
 	}
-	if(data.allmaxValues != undefined){
+	if (data.allmaxValues != undefined) {
 		maxCalories = data.allmaxValues.calories;
 	}
 
 	let amount = usedCalories / maxCalories;
-	let progress:number = amount;
+	let progress: number = amount;
 	let image: string;
 	let buttonID: string | null = '';
 	let selected: string = 'energy';
@@ -62,35 +61,35 @@
 		<div class="rowAllCards">
 			<div class="cardGeneral">
 				{#if mealData != undefined}
-				{#each mealData as meal}
-					<div class="cardContent">
-						<div class="rowMealtitleButton">
-							<div class="textMealTitle">
-								<h2>{meal.time}</h2>
+					{#each mealData as meal}
+						<div class="cardContent">
+							<div class="rowMealtitleButton">
+								<div class="textMealTitle">
+									<h2>{meal.time}</h2>
+								</div>
+								<div>
+									<button
+										id={meal.id.toString()}
+										on:click={editCard}
+										on:click={() => dialog.showModal()}
+										class="button"
+									>
+										<img src="Edit_Pencil.png" alt="Edit Meal" />
+									</button>
+									<Dialog {form} bind:dialog mealdata={meal} value={buttonID} />
+								</div>
 							</div>
-							<div>
-								<button
-									id={meal.id.toString()}
-									on:click={editCard}
-									on:click={() => dialog.showModal()}
-									class="button"
-								>
-									<img src="Edit_Pencil.png" alt="Edit Meal" />
-								</button>
-								<Dialog form={form} bind:dialog mealdata={meal} value={buttonID} />
+							<div class="imageCard">
+								<img src={meal.dish.imagePath} alt="Meal Icon" height="150px" width="200px" />
+							</div>
+							<div class="textMealDescription">
+								<p>{meal.dish.name}</p>
+								<p>{meal.dish.nutritionalValues?.energy} kcal</p>
 							</div>
 						</div>
-						<div class="imageCard">
-							<img src={meal.dish.imagePath} alt="Meal Icon" height="150px" width="200px" />
-						</div>
-						<div class="textMealDescription">
-							<p>{meal.dish.name}</p>
-							<p>{meal.dish.nutritionalValues?.energy} kcal</p>
-						</div>
-					</div>
-				{/each}
+					{/each}
 				{:else}
-				<p>Heute noch nichts gegessen</p>
+					<p>Heute noch nichts gegessen</p>
 				{/if}
 			</div>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->

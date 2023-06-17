@@ -1,9 +1,8 @@
+import type { allValues, allmaxValues, userdetail } from './nutritionTypes';
 
-import type { allValues, allmaxValues, userdetail } from "./nutritionTypes";
-
-export function initChartData(allmaxValues:allmaxValues, allValues:allValues) {
+export function initChartData(allmaxValues: allmaxValues, allValues: allValues) {
 	const week = calcWeekArray();
-	
+
 	const data = {
 		labels: week,
 		datasets: [
@@ -17,56 +16,54 @@ export function initChartData(allmaxValues:allmaxValues, allValues:allValues) {
 			{
 				label: 'Fett',
 				data: allValues.fat,
-				backgroundColor: changeBgColors(allmaxValues.fat,allValues.fat),
+				backgroundColor: changeBgColors(allmaxValues.fat, allValues.fat),
 				borderWidth: 1,
-				borderColor: changeBorderColors(allmaxValues.fat,allValues.fat),
-				hidden:true
+				borderColor: changeBorderColors(allmaxValues.fat, allValues.fat),
+				hidden: true
 			},
 			{
 				label: 'Zucker',
 				data: allValues.sugar,
-				backgroundColor: changeBgColors(allmaxValues.sugar,allValues.sugar),
+				backgroundColor: changeBgColors(allmaxValues.sugar, allValues.sugar),
 				borderWidth: 1,
-				borderColor: changeBorderColors(allmaxValues.sugar,allValues.sugar),
-				hidden:true
+				borderColor: changeBorderColors(allmaxValues.sugar, allValues.sugar),
+				hidden: true
 			},
 			{
 				label: 'Salz',
 				data: allValues.salt,
-				backgroundColor: changeBgColors(allmaxValues.salt,allValues.salt),
+				backgroundColor: changeBgColors(allmaxValues.salt, allValues.salt),
 				borderWidth: 1,
-				borderColor: changeBorderColors(allmaxValues.salt,allValues.salt),
-				hidden:true
-			}
-			,
+				borderColor: changeBorderColors(allmaxValues.salt, allValues.salt),
+				hidden: true
+			},
 			{
 				label: 'Eiweiß',
 				data: allValues.protein,
-				backgroundColor: changeBgColors(allmaxValues.protein,allValues.protein),
+				backgroundColor: changeBgColors(allmaxValues.protein, allValues.protein),
 				borderWidth: 1,
-				borderColor: changeBorderColors(allmaxValues.protein,allValues.protein),
-				hidden:true
+				borderColor: changeBorderColors(allmaxValues.protein, allValues.protein),
+				hidden: true
 			},
 			{
 				label: 'Kohlenhydrate',
 				data: allValues.carbohydrates,
-				backgroundColor: changeBgColors(allmaxValues.carbohydrates,allValues.carbohydrates),
+				backgroundColor: changeBgColors(allmaxValues.carbohydrates, allValues.carbohydrates),
 				borderWidth: 1,
-				borderColor: changeBorderColors(allmaxValues.carbohydrates,allValues.carbohydrates),
-				hidden:true
+				borderColor: changeBorderColors(allmaxValues.carbohydrates, allValues.carbohydrates),
+				hidden: true
 			},
 			{
 				label: 'gesätigte Fettsäuren',
 				data: allValues.saturatedFat,
-				backgroundColor: changeBgColors(allmaxValues.saturatedFat,allValues.saturatedFat),
+				backgroundColor: changeBgColors(allmaxValues.saturatedFat, allValues.saturatedFat),
 				borderWidth: 1,
-				borderColor: changeBorderColors(allmaxValues.saturatedFat,allValues.saturatedFat),
-				hidden:true
+				borderColor: changeBorderColors(allmaxValues.saturatedFat, allValues.saturatedFat),
+				hidden: true
 			}
-
 		]
 	};
-	
+
 	return data;
 }
 
@@ -135,30 +132,34 @@ function changeBorderColors(maxCalories: number, calperday: number[]) {
 	return borderColor;
 }
 
-
-export function allmaxvalues(userDetails:userdetail, maxCalories:number){
-	const salt = 6
-	const fat = (65/2000)*maxCalories
-	const sugar = (50/2000)*maxCalories
-	const protein = 0.8*userDetails.weight
-	const saturatedFat = 22
-	let carbohydrates = 0
-	if(userDetails.gender == "male"){
-		carbohydrates = 225
-	}else{
-		carbohydrates = 275
+export function allmaxvalues(userDetails: userdetail, maxCalories: number) {
+	const salt = 6;
+	const fat = (65 / 2000) * maxCalories;
+	const sugar = (50 / 2000) * maxCalories;
+	const protein = 0.8 * userDetails.weight;
+	const saturatedFat = 22;
+	let carbohydrates = 0;
+	if (userDetails.gender == 'male') {
+		carbohydrates = 225;
+	} else {
+		carbohydrates = 275;
 	}
 
-	const allmaxValues = {calories:maxCalories,fat:fat,sugar:sugar,salt:salt,protein:protein,carbohydrates:carbohydrates,saturatedFat:saturatedFat}
-	return allmaxValues
-
-
+	const allmaxValues = {
+		calories: maxCalories,
+		fat: fat,
+		sugar: sugar,
+		salt: salt,
+		protein: protein,
+		carbohydrates: carbohydrates,
+		saturatedFat: saturatedFat
+	};
+	return allmaxValues;
 
 	// Salz 6 g pro Tag
 	// Fett 65g bei 2000 kcal pro Tag
 	// Zucker 50 g bei 2000 kcal pro Tag
 	// Protein ca. 75 Gramm 0,8 g/kg Körpergewicht
 	// Kohlenhydrate 200 g pro Tag
-	// gesättigte Fettsäuren 22 g pro Tag  
-
+	// gesättigte Fettsäuren 22 g pro Tag
 }

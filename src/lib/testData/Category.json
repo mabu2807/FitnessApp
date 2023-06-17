@@ -1,17 +1,20 @@
 [
-    {
-        "id": 1,
-        "name": "Wachstum",
-        "description": "Muskelaufbau über allem anderen"
-    },
-    {
-        "id": 2,
-        "name": "Ausdauer",
-        "description": "Werde ausdauernd!"
-    },
-    {
-        "id": 3,
-        "name": "Gelenkschonende Aquagymnastik",
-        "description": "Fit wie ein Fisch"
-    }
+	{
+		"id": 1,
+		"name": "Wachstum",
+		"description": "Muskelaufbau über allem anderen",
+		"imagePath": "workout2.jpg"
+	},
+	{
+		"id": 2,
+		"name": "Ausdauer",
+		"description": "Werde ausdauernd!",
+		"imagePath": "workout1.jpg"
+	},
+	{
+		"id": 3,
+		"name": "Gelenkschonende Aquagymnastik",
+		"description": "Fit wie ein Fisch",
+		"imagePath": "workout3.jpg"
+	}
 ]

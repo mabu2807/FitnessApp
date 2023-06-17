@@ -14,15 +14,15 @@ export const actions = {
 		const password = data.get('password');
 
 		if (!email || !password) {
-			return fail(400, { email, password, missing: true });
+			return { email, password, message: 'empty fields' };
 		}
 
 		if (typeof email != 'string' || typeof password != 'string') {
-			return fail(400, { incorrect: true });
+			return { message: 'no string' };
 		}
 
-		if (!validateEmail) {
-			return fail(422, { email });
+		if (!validateEmail(email)) {
+			return { password, message: 'invalid email' };
 		}
 
 		//Check if email already exists
@@ -30,14 +30,12 @@ export const actions = {
 			where: { email: email }
 		});
 		if (!user) {
-			return fail(404, { email });
+			return { message: 'login error' };
 		}
 
 		if (user.password !== password) {
-			return fail(401, { email, password });
+			return { message: 'login error' };
 		}
-
-		console.log('Login Successful!');
 
 		throw redirect(303, `/`);
 	}

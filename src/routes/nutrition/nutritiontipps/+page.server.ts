@@ -2,18 +2,14 @@ import type { PageServerLoad } from './$types';
 import prisma from '$lib/prisma';
 import { fail } from '@sveltejs/kit';
 
-
-
-
 export const load = (async () => {
-    let responseArticle;
+	let responseArticle;
 
-    try {
-        responseArticle = await prisma.nutritionTippsArticels.findMany()
-    } catch (error) {
-        return fail(404, {message: "No article found"})        
-    }
+	try {
+		responseArticle = await prisma.nutritionTippsArticels.findMany();
+	} catch (error) {
+		return fail(404, { message: 'No article found' });
+	}
 
-    return {articles: responseArticle}
-    
+	return { articles: responseArticle };
 }) satisfies PageServerLoad;
