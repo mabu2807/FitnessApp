@@ -44,19 +44,20 @@
 </script>
 
 {#if $modalStore[0]}
-	<div class="card p-5 shadow-xl card-gradient">
-		<div class="flex justify-end">
+	<div class="card bg-success-400">
+		<div class="flex justify-end p-4">
 			<button on:click={() => modalStore.close()}>
-				<i class="fa-solid fa-circle-xmark text-2xl hover:text-secondary-500" />
+				<i class="fa-solid fa-circle-xmark text-2xl hover:text-error-500" />
 			</button>
 		</div>
-		<h3 class="h3 text-center mt-3 mb-7">Verfügbare Sportarten</h3>
+		<div class="px-14 pb-8">
+		<h3 class="h3 text-center mb-4">Verfügbare Sportarten</h3>
 		<div class="flex flex-wrap gap-4">
 			{#each $categoryData as available}
 				{#if !available.picked}
 					<button
 						style={available.selected ? 'box-shadow: 0 0 20px green; border-radius: 8px;' : ''}
-						class="card flex flex-col items-center justify-center bg-white aspect-[1/1] sm:w-32 w-28 overflow-hidden"
+						class="card flex flex-col items-center justify-center bg-secondary-100 dark:bg-success-400 aspect-[1/1] sm:w-32 w-28 overflow-hidden"
 						on:click={() => {
 							available.selected = !available.selected;
 							buttonAddDisabled();
@@ -67,14 +68,14 @@
 							src={available.imageSrc}
 							alt={available.imageSrc}
 						/>
-						<div class="my-2 text-center text-sm">{available.title}</div>
+						<div class="my-2 text-center text-sm dark:text-black">{available.title}</div>
 					</button>
 				{/if}
 			{/each}
 		</div>
 
-		<hr class="mt-14 h-1 rounded-full bg-gray-900 dark:bg-white" />
-		<h3 class="h3 text-center mt-3 mb-7">Lösche ausgewählte Sportarten</h3>
+		<hr class="mt-10 h-1 rounded-full bg-black dark:bg-white" />
+		<h3 class="h3 text-center mt-8 mb-4">Lösche ausgewählte Sportarten</h3>
 		<div class="flex flex-wrap gap-4">
 			{#each $categoryData as selected}
 				{#if selected.picked}
@@ -82,7 +83,7 @@
 						style={selected.selected
 							? 'box-shadow: 0 0 20px green; border-radius: 8px;'
 							: 'outline-style: none;'}
-						class="card flex flex-col items-center justify-center bg-white aspect-[1/1] sm:w-32 w-28 overflow-hidden"
+						class="card flex flex-col items-center justify-center dark:bg-success-400 bg-secondary-100 aspect-[1/1] sm:w-32 w-28 overflow-hidden"
 						on:click={() => {
 							selected.selected = !selected.selected;
 							buttonRemoveDisabled();
@@ -93,24 +94,25 @@
 							src={selected.imageSrc}
 							alt={selected.imageSrc}
 						/>
-						<div class="my-2 text-center text-sm">{selected.title}</div>
+						<div class="my-2 text-center text-sm dark:text-black">{selected.title}</div>
 					</button>
 				{/if}
 			{/each}
 		</div>
-		<footer class="flex mt-14 gap-2">
+		<footer class="flex justify-between mt-28 gap-2">
 			<button
-				class="btn variant-filled md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500"
+				class="btn variant-filled md:px-7 px-5 py-2 hover:bg-primary-500 dark:hover:bg-primary-500"
 				on:click={add}
 				disabled={addDisabled}>Hinzufügen</button
 			>
 			<button
-				class="btn variant-filled md:px-7 px-5 py-2 transition duration-400 bg-secondary-500 dark:bg-secondary-500 hover:bg-tertiary-500 dark:hover:bg-primary-500"
+				class="btn variant-filled md:px-7 px-5 py-2 hover:bg-error-500 dark:hover:bg-error-500"
 				on:click={remove}
 				disabled={removeDisabled}>Löschen</button
 			>
 		</footer>
 	</div>
+</div>
 {/if}
 
 <style>
