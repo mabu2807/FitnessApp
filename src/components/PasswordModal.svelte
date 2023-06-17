@@ -11,7 +11,7 @@
 	<div class="card w-modal bg-success-400">
 		<div class="flex justify-end p-4">
 			<button on:click={() => modalStore.close()}>
-				<i class="fa-solid fa-circle-xmark text-2xl hover:text-primary-500" />
+				<i class="fa-solid fa-circle-xmark text-2xl hover:text-error-500" />
 			</button>
 		</div>
 		<div class="pb-8 px-8">
@@ -19,19 +19,19 @@
 		<form>
 			<label class="label mb-5">
 				<span>Altes Passwort</span>
-				<input class="input py-1 px-3 bg-secondary-100 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white" type="password" placeholder="..." />
+				<input class="input py-1 px-3 bg-secondary-100 dark:bg-surface-500 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white" type="password" placeholder="..." />
 			</label>
 			<label class="label mb-5">
 				<span>Neues Passwort</span>
-				<input class="input py-1 px-3 bg-secondary-100 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white" type="password" placeholder="..." />
+				<input class="input py-1 px-3 bg-secondary-100 dark:bg-surface-500 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white" type="password" placeholder="..." />
 			</label>
 			<label class="label mb-10">
 				<span>Neues Passwort bestätigen</span>
-				<input class="input py-1 px-3 bg-secondary-100 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white" type="password" placeholder="..." />
+				<input class="input py-1 px-3 bg-secondary-100 dark:bg-surface-500 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white" type="password" placeholder="..." />
 			</label>
 		</form>
 		<footer class="flex justify-center">
-        <button class="btn variant-filled md:px-7 px-5 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500" on:click={changePassword}>Passwort ändern</button>
+        <button class="btn variant-filled md:px-7 px-5 py-2 transition duration-500 hover:bg-tertiary-500 dark:hover:bg-primary-500" on:click={changePassword}>Passwort ändern</button>
     </footer>
 	</div>
 </div>

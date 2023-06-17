@@ -74,19 +74,19 @@
 
 <Toast background="variant-filled-error"/>
 <div class="flex flex-col justify-center items-center">
-	<section class="text-center bg-success-400 w-full mx-auto px-6 py-14 md:py-20 mt-24">
-		<h3 class="h3 mb-5 dark:text-black font-medium">
+	<section class="text-center bg-success-400 dark:bg-secondary-500 w-full mx-auto px-6 py-14 md:py-20 mt-24">
+		<h3 class="h3 mb-5 font-medium">
 			"Gestern noch vom Sixpack geträumt, heute schon geholt."
 		</h3>
-		<h5 class="h5 mb-12 text-surface-500">Träume nicht dein Leben, sondern lebe deinen Traum!</h5>
+		<h5 class="h5 mb-12 text-surface-500 dark:text-white">Träume nicht dein Leben, sondern lebe deinen Traum!</h5>
 		<a
 			href="/getStarted"
 			class="btn variant-filled inline-block px-4 py-2 hover:bg-primary-500 dark:hover:bg-primary-500"
-			><span class="dark:text-white text-white">Get Started</span></a
+			><span class="text-white dark:text-black">Get Started</span></a
 		>
 	</section>
 	<section class="flex justify-center items-center flex-col w-full py-12 card-gradient">
-		<h2 class="h2 font-medium">Unsere Kurse</h2>
+		<h2 class="h2 font-medium dark:text-black">Unsere Kurse</h2>
 		<div
 			class="flex flex-wrap justify-center gap-10 p-12"
 		>
@@ -108,7 +108,7 @@
 		</div>
 	</section>
 
-	<section class="w-full py-16 shadow-xl bg-success-400">
+	<section class="w-full py-16 shadow-xl bg-success-400 dark:bg-surface-900 ">
 		<div class="flex justify-center mx-14 mb-10">
 			<button
 				class="hover:text-primary-500 dark:hover:text-primary-500 mr-1"
@@ -125,7 +125,7 @@
 			<div class="flex flex-wrap flex-col items-center gap-y-8 lg:mx-56 md:mx-32 mx-20">
 				{#each visibleReviews as review (review.id)}
 					<div
-						class="card variant-soft-secondary overflow-hidden"
+						class="card variant-soft-secondary dark:bg-surface-500 overflow-hidden"
 						transition:fly={{ y: 100, opacity: 0 }}
 						animate:fly={{ y: 0, opacity: 1 }}
 					>
@@ -135,9 +135,8 @@
 								src={'test.jpeg'}
 								alt="Kunde {review.id}"
 							/>
-							<p class="ml-7 overflow-hidden">{review.text}</p>
+							<p class="ml-7 overflow-hidden dark:text-white">{review.text}</p>
 						</header>
-						<!-- <section><p class="mb-2 overflow-hidden">{item.text}</p></section> -->
 						<footer class="card-footer mt-7">
 							<cite class="cite text-secondary-300 overflow-hidden">{review.userName}</cite>
 						</footer>

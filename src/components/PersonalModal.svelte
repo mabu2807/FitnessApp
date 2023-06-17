@@ -20,7 +20,7 @@
 	<div class="card w-modal bg-success-400 ">
 		<div class="flex justify-end p-4">
 			<button on:click={() => modalStore.close()}>
-				<i class="fa-solid fa-circle-xmark text-2xl hover:text-primary-500" />
+				<i class="fa-solid fa-circle-xmark text-2xl hover:text-error-500" />
 			</button>
 		</div>
 		<div class="px-14 pb-10">
@@ -28,7 +28,7 @@
 		<form>
 			<label class="label mb-5">
 				<span>Fitness Ziel</span>
-				<select value={testData.goal} class="select bg-secondary-100">
+				<select value={testData.goal} class="select bg-secondary-100 dark:bg-surface-500">
 					<option value="1">Loose Weight</option>
 					<option value="2">Gain Muscle</option>
 					<option value="3">Stay Fit</option>
@@ -38,7 +38,7 @@
 				<!-- Hier validiern, ob Eingabe passt -->
 				<span>Größe in cm</span>
 				<input
-					class="input py-1 px-3 dark:placeholder-white placeholder-black bg-secondary-100"
+					class="input py-1 px-3 dark:placeholder-white placeholder-black bg-secondary-100 dark:bg-surface-500"
 					type="text"
 					placeholder={testData.size}
 				/>
@@ -47,18 +47,18 @@
 				<!-- Hier validiern, ob Eingabe passt -->
 				<span>Gewicht in kg</span>
 				<input
-					class="input py-1 px-3 dark:placeholder-white placeholder-black bg-secondary-100"
+					class="input py-1 px-3 dark:placeholder-white placeholder-black bg-secondary-100 dark:bg-surface-500"
 					type="text"
 					placeholder={testData.weight}
 				/>
 			</label>
 			<label class="label mb-5">
 				<span>Geburtstag</span>
-				<input class="input py-1 px-3 bg-secondary-100" type="date" value={testData.birth} />
+				<input class="input py-1 px-3 bg-secondary-100 dark:bg-surface-500" type="date" value={testData.birth} />
 			</label>
 			<label class="label mb-5">
 				<span>Geschlecht</span>
-				<select value={testData.gender} class="select bg-secondary-100">
+				<select value={testData.gender} class="select bg-secondary-100 dark:bg-surface-500">
 					<option value="1">weiblich</option>
 					<option value="2">männlich</option>
 					<option value="3">divers</option>
@@ -66,7 +66,7 @@
 			</label>
 			<label class="label mb-10">
 				<span>Aktivitätslevel</span>
-				<select value={testData.activity} class="select bg-secondary-100">
+				<select value={testData.activity} class="select bg-secondary-100 dark:bg-surface-500">
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
