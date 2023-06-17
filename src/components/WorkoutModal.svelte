@@ -66,12 +66,13 @@
 </script>
 
 {#if $modalStore[0]}
-	<div class="card p-7 shadow-xl bg-white mt-36">
-		<div class="flex justify-end">
+	<div class="card bg-success-400 mt-36">
+		<div class="flex justify-end p-4">
 			<button on:click={() => modalStore.close()}>
-				<i class="fa-solid fa-circle-xmark text-2xl hover:text-secondary-500" />
+				<i class="fa-solid fa-circle-xmark text-2xl hover:text-error-500" />
 			</button>
 		</div>
+		<div class="px-7 pb-7">
 		{#each testExercise as exercise}
 			<h6 class="h6 font-bold">Übung {exercise.id}: {exercise.exercise}</h6>
 			<div class="flex flex-row gap-7 mb-6 mt-2">
@@ -93,4 +94,5 @@
 			</div>
 		{/each}
 	</div>
+</div>
 {/if}
