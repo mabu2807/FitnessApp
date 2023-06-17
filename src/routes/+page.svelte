@@ -47,23 +47,24 @@
 
 	function formMessage() {
 		if (form?.message == 'empty fields') {
-			return 'Bitte fülle alle Felder aus!';
+			return 'Schön alle Felder ausfüllen!';
 		}
 		if (form?.message == 'no string') {
-			return 'Inputs sind keine Strings!';
+			return 'Die Form passt nicht!';
 		}
 		if (form?.message == 'invalid email') {
-			return 'Email hat keine korrekte Form!';
+			return 'Das ist keine valide Email, Muchacho!';
 		}
 		if (form?.message == 'alright') {
-			return 'Danke für deine Nachricht!';
+			return 'Danke für deine Nachricht, die wir ungelesen löschen werden!';
 		}
 	}
 
 	function throwToast() {
 		if (formMessage() != null) {
 			const t: ToastSettings = {
-				message: formMessage()
+				message: formMessage(),
+				timeout: 2000
 			};
 			toastStore.trigger(t);
 		}

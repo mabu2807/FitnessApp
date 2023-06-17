@@ -9,19 +9,16 @@
 
 	function formMessage() {
 		if (form?.message == 'empty fields') {
-			return 'Bitte fülle alle Felder aus!';
+			return 'Schön alle Felder ausfüllen!';
 		}
 		if (form?.message == 'no string') {
-			return 'Inputs sind keine Strings!';
+			return 'Die Form passt nicht!';
 		}
 		if (form?.message == 'invalid email') {
-			return 'Email hat keine korrekte Form!';
-		}
-		if (form?.message == 'alright') {
-			return 'Danke für deine Nachricht!';
+			return 'Das ist keine valide Email, Muchacho!';
 		}
 		if (form?.message == 'login error') {
-			return 'Email oder Passwort ist falsch!';
+			return 'Email oder Passwort ist inkorrekt!';
 		}
 	}
 
@@ -43,7 +40,7 @@
 <Head />
 <Toast background="variant-filled-error"/>
 <section class="flex items-center justify-center mt-32 mb-28">
-	<div class="w-3/4 sm:flex my-20">
+	<div class="lg:w-3/4 w-5/6 sm:flex my-20">
 		<div class="sm:w-1/2 w-full p-8 bg-success-400 dark:bg-surface-800 sm:rounded-tl-xl sm:rounded-bl-xl rounded-tl-xl sm:rounded-tr-none rounded-tr-xl">
 			<h3 class="md:text-2xl md:mx-3 lg:mx-4 sm:text-xl text-2xl font-semibold mb-8 mx-2">
 				Benutzer Login
@@ -71,7 +68,7 @@
 				>
 				<div class="mt-6 text-sm">
 					<p>
-						Du hast noch keinen Account? Dann <a href="/register"
+						Du hast noch keinen Account? Dann <a href="/registration"
 							><span
 								class="text-surface-400 dark:text-surface-300 hover:text-tertiary-500 dark:hover:text-primary-500 font-bold"
 								>Registriere</span
@@ -85,10 +82,10 @@
 			<div class="h-1 w-3/5 bg-black dark:bg-white rounded-full sm:mb-14 mb-5 sm:mt-0 mt-10" />
 			<div class="mb-6">
 				<h2 class="md:text-3xl text-2xl font-semibold mb-6 mx-6 text-center">
-					Willkommen bei FitnessHub
+					Heute schon Gewichte bewegt?
 				</h2>
 				<h5 class="text-base dark:text-white text-center mx-10">
-					Von Cardio Carsten zu Markus Masse, wir bitten jeden zur Kasse!
+					Wir haben nicht umsonst den teuren Vizemeister im Gewichtheben bei uns im Team!
 				</h5>
 			</div>
 			<div class="h-1 w-3/5 bg-black dark:bg-white rounded-full sm:mb-0 mb-10 sm:mt-5" />
