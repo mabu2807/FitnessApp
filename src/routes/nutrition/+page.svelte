@@ -6,10 +6,7 @@
 	let dialog: HTMLDialogElement;
 	let dialogAdd: HTMLDialogElement;
 	import type { PageData, ActionData } from './$types';
-	import Head from '../../components/Head.svelte';
-	import Footer from '../../components/Footer.svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
-	import { allmaxvalues } from './initChartData';
 	//import { valueOrDefault } from 'chart.js/dist/helpers/helpers.core';
 
 	export let data: PageData;

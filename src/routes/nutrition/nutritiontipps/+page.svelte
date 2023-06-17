@@ -22,9 +22,6 @@
 			{/if}
 		</div>
 	</div>
-	<form action="?/add" method="POST">
-		<button type="submit">Test</button>
-	</form>
 </main>
 
 <style lang="css">
