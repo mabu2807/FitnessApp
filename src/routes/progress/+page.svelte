@@ -242,7 +242,9 @@
 									>Diagrammtyp ändern</button
 								>
 							</div>
-							<canvas class="card bg-secondary-100 dark:bg-surface-500 text-black dark:text-white mt-10" />
+							<canvas
+								class="card bg-secondary-100 dark:bg-surface-500 text-black dark:text-white mt-10"
+							/>
 						</div>
 					</div>
 				{/each}
@@ -268,5 +270,4 @@
 			),
 			radial-gradient(at 100% 100%, rgba(var(--color-success-400) / 0.19) 0px, transparent 30%);
 	}
-
 </style>

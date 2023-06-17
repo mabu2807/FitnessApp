@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { Toast, toastStore, type ToastSettings } from '@skeletonlabs/skeleton';
 	import Head from '../../components/Head.svelte';
 	import type { ActionData } from './$types';
-	import { Toast, toastStore } from '@skeletonlabs/skeleton';
-	import type { ToastSettings } from '@skeletonlabs/skeleton';
+	import { onMount } from 'svelte';
 
 	export let form: ActionData;
 
@@ -17,8 +16,11 @@
 		if (form?.message == 'invalid email') {
 			return 'Das ist keine valide Email, Muchacho!';
 		}
-		if (form?.message == 'login error') {
-			return 'Email oder Passwort ist inkorrekt!';
+		if (form?.message == 'passwords not matching') {
+			return 'Die Passwörter stimmen nicht überein!';
+		}
+		if (form?.message == 'already registered') {
+			return 'Unter dieser Email Adresse besteht bereits ein stabiler Account!';
 		}
 	}
 
@@ -44,40 +46,44 @@
 		<div
 			class="sm:w-1/2 w-full p-8 bg-success-400 dark:bg-surface-800 sm:rounded-tl-xl sm:rounded-bl-xl rounded-tl-xl sm:rounded-tr-none rounded-tr-xl"
 		>
-			<h3 class="md:text-2xl md:mx-3 lg:mx-4 sm:text-xl text-2xl font-semibold mb-8 mx-2">
-				Benutzer Login
+			<h3 class="md:text-2xl md:mx-3 lg:mx-4 sm:text-lg text-2xl font-semibold mb-8 mx-2">
+				Noch etwas Persönliches
 			</h3>
 
-			<form id="form" method="post" class="mb-8 md:mx-3 lg:mx-4 mx-2">
+			<form method="post" class="mb-8 md:mx-3 lg:mx-4 mx-2">
 				<input
-					name="email"
-					placeholder="Email"
-					type="text"
-					value={form?.email ?? ''}
 					class="input p-2 mb-4 md:text-base text-base sm:text-sm bg-secondary-100 dark:bg-surface-500 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white"
+					name="username"
+					type="text"
+					placeholder="Benutzername"
+					value={form?.username ?? ''}
 				/>
 				<input
+					class="input p-2 mb-4 md:text-base text-base sm:text-sm bg-secondary-100 dark:bg-surface-500 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white"
+					name="email"
+					type="text"
+					placeholder="Email"
+					value={form?.email ?? ''}
+				/>
+				<input
+					class="input p-2 mb-4 md:text-base text-base sm:text-sm bg-secondary-100 dark:bg-surface-500 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white"
 					name="password"
-					placeholder="Passwort"
 					type="password"
+					placeholder="Passwort"
 					value={form?.password ?? ''}
-					class="input p-2 mb-6 md:text-base text-base sm:text-sm bg-secondary-100 dark:bg-surface-500 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white"
+				/>
+				<input
+					class="input p-2 mb-4 md:text-base text-base sm:text-sm bg-secondary-100 dark:bg-surface-500 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white"
+					name="passwordConfirm"
+					type="password"
+					placeholder="Bestätige Passwort"
+					value={form?.passwordConfirm ?? ''}
 				/>
 				<button
 					type="submit"
-					class="btn variant-filled w-full md:text-base text-base sm:text-sm md:px-7 px-5 py-2 hover:bg-tertiary-500 dark:hover:bg-primary-500"
-					>Sign In</button
+					class="btn variant-filled w-full mt-8 md:text-base text-base sm:text-sm md:px-7 px-5 py-2 hover:bg-tertiary-500 dark:hover:bg-primary-500"
+					>Registrieren</button
 				>
-				<div class="mt-6 text-sm">
-					<p>
-						Du hast noch keinen Account? Dann <a href="/registration"
-							><span
-								class="text-surface-400 dark:text-surface-300 hover:text-tertiary-500 dark:hover:text-primary-500 font-bold"
-								>Registriere</span
-							></a
-						> dich jetzt!
-					</p>
-				</div>
 			</form>
 		</div>
 		<div
@@ -86,10 +92,10 @@
 			<div class="h-1 w-3/5 bg-black dark:bg-white rounded-full sm:mb-14 mb-5 sm:mt-0 mt-10" />
 			<div class="mb-6">
 				<h2 class="md:text-3xl text-2xl font-semibold mb-6 mx-6 text-center">
-					Heute schon Gewichte bewegt?
+					Willkommen in der Gruppe
 				</h2>
-				<h5 class="text-base dark:text-white text-center mx-10">
-					Wir haben nicht umsonst den teuren Vizemeister im Gewichtheben bei uns im Team!
+				<h5 class="h5 dark:text-white text-center mx-10">
+					Von Cardio Carsten zu Markus Masse, wir bitten jeden zur Kasse!
 				</h5>
 			</div>
 			<div class="h-1 w-3/5 bg-black dark:bg-white rounded-full sm:mb-0 mb-10 sm:mt-5" />

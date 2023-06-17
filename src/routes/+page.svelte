@@ -27,7 +27,7 @@
 		}
 	};
 	const handlePrevious = () => {
-		direction=100;
+		direction = 100;
 		currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
 		showReviews();
 		timeoutButton = true;
@@ -36,7 +36,7 @@
 		}, 500);
 	};
 	const handleNext = () => {
-		direction=-100
+		direction = -100;
 		currentIndex = (currentIndex + 1) % reviews.length;
 		showReviews();
 		timeoutButton = true;
@@ -47,23 +47,24 @@
 
 	function formMessage() {
 		if (form?.message == 'empty fields') {
-			return 'Bitte fülle alle Felder aus!';
+			return 'Schön alle Felder ausfüllen!';
 		}
 		if (form?.message == 'no string') {
-			return 'Inputs sind keine Strings!';
+			return 'Die Form passt nicht!';
 		}
 		if (form?.message == 'invalid email') {
-			return 'Email hat keine korrekte Form!';
+			return 'Das ist keine valide Email, Muchacho!';
 		}
 		if (form?.message == 'alright') {
-			return 'Danke für deine Nachricht!';
+			return 'Danke für deine Nachricht, die wir ungelesen löschen werden!';
 		}
 	}
 
 	function throwToast() {
 		if (formMessage() != null) {
 			const t: ToastSettings = {
-				message: formMessage()
+				message: formMessage(),
+				timeout: 2000
 			};
 			toastStore.trigger(t);
 		}
@@ -75,13 +76,15 @@
 	});
 </script>
 
-<Toast background="variant-filled-error"/>
+<Toast background="variant-filled-error" />
 <div class="flex flex-col justify-center items-center">
-	<section class="text-center bg-success-400 dark:bg-surface-800 w-full mx-auto px-6 py-14 md:py-20 mt-24">
-		<h3 class="h3 mb-5 font-medium">
-			"Gestern noch vom Sixpack geträumt, heute schon geholt."
-		</h3>
-		<h5 class="h5 mb-12 text-surface-500 dark:text-white">Träume nicht dein Leben, sondern lebe deinen Traum!</h5>
+	<section
+		class="text-center bg-success-400 dark:bg-surface-800 w-full mx-auto px-6 py-14 md:py-20 mt-24"
+	>
+		<h3 class="h3 mb-5 font-medium">"Gestern noch vom Sixpack geträumt, heute schon geholt."</h3>
+		<h5 class="h5 mb-12 text-surface-500 dark:text-white">
+			Träume nicht dein Leben, sondern lebe deinen Traum!
+		</h5>
 		<a
 			href="/getStarted"
 			class="btn variant-filled inline-block px-4 py-2 hover:bg-tertiary-500 dark:hover:bg-primary-500"
@@ -90,16 +93,14 @@
 	</section>
 	<section class="flex justify-center items-center flex-col w-full py-12 card-gradient">
 		<h2 class="h2 font-medium dark:text-black">Unsere Kurse</h2>
-		<div
-			class="flex flex-wrap justify-center gap-10 p-12"
-		>
+		<div class="flex flex-wrap justify-center gap-10 p-12">
 			{#each courses as course}
 				<div class="card flex flex-col w-72 bg-success-400 shadow-xl">
-						<img
-							class="w-full aspect-[16/9] object-cover rounded-tl-md rounded-tr-md"
-							src={course.imagePath}
-							alt=""
-						/>
+					<img
+						class="w-full aspect-[16/9] object-cover rounded-tl-md rounded-tr-md"
+						src={course.imagePath}
+						alt=""
+					/>
 					<div class="p-5 space-y-3 overflow-hidden">
 						<h3 class="h3">{course.name}</h3>
 						<article>
@@ -111,7 +112,7 @@
 		</div>
 	</section>
 
-	<section class="w-full py-16 shadow-xl bg-success-400 dark:bg-surface-800 ">
+	<section class="w-full py-16 shadow-xl bg-success-400 dark:bg-surface-800">
 		<div class="flex justify-center mx-14 mb-10">
 			<button
 				class="hover:text-tertiary-500 dark:hover:text-primary-500 mr-1"
@@ -125,27 +126,27 @@
 			>
 			<h2 class="h2 font-medium">Was unsere Kunden sagen</h2>
 		</div>
-			<div class="flex flex-wrap flex-col items-center gap-y-8 lg:mx-56 md:mx-32 mx-20">
-				{#each visibleReviews as review (review.id)}
-					<div
-						class="card variant-soft-secondary dark:bg-surface-500 overflow-hidden shadow-xl"
-						transition:fly={{ y: direction, opacity: 0 }}
-						animate:fly={{ y: 0, opacity: 1 }}
-					>
-						<header class="card-header flex flex-row m-1">
-							<img
-								class="object-cover aspect-[1/1] md:w-16 w-12 sm:14 h-full rounded-lg"
-								src={'test.jpeg'}
-								alt="Kunde {review.id}"
-							/>
-							<p class="ml-7 overflow-hidden dark:text-white">{review.text}</p>
-						</header>
-						<footer class="card-footer mt-7">
-							<cite class="cite text-secondary-300 overflow-hidden">{review.userName}</cite>
-						</footer>
-					</div>
-				{/each}
-			</div>
+		<div class="flex flex-wrap flex-col items-center gap-y-8 lg:mx-56 md:mx-32 mx-20">
+			{#each visibleReviews as review (review.id)}
+				<div
+					class="card variant-soft-secondary dark:bg-surface-500 overflow-hidden shadow-xl"
+					transition:fly={{ y: direction, opacity: 0 }}
+					animate:fly={{ y: 0, opacity: 1 }}
+				>
+					<header class="card-header flex flex-row m-1">
+						<img
+							class="object-cover aspect-[1/1] md:w-16 w-12 sm:14 h-full rounded-lg"
+							src={'test.jpeg'}
+							alt="Kunde {review.id}"
+						/>
+						<p class="ml-7 overflow-hidden dark:text-white">{review.text}</p>
+					</header>
+					<footer class="card-footer mt-7">
+						<cite class="cite text-secondary-300 overflow-hidden">{review.userName}</cite>
+					</footer>
+				</div>
+			{/each}
+		</div>
 	</section>
 
 	<section class="w-full text-center pt-12 pb-20 contact-gradient">
@@ -169,7 +170,7 @@
 				>Senden</button
 			>
 		</form>
-</section>
+	</section>
 </div>
 
 <style>
@@ -186,15 +187,19 @@
 
 	.contact-gradient {
 		background: linear-gradient(
-			180deg, rgb(var(--color-secondary-500)) 20%, rgb(var(--color-success-400)) 80%
-			)
+			180deg,
+			rgb(var(--color-secondary-500)) 20%,
+			rgb(var(--color-success-400)) 80%
+		);
 		/* background-image: radial-gradient(at 0% 0%,rgba(var(--color-secondary-500) / .33) 0px,transparent 50%),radial-gradient(at 98% 1%,rgba(var(--color-error-500) / .33) 0px,transparent 50%); */
 	}
 
 	.card-gradient {
 		background: linear-gradient(
-			180deg, rgb(var(--color-success-400)) 35%, rgb(var(--color-secondary-500)) 65%
-			)
+			180deg,
+			rgb(var(--color-success-400)) 35%,
+			rgb(var(--color-secondary-500)) 65%
+		);
 	}
 
 	/* .mid-gradient {

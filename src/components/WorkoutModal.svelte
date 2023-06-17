@@ -73,26 +73,26 @@
 			</button>
 		</div>
 		<div class="px-7 pb-7">
-		{#each testExercise as exercise}
-			<h6 class="h6 font-bold">Übung {exercise.id}: {exercise.exercise}</h6>
-			<div class="flex flex-row gap-7 mb-6 mt-2">
-				<div class="w-40">
-					<img class="rounded" src={exercise.imagePath} alt={exercise.imagePath} />
-				</div>
-				<div class="w-full">
-					<p class="sm:text-base text-sm">
-						<b> {exercise.sets} </b> Sätze x <b> {exercise.repetitions} </b>
-					</p>
-					<p class="sm:text-base text-sm">
-						Wiederholungen (Gewicht: Langhantel mit zusätzlichen
-						<b> {exercise.weigth}kg</b>)
-					</p>
+			{#each testExercise as exercise}
+				<h6 class="h6 font-bold">Übung {exercise.id}: {exercise.exercise}</h6>
+				<div class="flex flex-row gap-7 mb-6 mt-2">
+					<div class="w-40">
+						<img class="rounded" src={exercise.imagePath} alt={exercise.imagePath} />
+					</div>
+					<div class="w-full">
+						<p class="sm:text-base text-sm">
+							<b> {exercise.sets} </b> Sätze x <b> {exercise.repetitions} </b>
+						</p>
+						<p class="sm:text-base text-sm">
+							Wiederholungen (Gewicht: Langhantel mit zusätzlichen
+							<b> {exercise.weigth}kg</b>)
+						</p>
 
-					<!-- <h4>Hinweise zur Ausführung:</h4>
+						<!-- <h4>Hinweise zur Ausführung:</h4>
                 <p class="text-sm">{exercise.description}</p> -->
+					</div>
 				</div>
-			</div>
-		{/each}
+			{/each}
+		</div>
 	</div>
-</div>
 {/if}

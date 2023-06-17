@@ -25,47 +25,43 @@
 </section>
 
 <div class="mid-gradient">
-<section class="flex flex-wrap justify-center gap-8 p-16 shadow-xl">
-	{#each $categoryData as item}
-		{#if item.picked}
-			<a
-				href={item.link}
-				class="card card-hover flex flex-col items-center justify-center w-56 h-72 bg-success-400"
-			>
-				<img
-					class="w-full h-36 object-cover rounded-tl-md rounded-tr-md"
-					src={item.imageSrc}
-					alt=""
-				/>
+	<section class="flex flex-wrap justify-center gap-8 p-16 shadow-xl">
+		{#each $categoryData as item}
+			{#if item.picked}
+				<a
+					href={item.link}
+					class="card card-hover flex flex-col items-center justify-center w-56 h-72 bg-success-400"
+				>
+					<img
+						class="w-full h-36 object-cover rounded-tl-md rounded-tr-md"
+						src={item.imageSrc}
+						alt=""
+					/>
 
-				<div class="p-3 text-center">
-					<h2 class="text-lg mt-1 mb-3 text-black dark:text-white font-semibold">{item.title}</h2>
-					<p class="text-black dark:text-white text-sm overflow-ellipsis">{item.description}</p>
-				</div>
-			</a>
-		{/if}
-	{/each}
-</section>
+					<div class="p-3 text-center">
+						<h2 class="text-lg mt-1 mb-3 text-black dark:text-white font-semibold">{item.title}</h2>
+						<p class="text-black dark:text-white text-sm overflow-ellipsis">{item.description}</p>
+					</div>
+				</a>
+			{/if}
+		{/each}
+	</section>
 
-<section class="py-16 px-8 text-center">
-	<h3 class="h3 font-medium mb-3">Weitere Sportarten hinzufügen</h3>
-	<p class="mb-5">
-		Du hast eine neue Sportart für dich entdeckt? Dann füge sie einfach hinzu...
-	</p>
-	<div class="flex items-center justify-center mt-8">
-		<button
-			class="btn variant-filled inline-block px-4 py-2 hover:bg-tertiary-500 dark:hover:bg-primary-500"
-			on:click={addCategory}
-		>
-			<span class="dark:text-black text-white"
-				>Hinzufügen<i class="fa-solid fa-circle-plus ml-2" /></span
+	<section class="py-16 px-8 text-center">
+		<h3 class="h3 font-medium mb-3">Weitere Sportarten hinzufügen</h3>
+		<p class="mb-5">Du hast eine neue Sportart für dich entdeckt? Dann füge sie einfach hinzu...</p>
+		<div class="flex items-center justify-center mt-8">
+			<button
+				class="btn variant-filled inline-block px-4 py-2 hover:bg-tertiary-500 dark:hover:bg-primary-500"
+				on:click={addCategory}
 			>
-		</button>
-	</div>
-</section>
+				<span class="dark:text-black text-white"
+					>Hinzufügen<i class="fa-solid fa-circle-plus ml-2" /></span
+				>
+			</button>
+		</div>
+	</section>
 </div>
-
-
 
 <style>
 	.mid-gradient {
