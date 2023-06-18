@@ -3,8 +3,16 @@
 - actions edit meal
 - CircleProgressBar for diffrent values
 - layout überarbeiten
+- close button fixen
 
 
 
---- nutrition-tipps 
-- article in DB
+--- UI Update
+
+-DONE header anpassen
+-CircleProgressBar Update
+-DONE header mit foto updaten
+-meal card neues skeleton layout
+-neu add button
+-DONE nutritiontipps link einbauen (bild mit button)
+

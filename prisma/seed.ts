@@ -14,6 +14,7 @@ import dishData from '../src/lib/testdata/Dish.json' assert { type: 'json' };
 import foodDiaryData from '../src/lib/testdata/FoodDiary.json' assert { type: 'json' };
 import nutritionalValuesData from '../src/lib/testdata/NutritionalValues.json' assert { type: 'json' };
 import reviewData from '../src/lib/testdata/Reviews.json' assert { type: 'json' };
+import nutritionarticles from '../src/lib/testdata/articles.json' assert { type: 'json' };
 
 const prisma = new PrismaClient();
 
@@ -185,9 +186,20 @@ async function main() {
 			data: {
 				id: meal.id,
 				foodDiaryId: meal.foodDiaryId,
-				day: new Date(meal.day),
+				day: new Date,
 				time: meal.time,
 				dishId: meal.dishId
+			}
+		});
+	}
+	for (const article of nutritionarticles) {
+		await prisma.nutritionTippsArticels.create({
+			data: {
+				id: article.id,
+				title: article.title,
+				imagePath: article.imagePath,
+				link: article.link,
+				text: article.Text
 			}
 		});
 	}

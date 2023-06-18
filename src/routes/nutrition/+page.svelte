@@ -8,12 +8,15 @@
 	import type { PageData, ActionData } from './$types';
 	import type { MouseEventHandler } from 'svelte/elements';
 	//import { valueOrDefault } from 'chart.js/dist/helpers/helpers.core';
+	import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
+	import { ProgressRadial } from '@skeletonlabs/skeleton';
 
 	export let data: PageData;
 	export let form: ActionData;
-	let maxCalories = 0;
 	let mealData = data.mealsforCards;
+	let maxCalories = 0;
 	let usedCalories = 0;
+	
 	if (data.allValues != undefined) {
 		usedCalories = data.allValues.calories[6];
 	}
@@ -21,8 +24,7 @@
 		maxCalories = data.allmaxValues.calories;
 	}
 
-	let amount = usedCalories / maxCalories;
-	let progress: number = amount;
+	let progress: number = Math.round((usedCalories / maxCalories)*100 );
 	let image: string;
 	let buttonID: string | null = '';
 	let selected: string = 'energy';
@@ -37,27 +39,32 @@
 	}
 </script>
 
-<main>
-	<section>
-		<h2>Ernährungstagebuch</h2>
-	</section>
-	<div class="rowCaloriesWeek">
-		<div class="columnCalories">
-			<div style="vertical-align: baseline ;">
-				<p class="textTitle">Tages-Kalorienverbrauch</p>
-				<div style="align-items: center;">
-					<CircleProgressBar {progress} />
-					<p>{usedCalories}/ {maxCalories} kcal</p>
-				</div>
+<main class="mt-24">
+	<header class="w-full h-80 flex items-center justify-center bg-[url('/header_food.jpeg')]">
+		<img class="w-full h-80" src="/header_food.jpeg" alt="food">
+	</header>
+	<!-- Section chart ond circle progress -->
+	<section class=" mt-4 flex flex-col lg:flex-row p-2">
+		<!-- circle Progress -->
+		<section class="flex flex-col w-2/5 justify-start items-start h-[50vh]">
+			<p class="textTitle">Tages-Werte</p>
+			<div class="flex flex-col items-center">
+				<ProgressRadial value={progress}>{progress}%</ProgressRadial>
+				<p>{usedCalories}/ {maxCalories} kcal</p>
 			</div>
-		</div>
-		<div class="columnWeek">
+		</section>
+		<!-- Chart -->
+		<div class="w-3/5">
 			<p class="textTitle">Wochenübersicht</p>
 			<Chart bind:chartdata={chartData} />
 		</div>
-	</div>
-	<div>
-		<p class="textTitle">Mahlzeiten</p>
+	</section>
+	<section class="w-full p-1.5">
+		<div class="flex flex-row w-3/5 items-center">
+			<p class="textTitle m-1">Mahlzeiten</p>
+			<button type="button" class="btn variant-filled m-1">Erstellen aus Template</button>
+			<button type="button" class="btn variant-filled m-1">Eigenes Erstellen</button>
+		</div>
 		<div class="rowAllCards">
 			<div class="cardGeneral">
 				{#if mealData != undefined}
@@ -100,21 +107,17 @@
 				</div>
 			</div>
 		</div>
+	</section>
+	<div class="bg-[url('/picture_nutritipps.png')] w-full h-80 flex items-center justify-center flex-col" >
+		<p class="text-center text-white decoration-10 font-extrabold text-xl">Ernährungs-Tipps</p>
+		<a href="/nutritiontipps"><button type="button" class="btn variant-filled m-1">Hier klicken!</button></a>
 	</div>
-	<a href="/nutrition/nutritiontipps">NutritionTipps</a>
 </main>
 
 <style>
-	section {
-		background-color: #666;
-		padding: 10px;
-		text-align: center;
-		font-size: 35px;
-		color: white;
-	}
-	.rowCaloriesWeek {
+	/* .rowCaloriesWeek {
 		display: flex;
-	}
+	} */
 	.rowMealtitleButton {
 		display: flex;
 		justify-content: space-around;
@@ -125,20 +128,20 @@
 		display: flex;
 		flex-wrap: wrap;
 	}
-	.columnCalories {
+	/* .columnCalories {
 		-webkit-flex: 1;
 		-ms-flex: 1;
 		flex: 1;
 		display: flex;
 		text-align: center;
 		align-content: center;
-	}
-	.columnWeek {
+	} */
+	/* .columnWeek {
 		-webkit-flex: 1;
 		-ms-flex: 1;
 		flex: 1;
 		align-items: center;
-	}
+	} */
 	.textTitle {
 		font: 600;
 		font-weight: bold;
