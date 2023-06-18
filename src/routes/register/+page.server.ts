@@ -1,6 +1,6 @@
 import prisma from '$lib/prisma';
-import { fail, redirect } from '@sveltejs/kit';
-import type { Actions } from './$types';
+import { redirect } from '@sveltejs/kit';
+import type { Actions } from '../register/$types';
 import { sendEmail } from '$lib/emails/SendVerificationMail';
 
 const validateEmail = (email: string) => {
@@ -17,7 +17,7 @@ export const actions = {
 		const passwordConfirm = data.passwordConfirm;
 
 		if (!email || !username || !password || !passwordConfirm) {
-			return fail(400, { email, username, password, passwordConfirm, missing: true });
+			return { email, username, password, passwordConfirm, message: 'empty fields' };
 		}
 
 		if (
@@ -26,15 +26,15 @@ export const actions = {
 			typeof password != 'string' ||
 			typeof passwordConfirm != 'string'
 		) {
-			return fail(400, { incorrect: true });
+			return { message: 'no string' };
 		}
 
-		if (!validateEmail) {
-			return fail(422, { email });
+		if (!validateEmail(email)) {
+			return { username, password, passwordConfirm, message: 'invalid email' };
 		}
 
 		if (password !== passwordConfirm) {
-			return fail(401, { email, username, password });
+			return { email, username, password, message: 'passwords not matching' };
 		}
 
 		//Check if email already exists
@@ -42,7 +42,7 @@ export const actions = {
 			where: { email: email }
 		});
 		if (user) {
-			return fail(409, { email });
+			return { message: 'already registered' };
 		}
 
 		await prisma.user.create({
@@ -53,7 +53,7 @@ export const actions = {
 			}
 		});
 
-		await sendEmail(email, username);
+		// await sendEmail(email, username);
 
 		throw redirect(303, `/`);
 	}

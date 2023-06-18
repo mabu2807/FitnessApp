@@ -6,7 +6,6 @@
 	import Birth from '../../components/Birth.svelte';
 	import Gender from '../../components/Gender.svelte';
 	import Level from '../../components/Level.svelte';
-	import Register from '../../components/Register.svelte';
 	import Overview from '../../components/Overview.svelte';
 	import { lockedGoal, lockedGender } from '../../stores/Data';
 </script>
@@ -16,7 +15,7 @@
 		<Stepper
 			buttonBack="btn variant-ghost hover:bg-tertiary-400 dark:hover:bg-primary-400"
 			buttonNext="btn variant-filled hover:bg-tertiary-500 dark:hover:bg-primary-500"
-			on:complete={() => (location.href = '/')}
+			on:complete={() => (location.href = '/register')}
 		>
 			<Step locked={$lockedGoal} class="text-center">
 				<svelte:fragment slot="header"
@@ -59,10 +58,6 @@
 					><h3 class="h3 mt-10">Überprüfe deine Angaben!</h3></svelte:fragment
 				>
 				<Overview />
-			</Step>
-			<Step class="text-center">
-				<svelte:fragment slot="header"><h3 class="h3 mt-10">Registrierung</h3></svelte:fragment>
-				<Register />
 			</Step>
 		</Stepper>
 	</div>

@@ -51,68 +51,68 @@
 			</button>
 		</div>
 		<div class="px-14 pb-8">
-		<h3 class="h3 text-center mb-4">Verfügbare Sportarten</h3>
-		<div class="flex flex-wrap gap-4">
-			{#each $categoryData as available}
-				{#if !available.picked}
-					<button
-						style={available.selected ? 'box-shadow: 0 0 20px green; border-radius: 8px;' : ''}
-						class="card flex flex-col items-center justify-center bg-secondary-100 dark:bg-success-400 aspect-[1/1] sm:w-32 w-28 overflow-hidden"
-						on:click={() => {
-							available.selected = !available.selected;
-							buttonAddDisabled();
-						}}
-					>
-						<img
-							class="w-full h-full overflow-hidden object-cover"
-							src={available.imageSrc}
-							alt={available.imageSrc}
-						/>
-						<div class="my-2 text-center text-sm dark:text-black">{available.title}</div>
-					</button>
-				{/if}
-			{/each}
-		</div>
+			<h3 class="h3 text-center mb-4">Verfügbare Sportarten</h3>
+			<div class="flex flex-wrap gap-4">
+				{#each $categoryData as available}
+					{#if !available.picked}
+						<button
+							style={available.selected ? 'box-shadow: 0 0 20px green; border-radius: 8px;' : ''}
+							class="card flex flex-col items-center justify-center bg-secondary-100 dark:bg-success-400 aspect-[1/1] sm:w-32 w-28 overflow-hidden"
+							on:click={() => {
+								available.selected = !available.selected;
+								buttonAddDisabled();
+							}}
+						>
+							<img
+								class="w-full h-full overflow-hidden object-cover"
+								src={available.imageSrc}
+								alt={available.imageSrc}
+							/>
+							<div class="my-2 text-center text-sm dark:text-black">{available.title}</div>
+						</button>
+					{/if}
+				{/each}
+			</div>
 
-		<hr class="mt-10 h-1 rounded-full bg-black dark:bg-white" />
-		<h3 class="h3 text-center mt-8 mb-4">Lösche ausgewählte Sportarten</h3>
-		<div class="flex flex-wrap gap-4">
-			{#each $categoryData as selected}
-				{#if selected.picked}
-					<button
-						style={selected.selected
-							? 'box-shadow: 0 0 20px green; border-radius: 8px;'
-							: 'outline-style: none;'}
-						class="card flex flex-col items-center justify-center dark:bg-success-400 bg-secondary-100 aspect-[1/1] sm:w-32 w-28 overflow-hidden"
-						on:click={() => {
-							selected.selected = !selected.selected;
-							buttonRemoveDisabled();
-						}}
-					>
-						<img
-							class="w-full h-full overflow-hidden object-cover"
-							src={selected.imageSrc}
-							alt={selected.imageSrc}
-						/>
-						<div class="my-2 text-center text-sm dark:text-black">{selected.title}</div>
-					</button>
-				{/if}
-			{/each}
+			<hr class="mt-10 h-1 rounded-full bg-black dark:bg-white" />
+			<h3 class="h3 text-center mt-8 mb-4">Lösche ausgewählte Sportarten</h3>
+			<div class="flex flex-wrap gap-4">
+				{#each $categoryData as selected}
+					{#if selected.picked}
+						<button
+							style={selected.selected
+								? 'box-shadow: 0 0 20px green; border-radius: 8px;'
+								: 'outline-style: none;'}
+							class="card flex flex-col items-center justify-center dark:bg-success-400 bg-secondary-100 aspect-[1/1] sm:w-32 w-28 overflow-hidden"
+							on:click={() => {
+								selected.selected = !selected.selected;
+								buttonRemoveDisabled();
+							}}
+						>
+							<img
+								class="w-full h-full overflow-hidden object-cover"
+								src={selected.imageSrc}
+								alt={selected.imageSrc}
+							/>
+							<div class="my-2 text-center text-sm dark:text-black">{selected.title}</div>
+						</button>
+					{/if}
+				{/each}
+			</div>
+			<footer class="flex justify-between mt-28 gap-2">
+				<button
+					class="btn variant-filled md:px-7 px-5 py-2 hover:bg-tertiary-500 dark:hover:bg-primary-500"
+					on:click={add}
+					disabled={addDisabled}>Hinzufügen</button
+				>
+				<button
+					class="btn variant-filled md:px-7 px-5 py-2 hover:bg-error-500 dark:hover:bg-error-500"
+					on:click={remove}
+					disabled={removeDisabled}>Löschen</button
+				>
+			</footer>
 		</div>
-		<footer class="flex justify-between mt-28 gap-2">
-			<button
-				class="btn variant-filled md:px-7 px-5 py-2 hover:bg-tertiary-500 dark:hover:bg-primary-500"
-				on:click={add}
-				disabled={addDisabled}>Hinzufügen</button
-			>
-			<button
-				class="btn variant-filled md:px-7 px-5 py-2 hover:bg-error-500 dark:hover:bg-error-500"
-				on:click={remove}
-				disabled={removeDisabled}>Löschen</button
-			>
-		</footer>
 	</div>
-</div>
 {/if}
 
 <style>
