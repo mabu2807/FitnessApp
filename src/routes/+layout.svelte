@@ -1,4 +1,14 @@
 <script>
+
+// Your custom Skeleton theme:
+import '../theme.postcss';
+
+// This contains the bulk of Skeletons required styles:
+import '@skeletonlabs/skeleton/styles/skeleton.css';
+
+// Finally, your application's global stylesheet (sometimes labeled 'app.css')
+import '../app.postcss';
+						
 	import Head from '../components/Head.svelte';
 	import Footer from '../components/Footer.svelte';
 	import Navbar from '../components/Navbar.svelte';
@@ -7,14 +17,6 @@
 	import { storePopup } from '@skeletonlabs/skeleton';
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 
-	// Your selected custom theme:
-	import '../theme.postcss';
-
-	// This contains the bulk of Skeletons required styles:
-	import '@skeletonlabs/skeleton/styles/skeleton.css';
-
-	// Finally, your application's global stylesheet (sometimes labeled 'app.css')
-	import '../app.postcss';
 	import { AppShell } from '@skeletonlabs/skeleton';
 </script>
 
