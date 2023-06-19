@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { modalStore } from '@skeletonlabs/skeleton';
-	import { categoryData } from '../stores/Data';
+	import { categoryData, updateCategoryData } from '../stores/Data';
 
 	let addDisabled = true;
 	let removeDisabled = true;
@@ -13,6 +13,7 @@
 			element.selected = false;
 			modalStore.close();
 		});
+		updateCategoryData($categoryData);
 	}
 	function buttonAddDisabled() {
 		addDisabled = true;
@@ -21,6 +22,7 @@
 				addDisabled = false;
 			}
 		});
+		updateCategoryData($categoryData);
 	}
 
 	function remove() {
@@ -31,6 +33,7 @@
 			element.selected = false;
 			modalStore.close();
 		});
+		updateCategoryData($categoryData);
 	}
 
 	function buttonRemoveDisabled() {
