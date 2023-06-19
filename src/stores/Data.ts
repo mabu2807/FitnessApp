@@ -45,4 +45,4 @@ export const categoryData = writable([
 
 export function updateCategoryData(newData) {
 	categoryData.set(newData);
-  }
+}

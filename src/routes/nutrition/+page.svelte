@@ -16,7 +16,7 @@
 	let mealData = data.mealsforCards;
 	let maxCalories = 0;
 	let usedCalories = 0;
-	
+
 	if (data.allValues != undefined) {
 		usedCalories = data.allValues.calories[6];
 	}
@@ -24,7 +24,7 @@
 		maxCalories = data.allmaxValues.calories;
 	}
 
-	let progress: number = Math.round((usedCalories / maxCalories)*100 );
+	let progress: number = Math.round((usedCalories / maxCalories) * 100);
 	let image: string;
 	let buttonID: string | null = '';
 	let selected: string = 'energy';
@@ -41,7 +41,7 @@
 
 <main class="mt-24">
 	<header class="w-full h-80 flex items-center justify-center bg-[url('/header_food.jpeg')]">
-		<img class="w-full h-80" src="/header_food.jpeg" alt="food">
+		<img class="w-full h-80" src="/header_food.jpeg" alt="food" />
 	</header>
 	<!-- Section chart ond circle progress -->
 	<section class=" mt-4 flex flex-col lg:flex-row p-2">
@@ -108,9 +108,13 @@
 			</div>
 		</div>
 	</section>
-	<div class="bg-[url('/picture_nutritipps.png')] w-full h-80 flex items-center justify-center flex-col" >
+	<div
+		class="bg-[url('/picture_nutritipps.png')] w-full h-80 flex items-center justify-center flex-col"
+	>
 		<p class="text-center text-white decoration-10 font-extrabold text-xl">Ernährungs-Tipps</p>
-		<a href="/nutritiontipps"><button type="button" class="btn variant-filled m-1">Hier klicken!</button></a>
+		<a href="/nutritiontipps"
+			><button type="button" class="btn variant-filled m-1">Hier klicken!</button></a
+		>
 	</div>
 </main>
 

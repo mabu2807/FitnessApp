@@ -1,14 +1,13 @@
 <script>
+	// Your custom Skeleton theme:
+	import '../theme.postcss';
 
-// Your custom Skeleton theme:
-import '../theme.postcss';
+	// This contains the bulk of Skeletons required styles:
+	import '@skeletonlabs/skeleton/styles/skeleton.css';
 
-// This contains the bulk of Skeletons required styles:
-import '@skeletonlabs/skeleton/styles/skeleton.css';
+	// Finally, your application's global stylesheet (sometimes labeled 'app.css')
+	import '../app.postcss';
 
-// Finally, your application's global stylesheet (sometimes labeled 'app.css')
-import '../app.postcss';
-						
 	import Head from '../components/Head.svelte';
 	import Footer from '../components/Footer.svelte';
 	import Navbar from '../components/Navbar.svelte';

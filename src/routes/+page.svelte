@@ -160,7 +160,7 @@
 			/>
 			<textarea
 				value={form?.text ?? ''}
-				class="textarea p-2 mb-3 bg-secondary-100 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white "
+				class="textarea p-2 mb-3 bg-secondary-100 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white"
 				name="text"
 				placeholder="Nachricht"
 			/>
