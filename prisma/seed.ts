@@ -186,7 +186,7 @@ async function main() {
 			data: {
 				id: meal.id,
 				foodDiaryId: meal.foodDiaryId,
-				day: new Date,
+				day: new Date(),
 				time: meal.time,
 				dishId: meal.dishId
 			}

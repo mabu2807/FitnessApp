@@ -56,7 +56,7 @@
 		name: 'Georgiev, Aleks'
 	};
 
-	let checkMode = false;
+	let checkMode = true;
 </script>
 
 <Modal />
