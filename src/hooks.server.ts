@@ -12,44 +12,44 @@ export const handle = SvelteKitAuth({
     secret: 'mysecret',
     callbacks: {
         signIn: async ({profile}) => {
-            console.log(profile?.email)
-            let user_name = 'test'
-            let email = 'test@test.de'
-            let respone_user;
-            if(profile?.email !== undefined && profile?.email !== null){
-                email = profile.email
-            }
-            if(profile?.nickname !== undefined && profile?.nickname !== null){
-                user_name = profile?.nickname
-            }
+            // console.log(profile?.email)
+            // let user_name = 'test'
+            // let email = 'test@test.de'
+            // let respone_user;
+            // if(profile?.email !== undefined && profile?.email !== null){
+            //     email = profile.email
+            // }
+            // if(profile?.nickname !== undefined && profile?.nickname !== null){
+            //     user_name = profile?.nickname
+            // }
             
-            try {
-                respone_user = await prisma.user.findUnique({
-                    where: {
-                        email: email
-                    }
-                })
-            } catch (error) {
-                console.log(error)
-            }
+            // try {
+            //     respone_user = await prisma.user.findUnique({
+            //         where: {
+            //             email: email
+            //         }
+            //     })
+            // } catch (error) {
+            //     console.log(error)
+            // }
 
-            if(respone_user == null || respone_user == undefined){
-                const user:Prisma.UserCreateInput = {
-                    "email": email,
-                    "username": user_name,
-                    "password": null,
-                    "auth_method": "github"
-                }
-                try {
-                        await prisma.user.create({
-                            data:user
-                        })
+            // if(respone_user == null || respone_user == undefined){
+            //     const user:Prisma.UserCreateInput = {
+            //         "email": email,
+            //         "username": user_name,
+            //         "password": null,
+            //         "auth_method": "github"
+            //     }
+            //     try {
+            //             await prisma.user.create({
+            //                 data:user
+            //             })
                     
-                } catch (error) {
-                    console.log(error)
-                }
+            //     } catch (error) {
+            //         console.log(error)
+            //     }
 
-            }
+            // }
             
 
             
