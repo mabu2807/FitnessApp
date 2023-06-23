@@ -6,7 +6,7 @@
 	import { Toast, toastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
 	
-	import { page } from '$app/stores';
+
 
 	export let form: ActionData;
 
@@ -89,7 +89,7 @@
 				</div>
 			</form>
 			<form action="/">
-			<button on:click={() => signIn('github',{redirect: false, callbackUrl:'/'},{scpoe:'user:email profile'})}>Sign In with GitHub</button>
+			<button on:click={() => signIn('github',{redirect: true, callbackUrl:'/'})}>Sign In with GitHub</button>
 			</form>
 		</div>
 		<div

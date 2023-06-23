@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { each } from 'svelte/internal';
+	
 	import articles from '../../lib/testData/articles.json';
 	import Article from './article.svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
+	import { page } from '$app/stores';
 </script>
 
 <main class="mt-24">
@@ -20,5 +21,9 @@
 				<p>Keine Artikel gefunden!</p>
 			{/if}
 		</div>
+		{#if $page.data.session}
+			<p>{$page.data.session.user?.name}</p>
+
+		{/if}
 	</div>
 </main>
