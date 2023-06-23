@@ -91,8 +91,8 @@
 			><span class="text-white dark:text-black">Get Started</span></a
 		>
 	</section>
-	<section class="flex justify-center items-center flex-col w-full py-12 card-gradient">
-		<h2 class="h2 font-medium dark:text-black">Unsere Kurse</h2>
+	<section class="flex justify-center items-center flex-col w-full py-12 bg-gradient-to-b from-success-400 from-15% via-success-700 via-51% to-success-400 to-90%  dark:bg-gradient-to-b dark:from-surface-800 dark:from-15% dark:via-sky-700 dark:via-51% dark:to-surface-800 dark:to-90%">
+		<h2 class="h2 font-medium dark:text-white">Unsere Kurse</h2>
 		<div class="flex flex-wrap justify-center gap-10 p-12">
 			{#each courses as course}
 				<div class="card flex flex-col w-72 bg-success-400 shadow-xl">
@@ -195,11 +195,17 @@
 	}
 
 	.card-gradient {
-		background: linear-gradient(
-			180deg,
-			rgb(var(--color-success-400)) 35%,
-			rgb(var(--color-secondary-500)) 65%
-		);
+		/* background: rgb(35,44,63);
+background: linear-gradient(0deg, rgba(35,44,63,1) 10%, rgba(105,163,164,1) 51%, rgba(35,44,63,1) 96%);	 */
+			/* background-image: radial-gradient( at 0% 0%, rgba(var(--color-success-400) / 0.33) 0px, transparent 50% ), radial-gradient(at 100% 0%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 50%) */
+			background: rgb(39,43,54);
+			background: linear-gradient(0deg, rgba(var(--color-surface-800)) 10%, rgba(76,97,152,1) 51%, rgba(var(--color-surface-800)) 96%);
+		
+		}
+
+	.card-gradient-white {
+		background: rgb(241,241,241);
+background: linear-gradient(0deg, rgba(241,241,241,1) 10%, rgba(168,168,168,1) 51%, rgba(241,241,241,1) 96%);
 	}
 
 	/* .mid-gradient {
