@@ -21,9 +21,5 @@
 				<p>Keine Artikel gefunden!</p>
 			{/if}
 		</div>
-		{#if $page.data.session}
-			<p>{$page.data.session.user?.name}</p>
-
-		{/if}
 	</div>
 </main>
