@@ -110,6 +110,19 @@
 					{checkMode ? 'Light' : 'Dark'} Mode
 				</p>
 			</div>
+			<div class="flex flex-row items-center m-3 md:m-5">
+				<div class="mr-3 text-base md:text-lg dark:text-white text-black">
+					<i class="fa-solid fa-key" />
+				</div>
+
+				<button >
+					<a href="routes/impressum"
+						class="text-base md:text-lg dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+					>
+						Impressum
+				</a>
+				</button>
+			</div>
 		</div>
 
 		<div class="mt-12">
