@@ -23,5 +23,6 @@
 				/>
 			</a>
 		</div>
+		
 	</div>
 </footer>
