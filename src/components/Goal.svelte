@@ -22,6 +22,7 @@
 					? 'bg-tertiary-500 border-tertiary-700 dark:bg-primary-500 dark:border-primary-700'
 					: 'bg-success-400 dark:bg-success-400 border-black dark:border-white'}"
 				on:click={() => selectCard(goal.title)}
+				title = "goalCard"
 			>
 				<h5 class="h5 dark:text-black font-bold">{goal.title}</h5>
 				<p class="mt-3 dark:text-black text-sm">{goal.description}</p>
