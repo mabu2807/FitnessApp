@@ -49,7 +49,8 @@ export const actions = {
 			data: {
 				email: email,
 				username: username,
-				password: password
+				password: password,
+				auth_method:'Email'
 			}
 		});
 

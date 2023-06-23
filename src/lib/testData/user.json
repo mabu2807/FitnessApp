@@ -3,18 +3,21 @@
 		"id": 1,
 		"email": "markus@masse.de",
 		"username": "Mr. Masthuhn",
-		"password": "abc123"
+		"password": "abc123",
+		"auth_method": "github"
 	},
 	{
 		"id": 2,
 		"email": "carsten@cardio.de",
 		"username": "Mr. Marathon",
-		"password": "cvb321"
+		"password": "cvb321",
+		"auth_method": "github"
 	},
 	{
 		"id": 3,
 		"email": "anja@aquagymnastik.de",
 		"username": "Aqua Anja",
-		"password": "anja987"
+		"password": "anja987",
+		"auth_method": "github"
 	}
 ]

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { signOut } from '@auth/sveltekit/client';
 	import { AppBar, SlideToggle } from '@skeletonlabs/skeleton';
 	import { Avatar } from '@skeletonlabs/skeleton';
 	import { Drawer, Modal, drawerStore, popup } from '@skeletonlabs/skeleton';
@@ -9,6 +10,7 @@
 	import { modalStore } from '@skeletonlabs/skeleton';
 	import PasswordModal from './PasswordModal.svelte';
 	import PersonalModal from './PersonalModal.svelte';
+	import { page } from '$app/stores';
 
 	const drawerSettings: DrawerSettings = {
 		id: 'example-1',
@@ -113,7 +115,7 @@
 		</div>
 
 		<div class="mt-12">
-			<button
+			<button on:click={() => signOut()}
 				class="cursor-pointer px-5 py-3 border-2 border-black dark:text-black dark:border-white bg-success-400 font-bold hover:bg-tertiary-500 dark:hover:bg-primary-500 rounded-xl"
 			>
 				Abmelden <i class="fa-solid fa-right-from-bracket md:ml-10 ml-6" />
@@ -128,10 +130,12 @@
 			<img class="w-16" src="Logo.jpg" alt="" />
 		</a>
 		<p class="m-3 font-medium text-xl">FitnessHub</p>
+		{#if $page.data.session}
 		<button class="btn-icon btn-icon-sm lg:!hidden" use:popup={popupNavigation}>
 			<i class="fa-solid fa-bars text-2xl hover:text-tertiary-500 dark:hover:text-primary-500" />
 		</button>
 		<!-- popup -->
+		
 		<div class="card p-4 w-60 shadow-xl lg:!hidden" data-popup="popupNavigation">
 			<nav>
 				<ul>
@@ -169,8 +173,12 @@
 					</li>
 				</ul>
 			</nav>
-		</div></svelte:fragment
-	>
+		
+		</div>
+		{/if}
+		</svelte:fragment>
+
+	{#if $page.data.session}
 	<div class="p-5 hidden relative hidden lg:flex flex-row justify-center">
 		<a href="/"
 			><span
@@ -197,8 +205,11 @@
 			></a
 		>
 	</div>
+	{/if}
 
+	
 	<svelte:fragment slot="trail">
+		{#if $page.data.session}
 		<Avatar
 			src="profile.jpg"
 			fallback="profile.jpg"
@@ -206,5 +217,11 @@
 			cursor="cursor-pointer"
 			on:click={() => drawerStore.open(drawerSettings)}
 		/>
+		{/if}
 	</svelte:fragment>
+	{#if !$page.data.session}
+	<a href="/login"><button>Login</button></a>
+	{/if}
+	
+
 </AppBar>

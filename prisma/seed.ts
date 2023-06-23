@@ -25,7 +25,8 @@ async function main() {
 				id: user.id,
 				email: user.email,
 				username: user.username,
-				password: user.password
+				password: user.password,
+				auth_method: user.auth_method
 			}
 		});
 	}
@@ -193,7 +194,7 @@ async function main() {
 		});
 	}
 	for (const article of nutritionarticles) {
-		await prisma.nutritionTippsArticels.create({
+		await prisma.nutritionTippsArticles.create({
 			data: {
 				id: article.id,
 				title: article.title,

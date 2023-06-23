@@ -14,8 +14,9 @@ model User {
   id          Int          @id @default(autoincrement())
   email       String       @unique
   username    String
-  password    String
+  password    String?
   verified    Boolean      @default(false)
+  auth_method String
   userDetails UserDetails?
 }
 
@@ -166,10 +167,10 @@ model NutritionalValues {
   salt          Float
 }
 
-model NutritionTippsArticels {
+model NutritionTippsArticles {
   id        Int    @id @default(autoincrement())
   title     String
   text      String @db.LongText
   imagePath String
-  link      String
+  link      String @db.LongText
 }

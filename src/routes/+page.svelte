@@ -5,6 +5,7 @@
 	import type { ActionData, PageData } from './$types';
 	import { Toast, toastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
+	import { page } from '$app/stores';
 
 	export let form: ActionData;
 	export let data: PageData;
@@ -85,11 +86,13 @@
 		<h5 class="h5 mb-12 text-surface-500 dark:text-white">
 			Träume nicht dein Leben, sondern lebe deinen Traum!
 		</h5>
+		{#if !$page.data.session}
 		<a
 			href="/getStarted"
 			class="btn variant-filled inline-block px-4 py-2 hover:bg-tertiary-500 dark:hover:bg-primary-500"
 			><span class="text-white dark:text-black">Get Started</span></a
 		>
+		{/if}
 	</section>
 	<section class="flex justify-center items-center flex-col w-full py-12 card-gradient">
 		<h2 class="h2 font-medium dark:text-black">Unsere Kurse</h2>
