@@ -22,6 +22,12 @@
 					class="fab fa-linkedin text-black text-3xl dark:text-white hover:text-tertiary-500 dark:hover:text-primary-500"
 				/>
 			</a>
+			<a class="ml-6 text-black text-xl font-bold dark:text-white hover:text-tertiary-500 dark:hover:text-primary-500" href="impressum">
+				<!-- <i
+					class="fab fa-linkedin text-black text-3xl dark:text-white hover:text-tertiary-500 dark:hover:text-primary-500"
+				/> -->
+				Impressum
+			</a>
 		</div>
 	</div>
 </footer>
