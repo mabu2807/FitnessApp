@@ -1,4 +1,4 @@
-import registrationMail from '$lib/emails/verification-mail.svelte';
+import verificationMail from '$lib/emails/verification-mail.svelte';
 import { render } from 'svelte-email';
 import nodemailer from 'nodemailer';
 import nodemailMailgun from 'nodemailer-mailgun-transport';
@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport(nodemailMailgun(auth));
 
 export async function sendEmail(email: string, username: string, token: string) {
 	const emailHtml = render({
-		template: registrationMail,
+		template: verificationMail,
 		props: {
 			name: username,
 			token: token
