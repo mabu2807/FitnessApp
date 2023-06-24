@@ -13,11 +13,12 @@ const auth = {
 
 const transporter = nodemailer.createTransport(nodemailMailgun(auth));
 
-export async function sendEmail(email: string, username: string) {
+export async function sendEmail(email: string, username: string, token: string) {
 	const emailHtml = render({
 		template: registrationMail,
 		props: {
-			name: username
+			name: username,
+			token: token
 		}
 	});
 

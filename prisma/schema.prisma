@@ -16,6 +16,7 @@ model User {
   username    String
   password    String
   verified    Boolean      @default(false)
+  token       String       @unique
   userDetails UserDetails?
 }
 
@@ -171,5 +172,5 @@ model NutritionTippsArticels {
   title     String
   text      String @db.LongText
   imagePath String
-  link      String
+  link      String @db.LongText
 }
