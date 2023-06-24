@@ -45,15 +45,15 @@ export const actions = {
 			return { message: 'already registered' };
 		}
 
-		await prisma.user.create({
-			data: {
-				email: email,
-				username: username,
-				password: password
-			}
-		});
+		// await prisma.user.create({
+		// 	data: {
+		// 		email: email,
+		// 		username: username,
+		// 		password: password
+		// 	}
+		// });
 
-		// await sendEmail(email, username);
+		await sendEmail(email, username);
 
 		throw redirect(303, `/`);
 	}
