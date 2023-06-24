@@ -24,7 +24,7 @@
 
 <dialog bind:this={dialogAdd} on:close>
 	<p>Neue Mahlzeit hinzufügen</p>
-	<form method="POST" action="?/createMeal">
+	<form method="POST" action="?/createMealfromTemplate">
 		<div class="inputDishGeneral">
 			<div class="rowsInput">
 				<label for="category">Wähle eine Kategorie:</label>
@@ -71,9 +71,8 @@
 				{/each}
 			{/if}
 		</table>
-
-		<button id="btnCloseAdd" on:click={closeClick}>Close</button>
-		<button type="submit" on:click={saveChanges} on:click={closeClick}>Save</button>
+		<button id="btnCloseAdd" on:click={closeClick} type="button" class="btn variant-filled m-1">Close</button>
+		<button id="btnSaveAdd" on:click={saveChanges} on:click={closeClick}  type="submit" class="btn variant-filled m-1">Save</button>
 	</form>
 </dialog>
 
