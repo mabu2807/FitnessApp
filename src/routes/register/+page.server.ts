@@ -2,6 +2,7 @@ import prisma from '$lib/prisma';
 import { redirect } from '@sveltejs/kit';
 import type { Actions } from '../register/$types';
 import { sendEmail } from '$lib/emails/SendVerificationMail';
+import cryptoRandomString from 'crypto-random-string';
 
 const validateEmail = (email: string) => {
 	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -15,6 +16,7 @@ export const actions = {
 		const username = data.username;
 		const password = data.password;
 		const passwordConfirm = data.passwordConfirm;
+		const token = cryptoRandomString({ length: 32, type: 'url-safe' });
 
 		if (!email || !username || !password || !passwordConfirm) {
 			return { email, username, password, passwordConfirm, message: 'empty fields' };
@@ -49,11 +51,12 @@ export const actions = {
 			data: {
 				email: email,
 				username: username,
-				password: password
+				password: password,
+				token: token
 			}
 		});
 
-		// await sendEmail(email, username);
+		await sendEmail(email, username, token);
 
 		throw redirect(303, `/`);
 	}

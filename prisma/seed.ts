@@ -25,7 +25,8 @@ async function main() {
 				id: user.id,
 				email: user.email,
 				username: user.username,
-				password: user.password
+				password: user.password,
+				token: user.token
 			}
 		});
 	}
