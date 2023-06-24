@@ -12,7 +12,7 @@
 		<Img src="Logo.jpg" alt="Fitnesshub Logo" width="200" height="200" />
 		<p>Willkommen bei FitnessHub {name}!</p>
 		<p>Bitte bestätige deine E-Mail indem du auf den folgenden Knopf drückst:</p>
-		<a href="https://fitness-app-seven-nu.vercel.app//verify-email-token=${token}">
+		<a href="https://fitness-app-seven-nu.vercel.app/verify-email-token={token}">
 			<button>E-Mail bestätigen</button>
 		</a>
 		<p>
