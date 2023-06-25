@@ -91,7 +91,7 @@
 		</div>
 		<div class="rowAllCards">
 			<div class="cardGeneral">
-				{#if mealData[0] != null}
+				{#if mealData != null}
 					{#each mealData as meal}
 						<div class="cardContent">
 							<div class="rowMealtitleButton">
@@ -111,11 +111,11 @@
 								</div>
 							</div>
 							<div class="imageCard">
-								<img src={meal.dish.imagePath} alt="Meal Icon" height="150px" width="200px" />
+								<img src={meal.dish?.imagePath} alt="Meal Icon" height="150px" width="200px" />
 							</div>
 							<div class="textMealDescription">
-								<p>{meal.dish.name}</p>
-								<p>{meal.dish.nutritionalValues?.energy} kcal</p>
+								<p>{meal.dish?.name}</p>
+								<p>{meal.dish?.nutritionalValues?.energy} kcal</p>
 							</div>
 						</div>
 					{/each}
