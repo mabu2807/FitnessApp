@@ -116,11 +116,13 @@
 		<div class="flex justify-center mx-14 mb-10">
 			<button
 				class="hover:text-tertiary-500 dark:hover:text-primary-500 mr-1"
+				title= "nextReviewButton"
 				on:click={handleNext}
 				disabled={timeoutButton}><i class="fa-solid fa-arrow-up text-4xl" /></button
 			>
 			<button
 				class=" hover:text-tertiary-500 dark:hover:text-primary-500 mr-5"
+				title= "lastReviewButton"
 				on:click={handlePrevious}
 				disabled={timeoutButton}><i class="fa-solid fa-arrow-down text-4xl" /></button
 			>
