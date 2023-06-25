@@ -59,6 +59,11 @@ export const load = (async () => {
 			},
 			include: {
 				foodDiary: true,
+				customDish: {
+					include: {
+						nutritionalValues: true
+					}
+				},
 				dish: {
 					include: {
 						nutritionalValues: true
@@ -76,7 +81,13 @@ export const load = (async () => {
 				},
 				foodDiaryId: responseFoodDiaryID?.id
 			},
+			
 			include: {
+				customDish: {
+					include: {
+						nutritionalValues: true
+					}
+				},
 				dish: {
 					include: {
 						nutritionalValues: true
@@ -117,26 +128,29 @@ export const load = (async () => {
 	const carbohydratesperdayunsorted = [0, 0, 0, 0, 0, 0, 0];
 	const fatperdayunsorted = [0, 0, 0, 0, 0, 0, 0];
 	const proteinperdayunsorted = [0, 0, 0, 0, 0, 0, 0];
-	for (let i = 0; i < 7; i++) {
+	 for (let i = 0; i < 7; i++) {
 		for (let j = 0; j < responseUsermeals.length; j++) {
-			if (responseUsermeals[j].day.getDay() == i) {
+			if (responseUsermeals[j].day.getDay() === i) {
+				if(responseUsermeals[j].dish && responseUsermeals[j] && responseUsermeals){
 				calperdayunsorted[i] =
-					calperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.energy;
+					calperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.energy ?? 0);
 				saltperdayunsorted[i] =
-					saltperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.salt;
+					saltperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.salt ?? 0);
 				sugarperdayunsorted[i] =
-					sugarperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.sugar;
+					sugarperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.sugar ?? 0);
 				saturatedFatperdayunsorted[i] =
-					saturatedFatperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.saturatedFat;
+					saturatedFatperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.saturatedFat ?? 0);
 				carbohydratesperdayunsorted[i] =
 					carbohydratesperdayunsorted[i] +
-					responseUsermeals[j].dish.nutritionalValues.carbohydrates;
+					(responseUsermeals[j].dish?.nutritionalValues.carbohydrates ?? 0);
 				fatperdayunsorted[i] =
-					fatperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.fat;
+					fatperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.fat ?? 0);
 				proteinperdayunsorted[i] =
-					proteinperdayunsorted[i] + responseUsermeals[j].dish.nutritionalValues.protein;
-			}
-		}
+					proteinperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.protein ?? 0);
+				}	
+				}
+			
+		} 
 	}
 	const today = new Date();
 	let weekday = today.getDay();
@@ -182,11 +196,11 @@ export const load = (async () => {
 	const allmaxValues = allmaxvalues(responseUserDetails, maxCalories);
 
 	const chartdata = initChartData(allmaxValues, allValues);
-
+	console.log(responsedaymeal);
 	// -------------------------- return -------------------------------------------
 	return {
 		chartdata: chartdata,
-		mealsforCards: responsedaymeal,
+		mealforCard: responsedaymeal,
 		allmaxValues: allmaxValues,
 		allValues: allValues,
 		allDishes: responseAllDishes

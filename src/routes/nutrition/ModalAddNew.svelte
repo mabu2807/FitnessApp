@@ -30,6 +30,7 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <dialog
 	bind:this={dialog}
 	on:close={() => (showModal = false)}
@@ -42,7 +43,7 @@
 		<form
 			class="border border-surface-500 p-4 space-y-4 rounded-container-token"
 			method="POST"
-			action="createCustom"
+			action="?/createCustom"
 		>
 			<label class="label" for="category">
 				<span>Kategorie auswählen</span>
