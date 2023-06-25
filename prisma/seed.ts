@@ -25,7 +25,8 @@ async function main() {
 				id: user.id,
 				email: user.email,
 				username: user.username,
-				password: user.password
+				password: user.password,
+				token: user.token
 			}
 		});
 	}
@@ -186,7 +187,7 @@ async function main() {
 			data: {
 				id: meal.id,
 				foodDiaryId: meal.foodDiaryId,
-				day: new Date,
+				day: new Date(),
 				time: meal.time,
 				dishId: meal.dishId
 			}

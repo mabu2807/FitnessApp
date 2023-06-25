@@ -42,3 +42,7 @@ export const categoryData = writable([
 		picked: true
 	}
 ]);
+
+export function updateCategoryData(newData) {
+	categoryData.set(newData);
+}

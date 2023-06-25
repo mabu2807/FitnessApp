@@ -10,7 +10,7 @@
 	}
 
 	function startValue() {
-		dob = $getStartedData[3].value === '' ? '2001-12-09' : $getStartedData[3].value;
+		dob = $getStartedData[3].value === '' ? '2001-09-11' : $getStartedData[3].value;
 		$getStartedData[3].value = dob;
 	}
 
@@ -23,6 +23,7 @@
 			class="card card-hover bg-success-400 dark:bg-success-400 dark:text-black w-48 h-10 sm:text-xl text-lg p-5"
 			type="date"
 			id="dob"
+			title = "dob picker"
 			bind:value={dob}
 			on:input={updateDob}
 		/>

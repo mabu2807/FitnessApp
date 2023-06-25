@@ -28,7 +28,7 @@
 		if (formMessage() != null) {
 			const t: ToastSettings = {
 				message: formMessage(),
-				timeout: 2000
+				timeout: 3000
 			};
 			toastStore.trigger(t);
 		}
