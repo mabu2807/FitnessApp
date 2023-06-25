@@ -37,8 +37,6 @@ jobs:
         env:
           HEADLESS: true
         run: pnpm run test
-      - name: craete report
-        run: pnpm report-coverage
         
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
