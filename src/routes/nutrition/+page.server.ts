@@ -8,7 +8,7 @@ import type { Prisma } from '@prisma/client';
 //calculation max calories for the user per day
 function calcMaxCalories(userDetails: userdetail) {
 	let allCalories = 0;
-	if (userDetails.gender == 'm') {
+	if (userDetails.gender == 'male') {
 		allCalories = 24 * userDetails.weight;
 	} else {
 		allCalories = 0.9 * 24 * userDetails.weight;
@@ -194,7 +194,7 @@ export const load = (async () => {
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
-	createMeal: async ({ request }) => {
+	createMealfromTemplate: async ({ request }) => {
 		const data = await request.formData();
 		const selectDish = data.get('selectDish');
 		let category = data.get('category')?.toString();
@@ -219,6 +219,30 @@ export const actions: Actions = {
 			}
 		}
 	},
+	createCustomMeal: async ({ request }) => {
+		const data = await request.formData();
+		// const createData: Prisma.MealCreateWithoutFoodDiaryInput = {
+		// 	dish:{
+		// 		create:{
+
+		// 		}
+		// 	},
+		// 	day: new Date(),
+		// 	time: category,
+		// 	foodDiaryId: foodID
+		// };
+		
+		// try {
+		// 	await prisma.meal.create({
+		// 		data: createData
+		// 	})
+		// } catch (error) {
+		// 	return fail(400, {message: 'Meal konnte nicht angelegt werden, '})
+		// }
+
+		
+	},
+
 	updateMeal: async ({ request }) => {
 		const data = await request.formData();
 		console.log(data);

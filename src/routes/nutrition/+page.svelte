@@ -3,13 +3,24 @@
 	import Chart from './nutriChart.svelte';
 	import Dialog from './dialogEdit.svelte';
 	import DialogAdd from './dialogAdd.svelte';
-	let dialog: HTMLDialogElement;
-	let dialogAdd: HTMLDialogElement;
+	import ModalAdd from './ModalAddTemplate.svelte';
+	//import  Modal from '@skeletonlabs/skeleton';
+	import Modal from './ModalAddTemplate.svelte';
+
 	import type { PageData, ActionData } from './$types';
 	import type { MouseEventHandler } from 'svelte/elements';
 	//import { valueOrDefault } from 'chart.js/dist/helpers/helpers.core';
 	import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
-	import { ProgressRadial } from '@skeletonlabs/skeleton';
+	import { ProgressRadial, type ModalSettings } from '@skeletonlabs/skeleton';
+	import ModalAddNew from './ModalAddNew.svelte';
+	import ModalAddTemplate from './ModalAddTemplate.svelte';
+
+	let dialog: HTMLDialogElement;
+	let dialog2: HTMLDialogElement;
+	let dialogAdd: HTMLDialogElement;
+
+	let showModal = false;
+	let showModal2 = false;
 
 	export let data: PageData;
 	export let form: ActionData;
@@ -30,6 +41,11 @@
 	let selected: string = 'energy';
 	let chartData = data.chartdata;
 
+	const modal: ModalSettings = {
+		type: 'component',
+		component: 'ModalAdd'
+	};
+
 	const editCard: MouseEventHandler<HTMLButtonElement> = (event) => {
 		console.log(event.currentTarget.getAttribute('id'));
 		buttonID = event.currentTarget.getAttribute('id');
@@ -41,7 +57,9 @@
 
 <main class="mt-24">
 	<header class="w-full h-80 flex items-center justify-center bg-[url('/header_food.jpeg')]">
-		<img class="w-full h-80" src="/header_food.jpeg" alt="food" />
+		<p class="bg-slate-300 font-black text-center text-black decoration-10 text-6xl">
+			Ernährungs-Tagebuch
+		</p>
 	</header>
 	<!-- Section chart ond circle progress -->
 	<section class=" mt-4 flex flex-col lg:flex-row p-2">
@@ -62,12 +80,18 @@
 	<section class="w-full p-1.5">
 		<div class="flex flex-row w-3/5 items-center">
 			<p class="textTitle m-1">Mahlzeiten</p>
-			<button type="button" class="btn variant-filled m-1">Erstellen aus Template</button>
-			<button type="button" class="btn variant-filled m-1">Eigenes Erstellen</button>
+			<button on:click={() => (showModal2 = true)} type="button" class="btn variant-filled m-1"
+				>Erstellen aus Template</button
+			>
+			<ModalAddTemplate bind:showModal2 {data} />
+			<button on:click={() => (showModal = true)} type="button" class="btn variant-filled m-1"
+				>Eigenes Erstellen</button
+			>
+			<ModalAddNew bind:showModal {data} />
 		</div>
 		<div class="rowAllCards">
 			<div class="cardGeneral">
-				{#if mealData != undefined}
+				{#if mealData[0] != null}
 					{#each mealData as meal}
 						<div class="cardContent">
 							<div class="rowMealtitleButton">
@@ -99,13 +123,14 @@
 					<p>Heute noch nichts gegessen</p>
 				{/if}
 			</div>
+
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div class="cardGeneral" on:click={addMeal} on:click={() => dialogAdd.showModal()}>
+			<!-- <div class="cardGeneral" on:click={addMeal} on:click={() => dialogAdd.showModal()}>
 				<DialogAdd bind:dialogAdd {data} />
 				<div class="cardContent">
 					<h2 class="textAddMealTitle">Hier klicken um neue Mahlzeit hinzuzufügen</h2>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</section>
 	<div

@@ -9,10 +9,10 @@
 
 --- UI Update
 
--DONE header anpassen
+-DONE header  anpassen (Titel einfügen)
 -CircleProgressBar Update
 -DONE header mit foto updaten
--meal card neues skeleton layout
--neu add button
+-DONE meal card neues skeleton layout
+-DONE neu add button
 -DONE nutritiontipps link einbauen (bild mit button)
 
