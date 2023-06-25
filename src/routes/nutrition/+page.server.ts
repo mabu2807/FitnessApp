@@ -128,6 +128,7 @@ export const load = (async () => {
 	const carbohydratesperdayunsorted = [0, 0, 0, 0, 0, 0, 0];
 	const fatperdayunsorted = [0, 0, 0, 0, 0, 0, 0];
 	const proteinperdayunsorted = [0, 0, 0, 0, 0, 0, 0];
+	
 	 for (let i = 0; i < 7; i++) {
 		for (let j = 0; j < responseUsermeals.length; j++) {
 			if (responseUsermeals[j].day.getDay() === i) {
