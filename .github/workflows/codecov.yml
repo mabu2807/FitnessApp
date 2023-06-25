@@ -1,3 +1,34 @@
-- name: Upload coverage reports to Codecov
-  uses: codecov/codecov-action@v3
-   env: CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js and pnpm
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build app
+        run: pnpm run build
+
+      - name: Run Playwright tests
+        env:
+          HEADLESS: true
+        run: pnpm run test:playwright
