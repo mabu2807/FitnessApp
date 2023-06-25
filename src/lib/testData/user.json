@@ -3,6 +3,7 @@
 		"id": 1,
 		"email": "markus@masse.de",
 		"username": "Mr. Masthuhn",
+		"authMethod": "email",
 		"password": "abc123",
 		"token": "z123"
 	},
@@ -10,6 +11,7 @@
 		"id": 2,
 		"email": "carsten@cardio.de",
 		"username": "Mr. Marathon",
+		"authMethod": "email",
 		"password": "cvb321",
 		"token": "y456"
 	},
@@ -17,6 +19,7 @@
 		"id": 3,
 		"email": "anja@aquagymnastik.de",
 		"username": "Aqua Anja",
+		"authMethod": "email",
 		"password": "anja987",
 		"token": "x789"
 	}
