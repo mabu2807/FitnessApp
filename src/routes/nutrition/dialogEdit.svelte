@@ -5,12 +5,12 @@
 
 	export let form: ActionData;
 
-	export let mealdata: Meal;
+	export let mealdata: Meal | null;
 	export let dialog: HTMLDialogElement;
 	export let value: string | null;
 
-	let inputvalueCalories = mealdata.dish.nutritionalValues.energy;
-	let inputValueName = mealdata.dish.name;
+	let inputvalueCalories = mealdata?.dish?.nutritionalValues.energy ?? 0
+	let inputValueName = mealdata?.dish?.name ?? "";
 
 	const closeClick = () => {
 		dialog.close();

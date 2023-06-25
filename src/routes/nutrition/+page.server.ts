@@ -59,6 +59,11 @@ export const load = (async () => {
 			},
 			include: {
 				foodDiary: true,
+				customDish: {
+					include: {
+						nutritionalValues: true
+					}
+				},
 				dish: {
 					include: {
 						nutritionalValues: true
@@ -76,7 +81,13 @@ export const load = (async () => {
 				},
 				foodDiaryId: responseFoodDiaryID?.id
 			},
+			
 			include: {
+				customDish: {
+					include: {
+						nutritionalValues: true
+					}
+				},
 				dish: {
 					include: {
 						nutritionalValues: true
@@ -189,7 +200,7 @@ export const load = (async () => {
 	// -------------------------- return -------------------------------------------
 	return {
 		chartdata: chartdata,
-		mealsforCards: responsedaymeal,
+		mealforCard: responsedaymeal,
 		allmaxValues: allmaxValues,
 		allValues: allValues,
 		allDishes: responseAllDishes

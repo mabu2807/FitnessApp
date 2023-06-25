@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { each } from 'svelte/internal';
 	import articles from '../../lib/testData/articles.json';
 	import Article from './article.svelte';
 	import type { PageData } from './$types';

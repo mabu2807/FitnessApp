@@ -195,7 +195,7 @@ async function main() {
 		});
 	}
 	for (const article of nutritionarticles) {
-		await prisma.nutritionTippsArticels.create({
+		await prisma.nutritionTippsArticles.create({
 			data: {
 				id: article.id,
 				title: article.title,

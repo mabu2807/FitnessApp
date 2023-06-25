@@ -180,7 +180,7 @@ model NutritionalValues {
   salt          Float
 }
 
-model NutritionTippsArticels {
+model NutritionTippsArticles {
   id        Int    @id @default(autoincrement())
   title     String
   text      String @db.LongText
