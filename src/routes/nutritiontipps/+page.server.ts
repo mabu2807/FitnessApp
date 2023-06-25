@@ -6,7 +6,7 @@ export const load = (async () => {
 	let responseArticle;
 
 	try {
-		responseArticle = await prisma.nutritionTippsArticels.findMany();
+		responseArticle = await prisma.nutritionTippsArticles.findMany();
 	} catch (error) {
 		return fail(404, { message: 'No article found' });
 	}

@@ -71,8 +71,8 @@
 				{/each}
 			{/if}
 		</table>
-		<button id="btnCloseAdd" on:click={closeClick} type="button" class="btn variant-filled m-1">Close</button>
-		<button id="btnSaveAdd" on:click={saveChanges} on:click={closeClick}  type="submit" class="btn variant-filled m-1">Save</button>
+		<button id="btnCloseAdd" on:click={closeClick} type="button">Close</button>
+		<button id="btnSaveAdd" on:click={saveChanges} on:click={closeClick} type="submit">Save</button>
 	</form>
 </dialog>
 

@@ -57,7 +57,9 @@
 
 <main class="mt-24">
 	<header class="w-full h-80 flex items-center justify-center bg-[url('/header_food.jpeg')]">
-		<img class="w-full h-80" src="/header_food.jpeg" alt="food" />
+		<p class="bg-slate-300 font-black text-center text-black decoration-10 text-6xl">
+			Ernährungs-Tagebuch
+		</p>
 	</header>
 	<!-- Section chart ond circle progress -->
 	<section class=" mt-4 flex flex-col lg:flex-row p-2">
@@ -89,7 +91,7 @@
 		</div>
 		<div class="rowAllCards">
 			<div class="cardGeneral">
-				{#if mealData != undefined}
+				{#if mealData[0] != null}
 					{#each mealData as meal}
 						<div class="cardContent">
 							<div class="rowMealtitleButton">
@@ -123,12 +125,12 @@
 			</div>
 
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div class="cardGeneral" on:click={addMeal} on:click={() => dialogAdd.showModal()}>
+			<!-- <div class="cardGeneral" on:click={addMeal} on:click={() => dialogAdd.showModal()}>
 				<DialogAdd bind:dialogAdd {data} />
 				<div class="cardContent">
 					<h2 class="textAddMealTitle">Hier klicken um neue Mahlzeit hinzuzufügen</h2>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</section>
 	<div
