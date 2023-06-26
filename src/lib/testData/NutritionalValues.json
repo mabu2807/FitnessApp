@@ -28,5 +28,55 @@
 		"sugar": 15,
 		"protein": 40,
 		"salt": 2
+	},
+	{
+		"id": 4,
+		"energy": 618,
+		"fat": 29.1,
+		"saturedFat": 15,
+		"carbohydrates": 32.2,
+		"sugar": 8,
+		"protein": 56.1,
+		"salt": 2
+	},
+	{
+		"id": 5,
+		"energy": 410,
+		"fat": 38.5,
+		"saturedFat": 15,
+		"carbohydrates": 38.5,
+		"sugar": 5,
+		"protein": 11.7,
+		"salt": 3
+	}
+	,{
+		"id": 6,
+		"energy": 275,
+		"fat": 7.6,
+		"saturedFat": 3.4,
+		"carbohydrates": 40,
+		"sugar": 15,
+		"protein": 10.8,
+		"salt": 3.5
+	}
+	,{
+		"id": 7,
+		"energy": 1330,
+		"fat": 32.3,
+		"saturedFat": 21,
+		"carbohydrates": 40,
+		"sugar": 15,
+		"protein": 40.9,
+		"salt": 2
+	},
+	{
+		"id": 8,
+		"energy": 402,
+		"fat": 34.7,
+		"saturedFat": 12,
+		"carbohydrates": 15.7,
+		"sugar": 3,
+		"protein": 6.1,
+		"salt": 1
 	}
 ]
