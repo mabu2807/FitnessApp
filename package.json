@@ -15,6 +15,7 @@
 		"format": "prettier --plugin-search-dir . --write .",
 		"prepublish": "prettier --plugin-search-dir . --write . && prettier  --check . && eslint ."
 	},
+	
 	"devDependencies": {
 		"@playwright/test": "^1.35.1",
 		"@skeletonlabs/skeleton": "^1.8.0",
