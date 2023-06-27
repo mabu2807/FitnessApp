@@ -3,10 +3,13 @@ CREATE TABLE `User` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(191) NOT NULL,
     `username` VARCHAR(191) NOT NULL,
-    `password` VARCHAR(191) NOT NULL,
+    `password` VARCHAR(191) NULL,
+    `authMethod` VARCHAR(191) NOT NULL,
     `verified` BOOLEAN NOT NULL DEFAULT false,
+    `token` VARCHAR(191) NOT NULL,
 
     UNIQUE INDEX `User_email_key`(`email`),
+    UNIQUE INDEX `User_token_key`(`token`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -16,13 +19,28 @@ CREATE TABLE `UserDetails` (
     `gender` VARCHAR(191) NOT NULL,
     `weight` DOUBLE NOT NULL,
     `height` INTEGER NOT NULL,
+    `dob` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `activityLevel` INTEGER NOT NULL,
 
     PRIMARY KEY (`userId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
+CREATE TABLE `Review` (
+    `id` VARCHAR(191) NOT NULL,
+    `userName` VARCHAR(191) NOT NULL,
+    `text` VARCHAR(191) NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
 CREATE TABLE `TrainingPlan` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(191) NOT NULL,
+    `description` VARCHAR(191) NOT NULL,
+    `imagePath` VARCHAR(191) NOT NULL,
+    `categoryId` INTEGER NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -51,6 +69,7 @@ CREATE TABLE `Category` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
     `description` VARCHAR(191) NOT NULL,
+    `imagePath` VARCHAR(191) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -121,8 +140,20 @@ CREATE TABLE `Meal` (
     `foodDiaryId` INTEGER NOT NULL,
     `day` DATETIME(3) NOT NULL,
     `time` VARCHAR(191) NOT NULL,
-    `dishId` INTEGER NOT NULL,
+    `dishId` INTEGER NULL,
+    `customDishId` INTEGER NULL,
 
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `customDish` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(191) NOT NULL,
+    `imagePath` VARCHAR(191) NOT NULL,
+    `nutritionalValuesId` INTEGER NOT NULL,
+
+    UNIQUE INDEX `customDish_nutritionalValuesId_key`(`nutritionalValuesId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -141,12 +172,23 @@ CREATE TABLE `Dish` (
 CREATE TABLE `NutritionalValues` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `energy` INTEGER NOT NULL,
-    `fat` DOUBLE NULL,
-    `saturatedFat` DOUBLE NULL,
-    `carbohydrates` DOUBLE NULL,
-    `sugar` DOUBLE NULL,
-    `protein` DOUBLE NULL,
-    `salt` DOUBLE NULL,
+    `fat` DOUBLE NOT NULL,
+    `saturatedFat` DOUBLE NOT NULL,
+    `carbohydrates` DOUBLE NOT NULL,
+    `sugar` DOUBLE NOT NULL,
+    `protein` DOUBLE NOT NULL,
+    `salt` DOUBLE NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `NutritionTippsArticles` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(191) NOT NULL,
+    `text` LONGTEXT NOT NULL,
+    `imagePath` VARCHAR(191) NOT NULL,
+    `link` LONGTEXT NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -171,6 +213,9 @@ CREATE TABLE `_ExerciseTemplateToSessionTemplate` (
 
 -- AddForeignKey
 ALTER TABLE `UserDetails` ADD CONSTRAINT `UserDetails_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `TrainingPlan` ADD CONSTRAINT `TrainingPlan_categoryId_fkey` FOREIGN KEY (`categoryId`) REFERENCES `Category`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `UserTrainingPlan` ADD CONSTRAINT `UserTrainingPlan_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `UserDetails`(`userId`) ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -206,7 +251,13 @@ ALTER TABLE `FoodDiary` ADD CONSTRAINT `FoodDiary_userId_fkey` FOREIGN KEY (`use
 ALTER TABLE `Meal` ADD CONSTRAINT `Meal_foodDiaryId_fkey` FOREIGN KEY (`foodDiaryId`) REFERENCES `FoodDiary`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Meal` ADD CONSTRAINT `Meal_dishId_fkey` FOREIGN KEY (`dishId`) REFERENCES `Dish`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Meal` ADD CONSTRAINT `Meal_dishId_fkey` FOREIGN KEY (`dishId`) REFERENCES `Dish`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Meal` ADD CONSTRAINT `Meal_customDishId_fkey` FOREIGN KEY (`customDishId`) REFERENCES `customDish`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `customDish` ADD CONSTRAINT `customDish_nutritionalValuesId_fkey` FOREIGN KEY (`nutritionalValuesId`) REFERENCES `NutritionalValues`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Dish` ADD CONSTRAINT `Dish_nutritionalValuesId_fkey` FOREIGN KEY (`nutritionalValuesId`) REFERENCES `NutritionalValues`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

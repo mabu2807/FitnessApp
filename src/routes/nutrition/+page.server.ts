@@ -2,7 +2,7 @@ import prisma from '$lib/prisma';
 import { fail } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 import { initChartData, allmaxvalues } from './initChartData';
-import type { userdetail } from './nutritionTypes';
+import type { Dish, userdetail } from './nutritionTypes';
 import type { Prisma } from '@prisma/client';
 
 //calculation max calories for the user per day
@@ -197,7 +197,7 @@ export const load = (async () => {
 	const allmaxValues = allmaxvalues(responseUserDetails, maxCalories);
 
 	const chartdata = initChartData(allmaxValues, allValues);
-	console.log(responsedaymeal);
+	
 	// -------------------------- return -------------------------------------------
 	return {
 		chartdata: chartdata,
@@ -236,26 +236,69 @@ export const actions: Actions = {
 	},
 	createCustomMeal: async ({ request }) => {
 		const data = await request.formData();
-		// const createData: Prisma.MealCreateWithoutFoodDiaryInput = {
-		// 	dish:{
-		// 		create:{
-
-		// 		}
-		// 	},
-		// 	day: new Date(),
-		// 	time: category,
-		// 	foodDiaryId: foodID
-		// };
+		console.log(data)
+		const name = data.get('mealText')?.toString();
+		const category = data.get('category')?.toString() ?? 'Snack';
+		const calories = Number(data.get('calories'));
+		const fat = Number(data.get('fat')) ?? 0;
+		const sugar = Number(data.get('sugar')) ?? 0;
+		const salt = Number(data.get('salt')) ?? 0;
+		const protein = Number(data.get('protein')) ?? 0;
+		const carbohydrates = Number(data.get('carbohydrates')) ?? 0;
+		const saturatedFat = Number(data.get('saturatedFat')) ?? 0;
+		const day = new Date();
+		const foodID = 1;
+		let selected_customDish = null
+		console.log(name)
+		if (name == undefined) {
+			return fail(403, { message: 'Bitte geben Sie einen Namen ein' });
+		}
+		if(calories == undefined){
+			return fail(403, { message: 'Bitte geben Sie eine Kalorienanzahl ein' });
+		}
+		const customDish: Prisma.customDishCreateInput = {
+			name: name,
+			imagePath: 'test',
+			nutritionalValues: {
+				create: {
+					energy: calories,
+					fat: fat,
+					sugar: sugar,
+					salt: salt,
+					protein: protein,
+					carbohydrates: carbohydrates,
+					saturatedFat: saturatedFat
+				}
+			}
+		};
+		console.log(customDish)
+		await prisma.customDish.create({
+			data: customDish
+		});
+		const lastcustomDish = await prisma.customDish.findMany()
+		if(lastcustomDish.length != 0){
+			selected_customDish = lastcustomDish[lastcustomDish.length - 1]
+		}
+		if (selected_customDish == undefined){
+			return fail(403, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
+		}
+		console.log(selected_customDish)
+		const customMeal: Prisma.MealUncheckedCreateInput = {
+			day: day,
+			time: category,
+			foodDiaryId: foodID,
+			customDishId: selected_customDish.id
+		};
+		console.log(customMeal)
 		
-		// try {
-		// 	await prisma.meal.create({
-		// 		data: createData
-		// 	})
-		// } catch (error) {
-		// 	return fail(400, {message: 'Meal konnte nicht angelegt werden, '})
-		// }
 
-		
+		try {
+			await prisma.meal.create({
+				data: customMeal
+			});
+		} catch (error) {
+			return fail(400, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
+		}
 	},
 
 	updateMeal: async ({ request }) => {
