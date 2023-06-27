@@ -91,8 +91,8 @@
 			><span class="text-white dark:text-black">Get Started</span></a
 		>
 	</section>
-	<div class="w-72 h-1 rounded-full dark:bg-white" />
 	<section class="flex justify-center items-center flex-col w-full py-12 bg-gradient-to-b from-success-400 from-15% via-success-700 via-51% to-success-400 to-90%  dark:bg-gradient-to-b dark:from-surface-800 dark:from-15% dark:via-sky-700 dark:via-51% dark:to-surface-800 dark:to-90%">
+		<div class="w-72 h-1 mb-24 rounded-full dark:bg-white" />
 		<h2 class="h2 font-medium dark:text-white">Unsere Kurse</h2>
 		<div class="flex flex-wrap justify-center gap-10 p-12">
 			{#each courses as course}

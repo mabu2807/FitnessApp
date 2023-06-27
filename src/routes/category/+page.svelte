@@ -24,8 +24,8 @@
 	<p class="text-lg">Bleib dran und zieh durch!</p>
 </section>
 
-<div class="mid-gradient">
-	<section class="flex flex-wrap justify-center gap-8 p-16 shadow-xl">
+<div class="bg-gradient-to-b from-success-400 from-15% via-success-700 via-51% to-success-400 to-90%  dark:bg-gradient-to-b dark:from-surface-800 dark:from-15% dark:via-sky-700 dark:via-51% dark:to-surface-800 dark:to-90%">
+	<section class="flex flex-wrap justify-center gap-8 p-16 ">
 		{#each $categoryData as item}
 			{#if item.picked}
 				<a
@@ -47,7 +47,8 @@
 		{/each}
 	</section>
 
-	<section class="py-16 px-8 text-center">
+	<section class="flex items-center justify-center flex-col py-16 px-8 text-center">
+		<div class="w-96 h-1 mb-20 rounded-full dark:bg-white" />
 		<h3 class="h3 font-medium mb-3">Weitere Sportarten hinzufügen</h3>
 		<p class="mb-5">Du hast eine neue Sportart für dich entdeckt? Dann füge sie einfach hinzu...</p>
 		<div class="flex items-center justify-center mt-8">

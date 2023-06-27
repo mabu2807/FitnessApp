@@ -1,4 +1,4 @@
-<footer class="w-full h-20 px-6 shadow-inner">
+<footer class="w-full h-20 px-6 shadow-inner dark:bg-surface-800">
 	<div class="flex items-center justify-center h-full">
 		<p class="text-sm md:text-base font-bold">© 2023 FitnessHub. All rights reserved.</p>
 		<div class="flex ml-6">

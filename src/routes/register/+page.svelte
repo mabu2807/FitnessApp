@@ -44,7 +44,7 @@
 <section class="flex items-center justify-center pt-32 pb-28 dark:bg-surface-800 ">
 	<div class="lg:w-3/4 w-5/6 sm:flex my-20">
 		<div
-			class="sm:w-1/2 w-full p-8 bg-gradient-to-b from-success-400 from-15% via-success-700 via-51% to-success-400 to-90%  dark:bg-gradient-to-b dark:from-surface-900 dark:from-15% dark:via-sky-700 dark:via-51% dark:to-surface-900 dark:to-90%   sm:rounded-tl-xl sm:rounded-bl-xl rounded-tl-xl sm:rounded-tr-none rounded-tr-xl"
+			class="sm:w-1/2 w-full p-8 bg-gradient-to-b from-success-400 from-15% via-success-700 via-51% to-success-400 to-90%  dark:bg-gradient-to-b dark:from-surface-500 dark:from-15% dark:via-sky-700 dark:via-51% dark:to-surface-500 dark:to-90%   sm:rounded-tl-xl sm:rounded-bl-xl rounded-tl-xl sm:rounded-tr-none rounded-tr-xl"
 		>
 			<h3 class="md:text-2xl md:mx-3 lg:mx-4 sm:text-lg text-2xl font-semibold mb-8 mx-2">
 				Noch etwas Persönliches
@@ -87,7 +87,7 @@
 			</form>
 		</div>
 		<div
-			class="sm:w-1/2 w-full flex flex-col justify-center items-center bg-gradient-to-b from-success-400 from-15% via-success-700 via-51% to-success-400 to-90% dark:bg-gradient-to-b dark:from-surface-900 dark:from-15% dark:via-sky-700 dark:via-51% dark:to-surface-900 dark:to-90%  sm:rounded-tr-xl sm:rounded-br-xl sm:rounded-bl-none rounded-bl-xl rounded-br-xl"
+			class="sm:w-1/2 w-full flex flex-col justify-center items-center bg-gradient-to-b from-success-400 from-15% via-success-700 via-51% to-success-400 to-90% dark:bg-gradient-to-b dark:from-surface-500 dark:from-15% dark:via-sky-700 dark:via-51% dark:to-surface-500 dark:to-90%  sm:rounded-tr-xl sm:rounded-br-xl sm:rounded-bl-none rounded-bl-xl rounded-br-xl"
 		>
 			<div class="h-1 w-3/5 bg-black dark:bg-white rounded-full sm:mb-14 mb-5 sm:mt-0 mt-10" />
 			<div class="mb-6">

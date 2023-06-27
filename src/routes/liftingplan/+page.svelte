@@ -37,14 +37,14 @@
 	];
 </script>
 
-<div class="bg-gradient">
+<div class="bg-white dark:bg-surface-800">
 	<section class="mt-24 p-16 flex items-center text-center justify-center flex-col">
 		<h2 class="h2 font-medium">Alle Trainingspläne dieser Sportart</h2>
 		<h5 class="h5 mt-4">Wähle das Workout, welches am besten zu dir und deinem Bizeps passt!</h5>
 	</section>
 	<section class="flex flex-wrap justify-center gap-x-6 mx-10 mb-12">
 		{#each testPlans as plan}
-			<div class="card md:w-80 w-60 mb-8 bg-success-400 p-3">
+			<div class="card md:w-80 w-60 mb-8 bg-success-400 dark:bg-surface-500 p-3">
 				<img src={plan.image} alt={plan.title} class="md:h-72 h-52 rounded-md object-cover" />
 				<div class="m-3">
 					<h3 class="h3 mb-3 font-bold">{plan.title}</h3>

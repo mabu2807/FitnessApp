@@ -189,7 +189,7 @@
 
 <Head />
 
-<section class="text-center w-full mx-auto px-6 py-10 md:py-16 mt-24 top-gradient">
+<section class="text-center w-full mx-auto px-6 py-10 md:py-16 mt-24 dark:bg-surface-800 ">
 	<h2 class="h2 mb-5">Verfolge deine Trainingspläne</h2>
 	<p class="text-sm md:text-lg mb-12">
 		Nutze die Möglichkeit deinen Trainingsplan zu verfolgen und deine entdecke deine Stärken und
@@ -200,7 +200,7 @@
 	</div>
 </section>
 
-<div class="bottom-gradient pt-7 pb-14">
+<div class="dark:bg-gradient-to-b dark:from-surface-800 dark:from-15% dark:via-sky-700 dark:via-51% dark:to-surface-800 dark:to-90% pt-7 pb-14">
 	{#each trainingPlans as trainingPlan, planIndex}
 		<!-- selection wrapper -->
 		<section class="flex justify-center items-center mb-14 flex-col text-center">
