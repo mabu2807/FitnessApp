@@ -2,7 +2,7 @@ import prisma from '$lib/prisma';
 import { fail } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 import { initChartData, allmaxvalues } from './initChartData';
-import type { Dish, userdetail } from './nutritionTypes';
+import type { userdetail } from './nutritionTypes';
 import type { Prisma } from '@prisma/client';
 
 //calculation max calories for the user per day
@@ -132,22 +132,22 @@ export const load = (async () => {
 	 for (let i = 0; i < 7; i++) {
 		for (let j = 0; j < responseUsermeals.length; j++) {
 			if (responseUsermeals[j].day.getDay() === i) {
-				if(responseUsermeals[j].dish && responseUsermeals[j] && responseUsermeals){
+				if(responseUsermeals[j].dish || responseUsermeals[j].customDish){
 				calperdayunsorted[i] =
-					calperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.energy ?? 0);
+					calperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.energy ?? responseUsermeals[j].customDish?.nutritionalValues.energy ?? 0);
 				saltperdayunsorted[i] =
-					saltperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.salt ?? 0);
+					saltperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.salt ?? responseUsermeals[j].customDish?.nutritionalValues.salt ?? 0);
 				sugarperdayunsorted[i] =
-					sugarperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.sugar ?? 0);
+					sugarperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.sugar ?? responseUsermeals[j].customDish?.nutritionalValues.sugar ?? 0);
 				saturatedFatperdayunsorted[i] =
-					saturatedFatperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.saturatedFat ?? 0);
+					saturatedFatperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.saturatedFat ?? responseUsermeals[j].customDish?.nutritionalValues.saturatedFat ?? 0);
 				carbohydratesperdayunsorted[i] =
 					carbohydratesperdayunsorted[i] +
-					(responseUsermeals[j].dish?.nutritionalValues.carbohydrates ?? 0);
+					(responseUsermeals[j].dish?.nutritionalValues.carbohydrates ?? responseUsermeals[j].customDish?.nutritionalValues.carbohydrates ?? 0);
 				fatperdayunsorted[i] =
-					fatperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.fat ?? 0);
+					fatperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.fat ?? responseUsermeals[j].customDish?.nutritionalValues.fat ?? 0);
 				proteinperdayunsorted[i] =
-					proteinperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.protein ?? 0);
+					proteinperdayunsorted[i] + (responseUsermeals[j].dish?.nutritionalValues.protein ?? responseUsermeals[j].customDish?.nutritionalValues.protein ?? 0);
 				}	
 				}
 			
@@ -197,7 +197,6 @@ export const load = (async () => {
 	const allmaxValues = allmaxvalues(responseUserDetails, maxCalories);
 
 	const chartdata = initChartData(allmaxValues, allValues);
-	console.log(responsedaymeal)
 	
 	// -------------------------- return -------------------------------------------
 	return {
@@ -236,6 +235,7 @@ export const actions: Actions = {
 		}
 	},
 	createCustomMeal: async ({ request }) => {
+		let imagePath = ''
 		const data = await request.formData();
 		const name = data.get('mealText')?.toString();
 		const category = data.get('category')?.toString() ?? 'Snack';
@@ -256,9 +256,23 @@ export const actions: Actions = {
 		if(calories == undefined){
 			return fail(403, { message: 'Bitte geben Sie eine Kalorienanzahl ein' });
 		}
+		switch (category) {
+			case 'Abendessen':
+				imagePath = 'dinner2.jpeg'
+				break;
+			case 'Frühstück':
+				imagePath= 'breakfast2.webp'
+				break;
+			case 'Mittagessen':
+				imagePath = 'lunch2.jpeg'
+				break;
+			default:
+				imagePath = 'dinner2.jpeg'
+				break;
+		}
 		const customDish: Prisma.customDishCreateInput = {
 			name: name,
-			imagePath: 'test',
+			imagePath: imagePath,
 			nutritionalValues: {
 				create: {
 					energy: calories,
