@@ -10,7 +10,7 @@
 	import { lockedGoal, lockedGender } from '../../stores/Data';
 </script>
 
-<section class="flex justify-center mt-32 mb-20">
+<section class="flex justify-center pt-32 pb-20  dark:bg-surface-800">
 	<div class="card w-3/4 m-10 shadow-xl sm:p-8 p-4 items-center bottom-gradient">
 		<Stepper
 			buttonBack="btn variant-ghost hover:bg-tertiary-400 dark:hover:bg-primary-400"
@@ -67,9 +67,9 @@
 	.bottom-gradient {
 		background-image: radial-gradient(
 				at 0% 99%,
-				rgba(var(--color-secondary-500) / 0.23) 0px,
+				rgba(var(--color-secondary-300) / 0.23) 0px,
 				transparent 70%
 			),
-			radial-gradient(at 100% 100%, rgba(var(--color-success-400) / 0.19) 0px, transparent 30%);
+			radial-gradient(at 100% 100%, rgba(var(--color-success-200) / 0.19) 0px, transparent 30%);
 	}
 </style>
