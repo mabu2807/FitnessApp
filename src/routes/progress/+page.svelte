@@ -200,7 +200,7 @@
 	</div>
 </section>
 
-<div class="dark:bg-gradient-to-b dark:from-surface-800 dark:from-15% dark:via-sky-700 dark:via-51% dark:to-surface-800 dark:to-90% pt-7 pb-14">
+<div class="dark:bg-gradient-to-b dark:from-surface-800 dark:from-10% dark:via-sky-700 dark:via-31% dark:to-surface-800 dark:to-75% pt-7 pb-14">
 	{#each trainingPlans as trainingPlan, planIndex}
 		<!-- selection wrapper -->
 		<section class="flex justify-center items-center mb-14 flex-col text-center">
@@ -209,7 +209,7 @@
 				{#each trainingPlan.exercises as exercise, exerciseIndex}
 					<!-- exercise-container class -->
 					<div
-						class="card bg-success-400 p-3 exercise-container"
+						class="card bg-success-400 p-3 exercise-container dark:bg-surface-500"
 						on:keydown={() => {
 							selectedTrainingPlan = trainingPlan;
 							selectedExerciseIndex = exerciseIndex;
@@ -218,13 +218,13 @@
 						<h3 class="h3 mt-3 mb-5">{exercise.name}</h3>
 						<div class="p-3">
 							<input
-								class="input bg-secondary-100 dark:bg-surface-500 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white px-3 py-1 mb-2 lg:text-base text-sm"
+								class="input bg-secondary-100 dark:bg-surface-800 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white px-3 py-1 mb-2 lg:text-base text-sm"
 								type="number"
 								placeholder="Wiederholungen"
 								bind:value={weightInput[planIndex][exerciseIndex]}
 							/>
 							<input
-								class="input bg-secondary-100 dark:bg-surface-500 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white px-3 py-1 lg:text-base text-sm"
+								class="input bg-secondary-100 dark:bg-surface-800 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white px-3 py-1 lg:text-base text-sm"
 								type="number"
 								placeholder="Gewicht"
 								bind:value={weightInput2[planIndex][exerciseIndex]}
@@ -235,13 +235,13 @@
 									on:click={() => addWeight(planIndex, exerciseIndex)}>Hinzufügen</button
 								>
 								<button
-									class="btn variant-soft overflow-hidden lg:text-base text-sm hover:bg-tertiary-400 dark:hover:bg-primary-400"
+									class="btn variant-soft overflow-hidden lg:text-base text-sm hover:bg-tertiary-400 dark:bg-success-600 dark:text-black hover:text-black dark:hover:bg-primary-400"
 									on:click={() => toggleChartType(planIndex, exerciseIndex)}
 									>Diagrammtyp ändern</button
 								>
 							</div>
 							<canvas
-								class="card bg-secondary-100 dark:bg-surface-500 text-black dark:text-white mt-10"
+								class="card bg-secondary-100 dark:bg-surface-800 text-black dark:text-white mt-10"
 							/>
 						</div>
 					</div>
