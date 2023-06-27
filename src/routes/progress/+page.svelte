@@ -181,10 +181,8 @@
 		const chartIndex = planIndex * trainingPlans[0].exercises.length + exerciseIndex;
 		const chart = charts[chartIndex];
 
-		// Ändere den Diagrammtyp von 'line' zu 'bar' oder umgekehrt
 		chart.config.type = chart.config.type === 'line' ? 'bar' : 'line';
 
-		// Aktualisiere das Diagramm, um die Änderungen anzuzeigen
 		chart.update();
 	}
 </script>
