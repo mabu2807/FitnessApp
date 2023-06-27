@@ -111,11 +111,11 @@
 								</div>
 							</div>
 							<div class="imageCard">
-								<img src={meal.dish?.imagePath} alt="Meal Icon" height="150px" width="200px" />
+								<img src={meal.dish?.imagePath ?? meal.customDish?.imagePath} alt="Meal Icon" height="150px" width="200px" />
 							</div>
 							<div class="textMealDescription">
-								<p>{meal.dish?.name}</p>
-								<p>{meal.dish?.nutritionalValues?.energy} kcal</p>
+								<p>{meal.dish?.name ?? meal.customDish?.name}</p>
+								<p>{meal.dish?.nutritionalValues?.energy ?? meal.customDish?.nutritionalValues.energy} kcal</p>
 							</div>
 						</div>
 					{/each}

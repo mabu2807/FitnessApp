@@ -197,6 +197,7 @@ export const load = (async () => {
 	const allmaxValues = allmaxvalues(responseUserDetails, maxCalories);
 
 	const chartdata = initChartData(allmaxValues, allValues);
+	console.log(responsedaymeal)
 	
 	// -------------------------- return -------------------------------------------
 	return {
@@ -236,7 +237,6 @@ export const actions: Actions = {
 	},
 	createCustomMeal: async ({ request }) => {
 		const data = await request.formData();
-		console.log(data)
 		const name = data.get('mealText')?.toString();
 		const category = data.get('category')?.toString() ?? 'Snack';
 		const calories = Number(data.get('calories'));
@@ -249,7 +249,7 @@ export const actions: Actions = {
 		const day = new Date();
 		const foodID = 1;
 		let selected_customDish = null
-		console.log(name)
+
 		if (name == undefined) {
 			return fail(403, { message: 'Bitte geben Sie einen Namen ein' });
 		}
@@ -271,7 +271,6 @@ export const actions: Actions = {
 				}
 			}
 		};
-		console.log(customDish)
 		await prisma.customDish.create({
 			data: customDish
 		});
@@ -282,16 +281,13 @@ export const actions: Actions = {
 		if (selected_customDish == undefined){
 			return fail(403, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
 		}
-		console.log(selected_customDish)
 		const customMeal: Prisma.MealUncheckedCreateInput = {
 			day: day,
 			time: category,
 			foodDiaryId: foodID,
 			customDishId: selected_customDish.id
 		};
-		console.log(customMeal)
 		
-
 		try {
 			await prisma.meal.create({
 				data: customMeal
