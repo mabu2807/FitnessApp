@@ -250,10 +250,10 @@ export const actions: Actions = {
 		const foodID = 1;
 		let selected_customDish = null
 
-		if (name == undefined) {
+		if (name == undefined || name == '' || name == null) {
 			return fail(403, { message: 'Bitte geben Sie einen Namen ein' });
 		}
-		if(calories == undefined){
+		if(calories == undefined || calories == null){
 			return fail(403, { message: 'Bitte geben Sie eine Kalorienanzahl ein' });
 		}
 		switch (category) {
