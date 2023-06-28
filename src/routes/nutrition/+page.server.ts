@@ -347,5 +347,62 @@ export const actions: Actions = {
 			
 		}
 
+	},
+	deleteMeal: async ({ request }) => {
+		const data = await request.formData();
+		const mealid = Number(data.get('Mealid'));
+		if(mealid == null || isNaN(mealid)){
+			return fail(404, { message: 'Meal not found' });
+		}
+		console.log(mealid);
+		const responseMeal =  await prisma.meal.findUnique({
+			where: {
+				id: mealid
+			}
+		});
+		if(responseMeal == null){
+			return fail(404, { message: 'Meal not found' });
+		}
+		if(responseMeal.dishId != null){
+			try {
+
+				await prisma.meal.delete({
+					where: {
+						id: mealid
+					}
+				});
+				} catch (error) {
+					return fail(400, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
+				}
+		}
+
+		const customDishId = responseMeal.customDishId ?? 0
+		if(responseMeal.dishId == null){
+			try {
+				await prisma.customDish.delete({
+					where: {
+						id: customDishId
+					},
+					include: {
+						nutritionalValues: true
+					}
+
+				});
+				await prisma.meal.delete({
+					where: {
+						id: mealid
+					}
+				});
+				} catch (error) {
+					return fail(400, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
+				}
+		}
+
+		
+	
+		
 	}
+
+		
+
 } satisfies Actions;

@@ -24,6 +24,10 @@
 
 <dialog bind:this={dialog} on:close>
 	<div class="card p-4 w-modal shadow-xl space-y-4">
+		<form method="post" action="?/deleteMeal">
+			<input class="hidden" name="Mealid" type="number" id="mealid" value={mealdata?.id} />
+			<button type="submit" on:click={closeClick}>Löschen</button>
+		</form>
 		<p>Hier können die Mahlzeiten geändert werden</p>
 		<form
 			method="POST"
