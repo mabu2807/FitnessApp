@@ -90,10 +90,10 @@
 			<ModalAddNew bind:showModal {data} />
 		</div>
 		<div class="rowAllCards">
-			<div class="cardGeneral">
+			<div class="flex justify-around mt-20 flex-wrap w-screen">
 				{#if mealData != null}
 					{#each mealData as meal}
-						<div class="cardContent">
+						<div class="card border-solid border-black flex flex-col items-center justify-center mb-5vh w-300px">
 							<div class="rowMealtitleButton">
 								<div class="textMealTitle">
 									<h2>{meal.time}</h2>
@@ -144,9 +144,6 @@
 </main>
 
 <style>
-	/* .rowCaloriesWeek {
-		display: flex;
-	} */
 	.rowMealtitleButton {
 		display: flex;
 		justify-content: space-around;
@@ -201,9 +198,9 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		width: 300px;
-		background-color: aliceblue;
-		border-radius: 10%;
+		/* width: 300px; */
+		/* background-color: aliceblue; */
+		/* border-radius: 10%; */
 		margin-bottom: 5vh;
 	}
 
