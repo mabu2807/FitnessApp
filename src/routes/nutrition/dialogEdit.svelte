@@ -9,8 +9,8 @@
 	export let dialog: HTMLDialogElement;
 	export let value: string | null;
 
-	let inputvalueCalories = mealdata?.dish?.nutritionalValues.energy ?? 0
-	let inputValueName = mealdata?.dish?.name ?? "";
+	let inputvalueCalories = mealdata?.dish?.nutritionalValues.energy ?? 0;
+	let inputValueName = mealdata?.dish?.name ?? '';
 
 	const closeClick = () => {
 		dialog.close();
@@ -30,6 +30,7 @@
 			action="?/updateMeal"
 			class="border border-surface-500 p-4 space-y-4 rounded-container-token"
 		>
+			<input class="hidden" name="Mealid" type="number" id="mealid" value={mealdata?.id} />
 			<label for="meal">Mahlzeit</label>
 			<input
 				class="input block w-full"
