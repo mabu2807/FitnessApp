@@ -9,8 +9,8 @@
 	export let dialog: HTMLDialogElement;
 	export let value: string | null;
 
-	let inputvalueCalories = mealdata?.dish?.nutritionalValues.energy ?? 0;
-	let inputValueName = mealdata?.dish?.name ?? '';
+	let inputvalueCalories = mealdata?.dish?.nutritionalValues.energy ?? mealdata?.customDish?.nutritionalValues.energy ?? 0;
+	let inputValueName = mealdata?.dish?.name ?? mealdata?.customDish?.name ?? '';
 
 	const closeClick = () => {
 		dialog.close();

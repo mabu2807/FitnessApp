@@ -93,7 +93,9 @@
 			<div class="flex justify-around mt-20 flex-wrap w-screen">
 				{#if mealData != null}
 					{#each mealData as meal}
-						<div class="card border-solid border-black flex flex-col items-center justify-center mb-5vh w-300px">
+						<div
+							class="card border-solid border-black flex flex-col items-center justify-center mb-5vh w-300px"
+						>
 							<div class="rowMealtitleButton">
 								<div class="textMealTitle">
 									<h2>{meal.time}</h2>
@@ -107,15 +109,25 @@
 									>
 										<img src="Edit_Pencil.png" alt="Edit Meal" />
 									</button>
+									{#if buttonID == meal.id.toString()}
 									<Dialog {form} bind:dialog mealdata={meal} value={buttonID} />
+									{/if}
 								</div>
 							</div>
 							<div class="imageCard">
-								<img src={meal.dish?.imagePath ?? meal.customDish?.imagePath} alt="Meal Icon" height="150px" width="200px" />
+								<img
+									src={meal.dish?.imagePath ?? meal.customDish?.imagePath}
+									alt="Meal Icon"
+									height="150px"
+									width="200px"
+								/>
 							</div>
 							<div class="textMealDescription">
 								<p>{meal.dish?.name ?? meal.customDish?.name}</p>
-								<p>{meal.dish?.nutritionalValues?.energy ?? meal.customDish?.nutritionalValues.energy} kcal</p>
+								<p>
+									{meal.dish?.nutritionalValues?.energy ??
+										meal.customDish?.nutritionalValues.energy} kcal
+								</p>
 							</div>
 						</div>
 					{/each}

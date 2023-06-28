@@ -229,8 +229,8 @@ export const actions: Actions = {
 	updateMeal: async ({ request }) => {
 		const data = await request.formData();
 		console.log(data);
-		const mealid = Number(data.get('MealID'));
-		const newName = data.get('name')?.toString() ?? '';
+		const mealid = Number(data.get('Mealid'));
+		const newName = data.get('Meal')?.toString() ?? '';
 		const newCategory = data.get('category')?.toString() ?? 'Snack';
 		const newCalories = Number(data.get('calories')) ?? 0;
 		const newFat = Number(data.get('fat')) ?? 0;
@@ -346,14 +346,6 @@ export const actions: Actions = {
 			});
 			
 		}
-		
-		
-
-
-
-		
-
-
 
 	}
 } satisfies Actions;
