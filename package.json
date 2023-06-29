@@ -62,7 +62,7 @@
 		"@prisma/client": "^4.16.1",
 		"@smui/button": "7.0.0-beta.8",
 		"@smui/dialog": "7.0.0-beta.8",
-		"@smui/icon-button": "7.0.0-beta.8",
+		"@smui/icon-button": "7.0.0-beta.13",
 		"chart.js": "^4.3.0",
 		"crypto-random-string": "^5.0.0",
 		"nodemailer": "^6.9.3",
