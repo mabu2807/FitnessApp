@@ -83,8 +83,8 @@ devDependencies:
     specifier: 7.0.0-beta.8
     version: 7.0.0-beta.8(svelte@4.0.0)(typescript@5.1.6)
   '@smui/paper':
-    specifier: 7.0.0-beta.8
-    version: 7.0.0-beta.8(svelte@4.0.0)(typescript@5.1.6)
+    specifier: 7.0.0-beta.13
+    version: 7.0.0-beta.13(svelte@4.0.0)(typescript@5.1.6)
   '@smui/tab':
     specifier: 7.0.0-beta.8
     version: 7.0.0-beta.8(svelte@4.0.0)(typescript@5.1.6)
@@ -1613,6 +1613,16 @@ packages:
       - typescript
     dev: true
 
+  /@smui/common@7.0.0-beta.13(svelte@4.0.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-ZyqRoe/5xPCl+sFqEvlR6DVpjWK5WQn5FQNKEWs2yyHTNt6s64u2OxU3ZyItyB2GZOxR2rZBFs55DJcszeJsEA==}
+    dependencies:
+      '@material/dom': 14.0.0
+      svelte2tsx: 0.6.16(svelte@4.0.0)(typescript@5.1.6)
+    transitivePeerDependencies:
+      - svelte
+      - typescript
+    dev: true
+
   /@smui/common@7.0.0-beta.9(svelte@4.0.0)(typescript@5.1.6):
     resolution: {integrity: sha512-Wf63UfvaB8hDSzxkoqCUpFiJffQixmyKW+mWVE5ZUQ94Vwg0gZWGbNMEBrwrtI4tHomMQ95VVNdps/KsaXlStw==}
     dependencies:
@@ -1648,15 +1658,15 @@ packages:
       - typescript
     dev: false
 
-  /@smui/paper@7.0.0-beta.8(svelte@4.0.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-NoOrlU67YUnI19V685MbSzoBV+0AQj2Swj5U6VQIYqW7JRVOk09BQAj45pPXAYWGQUCzzkeXzwD+V5O9J8+PVQ==}
+  /@smui/paper@7.0.0-beta.13(svelte@4.0.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-SUTtZXmSrj5c/WwIuPXoNY9Z87yDKedV111c5Qz1Rs9gpBu//fL5YDLWKpt2Ej8O5ZZoa+ivldCzaSFn3/5GmA==}
     dependencies:
       '@material/elevation': 14.0.0
       '@material/feature-targeting': 14.0.0
       '@material/shape': 14.0.0
       '@material/theme': 14.0.0
       '@material/typography': 14.0.0
-      '@smui/common': 7.0.0-beta.9(svelte@4.0.0)(typescript@5.1.6)
+      '@smui/common': 7.0.0-beta.13(svelte@4.0.0)(typescript@5.1.6)
       svelte2tsx: 0.6.16(svelte@4.0.0)(typescript@5.1.6)
     transitivePeerDependencies:
       - svelte
@@ -1703,7 +1713,7 @@ packages:
     dependencies:
       '@material/dom': 14.0.0
       '@material/tab-scroller': 14.0.0
-      '@smui/common': 7.0.0-beta.9(svelte@4.0.0)(typescript@5.1.6)
+      '@smui/common': 7.0.0-beta.13(svelte@4.0.0)(typescript@5.1.6)
       svelte2tsx: 0.6.16(svelte@4.0.0)(typescript@5.1.6)
     transitivePeerDependencies:
       - svelte
