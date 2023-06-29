@@ -2,10 +2,10 @@
 	import CircleProgressBar from './CircleProgressBar.svelte';
 	import Chart from './nutriChart.svelte';
 	import Dialog from './dialogEdit.svelte';
-	import DialogAdd from './dialogAdd.svelte';
-	import ModalAdd from './ModalAddTemplate.svelte';
+	//import DialogAdd from './dialogAdd.svelte';
+	//import ModalAdd from './ModalAddTemplate.svelte';
 	//import  Modal from '@skeletonlabs/skeleton';
-	import Modal from './ModalAddTemplate.svelte';
+	//import Modal from './ModalAddTemplate.svelte';
 
 	import type { PageData, ActionData } from './$types';
 	import type { MouseEventHandler } from 'svelte/elements';
@@ -16,8 +16,8 @@
 	import ModalAddTemplate from './ModalAddTemplate.svelte';
 
 	let dialog: HTMLDialogElement;
-	let dialog2: HTMLDialogElement;
-	let dialogAdd: HTMLDialogElement;
+	//let dialog2: HTMLDialogElement;
+	//let dialogAdd: HTMLDialogElement;
 
 	let showModal = false;
 	let showModal2 = false;
@@ -93,7 +93,9 @@
 			<div class="flex justify-around mt-20 flex-wrap w-screen">
 				{#if mealData != null}
 					{#each mealData as meal}
-						<div class="card border-solid border-black flex flex-col items-center justify-center mb-5vh w-300px">
+						<div
+							class="card border-solid border-black flex flex-col items-center justify-center mb-5vh w-300px"
+						>
 							<div class="rowMealtitleButton">
 								<div class="textMealTitle">
 									<h2>{meal.time}</h2>
@@ -111,11 +113,19 @@
 								</div>
 							</div>
 							<div class="imageCard">
-								<img src={meal.dish?.imagePath ?? meal.customDish?.imagePath} alt="Meal Icon" height="150px" width="200px" />
+								<img
+									src={meal.dish?.imagePath ?? meal.customDish?.imagePath}
+									alt="Meal Icon"
+									height="150px"
+									width="200px"
+								/>
 							</div>
 							<div class="textMealDescription">
 								<p>{meal.dish?.name ?? meal.customDish?.name}</p>
-								<p>{meal.dish?.nutritionalValues?.energy ?? meal.customDish?.nutritionalValues.energy} kcal</p>
+								<p>
+									{meal.dish?.nutritionalValues?.energy ??
+										meal.customDish?.nutritionalValues.energy} kcal
+								</p>
 							</div>
 						</div>
 					{/each}
