@@ -125,16 +125,16 @@
 					<input class="input" name="salt" type="number" step="0.01" id="salt" bind:value={salt} />
 				</label>
 			{/if}
-		
-		<footer>
-			<button id="btnCloseAdd" on:click={closeClick} class="btn variant-filled m-1">Close</button>
-			<button
-				type="submit"
-				on:click={saveChanges}
-				on:click={closeClick}
-				class="btn variant-filled m-1">Save</button
-			>
-		</footer>
-	</form>
+
+			<footer>
+				<button id="btnCloseAdd" on:click={closeClick} class="btn variant-filled m-1">Close</button>
+				<button
+					type="submit"
+					on:click={saveChanges}
+					on:click={closeClick}
+					class="btn variant-filled m-1">Save</button
+				>
+			</footer>
+		</form>
 	</div>
 </dialog>

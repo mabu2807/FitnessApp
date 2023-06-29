@@ -2,6 +2,7 @@
 	import type { ActionData } from './$types';
 	import type { Meal } from './nutritionTypes';
 	import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
+	import { SlideToggle } from '@skeletonlabs/skeleton';
 
 	export let form: ActionData;
 
@@ -9,8 +10,17 @@
 	export let dialog: HTMLDialogElement;
 	export let value: string | null;
 
-	let inputvalueCalories = mealdata?.dish?.nutritionalValues.energy ?? mealdata?.customDish?.nutritionalValues.energy ?? 0;
-	let inputValueName = mealdata?.dish?.name ?? mealdata?.customDish?.name ?? '';
+	let calories: number;
+	let toggleChecked = false;
+	let fat: number;
+	let saturadetFat: number;
+	let carbohydrates: number;
+	let sugar: number;
+	let protein: number;
+	let salt: number;
+
+	let inputvalueCalories = mealdata?.dish?.nutritionalValues.energy ?? 0;
+	let inputValueName = mealdata?.dish?.name ?? '';
 
 	const closeClick = () => {
 		dialog.close();
@@ -50,7 +60,68 @@
 				type="number"
 				id="calories"
 				bind:value={inputvalueCalories}
-			/><br /><br />
+			/>
+			<SlideToggle
+				id="toggleValues"
+				name="slider-nutri"
+				unchecked
+				bind:value={toggleChecked}
+				on:change={() => (toggleChecked = !toggleChecked)}>Alle Nährwerte anzeigen</SlideToggle
+			>
+			{#if toggleChecked == true}
+				<label for="fat" class="label">
+					<span>Fett(angegeben in Gramm): </span>
+					<input class="input" name="fat" type="number" step="0.01" id="fat" bind:value={fat} />
+				</label>
+				<label for="saturatedFat" class="label">
+					<span>Gesättigte Fettsäuren(angegeben in Gramm): </span>
+					<input
+						class="input"
+						name="saturatedFat"
+						type="number"
+						step="0.01"
+						id="saturatedFat"
+						bind:value={saturadetFat}
+					/>
+				</label>
+				<label for="carbohydrates" class="label">
+					<span>Kohlenhydrate(angegeben in Gramm): </span>
+					<input
+						class="input"
+						name="carbohydrates"
+						type="number"
+						step="0.01"
+						id="carbohydrates"
+						bind:value={carbohydrates}
+					/>
+				</label>
+				<label for="sugar" class="label">
+					<span>Zucker(angegeben in Gramm): </span>
+					<input
+						class="input"
+						name="sugar"
+						type="number"
+						step="0.01"
+						id="sugar"
+						bind:value={sugar}
+					/>
+				</label>
+				<label for="protein" class="label">
+					<span>Eiweiß(angegeben in Gramm): </span>
+					<input
+						class="input"
+						name="protein"
+						type="number"
+						step="0.01"
+						id="protein"
+						bind:value={protein}
+					/>
+				</label>
+				<label for="salt" class="label">
+					<span>Salz(angegeben in Gramm): </span>
+					<input class="input" name="salt" type="number" step="0.01" id="salt" bind:value={salt} />
+				</label>
+			{/if}
 			<div>
 				<button id="btnCloseEdit" on:click={closeClick} type="button" class="btn variant-filled m-1"
 					>Close</button
