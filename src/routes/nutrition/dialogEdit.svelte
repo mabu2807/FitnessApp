@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { ActionData } from './$types';
 	import type { Meal } from './nutritionTypes';
-	import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
-	import { SlideToggle } from '@skeletonlabs/skeleton';
+	// import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
+	// import { SlideToggle } from '@skeletonlabs/skeleton';
 
 	export let form: ActionData;
 
