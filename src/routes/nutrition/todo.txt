@@ -1,9 +1,10 @@
 ---nutrition
-- actions add meal
-- actions edit meal
+- DONE actions add meal
+- DONE actions edit meal
 - CircleProgressBar for diffrent values
-- layout überarbeiten
-- close button fixen
+- DONE layout überarbeiten
+- DONE close button fixen
+- template meal category auswählen
 
 
 

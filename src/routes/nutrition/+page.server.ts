@@ -8,6 +8,7 @@ import { calcChartValues } from './calcChartValues';
 
 // Load function
 export const load = (async () => {
+	
 	let responseUserDetails;
 	let responseUsermeals;
 	let responsedaymeal;
