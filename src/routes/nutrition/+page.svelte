@@ -14,6 +14,7 @@
 	import { ProgressRadial, type ModalSettings } from '@skeletonlabs/skeleton';
 	import ModalAddNew from './ModalAddNew.svelte';
 	import ModalAddTemplate from './ModalAddTemplate.svelte';
+	import ModalDelete from './ModalDelete.svelte';
 
 	let dialog: HTMLDialogElement;
 	//let dialog2: HTMLDialogElement;
@@ -21,6 +22,7 @@
 
 	let showModal = false;
 	let showModal2 = false;
+	let showModal3 = false;
 
 	export let data: PageData;
 	export let form: ActionData;
@@ -111,6 +113,17 @@
 								{#if buttonID == meal.id.toString()}
 									<Dialog {form} bind:dialog mealdata={meal} value={buttonID} />
 								{/if}
+							</div>
+							<div>
+								<button
+									id={meal.id.toString()}
+									on:click={() => (showModal3 = true)}
+									type="button"
+									class="bg-transparent border-none w-8 h-8 button"
+								>
+									<img src="Delete_Icon.png" alt="Delete Meal" />
+								</button>
+								<ModalDelete bind:showModal3 {data} />
 							</div>
 						</div>
 						<div class="">

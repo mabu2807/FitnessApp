@@ -20,6 +20,7 @@
 -DONE meal card neues skeleton layout
 -DONE neu add button
 -DONE nutritiontipps link einbauen (bild mit button)
-- template modal Titel
+-DONE template modal Titel
 - delete button style
+- in nutriTipps mehr anzeigen ändern
 

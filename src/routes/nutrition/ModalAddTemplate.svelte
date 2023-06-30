@@ -36,7 +36,7 @@
 	<div class="card p-4 w-modal shadow-xl space-y-4">
 		<form method="POST" action="?/createMealfromTemplate">
 			<header>
-				<h1>Vorläge für Meal auswählen</h1>
+				<h1 class="h4">Vorläge für Meal auswählen</h1>
 			</header>
 			<table class="table table-hover" id="tableDishes">
 				<thead>
