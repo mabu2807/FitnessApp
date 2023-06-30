@@ -16,5 +16,35 @@
 		"name": "Kartoffeln mit Brokkoli und Hähnchen",
 		"imagePath": "dinner2.jpeg",
 		"nutritionalValuesId": 3
+	},
+	{
+		"id": 4,
+		"name": "Fisch in Bierteig",
+		"imagePath": "dinner2.jpeg",
+		"nutritionalValuesId": 4
+	},
+	{
+		"id": 5,
+		"name": "Avocado Brot mit Chia Sprossen",
+		"imagePath": "breakfast2.webp",
+		"nutritionalValuesId": 5
+	},
+	{
+		"id": 6,
+		"name": "Bananen-Shake",
+		"imagePath": "breakfast2.webp",
+		"nutritionalValuesId": 6
+	},
+	{
+		"id": 7,
+		"name": "Flammkuchen Elsässer Art",
+		"imagePath": "lunch2.jpeg",
+		"nutritionalValuesId": 7
+	},
+	{
+		"id": 8,
+		"name": "Spargelsuppe mit gebratenem grünen Spargel",
+		"imagePath": "dinner2.jpeg",
+		"nutritionalValuesId": 8
 	}
 ]

@@ -1,18 +1,26 @@
 ---nutrition
-- actions add meal
-- actions edit meal
+-DONE actions add meal
+-DONE actions edit meal
 - CircleProgressBar for diffrent values
-- layout überarbeiten
-- close button fixen
+-DONE layout überarbeiten
+-DONE close button fixen
+- template meal category auswählen
+- required name und calories
+- delete old dialogs
+- in
+
 
 
 
 --- UI Update
 
--DONE header anpassen
+-DONE header  anpassen (Titel einfügen)
 -CircleProgressBar Update
 -DONE header mit foto updaten
--meal card neues skeleton layout
--neu add button
+-DONE meal card neues skeleton layout
+-DONE neu add button
 -DONE nutritiontipps link einbauen (bild mit button)
+-DONE template modal Titel
+- delete button style
+- in nutriTipps mehr anzeigen ändern
 
