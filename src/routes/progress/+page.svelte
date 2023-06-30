@@ -210,6 +210,7 @@
 			<div class="grid md:grid-cols-2 grid-cols-1 md:gap-12 gap-6 lg:my-10 md:my-8 my-6 mx-12">
 				{#each trainingPlan.exercises as exercise, exerciseIndex}
 					<!-- exercise-container class -->
+					<!-- svelte-ignore a11y-no-static-element-interactions -->
 					<div
 						class="card bg-success-400 p-3 exercise-container"
 						on:keydown={() => {

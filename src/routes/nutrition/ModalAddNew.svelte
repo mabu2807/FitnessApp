@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { ModalComponent } from '@skeletonlabs/skeleton';
 	import type { PageData } from './$types';
-	import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
-	import { SlideToggle } from '@skeletonlabs/skeleton';
+	//import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
+	//import { SlideToggle } from '@skeletonlabs/skeleton';
 
 	export let data: PageData;
 	let time: string;

@@ -96,16 +96,16 @@ function calcWeekArray() {
 
 function changeBgColors(maxValue: number, calperday: number[]) {
 	const backgroundColor = [
-		'#3b8cff',
-		'#76afff',
-		'#3b8cff',
-		'#76afff',
-		'#3b8cff',
-		'#76afff',
-		'#3b8cff'
+		'rgba(98,  182, 239,0.4)',
+		'rgba(113, 205, 205,0.4)',
+		'rgba(98,  182, 239,0.4)',
+		'rgba(113, 205, 205,0.4)',
+		'rgba(98,  182, 239,0.4)',
+		'rgba(113, 205, 205,0.4)',
+		'rgba(98,  182, 239,0.4)'
 	];
 
-	const red = '#d01d00';
+	const red = 'rgb(255, 99, 132)';
 	for (let i = 0; i < calperday.length; i++) {
 		if (calperday[i] > Number(maxValue)) {
 			backgroundColor[i] = red;
@@ -115,15 +115,16 @@ function changeBgColors(maxValue: number, calperday: number[]) {
 }
 function changeBorderColors(maxCalories: number, calperday: number[]) {
 	const borderColor = [
-		'#2c69bf',
-		'#357ee6',
-		'#2c69bf',
-		'#357ee6',
-		'#2c69bf',
-		'#357ee6',
-		'#2c69bf'
+		'rgba(98,  182, 239, 1)',
+		'rgba(113, 205, 205, 1)',
+		'rgba(98,  182, 239, 1)',
+		'rgba(113, 205, 205, 1)',
+		'rgba(98,  182, 239, 1)',
+		'rgba(113, 205, 205, 1)',
+		'rgba(98, 182, 239, 1)'
 	];
-	const red = '#7d1100';
+	
+	const red = 'rgb(255, 99, 132, 0.4)';
 	for (let i = 0; i < calperday.length; i++) {
 		if (calperday[i] > Number(maxCalories)) {
 			borderColor[i] = red;

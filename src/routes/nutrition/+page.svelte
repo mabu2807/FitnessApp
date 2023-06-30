@@ -10,11 +10,12 @@
 	import type { PageData, ActionData } from './$types';
 	import type { MouseEventHandler } from 'svelte/elements';
 	//import { valueOrDefault } from 'chart.js/dist/helpers/helpers.core';
-	import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
+	//import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
 	import { ProgressRadial, type ModalSettings } from '@skeletonlabs/skeleton';
 	import ModalAddNew from './ModalAddNew.svelte';
 	import ModalAddTemplate from './ModalAddTemplate.svelte';
 	import ModalDelete from './ModalDelete.svelte';
+	import Head from '../../components/Head.svelte';
 
 	let dialog: HTMLDialogElement;
 	//let dialog2: HTMLDialogElement;
@@ -56,6 +57,8 @@
 		console.log('Add Meal');
 	}
 </script>
+
+<Head />
 
 <main class="mt-24">
 	<header class="w-full h-80 flex items-center justify-center bg-[url('/header_food.jpeg')]">
