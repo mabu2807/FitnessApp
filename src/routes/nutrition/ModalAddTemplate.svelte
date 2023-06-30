@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Modal, modalStore } from '@skeletonlabs/skeleton';
-	import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton';
+	//import { Modal, modalStore } from '@skeletonlabs/skeleton';
+	//import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton';
 	import type { Dish } from './nutritionTypes';
 	import type { PageData } from './$types';
-	import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
+	//import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
 
 	export let data: PageData;
 	let allDishes = data.allDishes;
@@ -27,6 +27,7 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <dialog
 	bind:this={dialog2}
 	on:close={() => (showModal2 = false)}
@@ -35,7 +36,7 @@
 	<div class="card p-4 w-modal shadow-xl space-y-4">
 		<form method="POST" action="?/createMealfromTemplate">
 			<header>
-				<h1>Vorläge für Meal auswählen</h1>
+				<h1 class="h4">Vorläge für Meal auswählen</h1>
 			</header>
 			<table class="table table-hover" id="tableDishes">
 				<thead>
