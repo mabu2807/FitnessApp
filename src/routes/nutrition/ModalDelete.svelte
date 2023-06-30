@@ -4,8 +4,6 @@
 	import type { Meal } from './nutritionTypes';
 	import type { ActionData } from './$types';
 
-	export let form: ActionData;
-
 	export let data: PageData;
 	let dialog3: HTMLDialogElement;
 	export let showModal3: boolean;

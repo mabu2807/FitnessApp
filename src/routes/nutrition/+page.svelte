@@ -114,7 +114,7 @@
 									<img src="Edit_Pencil.png" alt="Edit Meal" />
 								</button>
 								{#if buttonID == meal.id.toString()}
-									<Dialog {form} bind:dialog mealdata={meal} value={buttonID} />
+									<Dialog  bind:dialog mealdata={meal} value={buttonID} />
 								{/if}
 							</div>
 							<div>
@@ -126,7 +126,7 @@
 								>
 									<img src="Delete_Icon.png" alt="Delete Meal" />
 								</button>
-								<ModalDelete bind:showModal3 {data} />
+								<ModalDelete mealdata={meal} bind:showModal3 {data} />
 							</div>
 						</div>
 						<div class="">
