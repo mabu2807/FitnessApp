@@ -24,9 +24,11 @@ async function main() {
 			data: {
 				id: user.id,
 				email: user.email,
+				authMethod: user.authMethod,
 				username: user.username,
 				password: user.password,
 				auth_method: user.auth_method
+				token: user.token
 			}
 		});
 	}

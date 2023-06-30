@@ -15,8 +15,9 @@ model User {
   email       String       @unique
   username    String
   password    String?
+  authMethod  String
   verified    Boolean      @default(false)
-  auth_method String
+  token       String       @unique
   userDetails UserDetails?
 }
 
@@ -137,13 +138,24 @@ model FoodDiary {
 }
 
 model Meal {
-  id          Int       @id @default(autoincrement())
-  foodDiary   FoodDiary @relation(fields: [foodDiaryId], references: [id])
-  foodDiaryId Int
-  day         DateTime
-  time        String
-  dish        Dish      @relation(fields: [dishId], references: [id])
-  dishId      Int
+  id           Int         @id @default(autoincrement())
+  foodDiary    FoodDiary   @relation(fields: [foodDiaryId], references: [id])
+  foodDiaryId  Int
+  day          DateTime
+  time         String
+  dish         Dish?       @relation(fields: [dishId], references: [id])
+  dishId       Int?
+  customDish   customDish? @relation(fields: [customDishId], references: [id])
+  customDishId Int?
+}
+
+model customDish {
+  id                  Int               @id @default(autoincrement())
+  name                String
+  imagePath           String
+  meals               Meal[]
+  nutritionalValues   NutritionalValues @relation(fields: [nutritionalValuesId], references: [id])
+  nutritionalValuesId Int               @unique
 }
 
 model Dish {
@@ -156,8 +168,9 @@ model Dish {
 }
 
 model NutritionalValues {
-  id            Int   @id @default(autoincrement())
+  id            Int         @id @default(autoincrement())
   Dish          Dish?
+  customDish    customDish?
   energy        Int
   fat           Float
   saturatedFat  Float

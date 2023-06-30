@@ -1,6 +1,5 @@
 <script lang="ts">
-	
-	import articles from '../../lib/testData/articles.json';
+
 	import Article from './article.svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;

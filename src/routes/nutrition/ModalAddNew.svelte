@@ -1,14 +1,12 @@
 <script lang="ts">
-	import type { ActionData } from './$types';
-	import type { Meal } from './nutritionTypes';
-	// import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
-	 import { SlideToggle } from '@skeletonlabs/skeleton';
+	import type { ModalComponent } from '@skeletonlabs/skeleton';
+	import type { PageData } from './$types';
+	//import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
+	import { SlideToggle } from '@skeletonlabs/skeleton';
 
-
-	export let mealdata: Meal | null;
-	export let dialog: HTMLDialogElement;
-	export let value: string | null;
-
+	export let data: PageData;
+	let time: string;
+	let mealtext: string;
 	let calories: number;
 	let toggleChecked = false;
 	let fat: number;
@@ -18,55 +16,61 @@
 	let protein: number;
 	let salt: number;
 
-	let inputvalueCalories = mealdata?.dish?.nutritionalValues.energy ?? 0;
-	let inputValueName = mealdata?.dish?.name ?? '';
+	export let showModal: boolean;
+	let dialog: HTMLDialogElement;
+	$: if (dialog && showModal) dialog.showModal();
 
 	const closeClick = () => {
 		dialog.close();
 	};
 
 	function saveChanges() {
-		console.log(inputValueName);
-		console.log(inputvalueCalories);
+		dialog.close();
 	}
 </script>
 
-<dialog bind:this={dialog} on:close>
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+<dialog
+	bind:this={dialog}
+	on:close={() => (showModal = false)}
+	on:click|self={() => dialog.close()}
+>
 	<div class="card p-4 w-modal shadow-xl space-y-4">
-		<form method="post" action="?/deleteMeal">
-			<input class="hidden" name="Mealid" type="number" id="mealid" value={mealdata?.id} />
-			<button type="submit" on:click={closeClick}>Löschen</button>
-		</form>
-		<p>Hier können die Mahlzeiten geändert werden</p>
+		<header>
+			<h1>Neues Meal hinzufügen</h1>
+		</header>
 		<form
-			method="POST"
-			action="?/updateMeal"
 			class="border border-surface-500 p-4 space-y-4 rounded-container-token"
+			method="POST"
+			action="?/createCustomMeal"
 		>
-			<input class="hidden" name="Mealid" type="number" id="mealid" value={mealdata?.id} />
-			<label for="meal">Mahlzeit</label>
-			<input
-				class="input block w-full"
-				name="Meal"
-				type="text"
-				id="meal"
-				bind:value={inputValueName}
-			/><br /><br />
-			<label for="calories">Kalorien</label>
-			<input
-				class="input"
-				name="calories"
-				type="number"
-				id="calories"
-				bind:value={inputvalueCalories}
-			/>
-			<SlideToggle
-				id="toggleValues"
-				name="slider-nutri"
-				unchecked
-				bind:value={toggleChecked}
-				on:change={() => (toggleChecked = !toggleChecked)}>Alle Nährwerte anzeigen</SlideToggle
-			>
+			<label class="label" for="category">
+				<span>Kategorie auswählen</span>
+				<select class="select" bind:value={time} name="category" id="mealCat">
+					<option value="Frühstück">Frühstück</option>
+					<option value="Mittagessen">Mittagessen</option>
+					<option value="Abendessen">Abendessen</option>
+					<option value="Snack">Snack</option>
+				</select>
+			</label>
+			<label for="meal" class="label">
+				<span>Gericht: </span>
+				<input class="input" name="mealText" type="text" id="meal2" bind:value={mealtext} />
+			</label>
+			<label for="calories" class="label">
+				<span>Kalorien: </span>
+				<input class="input" name="calories" type="number" id="calories" bind:value={calories} />
+			</label>
+			<div>
+				<SlideToggle
+					id="toggleValues"
+					name="slider-nutri"
+					unchecked
+					bind:value={toggleChecked}
+					on:change={() => (toggleChecked = !toggleChecked)}>Alle Nährwerte anzeigen</SlideToggle
+				>
+			</div>
 			{#if toggleChecked == true}
 				<label for="fat" class="label">
 					<span>Fett(angegeben in Gramm): </span>
@@ -121,18 +125,16 @@
 					<input class="input" name="salt" type="number" step="0.01" id="salt" bind:value={salt} />
 				</label>
 			{/if}
-			<div>
-				<button id="btnCloseEdit" on:click={closeClick} type="button" class="btn variant-filled m-1"
-					>Close</button
-				>
+
+			<footer>
+				<button id="btnCloseAdd" on:click={closeClick} class="btn variant-filled m-1">Close</button>
 				<button
-					id="btnSaveEdit"
+					type="submit"
 					on:click={saveChanges}
 					on:click={closeClick}
-					type="submit"
 					class="btn variant-filled m-1">Save</button
 				>
-			</div>
+			</footer>
 		</form>
 	</div>
 </dialog>

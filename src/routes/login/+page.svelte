@@ -48,10 +48,10 @@
 
 <Head />
 <Toast background="variant-filled-error" />
-<section class="flex items-center justify-center mt-32 mb-28">
-	<div class="lg:w-3/4 w-5/6 sm:flex my-20">
+<section class="flex items-center justify-center mt-20 mb-28 h-full dark:bg-surface-800">
+	<div class="lg:w-3/4 w-5/6 sm:flex my-20 ">
 		<div
-			class="sm:w-1/2 w-full p-8 bg-success-400 dark:bg-surface-800 sm:rounded-tl-xl sm:rounded-bl-xl rounded-tl-xl sm:rounded-tr-none rounded-tr-xl"
+			class="sm:w-1/2 w-full p-8 bg-success-400 dark:bg-gradient-to-b dark:from-surface-500 dark:from-10% dark:via-sky-700 dark:via-31% dark:to-surface-500 dark:to-80% sm:rounded-tl-xl sm:rounded-bl-xl rounded-tl-xl sm:rounded-tr-none rounded-tr-xl"
 		>
 			<h3 class="md:text-2xl md:mx-3 lg:mx-4 sm:text-xl text-2xl font-semibold mb-8 mx-2">
 				Benutzer Login
@@ -81,7 +81,7 @@
 					<p>
 						Du hast noch keinen Account? Dann <a href="/registration"
 							><span
-								class="text-surface-400 dark:text-surface-300 hover:text-tertiary-500 dark:hover:text-primary-500 font-bold"
+								class="text-surface-400 dark:text-surface-300  hover:text-tertiary-500 dark:hover:text-primary-500 font-bold"
 								>Registriere</span
 							></a
 						> dich jetzt!
@@ -93,7 +93,7 @@
 			</form>
 		</div>
 		<div
-			class="sm:w-1/2 w-full flex flex-col justify-center items-center top-gradient shadow-xl sm:rounded-tr-xl sm:rounded-br-xl sm:rounded-bl-none rounded-bl-xl rounded-br-xl"
+			class="sm:w-1/2 w-full flex flex-col justify-center items-center bg-success-400 dark:bg-gradient-to-b dark:from-surface-500 dark:from-10% dark:via-sky-700 dark:via-31% dark:to-surface-500 dark:to-80%  sm:rounded-tr-xl sm:rounded-br-xl sm:rounded-bl-none rounded-bl-xl rounded-br-xl"
 		>
 			<div class="h-1 w-3/5 bg-black dark:bg-white rounded-full sm:mb-14 mb-5 sm:mt-0 mt-10" />
 			<div class="mb-6">

@@ -15,14 +15,24 @@ export type Dish = {
 	nutritionalValues: nutritionalValues;
 	nutritionalValuesId: number;
 };
+export type customDish = {
+	id: number;
+	name: string;
+	imagePath: string;
+	nutritionalValues: nutritionalValues;
+	nutritionalValuesId: number;
+};
 export type Meal = {
 	id: number;
 	foodDiaryId: number;
 	day: Date;
 	time: string;
-	dish: Dish;
-	dishId: number;
+	dish: Dish | null;
+	dishId: number |null;
+	customDish: customDish | null	;
+	customDishId: number |null;
 };
+
 
 export type userdetail = {
 	userId: number;
