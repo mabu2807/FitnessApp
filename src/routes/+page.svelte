@@ -91,18 +91,19 @@
 			><span class="text-white dark:text-black">Get Started</span></a
 		>
 	</section>
-	<section class="flex justify-center items-center flex-col w-full py-12 card-gradient">
-		<h2 class="h2 font-medium dark:text-black">Unsere Kurse</h2>
+	<section class="flex justify-center items-center flex-col w-full py-12 bg-gradient-to-b from-success-400 from-15% via-success-700 via-51% to-success-400 to-90%  dark:bg-gradient-to-b dark:from-surface-800 dark:from-15% dark:via-sky-700 dark:via-51% dark:to-surface-800 dark:to-90%">
+		<div class="w-72 h-1 mb-24 rounded-full dark:bg-white" />
+		<h2 class="h2 font-medium dark:text-white">Unsere Kurse</h2>
 		<div class="flex flex-wrap justify-center gap-10 p-12">
 			{#each courses as course}
-				<div class="card flex flex-col w-72 bg-success-400 shadow-xl">
+				<div class="card flex flex-col w-72 bg-secondary-100 shadow-xl dark:bg-surface-500">
 					<img
 						class="w-full aspect-[16/9] object-cover rounded-tl-md rounded-tr-md"
 						src={course.imagePath}
 						alt=""
 					/>
 					<div class="p-5 space-y-3 overflow-hidden">
-						<h3 class="h3">{course.name}</h3>
+						<h3 class="h3 font-semibold">{course.name}</h3>
 						<article>
 							<p>{course.description}</p>
 						</article>
@@ -151,18 +152,18 @@
 		</div>
 	</section>
 
-	<section class="w-full text-center pt-12 pb-20 contact-gradient">
-		<h2 class="h2 font-medium mb-6 text-white">Kontaktieren Sie uns</h2>
+	<section class="w-full text-center pt-12 pb-20 bg-gradient-to-b from-success-400 from-10% via-success-700 via-51%   dark:bg-gradient-to-b dark:from-surface-800 dark:from-10% dark:via-sky-700 dark:via-51% ">
+		<h2 class="h2 font-medium mb-6 text-black dark:text-white">Kontaktieren Sie uns</h2>
 		<form method="post" class="my-0 sm:mx-auto mx-14 max-w-lg m-12">
 			<input
 				value={form?.email ?? ''}
-				class="input sm:p-2 p-1 mb-2 bg-secondary-100 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white"
+				class="input sm:p-2 p-1 mb-2 bg-secondary-100 dark:bg-surface-500 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white"
 				name="email"
 				placeholder="E-Mail-Adresse"
 			/>
 			<textarea
 				value={form?.text ?? ''}
-				class="textarea p-2 mb-3 bg-secondary-100 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white"
+				class="textarea p-2 mb-3 bg-secondary-100 text-black dark:bg-surface-500 placeholder-secondary-400 dark:text-white dark:placeholder-white"
 				name="text"
 				placeholder="Nachricht"
 			/>
@@ -197,11 +198,17 @@
 	}
 
 	.card-gradient {
-		background: linear-gradient(
-			180deg,
-			rgb(var(--color-success-400)) 35%,
-			rgb(var(--color-secondary-500)) 65%
-		);
+		/* background: rgb(35,44,63);
+background: linear-gradient(0deg, rgba(35,44,63,1) 10%, rgba(105,163,164,1) 51%, rgba(35,44,63,1) 96%);	 */
+			/* background-image: radial-gradient( at 0% 0%, rgba(var(--color-success-400) / 0.33) 0px, transparent 50% ), radial-gradient(at 100% 0%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 50%) */
+			background: rgb(39,43,54);
+			background: linear-gradient(0deg, rgba(var(--color-surface-800)) 10%, rgba(76,97,152,1) 51%, rgba(var(--color-surface-800)) 96%);
+		
+		}
+
+	.card-gradient-white {
+		background: rgb(241,241,241);
+background: linear-gradient(0deg, rgba(241,241,241,1) 10%, rgba(168,168,168,1) 51%, rgba(241,241,241,1) 96%);
 	}
 
 	/* .mid-gradient {

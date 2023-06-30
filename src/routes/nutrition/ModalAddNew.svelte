@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { ModalComponent } from '@skeletonlabs/skeleton';
 	import type { PageData } from './$types';
-	import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
+	//import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
 	import { SlideToggle } from '@skeletonlabs/skeleton';
 
 	export let data: PageData;
@@ -43,7 +43,7 @@
 		<form
 			class="border border-surface-500 p-4 space-y-4 rounded-container-token"
 			method="POST"
-			action="?/createCustom"
+			action="?/createCustomMeal"
 		>
 			<label class="label" for="category">
 				<span>Kategorie auswählen</span>
@@ -60,7 +60,7 @@
 			</label>
 			<label for="calories" class="label">
 				<span>Kalorien: </span>
-				<input class="input" name="calories" type="text" id="calories" bind:value={calories} />
+				<input class="input" name="calories" type="number" id="calories" bind:value={calories} />
 			</label>
 			<div>
 				<SlideToggle
@@ -125,15 +125,16 @@
 					<input class="input" name="salt" type="number" step="0.01" id="salt" bind:value={salt} />
 				</label>
 			{/if}
+
+			<footer>
+				<button id="btnCloseAdd" on:click={closeClick} class="btn variant-filled m-1">Close</button>
+				<button
+					type="submit"
+					on:click={saveChanges}
+					on:click={closeClick}
+					class="btn variant-filled m-1">Save</button
+				>
+			</footer>
 		</form>
-		<footer>
-			<button id="btnCloseAdd" on:click={closeClick} class="btn variant-filled m-1">Close</button>
-			<button
-				type="submit"
-				on:click={saveChanges}
-				on:click={closeClick}
-				class="btn variant-filled m-1">Save</button
-			>
-		</footer>
 	</div>
 </dialog>

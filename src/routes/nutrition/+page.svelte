@@ -2,25 +2,28 @@
 	import CircleProgressBar from './CircleProgressBar.svelte';
 	import Chart from './nutriChart.svelte';
 	import Dialog from './dialogEdit.svelte';
-	import DialogAdd from './dialogAdd.svelte';
-	import ModalAdd from './ModalAddTemplate.svelte';
+	//import DialogAdd from './dialogAdd.svelte';
+	//import ModalAdd from './ModalAddTemplate.svelte';
 	//import  Modal from '@skeletonlabs/skeleton';
-	import Modal from './ModalAddTemplate.svelte';
+	//import Modal from './ModalAddTemplate.svelte';
 
 	import type { PageData, ActionData } from './$types';
 	import type { MouseEventHandler } from 'svelte/elements';
 	//import { valueOrDefault } from 'chart.js/dist/helpers/helpers.core';
-	import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
+	//import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
 	import { ProgressRadial, type ModalSettings } from '@skeletonlabs/skeleton';
 	import ModalAddNew from './ModalAddNew.svelte';
 	import ModalAddTemplate from './ModalAddTemplate.svelte';
+	import ModalDelete from './ModalDelete.svelte';
+	import Head from '../../components/Head.svelte';
 
 	let dialog: HTMLDialogElement;
-	let dialog2: HTMLDialogElement;
-	let dialogAdd: HTMLDialogElement;
+	//let dialog2: HTMLDialogElement;
+	//let dialogAdd: HTMLDialogElement;
 
 	let showModal = false;
 	let showModal2 = false;
+	let showModal3 = false;
 
 	export let data: PageData;
 	export let form: ActionData;
@@ -55,6 +58,8 @@
 	}
 </script>
 
+<Head />
+
 <main class="mt-24">
 	<header class="w-full h-80 flex items-center justify-center bg-[url('/header_food.jpeg')]">
 		<p class="bg-slate-300 font-black text-center text-black decoration-10 text-6xl">
@@ -65,7 +70,7 @@
 	<section class=" mt-4 flex flex-col lg:flex-row p-2">
 		<!-- circle Progress -->
 		<section class="flex flex-col w-2/5 justify-start items-start h-[50vh]">
-			<p class="textTitle">Tages-Werte</p>
+			<p class="text-3xl font-bold pb-3">Tages-Werte</p>
 			<div class="flex flex-col items-center">
 				<ProgressRadial value={progress}>{progress}%</ProgressRadial>
 				<p>{usedCalories}/ {maxCalories} kcal</p>
@@ -73,13 +78,13 @@
 		</section>
 		<!-- Chart -->
 		<div class="w-3/5">
-			<p class="textTitle">Wochenübersicht</p>
+			<p class="text-3xl font-bold pb-3">Wochenübersicht</p>
 			<Chart bind:chartdata={chartData} />
 		</div>
 	</section>
 	<section class="w-full p-1.5">
 		<div class="flex flex-row w-3/5 items-center">
-			<p class="textTitle m-1">Mahlzeiten</p>
+			<p class="text-3xl font-bold pb-3 m-1">Mahlzeiten</p>
 			<button on:click={() => (showModal2 = true)} type="button" class="btn variant-filled m-1"
 				>Erstellen aus Template</button
 			>
@@ -89,48 +94,60 @@
 			>
 			<ModalAddNew bind:showModal {data} />
 		</div>
-		<div class="rowAllCards">
-			<div class="cardGeneral">
-				{#if mealData != null}
-					{#each mealData as meal}
-						<div class="cardContent">
-							<div class="rowMealtitleButton">
-								<div class="textMealTitle">
-									<h2>{meal.time}</h2>
-								</div>
-								<div>
-									<button
-										id={meal.id.toString()}
-										on:click={editCard}
-										on:click={() => dialog.showModal()}
-										class="button"
-									>
-										<img src="Edit_Pencil.png" alt="Edit Meal" />
-									</button>
-									<Dialog {form} bind:dialog mealdata={meal} value={buttonID} />
-								</div>
+		<div class="flex justify-around m-10 flex-wrap w-screen">
+			{#if mealData != null}
+				{#each mealData as meal}
+					<div
+						class="card border-solid border-black flex flex-col items-center justify-center p-2 m-2"
+					>
+						<div class="flex justify-around w-full items-center">
+							<div class="font-bold text-lg">
+								<h2>{meal.time}</h2>
 							</div>
-							<div class="imageCard">
-								<img src={meal.dish?.imagePath} alt="Meal Icon" height="150px" width="200px" />
+							<div>
+								<button
+									id={meal.id.toString()}
+									on:click={editCard}
+									on:click={() => dialog.showModal()}
+									class="bg-transparent border-none w-8 h-8 button"
+								>
+									<img src="Edit_Pencil.png" alt="Edit Meal" />
+								</button>
+								{#if buttonID == meal.id.toString()}
+									<Dialog  bind:dialog mealdata={meal} value={buttonID} />
+								{/if}
 							</div>
-							<div class="textMealDescription">
-								<p>{meal.dish?.name}</p>
-								<p>{meal.dish?.nutritionalValues?.energy} kcal</p>
+							<div>
+								<button
+									id={meal.id.toString()}
+									on:click={() => (showModal3 = true)}
+									type="button"
+									class="bg-transparent border-none w-8 h-8 button"
+								>
+									<img src="Delete_Icon.png" alt="Delete Meal" />
+								</button>
+								<ModalDelete mealdata={meal} bind:showModal3 {data} />
 							</div>
 						</div>
-					{/each}
-				{:else}
-					<p>Heute noch nichts gegessen</p>
-				{/if}
-			</div>
-
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<!-- <div class="cardGeneral" on:click={addMeal} on:click={() => dialogAdd.showModal()}>
-				<DialogAdd bind:dialogAdd {data} />
-				<div class="cardContent">
-					<h2 class="textAddMealTitle">Hier klicken um neue Mahlzeit hinzuzufügen</h2>
-				</div>
-			</div> -->
+						<div class="">
+							<img
+								src={meal.dish?.imagePath ?? meal.customDish?.imagePath}
+								alt="Meal Icon"
+								height="150px"
+								width="200px"
+							/>
+						</div>
+						<div class="text-sm">
+							<p>{meal.dish?.name ?? meal.customDish?.name}</p>
+							<p>
+								{meal.dish?.nutritionalValues?.energy ?? meal.customDish?.nutritionalValues.energy} kcal
+							</p>
+						</div>
+					</div>
+				{/each}
+			{:else}
+				<p>Heute noch nichts gegessen</p>
+			{/if}
 		</div>
 	</section>
 	<div
@@ -144,79 +161,7 @@
 </main>
 
 <style>
-	/* .rowCaloriesWeek {
-		display: flex;
-	} */
-	.rowMealtitleButton {
-		display: flex;
-		justify-content: space-around;
-		width: 100%;
-		align-items: center;
-	}
-	.rowAllCards {
-		display: flex;
-		flex-wrap: wrap;
-	}
-	/* .columnCalories {
-		-webkit-flex: 1;
-		-ms-flex: 1;
-		flex: 1;
-		display: flex;
-		text-align: center;
-		align-content: center;
-	} */
-	/* .columnWeek {
-		-webkit-flex: 1;
-		-ms-flex: 1;
-		flex: 1;
-		align-items: center;
-	} */
-	.textTitle {
-		font: 600;
-		font-weight: bold;
-		font-size: 30px;
-		margin-bottom: 20px;
-	}
-	.imageCard {
-		margin-left: 20px;
-	}
 	.button {
-		background-color: transparent;
-		border: none;
-		width: 32px;
-		height: 32px;
 		text-decoration: none;
-	}
-	.cardGeneral {
-		display: flex;
-		justify-content: space-around;
-		margin-top: 20px;
-		width: 100vw;
-		flex-wrap: wrap;
-	}
-	.cardContent {
-		border-style: solid;
-		border-color: black;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		width: 300px;
-		background-color: aliceblue;
-		border-radius: 10%;
-		margin-bottom: 5vh;
-	}
-
-	.textMealTitle {
-		font: 400;
-		font-weight: bold;
-		font-size: 15px;
-		color: black;
-	}
-	.textAddMealTitle {
-		color: black;
-		align-self: center;
-		justify-content: center;
-		text-align: center;
 	}
 </style>

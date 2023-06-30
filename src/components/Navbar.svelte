@@ -136,7 +136,7 @@
 			<nav>
 				<ul>
 					<li class="m-3">
-						<a href="/">
+						<a href="/" data-sveltekit-preload-data="hover">
 							<span
 								class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
 								>Home</span
@@ -144,7 +144,7 @@
 						</a>
 					</li>
 					<li class="m-3">
-						<a href="/category">
+						<a href="/category" data-sveltekit-preload-data="hover">
 							<span
 								class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
 								>Workouts</span
@@ -152,7 +152,7 @@
 						</a>
 					</li>
 					<li class="m-3">
-						<a href="/progress">
+						<a href="/progress" data-sveltekit-preload-data="hover">
 							<span
 								class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
 								>Progress</span
@@ -160,7 +160,7 @@
 						</a>
 					</li>
 					<li class="m-3">
-						<a href="/nutrition">
+						<a href="/nutrition" data-sveltekit-preload-data="hover">
 							<span
 								class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
 								>Ernährungstagebuch</span
