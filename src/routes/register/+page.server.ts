@@ -54,6 +54,7 @@ export const actions = {
 				authMethod: "email",
 				password: password,
 				token: token
+
 			}
 		});
 

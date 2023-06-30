@@ -5,6 +5,7 @@
 	import type { ActionData, PageData } from './$types';
 	import { Toast, toastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
+	import { page } from '$app/stores';
 
 	export let form: ActionData;
 	export let data: PageData;
@@ -85,11 +86,13 @@
 		<h5 class="h5 mb-12 text-surface-500 dark:text-white">
 			Träume nicht dein Leben, sondern lebe deinen Traum!
 		</h5>
+		{#if !$page.data.session}
 		<a
 			href="/getStarted"
 			class="btn variant-filled inline-block px-4 py-2 hover:bg-tertiary-500 dark:hover:bg-primary-500"
 			><span class="text-white dark:text-black">Get Started</span></a
 		>
+		{/if}
 	</section>
 	<section class="flex justify-center items-center flex-col w-full py-12 bg-gradient-to-b from-success-400 from-15% via-success-700 via-51% to-success-400 to-90%  dark:bg-gradient-to-b dark:from-surface-800 dark:from-15% dark:via-sky-700 dark:via-51% dark:to-surface-800 dark:to-90%">
 		<div class="w-72 h-1 mb-24 rounded-full dark:bg-white" />

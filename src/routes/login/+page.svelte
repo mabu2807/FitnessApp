@@ -1,9 +1,12 @@
 <script lang="ts">
+	import { signIn, signOut } from '@auth/sveltekit/client';
 	import { onMount } from 'svelte';
 	import Head from '../../components/Head.svelte';
 	import type { ActionData } from './$types';
 	import { Toast, toastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
+	
+
 
 	export let form: ActionData;
 
@@ -20,10 +23,14 @@
 		if (form?.message == 'login error') {
 			return 'Email oder Passwort ist inkorrekt!';
 		}
+		else{
+			return 'Fehler Aufgetretten'
+		}
+		
 	}
 
 	function throwToast() {
-		if (formMessage() != null) {
+		if (formMessage() !== null|| formMessage()!== undefined) {
 			const t: ToastSettings = {
 				message: formMessage(),
 				timeout: 3000
@@ -33,7 +40,9 @@
 	}
 
 	onMount(() => {
+		if(form?.message != null  || form?.message !== undefined){
 		throwToast();
+		}
 	});
 </script>
 
@@ -78,6 +87,9 @@
 						> dich jetzt!
 					</p>
 				</div>
+			</form>
+			<form action="/">
+			<button on:click={() => signIn('github',{redirect: true, callbackUrl:'/'})}>Sign In with GitHub</button>
 			</form>
 		</div>
 		<div
