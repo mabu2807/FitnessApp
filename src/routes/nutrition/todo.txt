@@ -8,6 +8,7 @@
 - required name und calories
 - delete old dialogs
 - in
+- info button zu nähwertten neben den circles
 
 
 

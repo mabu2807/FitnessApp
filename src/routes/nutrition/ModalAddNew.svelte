@@ -3,6 +3,8 @@
 	import type { PageData } from './$types';
 	//import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
 	import { SlideToggle } from '@skeletonlabs/skeleton';
+	import { form, field } from 'svelte-forms';
+	import { required } from 'svelte-forms/validators';
 
 	export let data: PageData;
 	let time: string;
