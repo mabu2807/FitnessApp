@@ -80,8 +80,8 @@ devDependencies:
     specifier: ^1.8.0
     version: 1.8.0
   '@smui/circular-progress':
-    specifier: 7.0.0-beta.8
-    version: 7.0.0-beta.8(svelte@4.0.0)(typescript@5.1.6)
+    specifier: 7.0.0-beta.13
+    version: 7.0.0-beta.13(svelte@4.0.0)(typescript@5.1.6)
   '@smui/paper':
     specifier: 7.0.0-beta.8
     version: 7.0.0-beta.8(svelte@4.0.0)(typescript@5.1.6)
@@ -1602,11 +1602,11 @@ packages:
       - typescript
     dev: false
 
-  /@smui/circular-progress@7.0.0-beta.8(svelte@4.0.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-oKBilgNqkJalG+nv6L12/3YHGJKz9LsFHhxhNzbv2M0Yen+MQZCf5hVTsRhdRTfhpHJBvqXDqiZ8Ec2Gs5oXRA==}
+  /@smui/circular-progress@7.0.0-beta.13(svelte@4.0.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-Gt6QL2IfpPDlgEI6nWuuSaYNaJFqACmAbqZ0ZXqFYyfWPdpfVZY8S1skP0hwwnGZ0EBpNZVILRyA+I3IwoNPEw==}
     dependencies:
       '@material/circular-progress': 14.0.0
-      '@smui/common': 7.0.0-beta.9(svelte@4.0.0)(typescript@5.1.6)
+      '@smui/common': 7.0.0-beta.13(svelte@4.0.0)(typescript@5.1.6)
       svelte2tsx: 0.6.16(svelte@4.0.0)(typescript@5.1.6)
     transitivePeerDependencies:
       - svelte
@@ -1621,7 +1621,6 @@ packages:
     transitivePeerDependencies:
       - svelte
       - typescript
-    dev: true
 
   /@smui/common@7.0.0-beta.9(svelte@4.0.0)(typescript@5.1.6):
     resolution: {integrity: sha512-Wf63UfvaB8hDSzxkoqCUpFiJffQixmyKW+mWVE5ZUQ94Vwg0gZWGbNMEBrwrtI4tHomMQ95VVNdps/KsaXlStw==}
@@ -1690,7 +1689,7 @@ packages:
     dependencies:
       '@material/dom': 14.0.0
       '@material/ripple': 14.0.0
-      '@smui/common': 7.0.0-beta.9(svelte@4.0.0)(typescript@5.1.6)
+      '@smui/common': 7.0.0-beta.13(svelte@4.0.0)(typescript@5.1.6)
       svelte2tsx: 0.6.16(svelte@4.0.0)(typescript@5.1.6)
     transitivePeerDependencies:
       - svelte
@@ -1724,7 +1723,7 @@ packages:
     resolution: {integrity: sha512-/jlwlnuHAAjnLxO4PzNbXpCWIC4EFvHObBjbxRXuRaGIFXFz5m5tVe7ECvP3ePa9xbnI6IpBrcHfXreGfsjHSQ==}
     dependencies:
       '@material/tab-indicator': 14.0.0
-      '@smui/common': 7.0.0-beta.9(svelte@4.0.0)(typescript@5.1.6)
+      '@smui/common': 7.0.0-beta.13(svelte@4.0.0)(typescript@5.1.6)
       svelte2tsx: 0.6.16(svelte@4.0.0)(typescript@5.1.6)
     transitivePeerDependencies:
       - svelte
