@@ -3,19 +3,47 @@ import GitHub from "@auth/core/providers/github";
 import { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } from '$env/static/private';
 import prisma from '$lib/prisma';
 import type { Prisma } from '@prisma/client';
+import Credentials from '@auth/core/providers/credentials';
 
 
 export const handle = SvelteKitAuth({
     providers: [
         
         GitHub({ clientId: GITHUB_CLIENT_ID, clientSecret: GITHUB_CLIENT_SECRET }) as any,
+        Credentials({
+            credentials: {
+
+                email: { label: 'Username', type: 'text'   } ,
+                password: { label: 'Password', type: 'password' },
+            },
+            async authorize(credentials) {
+                const UserInput:Prisma.UserWhereUniqueInput = {
+                    email:credentials.email
+                }
+            
+                const response = await prisma.user.findUnique({
+                    where:UserInput
+                })
+                if (response == null || response == undefined) {
+                    return null
+                }
+                if (response.password !== credentials.password) {
+                    return null
+                }
+                return (response) ?? null
+            }
+
+        }) as any,
+
+
+        
     ],
     secret: 'mysecret',
     callbacks: {
         signIn: async ({profile}) => {
             console.log(profile?.name)
-            let user_name = 'test'
-            let email = 'test@test.de'
+            let user_name = ''
+            let email = ''
             let respone_user;
             if(profile?.email !== undefined && profile?.email !== null){
                 email = profile.email
@@ -40,7 +68,8 @@ export const handle = SvelteKitAuth({
                     "email": email,
                     "username": user_name,
                     "password": null,
-                    "auth_method": "github"
+                    "authMethod": "github",
+                    "token": "null",
                 }
                 try {
                         await prisma.user.create({
