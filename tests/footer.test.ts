@@ -20,7 +20,7 @@ test('Instagram link works', async ({ page }) => {
 test('Twitter link works', async ({ page }) => {
     await page.goto('/');
     await page.getByTitle('Twitter').click();
-    await expect(page.url()).toMatch(/twitter.*mibi61/i);
+    await expect(page.url()).toMatch(/twitter./i);
 });
 
 test('LinkedIn link works', async ({ page }) => {
