@@ -1,6 +1,4 @@
-import type { userdetail } from "./nutritionTypes";
-
-
+import type { userdetail } from './nutritionTypes';
 
 export function calcMaxCalories(userDetails: userdetail) {
 	let allCalories = 0;
@@ -15,8 +13,8 @@ export function calcMaxCalories(userDetails: userdetail) {
 }
 
 export function calcOneWeekBefore() {
-    const oneWeekBefore = new Date();
-    oneWeekBefore.setDate(oneWeekBefore.getDate() - 7);
-    oneWeekBefore.setHours(2, 0, 0, 0);
-    return oneWeekBefore;
+	const oneWeekBefore = new Date();
+	oneWeekBefore.setDate(oneWeekBefore.getDate() - 7);
+	oneWeekBefore.setHours(2, 0, 0, 0);
+	return oneWeekBefore;
 }

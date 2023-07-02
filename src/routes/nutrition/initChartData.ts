@@ -132,7 +132,7 @@ function changeBorderColors(maxCalories: number, calperday: number[], color:stri
 		color,
 		color
 	];
-	
+
 	const red = 'rgb(255, 99, 132, 0.4)';
 	for (let i = 0; i < calperday.length; i++) {
 		if (calperday[i] > Number(maxCalories)) {

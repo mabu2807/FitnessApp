@@ -1,0 +1,20 @@
+{
+	"parent": "a426b415-9a80-4a4d-a99c-87d5a0bdb13a",
+	"pid": 39132,
+	"argv": [
+		"C:\\Program Files\\nodejs\\node.exe",
+		"C:\\Users\\mb-ha\\Desktop\\GitRepos\\Uni\\FitnessApp\\node_modules\\vite\\bin\\vite.js",
+		"build"
+	],
+	"execArgv": [],
+	"cwd": "C:\\Users\\mb-ha\\Desktop\\GitRepos\\Uni\\FitnessApp",
+	"time": 1688134841685,
+	"ppid": 8304,
+	"coverageFilename": "C:\\Users\\mb-ha\\Desktop\\GitRepos\\Uni\\FitnessApp\\.nyc_output\\99c315b3-fb5d-4eee-aa6e-94df7bd05008.json",
+	"externalId": "",
+	"uuid": "99c315b3-fb5d-4eee-aa6e-94df7bd05008",
+	"files": [
+		"C:\\Users\\mb-ha\\Desktop\\GitRepos\\Uni\\FitnessApp\\postcss.config.cjs",
+		"C:\\Users\\mb-ha\\Desktop\\GitRepos\\Uni\\FitnessApp\\tailwind.config.cjs"
+	]
+}

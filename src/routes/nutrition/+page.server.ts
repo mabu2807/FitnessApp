@@ -8,7 +8,6 @@ import { calcChartValues } from './calcChartValues';
 
 // Load function
 export const load = (async () => {
-	
 	let responseUserDetails;
 	let responseUsermeals;
 	let responsedaymeal;
@@ -23,7 +22,7 @@ export const load = (async () => {
 				userId: 2
 			}
 		});
-		
+
 		// FoodDiaryID request
 		responseFoodDiaryID = await prisma.foodDiary.findUnique({
 			where: {
@@ -67,7 +66,7 @@ export const load = (async () => {
 				},
 				foodDiaryId: responseFoodDiaryID?.id
 			},
-			
+
 			include: {
 				customDish: {
 					include: {
@@ -107,12 +106,11 @@ export const load = (async () => {
 	}
 	const maxCalories = calcMaxCalories(responseUserDetails);
 
-	const allValues = calcChartValues(responseUsermeals)
+	const allValues = calcChartValues(responseUsermeals);
 	const allmaxValues = allmaxvalues(responseUserDetails, maxCalories);
 
 	const chartdata = initChartData(allmaxValues, allValues);
-	
-	
+
 	return {
 		chartdata: chartdata,
 		mealforCard: responsedaymeal,
@@ -151,7 +149,7 @@ export const actions: Actions = {
 		}
 	},
 	createCustomMeal: async ({ request }) => {
-		let imagePath = ''
+		let imagePath = '';
 		const data = await request.formData();
 		const name = data.get('mealText')?.toString();
 		const category = data.get('category')?.toString() ?? 'Snack';
@@ -164,26 +162,26 @@ export const actions: Actions = {
 		const saturatedFat = Number(data.get('saturatedFat')) ?? 0;
 		const day = new Date();
 		const foodID = 1;
-		let selected_customDish = null
+		let selected_customDish = null;
 
 		if (name == undefined || name == '' || name == null) {
 			return fail(403, { message: 'Bitte geben Sie einen Namen ein' });
 		}
-		if(calories == undefined || calories == null){
+		if (calories == undefined || calories == null) {
 			return fail(403, { message: 'Bitte geben Sie eine Kalorienanzahl ein' });
 		}
 		switch (category) {
 			case 'Abendessen':
-				imagePath = 'dinner2.jpeg'
+				imagePath = 'dinner2.jpeg';
 				break;
 			case 'Frühstück':
-				imagePath= 'breakfast2.webp'
+				imagePath = 'breakfast2.webp';
 				break;
 			case 'Mittagessen':
-				imagePath = 'lunch2.jpeg'
+				imagePath = 'lunch2.jpeg';
 				break;
 			default:
-				imagePath = 'dinner2.jpeg'
+				imagePath = 'dinner2.jpeg';
 				break;
 		}
 		const customDish: Prisma.customDishCreateInput = {
@@ -204,11 +202,11 @@ export const actions: Actions = {
 		await prisma.customDish.create({
 			data: customDish
 		});
-		const lastcustomDish = await prisma.customDish.findMany()
-		if(lastcustomDish.length != 0){
-			selected_customDish = lastcustomDish[lastcustomDish.length - 1]
+		const lastcustomDish = await prisma.customDish.findMany();
+		if (lastcustomDish.length != 0) {
+			selected_customDish = lastcustomDish[lastcustomDish.length - 1];
 		}
-		if (selected_customDish == undefined){
+		if (selected_customDish == undefined) {
 			return fail(403, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
 		}
 		const customMeal: Prisma.MealUncheckedCreateInput = {
@@ -217,7 +215,7 @@ export const actions: Actions = {
 			foodDiaryId: foodID,
 			customDishId: selected_customDish.id
 		};
-		
+
 		try {
 			await prisma.meal.create({
 				data: customMeal
@@ -240,36 +238,36 @@ export const actions: Actions = {
 		const newProtein = Number(data.get('protein')) ?? 0;
 		const newCarbohydrates = Number(data.get('carbohydrates')) ?? 0;
 		const newSaturatedFat = Number(data.get('saturatedFat')) ?? 0;
-		let imagePath = ''
-		let selected_customDish = null
+		let imagePath = '';
+		let selected_customDish = null;
 		switch (newCategory) {
 			case 'Abendessen':
-				imagePath = 'dinner2.jpeg'
+				imagePath = 'dinner2.jpeg';
 				break;
 			case 'Frühstück':
-				imagePath= 'breakfast2.webp'
+				imagePath = 'breakfast2.webp';
 				break;
 			case 'Mittagessen':
-				imagePath = 'lunch2.jpeg'
+				imagePath = 'lunch2.jpeg';
 				break;
 			default:
-				imagePath = 'dinner2.jpeg'
+				imagePath = 'dinner2.jpeg';
 				break;
 		}
 
-		const responseMeal =  await prisma.meal.findUnique({
+		const responseMeal = await prisma.meal.findUnique({
 			where: {
 				id: mealid
 			}
 		});
-		if(responseMeal == null){
+		if (responseMeal == null) {
 			return fail(404, { message: 'Meal not found' });
 		}
-		if(responseMeal.dishId == null){
+		if (responseMeal.dishId == null) {
 			await prisma.meal.update({
 				include: {
 					dish: {
-						include: {	
+						include: {
 							nutritionalValues: true
 						}
 					},
@@ -301,13 +299,11 @@ export const actions: Actions = {
 								}
 							}
 						}
-
-					},
-					
+					}
 				}
 			});
 		}
-		
+
 		if (responseMeal.dishId != null) {
 			const customDish: Prisma.customDishCreateInput = {
 				name: newName,
@@ -327,11 +323,11 @@ export const actions: Actions = {
 			await prisma.customDish.create({
 				data: customDish
 			});
-			const lastcustomDish = await prisma.customDish.findMany()
-			if(lastcustomDish.length != 0){
-				selected_customDish = lastcustomDish[lastcustomDish.length - 1]
+			const lastcustomDish = await prisma.customDish.findMany();
+			if (lastcustomDish.length != 0) {
+				selected_customDish = lastcustomDish[lastcustomDish.length - 1];
 			}
-			if (selected_customDish == undefined){
+			if (selected_customDish == undefined) {
 				return fail(403, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
 			}
 			await prisma.meal.update({
@@ -342,43 +338,39 @@ export const actions: Actions = {
 					time: newCategory,
 					dish: undefined,
 					customDishId: selected_customDish.id
-
 				}
 			});
-			
 		}
-
 	},
 	deleteMeal: async ({ request }) => {
 		const data = await request.formData();
 		const mealid = Number(data.get('Mealid'));
-		if(mealid == null || isNaN(mealid)){
+		if (mealid == null || isNaN(mealid)) {
 			return fail(404, { message: 'Meal not found' });
 		}
 		console.log(mealid);
-		const responseMeal =  await prisma.meal.findUnique({
+		const responseMeal = await prisma.meal.findUnique({
 			where: {
 				id: mealid
 			}
 		});
-		if(responseMeal == null){
+		if (responseMeal == null) {
 			return fail(404, { message: 'Meal not found' });
 		}
-		if(responseMeal.dishId != null){
+		if (responseMeal.dishId != null) {
 			try {
-
 				await prisma.meal.delete({
 					where: {
 						id: mealid
 					}
 				});
-				} catch (error) {
-					return fail(400, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
-				}
+			} catch (error) {
+				return fail(400, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
+			}
 		}
 
-		const customDishId = responseMeal.customDishId ?? 0
-		if(responseMeal.dishId == null){
+		const customDishId = responseMeal.customDishId ?? 0;
+		if (responseMeal.dishId == null) {
 			try {
 				await prisma.customDish.delete({
 					where: {
@@ -387,23 +379,15 @@ export const actions: Actions = {
 					include: {
 						nutritionalValues: true
 					}
-
 				});
 				await prisma.meal.delete({
 					where: {
 						id: mealid
 					}
 				});
-				} catch (error) {
-					return fail(400, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
-				}
+			} catch (error) {
+				return fail(400, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
+			}
 		}
-
-		
-	
-		
 	}
-
-		
-
 } satisfies Actions;

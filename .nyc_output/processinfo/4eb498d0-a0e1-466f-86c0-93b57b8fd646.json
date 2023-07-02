@@ -1,0 +1,17 @@
+{
+	"parent": null,
+	"pid": 52152,
+	"argv": [
+		"C:\\Program Files\\nodejs\\node.exe",
+		"C:\\Users\\mb-ha\\Desktop\\GitRepos\\Uni\\FitnessApp\\node_modules\\@playwright\\test\\cli.js",
+		"test"
+	],
+	"execArgv": [],
+	"cwd": "C:\\Users\\mb-ha\\Desktop\\GitRepos\\Uni\\FitnessApp",
+	"time": 1688134836183,
+	"ppid": 36564,
+	"coverageFilename": "C:\\Users\\mb-ha\\Desktop\\GitRepos\\Uni\\FitnessApp\\.nyc_output\\4eb498d0-a0e1-466f-86c0-93b57b8fd646.json",
+	"externalId": "",
+	"uuid": "4eb498d0-a0e1-466f-86c0-93b57b8fd646",
+	"files": []
+}

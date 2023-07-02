@@ -315,7 +315,7 @@
 									<img src="Edit_Pencil.png" alt="Edit Meal" />
 								</button>
 								{#if buttonID == meal.id.toString()}
-									<Dialog  bind:dialog mealdata={meal} value={buttonID} />
+									<Dialog {form} bind:dialog mealdata={meal} value={buttonID} />
 								{/if}
 							</div>
 							<div>
