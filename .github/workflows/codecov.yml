@@ -16,17 +16,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install Node.js 
+      - name: Install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          
-      - name: Install pnpm 
+
+      - name: Install pnpm
         run: npm install -g pnpm
 
       - name: Install dependencies
         run: pnpm install
-        
+
       - name: Install playwright
         run: npx playwright install
 
@@ -37,8 +37,8 @@ jobs:
         env:
           HEADLESS: true
         run: pnpm run test
-        
+
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         env:
-            CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

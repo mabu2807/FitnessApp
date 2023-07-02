@@ -5,8 +5,6 @@
 	import type { ActionData } from './$types';
 	import { Toast, toastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
-	
-
 
 	export let form: ActionData;
 
@@ -22,15 +20,13 @@
 		}
 		if (form?.message == 'login error') {
 			return 'Email oder Passwort ist inkorrekt!';
+		} else {
+			return 'Fehler Aufgetretten';
 		}
-		else{
-			return 'Fehler Aufgetretten'
-		}
-		
 	}
 
 	function throwToast() {
-		if (formMessage() !== null|| formMessage()!== undefined) {
+		if (formMessage() !== null || formMessage() !== undefined) {
 			const t: ToastSettings = {
 				message: formMessage(),
 				timeout: 3000
@@ -40,8 +36,8 @@
 	}
 
 	onMount(() => {
-		if(form?.message != null  || form?.message !== undefined){
-		throwToast();
+		if (form?.message != null || form?.message !== undefined) {
+			throwToast();
 		}
 	});
 </script>
@@ -49,7 +45,7 @@
 <Head />
 <Toast background="variant-filled-error" />
 <section class="flex items-center justify-center mt-20 mb-28 h-full dark:bg-surface-800">
-	<div class="lg:w-3/4 w-5/6 sm:flex my-20 ">
+	<div class="lg:w-3/4 w-5/6 sm:flex my-20">
 		<div
 			class="sm:w-1/2 w-full p-8 bg-success-400 dark:bg-gradient-to-b dark:from-surface-500 dark:from-10% dark:via-sky-700 dark:via-31% dark:to-surface-500 dark:to-80% sm:rounded-tl-xl sm:rounded-bl-xl rounded-tl-xl sm:rounded-tr-none rounded-tr-xl"
 		>
@@ -81,7 +77,7 @@
 					<p>
 						Du hast noch keinen Account? Dann <a href="/registration"
 							><span
-								class="text-surface-400 dark:text-surface-300  hover:text-tertiary-500 dark:hover:text-primary-500 font-bold"
+								class="text-surface-400 dark:text-surface-300 hover:text-tertiary-500 dark:hover:text-primary-500 font-bold"
 								>Registriere</span
 							></a
 						> dich jetzt!
@@ -89,11 +85,15 @@
 				</div>
 			</form>
 			<form action="/">
-			<button class="btn variant-ghost hover:bg-tertiary-300 dark:hover:bg-primary-300 lg:mx-4 mx-2 text-sm" on:click={() => signIn('github',{redirect: true, callbackUrl:'/'})}>Sign In with GitHub</button>
+				<button
+					class="btn variant-ghost hover:bg-tertiary-300 dark:hover:bg-primary-300 lg:mx-4 mx-2 text-sm"
+					on:click={() => signIn('github', { redirect: true, callbackUrl: '/' })}
+					>Sign In with GitHub</button
+				>
 			</form>
 		</div>
 		<div
-			class="sm:w-1/2 w-full flex flex-col justify-center items-center bg-success-400 dark:bg-gradient-to-b dark:from-surface-500 dark:from-10% dark:via-sky-700 dark:via-31% dark:to-surface-500 dark:to-80%  sm:rounded-tr-xl sm:rounded-br-xl sm:rounded-bl-none rounded-bl-xl rounded-br-xl"
+			class="sm:w-1/2 w-full flex flex-col justify-center items-center bg-success-400 dark:bg-gradient-to-b dark:from-surface-500 dark:from-10% dark:via-sky-700 dark:via-31% dark:to-surface-500 dark:to-80% sm:rounded-tr-xl sm:rounded-br-xl sm:rounded-bl-none rounded-bl-xl rounded-br-xl"
 		>
 			<div class="h-1 w-3/5 bg-black dark:bg-white rounded-full sm:mb-14 mb-5 sm:mt-0 mt-10" />
 			<div class="mb-6">

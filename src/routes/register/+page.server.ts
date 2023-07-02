@@ -51,10 +51,9 @@ export const actions = {
 			data: {
 				email: email,
 				username: username,
-				authMethod: "email",
+				authMethod: 'email',
 				password: password,
 				token: token
-
 			}
 		});
 

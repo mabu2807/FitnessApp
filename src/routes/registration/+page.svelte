@@ -10,7 +10,7 @@
 	import { lockedGoal, lockedGender } from '../../stores/Data';
 </script>
 
-<section class="flex justify-center pt-32 pb-20  dark:bg-surface-800">
+<section class="flex justify-center pt-32 pb-20 dark:bg-surface-800">
 	<div class="card w-3/4 m-10 shadow-xl sm:p-8 p-4 items-center bottom-gradient">
 		<Stepper
 			buttonBack="btn variant-ghost hover:bg-tertiary-400 dark:hover:bg-primary-400"

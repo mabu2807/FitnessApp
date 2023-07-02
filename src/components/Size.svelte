@@ -19,7 +19,7 @@
 
 <section class="h-80">
 	<div class="sm:my-12 my-8">
-		<h2 class="h2 text-center mb-7" title = "heightValue">{sliderValue} cm</h2>
+		<h2 class="h2 text-center mb-7" title="heightValue">{sliderValue} cm</h2>
 		<div class="w-full h-64 flex items-center justify-center">
 			<input
 				type="range"
@@ -27,7 +27,7 @@
 				max="220"
 				bind:value={sliderValue}
 				on:input={updateSliderValue}
-				title = "sizeSlider"
+				title="sizeSlider"
 			/>
 		</div>
 	</div>

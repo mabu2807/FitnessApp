@@ -1,1 +1,46 @@
-{"processes":{"4eb498d0-a0e1-466f-86c0-93b57b8fd646":{"parent":null,"children":["5015a7ac-9868-451f-a3cd-4782dd7b71ae"]},"5015a7ac-9868-451f-a3cd-4782dd7b71ae":{"parent":"4eb498d0-a0e1-466f-86c0-93b57b8fd646","children":["618d131d-0ba4-4b80-92c2-c7a7dc4a44f3","989b51d2-95a1-462c-9c50-c743df8d444d","a426b415-9a80-4a4d-a99c-87d5a0bdb13a","cb97bf58-c993-4274-8f3e-6ebfc64394bf"]},"618d131d-0ba4-4b80-92c2-c7a7dc4a44f3":{"parent":"5015a7ac-9868-451f-a3cd-4782dd7b71ae","children":[]},"989b51d2-95a1-462c-9c50-c743df8d444d":{"parent":"5015a7ac-9868-451f-a3cd-4782dd7b71ae","children":[]},"99c315b3-fb5d-4eee-aa6e-94df7bd05008":{"parent":"a426b415-9a80-4a4d-a99c-87d5a0bdb13a","children":[]},"a426b415-9a80-4a4d-a99c-87d5a0bdb13a":{"parent":"5015a7ac-9868-451f-a3cd-4782dd7b71ae","children":["99c315b3-fb5d-4eee-aa6e-94df7bd05008"]},"cb97bf58-c993-4274-8f3e-6ebfc64394bf":{"parent":"5015a7ac-9868-451f-a3cd-4782dd7b71ae","children":[]}},"files":{"C:\\Users\\mb-ha\\Desktop\\GitRepos\\Uni\\FitnessApp\\postcss.config.cjs":["99c315b3-fb5d-4eee-aa6e-94df7bd05008"],"C:\\Users\\mb-ha\\Desktop\\GitRepos\\Uni\\FitnessApp\\tailwind.config.cjs":["99c315b3-fb5d-4eee-aa6e-94df7bd05008"]},"externalIds":{}}
+{
+	"processes": {
+		"4eb498d0-a0e1-466f-86c0-93b57b8fd646": {
+			"parent": null,
+			"children": ["5015a7ac-9868-451f-a3cd-4782dd7b71ae"]
+		},
+		"5015a7ac-9868-451f-a3cd-4782dd7b71ae": {
+			"parent": "4eb498d0-a0e1-466f-86c0-93b57b8fd646",
+			"children": [
+				"618d131d-0ba4-4b80-92c2-c7a7dc4a44f3",
+				"989b51d2-95a1-462c-9c50-c743df8d444d",
+				"a426b415-9a80-4a4d-a99c-87d5a0bdb13a",
+				"cb97bf58-c993-4274-8f3e-6ebfc64394bf"
+			]
+		},
+		"618d131d-0ba4-4b80-92c2-c7a7dc4a44f3": {
+			"parent": "5015a7ac-9868-451f-a3cd-4782dd7b71ae",
+			"children": []
+		},
+		"989b51d2-95a1-462c-9c50-c743df8d444d": {
+			"parent": "5015a7ac-9868-451f-a3cd-4782dd7b71ae",
+			"children": []
+		},
+		"99c315b3-fb5d-4eee-aa6e-94df7bd05008": {
+			"parent": "a426b415-9a80-4a4d-a99c-87d5a0bdb13a",
+			"children": []
+		},
+		"a426b415-9a80-4a4d-a99c-87d5a0bdb13a": {
+			"parent": "5015a7ac-9868-451f-a3cd-4782dd7b71ae",
+			"children": ["99c315b3-fb5d-4eee-aa6e-94df7bd05008"]
+		},
+		"cb97bf58-c993-4274-8f3e-6ebfc64394bf": {
+			"parent": "5015a7ac-9868-451f-a3cd-4782dd7b71ae",
+			"children": []
+		}
+	},
+	"files": {
+		"C:\\Users\\mb-ha\\Desktop\\GitRepos\\Uni\\FitnessApp\\postcss.config.cjs": [
+			"99c315b3-fb5d-4eee-aa6e-94df7bd05008"
+		],
+		"C:\\Users\\mb-ha\\Desktop\\GitRepos\\Uni\\FitnessApp\\tailwind.config.cjs": [
+			"99c315b3-fb5d-4eee-aa6e-94df7bd05008"
+		]
+	},
+	"externalIds": {}
+}

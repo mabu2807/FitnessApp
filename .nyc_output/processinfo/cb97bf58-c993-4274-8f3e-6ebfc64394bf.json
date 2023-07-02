@@ -1,1 +1,18 @@
-{"parent":"5015a7ac-9868-451f-a3cd-4782dd7b71ae","pid":17604,"argv":["C:\\Program Files\\nodejs\\node.exe","C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js","prefix","-g"],"execArgv":[],"cwd":"C:\\Users\\mb-ha\\Desktop\\GitRepos\\Uni\\FitnessApp","time":1688134839152,"ppid":49012,"coverageFilename":"C:\\Users\\mb-ha\\Desktop\\GitRepos\\Uni\\FitnessApp\\.nyc_output\\cb97bf58-c993-4274-8f3e-6ebfc64394bf.json","externalId":"","uuid":"cb97bf58-c993-4274-8f3e-6ebfc64394bf","files":[]}
+{
+	"parent": "5015a7ac-9868-451f-a3cd-4782dd7b71ae",
+	"pid": 17604,
+	"argv": [
+		"C:\\Program Files\\nodejs\\node.exe",
+		"C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+		"prefix",
+		"-g"
+	],
+	"execArgv": [],
+	"cwd": "C:\\Users\\mb-ha\\Desktop\\GitRepos\\Uni\\FitnessApp",
+	"time": 1688134839152,
+	"ppid": 49012,
+	"coverageFilename": "C:\\Users\\mb-ha\\Desktop\\GitRepos\\Uni\\FitnessApp\\.nyc_output\\cb97bf58-c993-4274-8f3e-6ebfc64394bf.json",
+	"externalId": "",
+	"uuid": "cb97bf58-c993-4274-8f3e-6ebfc64394bf",
+	"files": []
+}
