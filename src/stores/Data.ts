@@ -13,6 +13,8 @@ export const lockedGoal = writable(true);
 
 export const lockedGender = writable(true);
 
+export const selectedCategory = writable('');
+
 export const categoryData = writable([
 	{
 		title: 'Krafttraining',
