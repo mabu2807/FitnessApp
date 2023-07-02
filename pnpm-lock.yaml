@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@auth/core':
     specifier: ^0.8.4
@@ -82,8 +86,8 @@ devDependencies:
     specifier: ^1.8.0
     version: 1.8.0
   '@smui/circular-progress':
-    specifier: 7.0.0-beta.8
-    version: 7.0.0-beta.8(svelte@4.0.1)(typescript@5.1.6)
+    specifier: 7.0.0-beta.14
+    version: 7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6)
   '@smui/paper':
     specifier: 7.0.0-beta.8
     version: 7.0.0-beta.8(svelte@4.0.1)(typescript@5.1.6)
@@ -1637,8 +1641,8 @@ packages:
       - typescript
     dev: false
 
-  /@smui/circular-progress@7.0.0-beta.8(svelte@4.0.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-oKBilgNqkJalG+nv6L12/3YHGJKz9LsFHhxhNzbv2M0Yen+MQZCf5hVTsRhdRTfhpHJBvqXDqiZ8Ec2Gs5oXRA==}
+  /@smui/circular-progress@7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6):
+    resolution: {integrity: sha512-RrPeqgh7RbSmaT6rZ8VqagbnOIYF+XseLemV383l3OtdFFxeQYIq5xWDzoy5lm578CGbxYLPmeTskU9cnDtQ2w==}
     dependencies:
       '@material/circular-progress': 14.0.0
       '@smui/common': 7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6)
@@ -5470,7 +5474,3 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
