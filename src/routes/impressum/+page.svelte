@@ -7,7 +7,7 @@
         
             <h3 class="text-4xl font-semibold">Impressum</h3>
       
-        <div class="mt-8">
+        <div class="mt-12">
             <div class="mt-4">
                 <div class="flex flex-row mt-4">
                     <div class="font-bold mr-8  ">
@@ -19,8 +19,8 @@
                     
                     </div>
                     <div class="">
-                     <p class="mt-2">Beispiel GmbH</p>
-                     <p class="mt-2"> Max Mustermann (Geschäftsführer)</p>
+                     <p class="mt-2">FitnessHub</p>
+                     <p class="mt-2">  (Geschäftsführer)</p>
                      <p class="mt-2"> Musterstraße 123, 12345 Musterstadt</p>
                      <p class="mt-2"> +49 123 456789</p>
                      <p class="mt-2"> info@beispielgmbh.de</p>
@@ -28,7 +28,7 @@
                     </div>
                  </div>
             </div>
-            <div class="mt-8">
+            <!-- <div class="mt-8">
                 <div class="flex flex-row mt-4">
                     <div class="font-bold mr-8  ">
                      <p class="mt-2">Registergericht: </p>
@@ -44,8 +44,8 @@
                     </div>
                 </div>
                 <p class=""><b> Umsatzsteuer-Identifikationsnummer </b> gemäß § 27a UStG: DE123456789 </p>
-            </div>
-            <div class="mt-8">
+            </div> -->
+            <div class="mt-12">
                 <div class="flex flex-row mt-4">
                     <div class=" mr-8  ">
                      <p class="mt-2 font-bold">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: </p>
@@ -55,7 +55,7 @@
 
                 </div>
             </div>
-            <div class="mt-8">
+            <div class="mt-12">
                 <div class="flex flex-row mt-4">
                     <div class=" mr-8  ">
                      <p class="mt-2 font-bold">Haftungshinweis: </p>
