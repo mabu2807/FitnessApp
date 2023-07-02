@@ -24,8 +24,10 @@
 	<p class="text-lg">Bleib dran und zieh durch!</p>
 </section>
 
-<div class="bg-gradient-to-b from-success-400 from-15% via-success-700 via-51% to-success-400 to-90%  dark:bg-gradient-to-b dark:from-surface-800 dark:from-15% dark:via-sky-700 dark:via-51% dark:to-surface-800 dark:to-90%">
-	<section class="flex flex-wrap justify-center gap-8 p-16 ">
+<div
+	class="bg-gradient-to-b from-success-400 from-15% via-success-700 via-51% to-success-400 to-90% dark:bg-gradient-to-b dark:from-surface-800 dark:from-15% dark:via-sky-700 dark:via-51% dark:to-surface-800 dark:to-90%"
+>
+	<section class="flex flex-wrap justify-center gap-8 p-16">
 		{#each $categoryData as item}
 			{#if item.picked}
 				<a

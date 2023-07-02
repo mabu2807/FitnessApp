@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test';
 
 test('Copyright visible', async ({ page }) => {
-    // await page.goto('/');
-    // await expect(page.getByText('© 2023 FitnessHub. All rights reserved.')).toBeVisible();
+	// await page.goto('/');
+	// await expect(page.getByText('© 2023 FitnessHub. All rights reserved.')).toBeVisible();
 });
 
 // test('YouTube link works', async ({ page }) => {

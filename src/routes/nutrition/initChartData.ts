@@ -123,7 +123,7 @@ function changeBorderColors(maxCalories: number, calperday: number[]) {
 		'rgba(113, 205, 205, 1)',
 		'rgba(98, 182, 239, 1)'
 	];
-	
+
 	const red = 'rgb(255, 99, 132, 0.4)';
 	for (let i = 0; i < calperday.length; i++) {
 		if (calperday[i] > Number(maxCalories)) {

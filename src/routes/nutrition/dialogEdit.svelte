@@ -2,9 +2,9 @@
 	import type { ActionData } from './$types';
 	import type { Meal } from './nutritionTypes';
 	// import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
-	 import { SlideToggle } from '@skeletonlabs/skeleton';
+	import { SlideToggle } from '@skeletonlabs/skeleton';
 
-	export let form: ActionData
+	export let form: ActionData;
 	export let mealdata: Meal | null;
 	export let dialog: HTMLDialogElement;
 	export let value: string | null;
