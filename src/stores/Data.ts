@@ -16,6 +16,10 @@ export const weightData = writable([
 	{ title: 'Curls mit Wasserkästen', weight: '', rep: '' }
 ]);
 
+export const cardioData = writable(
+	{ title: '', distance: '', time: ''}
+);
+
 export const lockedGoal = writable(true);
 
 export const lockedGender = writable(true);
