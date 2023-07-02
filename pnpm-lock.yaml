@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@auth/core':
     specifier: ^0.8.4
@@ -38,8 +42,8 @@ dependencies:
     specifier: 7.0.0-beta.8
     version: 7.0.0-beta.8(svelte@4.0.1)(typescript@5.1.6)
   '@smui/dialog':
-    specifier: 7.0.0-beta.8
-    version: 7.0.0-beta.8(svelte@4.0.1)(typescript@5.1.6)
+    specifier: 7.0.0-beta.14
+    version: 7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6)
   '@smui/icon-button':
     specifier: 7.0.0-beta.8
     version: 7.0.0-beta.8(svelte@4.0.1)(typescript@5.1.6)
@@ -1657,8 +1661,8 @@ packages:
       - svelte
       - typescript
 
-  /@smui/dialog@7.0.0-beta.8(svelte@4.0.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-BTUgj8ZKe9xQU1/kfgyZDtxf3kHtog3/2dTiYCm9M1fJAqc5tUXS+SaWI+XoD/F9g2dm9JKBCp3e5nnNoAv0vQ==}
+  /@smui/dialog@7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6):
+    resolution: {integrity: sha512-PPYZiI3f+v/WQSWBK9BE7/0gDYx46BpL3P4pdEFznkppP/pg8oC3TzoYTr2fykN/IS7x2Ez15qTvWEy/QvFnEw==}
     dependencies:
       '@material/button': 14.0.0
       '@material/dialog': 14.0.0
@@ -5470,7 +5474,3 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
