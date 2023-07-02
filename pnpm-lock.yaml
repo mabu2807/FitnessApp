@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@auth/core':
     specifier: ^0.8.4
@@ -85,8 +89,8 @@ devDependencies:
     specifier: 7.0.0-beta.8
     version: 7.0.0-beta.8(svelte@4.0.1)(typescript@5.1.6)
   '@smui/paper':
-    specifier: 7.0.0-beta.8
-    version: 7.0.0-beta.8(svelte@4.0.1)(typescript@5.1.6)
+    specifier: 7.0.0-beta.14
+    version: 7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6)
   '@smui/tab':
     specifier: 7.0.0-beta.8
     version: 7.0.0-beta.8(svelte@4.0.1)(typescript@5.1.6)
@@ -1683,8 +1687,8 @@ packages:
       - typescript
     dev: false
 
-  /@smui/paper@7.0.0-beta.8(svelte@4.0.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-NoOrlU67YUnI19V685MbSzoBV+0AQj2Swj5U6VQIYqW7JRVOk09BQAj45pPXAYWGQUCzzkeXzwD+V5O9J8+PVQ==}
+  /@smui/paper@7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6):
+    resolution: {integrity: sha512-qz8lge3p0oJIIazTCMOfjdmEeilO5vMlU2bAmsQtbPqqP6v+wV5K+f/zXnSHtziIYd4fjlTW9bgxmkmf7r4uEA==}
     dependencies:
       '@material/elevation': 14.0.0
       '@material/feature-targeting': 14.0.0
@@ -5470,7 +5474,3 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
