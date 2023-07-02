@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -92,8 +92,8 @@ devDependencies:
     specifier: 7.0.0-beta.8
     version: 7.0.0-beta.8(svelte@4.0.1)(typescript@5.1.6)
   '@smui/tab':
-    specifier: 7.0.0-beta.8
-    version: 7.0.0-beta.8(svelte@4.0.1)(typescript@5.1.6)
+    specifier: 7.0.0-beta.14
+    version: 7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6)
   '@smui/tab-bar':
     specifier: 7.0.0-beta.13
     version: 7.0.0-beta.13(svelte@4.0.1)(typescript@5.1.6)
@@ -1662,6 +1662,15 @@ packages:
       - typescript
     dev: true
 
+  /@smui/common@7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6):
+    resolution: {integrity: sha512-Vw0fth7DiFKoVSJb5UMiXxACMyF65Wof/W23nEywx9rAh/v7kF7gi565d9BZp4sYvFj3hPy2M2Ev3p2tnxzLOw==}
+    dependencies:
+      '@material/dom': 14.0.0
+      svelte2tsx: 0.6.16(svelte@4.0.1)(typescript@5.1.6)
+    transitivePeerDependencies:
+      - svelte
+      - typescript
+
   /@smui/common@7.0.0-beta.9(svelte@4.0.1)(typescript@5.1.6):
     resolution: {integrity: sha512-Wf63UfvaB8hDSzxkoqCUpFiJffQixmyKW+mWVE5ZUQ94Vwg0gZWGbNMEBrwrtI4tHomMQ95VVNdps/KsaXlStw==}
     dependencies:
@@ -1712,12 +1721,12 @@ packages:
       - typescript
     dev: true
 
-  /@smui/ripple@7.0.0-beta.13(svelte@4.0.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-Fod5S+WVprKDoQ3bn6SPsPkMIw/AUQuktEAFdoQkKvolhQk3V5/U3qMu4hRcEMUBAQVBdATrRGyhMecnvTowJQ==}
+  /@smui/ripple@7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6):
+    resolution: {integrity: sha512-EQyZIicnJj3mNCXK1PuGQ4zZOdXrhRtcHGJCrTUNjQzltIQai446Y9aRk5PhY3EIWfTYZuWnqaprC6R00EJOKA==}
     dependencies:
       '@material/dom': 14.0.0
       '@material/ripple': 14.0.0
-      '@smui/common': 7.0.0-beta.13(svelte@4.0.1)(typescript@5.1.6)
+      '@smui/common': 7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6)
       svelte2tsx: 0.6.16(svelte@4.0.1)(typescript@5.1.6)
     transitivePeerDependencies:
       - svelte
@@ -1729,18 +1738,19 @@ packages:
     dependencies:
       '@material/dom': 14.0.0
       '@material/ripple': 14.0.0
-      '@smui/common': 7.0.0-beta.9(svelte@4.0.1)(typescript@5.1.6)
+      '@smui/common': 7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6)
       svelte2tsx: 0.6.16(svelte@4.0.1)(typescript@5.1.6)
     transitivePeerDependencies:
       - svelte
       - typescript
+    dev: false
 
   /@smui/tab-bar@7.0.0-beta.13(svelte@4.0.1)(typescript@5.1.6):
     resolution: {integrity: sha512-931fFp9u7N1qB6slC6v42n83mgMvjKv5HXG5yanW9eDsbKpMdjjpMPimY6025kFUCTM1dFl4cBv6o4zJoKiLBg==}
     dependencies:
       '@material/tab-bar': 14.0.0
       '@smui/common': 7.0.0-beta.13(svelte@4.0.1)(typescript@5.1.6)
-      '@smui/tab': 7.0.0-beta.13(svelte@4.0.1)(typescript@5.1.6)
+      '@smui/tab': 7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6)
       '@smui/tab-scroller': 7.0.0-beta.13(svelte@4.0.1)(typescript@5.1.6)
       svelte2tsx: 0.6.16(svelte@4.0.1)(typescript@5.1.6)
     transitivePeerDependencies:
@@ -1748,22 +1758,11 @@ packages:
       - typescript
     dev: true
 
-  /@smui/tab-indicator@7.0.0-beta.13(svelte@4.0.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-h1H3nkTZ7VHEABcwMoFHkzeq30zWKWQR4m4qxgpkkD9gAloV0UphUHRQSscFk3IL5vaHJKSPh0VJ0mN2kK04cQ==}
+  /@smui/tab-indicator@7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6):
+    resolution: {integrity: sha512-l44iMCprZ/RNxPUgkvWoV1SJoUE9eg9ID2mhW+5OdoVCHuPqERnpGH/0SG4CYj3fjOYq+mMmGk219SVH2nJAIg==}
     dependencies:
       '@material/tab-indicator': 14.0.0
-      '@smui/common': 7.0.0-beta.13(svelte@4.0.1)(typescript@5.1.6)
-      svelte2tsx: 0.6.16(svelte@4.0.1)(typescript@5.1.6)
-    transitivePeerDependencies:
-      - svelte
-      - typescript
-    dev: true
-
-  /@smui/tab-indicator@7.0.0-beta.9(svelte@4.0.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-/jlwlnuHAAjnLxO4PzNbXpCWIC4EFvHObBjbxRXuRaGIFXFz5m5tVe7ECvP3ePa9xbnI6IpBrcHfXreGfsjHSQ==}
-    dependencies:
-      '@material/tab-indicator': 14.0.0
-      '@smui/common': 7.0.0-beta.9(svelte@4.0.1)(typescript@5.1.6)
+      '@smui/common': 7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6)
       svelte2tsx: 0.6.16(svelte@4.0.1)(typescript@5.1.6)
     transitivePeerDependencies:
       - svelte
@@ -1775,33 +1774,20 @@ packages:
     dependencies:
       '@material/dom': 14.0.0
       '@material/tab-scroller': 14.0.0
-      '@smui/common': 7.0.0-beta.13(svelte@4.0.1)(typescript@5.1.6)
+      '@smui/common': 7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6)
       svelte2tsx: 0.6.16(svelte@4.0.1)(typescript@5.1.6)
     transitivePeerDependencies:
       - svelte
       - typescript
     dev: true
 
-  /@smui/tab@7.0.0-beta.13(svelte@4.0.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-WNEqvRFGG3IqPWhnvUZyFKc6+SM65GvdRJ2WYuh7zg96VwAAzEwwOd06DbwqrsPS2iRfjKzF2FxENj7j+nDBTg==}
+  /@smui/tab@7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6):
+    resolution: {integrity: sha512-2M5p+g3Nx3yFFklxuYTDieQwfmBmq8TGhnynyaFfkwmk0hZ/brSDHGQm8pYIGKQPl5brVG67sBHUKqplD2iJEQ==}
     dependencies:
       '@material/tab': 14.0.0
-      '@smui/common': 7.0.0-beta.13(svelte@4.0.1)(typescript@5.1.6)
-      '@smui/ripple': 7.0.0-beta.13(svelte@4.0.1)(typescript@5.1.6)
-      '@smui/tab-indicator': 7.0.0-beta.13(svelte@4.0.1)(typescript@5.1.6)
-      svelte2tsx: 0.6.16(svelte@4.0.1)(typescript@5.1.6)
-    transitivePeerDependencies:
-      - svelte
-      - typescript
-    dev: true
-
-  /@smui/tab@7.0.0-beta.8(svelte@4.0.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-v+WKqv4Hv4KzU3unM/xBX3sJOIiB6vatlEze1HKGBAlLLh+kRZOM1NgLh/SPBpPOSNbdZwbGzPZDAFXCT1ZnIw==}
-    dependencies:
-      '@material/tab': 14.0.0
-      '@smui/common': 7.0.0-beta.9(svelte@4.0.1)(typescript@5.1.6)
-      '@smui/ripple': 7.0.0-beta.9(svelte@4.0.1)(typescript@5.1.6)
-      '@smui/tab-indicator': 7.0.0-beta.9(svelte@4.0.1)(typescript@5.1.6)
+      '@smui/common': 7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6)
+      '@smui/ripple': 7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6)
+      '@smui/tab-indicator': 7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6)
       svelte2tsx: 0.6.16(svelte@4.0.1)(typescript@5.1.6)
     transitivePeerDependencies:
       - svelte

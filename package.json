@@ -20,7 +20,7 @@
 		"@skeletonlabs/skeleton": "^1.8.0",
 		"@smui/circular-progress": "7.0.0-beta.8",
 		"@smui/paper": "7.0.0-beta.8",
-		"@smui/tab": "7.0.0-beta.8",
+		"@smui/tab": "7.0.0-beta.14",
 		"@smui/tab-bar": "7.0.0-beta.13",
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"@sveltejs/kit": "^1.21.0",
