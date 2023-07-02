@@ -80,7 +80,7 @@
 <Toast background="variant-filled-error" />
 <div class="flex flex-col justify-center items-center">
 	<section
-		class="text-center bg-success-400 dark:bg-surface-800 w-full mx-auto px-6 py-14 md:py-20 mt-24"
+		class="text-center bg-success-400 dark:bg-surface-800 w-full mx-auto px-6 py-14 md:py-20 mt-20"
 	>
 		<h3 class="h3 mb-5 font-medium">"Gestern noch vom Sixpack geträumt, heute schon geholt."</h3>
 		<h5 class="h5 mb-12 text-surface-500 dark:text-white">

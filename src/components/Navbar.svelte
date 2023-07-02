@@ -14,19 +14,13 @@
 
 	const drawerSettings: DrawerSettings = {
 		id: 'example-1',
-		// Provide your property overrides:
-
 		width: 'w-[280px] md:w-[480px]',
-		// padding: 'p-4',
 		rounded: 'rounded'
 	};
 
 	const popupNavigation: PopupSettings = {
-		// Represents the type of event that opens/closed the popup
 		event: 'click',
-		// Matches the data-popup value on your popup element
 		target: 'popupNavigation',
-		// Defines which side of your trigger the popup will appear
 		placement: 'bottom'
 	};
 
@@ -164,6 +158,14 @@
 						</a>
 					</li>
 					<li class="m-3">
+						<a href="/overview" data-sveltekit-preload-data="hover">
+							<span
+								class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+								>Overview</span
+							>
+						</a>
+					</li>
+					<li class="m-3">
 						<a href="/nutrition" data-sveltekit-preload-data="hover">
 							<span
 								class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
@@ -198,6 +200,12 @@
 				>Progress</span
 			></a
 		>
+		<a href="/overview"
+			><span
+				class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+				>Overview</span
+			></a
+		>
 		<a href="/nutrition">
 			<span
 				class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
@@ -218,10 +226,11 @@
 			on:click={() => drawerStore.open(drawerSettings)}
 		/>
 		{/if}
-	</svelte:fragment>
-	{#if !$page.data.session}
-	<a href="/login"><button>Login</button></a>
+		{#if !$page.data.session}
+	<a href="/login"><button class="btn variant-ghost inline-block px-4 py-2 hover:bg-tertiary-300 dark:hover:bg-primary-300">Login</button>
+		</a>
 	{/if}
-	
+	</svelte:fragment>
+
 
 </AppBar>

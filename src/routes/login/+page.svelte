@@ -89,7 +89,7 @@
 				</div>
 			</form>
 			<form action="/">
-			<button on:click={() => signIn('github',{redirect: true, callbackUrl:'/'})}>Sign In with GitHub</button>
+			<button class="btn variant-ghost hover:bg-tertiary-300 dark:hover:bg-primary-300 lg:mx-4 mx-2 text-sm" on:click={() => signIn('github',{redirect: true, callbackUrl:'/'})}>Sign In with GitHub</button>
 			</form>
 		</div>
 		<div
