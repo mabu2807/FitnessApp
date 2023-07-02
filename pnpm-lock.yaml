@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@auth/core':
     specifier: ^0.8.4
@@ -91,8 +95,8 @@ devDependencies:
     specifier: 7.0.0-beta.8
     version: 7.0.0-beta.8(svelte@4.0.1)(typescript@5.1.6)
   '@smui/tab-bar':
-    specifier: 7.0.0-beta.13
-    version: 7.0.0-beta.13(svelte@4.0.1)(typescript@5.1.6)
+    specifier: 7.0.0-beta.14
+    version: 7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6)
   '@sveltejs/adapter-auto':
     specifier: ^2.1.0
     version: 2.1.0(@sveltejs/kit@1.21.0)
@@ -1709,8 +1713,8 @@ packages:
       - svelte
       - typescript
 
-  /@smui/tab-bar@7.0.0-beta.13(svelte@4.0.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-931fFp9u7N1qB6slC6v42n83mgMvjKv5HXG5yanW9eDsbKpMdjjpMPimY6025kFUCTM1dFl4cBv6o4zJoKiLBg==}
+  /@smui/tab-bar@7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6):
+    resolution: {integrity: sha512-25YjvZRENVSGj4Brkz9wInBtmLQh5Rap/S8W7HcKeNPRiiGm+fD7HYCfRhot/8TUmMJVK8NCB0apQXpaITnlhQ==}
     dependencies:
       '@material/tab-bar': 14.0.0
       '@smui/common': 7.0.0-beta.14(svelte@4.0.1)(typescript@5.1.6)
@@ -5470,7 +5474,3 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
