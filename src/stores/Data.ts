@@ -9,6 +9,13 @@ export const getStartedData = writable([
 	{ title: 'Aktivitätslevel', value: '' }
 ]);
 
+export const weightData = writable([
+	{ title: 'Bankdrücken stehend', weight: '', rep: '' },
+	{ title: 'Latzug springend', weight: '', rep: '' },
+	{ title: 'Kniebeuge aufm Tisch', weight: '' },
+	{ title: 'Curls mit Wasserkästen', weight: '', rep: '' }
+]);
+
 export const lockedGoal = writable(true);
 
 export const lockedGender = writable(true);
