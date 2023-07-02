@@ -5,6 +5,7 @@
 	import Cardio from '../../components/Cardio.svelte';
 	import Chooser from '../../components/Chooser.svelte';
 	import { selectedCategory } from '../../stores/Data';
+	
 </script>
 
 <section class="flex justify-center pt-32 pb-20 dark:bg-surface-800">

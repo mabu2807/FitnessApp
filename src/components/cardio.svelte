@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { cardioData } from '../stores/Data';
+	
 
 	let cardioValue: string;
 

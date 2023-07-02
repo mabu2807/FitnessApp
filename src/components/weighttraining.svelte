@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { weightData } from '../stores/Data';
+	
 </script>
 
 <section class="h-80">
