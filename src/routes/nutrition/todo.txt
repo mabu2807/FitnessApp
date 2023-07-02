@@ -9,6 +9,9 @@
 -DONE info button zu nähwerten neben den circles
 -DONE CircleProgressBar for diffrent values
 
+-  Code Aufräumen !!!!!!!!!
+- Chart Farben an Progress Circle Farben anpassen
+
 
 --- UI Update
 

@@ -1,11 +1,6 @@
 <script lang="ts">
-	import CircleProgressBar from './CircleProgressBar.svelte';
 	import Chart from './nutriChart.svelte';
 	import Dialog from './dialogEdit.svelte';
-	//import ModalAdd from './ModalAddTemplate.svelte';
-	//import  Modal from '@skeletonlabs/skeleton';
-	//import Modal from './ModalAddTemplate.svelte';
-
 	import type { PageData, ActionData } from './$types';
 	import type { MouseEventHandler } from 'svelte/elements';
 	import { ProgressRadial, type ModalSettings } from '@skeletonlabs/skeleton';
@@ -17,13 +12,11 @@
     import type { PopupSettings } from '@skeletonlabs/skeleton';
 
 	let dialog: HTMLDialogElement;
-
 	let showModal = false;
 	let showModal2 = false;
 	let showModal3 = false;
 
 	export let data: PageData;
-	//export let form: ActionData;
 	let mealData = data.mealforCard;
 	let maxCalories = 0;
 	let usedCalories = 0;
@@ -74,9 +67,7 @@
 	let progressProText = progressProtein;
 	let progressCarText = progressCarbohydrates;
 	let progressSatFatText = progressSaturatedFat;
-	//let image: string;
 	let buttonID: string | null = '';
-	//let selected: string = 'energy';
 	let chartData = data.chartdata;
 
 	const modal: ModalSettings = {

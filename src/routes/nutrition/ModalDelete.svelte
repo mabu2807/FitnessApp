@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { Modal } from '@skeletonlabs/skeleton';
 	import type { PageData } from './$types';
 	import type { Meal } from './nutritionTypes';
-	import type { ActionData } from './$types';
 
 	export let data: PageData;
 	let dialog3: HTMLDialogElement;

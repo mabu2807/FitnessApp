@@ -1,7 +1,5 @@
 <script lang="ts">
-	import type { ModalComponent } from '@skeletonlabs/skeleton';
 	import type { PageData } from './$types';
-	//import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
 	import { SlideToggle, toastStore } from '@skeletonlabs/skeleton';
 
 	export let data: PageData;
@@ -15,9 +13,6 @@
 	let sugar: number;
 	let protein: number;
 	let salt: number;
-
-	let isSet = false;
-	let isSet2 = false;
 	let disabledButton = true;
 
 	export let showModal: boolean;
@@ -27,13 +22,9 @@
 	const closeClick = () => {
 		dialog.close();
 	};
-
-	
-
 	function saveChanges() {
 		dialog.close();
 	};
-
 	function disabledCheck(){
 		if(mealtext!=null && calories!=null && mealtext!=""){
 			disabledButton=false

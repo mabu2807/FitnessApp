@@ -1,9 +1,6 @@
 <script lang="ts">
-	//import { Modal, modalStore } from '@skeletonlabs/skeleton';
-	//import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton';
 	import type { Dish } from './nutritionTypes';
 	import type { PageData } from './$types';
-	//import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
 
 	export let data: PageData;
 	let allDishes = data.allDishes;
