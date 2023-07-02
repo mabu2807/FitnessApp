@@ -11,6 +11,6 @@
 	<div class="flex flex-col pl-[3%] w-4/5 lg:m-2">
 		<p class="text-2xl font-semibold">{data.title}</p>
 		<p>{data.text}</p>
-		<a href={data.link} target="_blank">Weiterlesen...</a>
+		<a href={data.link} target="_blank" class="text-blue-400">Weiterlesen...</a>
 	</div>
 </main>

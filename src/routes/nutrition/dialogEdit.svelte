@@ -1,15 +1,11 @@
 <script lang="ts">
-	import type { ActionData } from './$types';
 	import type { Meal } from './nutritionTypes';
-	// import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
 	import { SlideToggle } from '@skeletonlabs/skeleton';
-
 	export let form: ActionData;
 	export let mealdata: Meal | null;
 	export let dialog: HTMLDialogElement;
 	export let value: string | null;
 
-	let calories: number;
 	let toggleChecked = false;
 	let fat: number;
 	let saturadetFat: number;
@@ -17,14 +13,12 @@
 	let sugar: number;
 	let protein: number;
 	let salt: number;
-
 	let inputvalueCalories = mealdata?.dish?.nutritionalValues.energy ?? 0;
 	let inputValueName = mealdata?.dish?.name ?? '';
 
 	const closeClick = () => {
 		dialog.close();
 	};
-
 	function saveChanges() {
 		console.log(inputValueName);
 		console.log(inputvalueCalories);

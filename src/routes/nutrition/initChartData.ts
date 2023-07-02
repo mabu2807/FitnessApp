@@ -2,6 +2,15 @@ import type { allValues, allmaxValues, userdetail } from './nutritionTypes';
 
 export function initChartData(allmaxValues: allmaxValues, allValues: allValues) {
 	const week = calcWeekArray();
+	const chartColors = {
+		calories: "#909CC2",
+		fat:"#ff7970",
+		sugar: "#A0A595",
+		salt: "#42EAD4",
+		protein: "#26547C",
+		carbohydrates:"#708F56",
+		saturatedFat: "#F6AD2D"
+	};
 
 	const data = {
 		labels: week,
@@ -9,56 +18,56 @@ export function initChartData(allmaxValues: allmaxValues, allValues: allValues) 
 			{
 				label: 'Kalorien',
 				data: allValues.calories,
-				backgroundColor: changeBgColors(allmaxValues.calories, allValues.calories),
+				backgroundColor: changeBgColors(allmaxValues.calories, allValues.calories, chartColors.calories),
 				borderWidth: 1,
-				borderColor: changeBorderColors(allmaxValues.calories, allValues.calories)
+				borderColor: changeBorderColors(allmaxValues.calories, allValues.calories, chartColors.calories)
 			},
 			{
 				label: 'Fett',
 				data: allValues.fat,
-				backgroundColor: changeBgColors(allmaxValues.fat, allValues.fat),
+				backgroundColor: changeBgColors(allmaxValues.fat, allValues.fat, chartColors.fat),
 				borderWidth: 1,
-				borderColor: changeBorderColors(allmaxValues.fat, allValues.fat),
+				borderColor: changeBorderColors(allmaxValues.fat, allValues.fat, chartColors.fat),
 				hidden: true
 			},
 			{
 				label: 'Zucker',
 				data: allValues.sugar,
-				backgroundColor: changeBgColors(allmaxValues.sugar, allValues.sugar),
+				backgroundColor: changeBgColors(allmaxValues.sugar, allValues.sugar, chartColors.sugar),
 				borderWidth: 1,
-				borderColor: changeBorderColors(allmaxValues.sugar, allValues.sugar),
+				borderColor: changeBorderColors(allmaxValues.sugar, allValues.sugar, chartColors.sugar),
 				hidden: true
 			},
 			{
 				label: 'Salz',
 				data: allValues.salt,
-				backgroundColor: changeBgColors(allmaxValues.salt, allValues.salt),
+				backgroundColor: changeBgColors(allmaxValues.salt, allValues.salt, chartColors.salt),
 				borderWidth: 1,
-				borderColor: changeBorderColors(allmaxValues.salt, allValues.salt),
+				borderColor: changeBorderColors(allmaxValues.salt, allValues.salt, chartColors.salt),
 				hidden: true
 			},
 			{
 				label: 'Eiweiß',
 				data: allValues.protein,
-				backgroundColor: changeBgColors(allmaxValues.protein, allValues.protein),
+				backgroundColor: changeBgColors(allmaxValues.protein, allValues.protein, chartColors.protein),
 				borderWidth: 1,
-				borderColor: changeBorderColors(allmaxValues.protein, allValues.protein),
+				borderColor: changeBorderColors(allmaxValues.protein, allValues.protein, chartColors.protein),
 				hidden: true
 			},
 			{
 				label: 'Kohlenhydrate',
 				data: allValues.carbohydrates,
-				backgroundColor: changeBgColors(allmaxValues.carbohydrates, allValues.carbohydrates),
+				backgroundColor: changeBgColors(allmaxValues.carbohydrates, allValues.carbohydrates, chartColors.carbohydrates),
 				borderWidth: 1,
-				borderColor: changeBorderColors(allmaxValues.carbohydrates, allValues.carbohydrates),
+				borderColor: changeBorderColors(allmaxValues.carbohydrates, allValues.carbohydrates, chartColors.carbohydrates),
 				hidden: true
 			},
 			{
 				label: 'gesätigte Fettsäuren',
 				data: allValues.saturatedFat,
-				backgroundColor: changeBgColors(allmaxValues.saturatedFat, allValues.saturatedFat),
+				backgroundColor: changeBgColors(allmaxValues.saturatedFat, allValues.saturatedFat, chartColors.saturatedFat),
 				borderWidth: 1,
-				borderColor: changeBorderColors(allmaxValues.saturatedFat, allValues.saturatedFat),
+				borderColor: changeBorderColors(allmaxValues.saturatedFat, allValues.saturatedFat, chartColors.saturatedFat),
 				hidden: true
 			}
 		]
@@ -94,15 +103,15 @@ function calcWeekArray() {
 	return week;
 }
 
-function changeBgColors(maxValue: number, calperday: number[]) {
+function changeBgColors(maxValue: number, calperday: number[], color:string) {
 	const backgroundColor = [
-		'rgba(98,  182, 239,0.4)',
-		'rgba(113, 205, 205,0.4)',
-		'rgba(98,  182, 239,0.4)',
-		'rgba(113, 205, 205,0.4)',
-		'rgba(98,  182, 239,0.4)',
-		'rgba(113, 205, 205,0.4)',
-		'rgba(98,  182, 239,0.4)'
+		color,
+		color,
+		color,
+		color,
+		color,
+		color,
+		color
 	];
 
 	const red = 'rgb(255, 99, 132)';
@@ -113,15 +122,15 @@ function changeBgColors(maxValue: number, calperday: number[]) {
 	}
 	return backgroundColor;
 }
-function changeBorderColors(maxCalories: number, calperday: number[]) {
+function changeBorderColors(maxCalories: number, calperday: number[], color:string) {
 	const borderColor = [
-		'rgba(98,  182, 239, 1)',
-		'rgba(113, 205, 205, 1)',
-		'rgba(98,  182, 239, 1)',
-		'rgba(113, 205, 205, 1)',
-		'rgba(98,  182, 239, 1)',
-		'rgba(113, 205, 205, 1)',
-		'rgba(98, 182, 239, 1)'
+		color,
+		color,
+		color,
+		color,
+		color,
+		color,
+		color
 	];
 
 	const red = 'rgb(255, 99, 132, 0.4)';
