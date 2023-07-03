@@ -6,34 +6,35 @@ import type { Prisma } from '@prisma/client';
 import Credentials from '@auth/core/providers/credentials';
 
 
+
 export const handle = SvelteKitAuth({
     providers: [
         
         GitHub({ clientId: GITHUB_CLIENT_ID, clientSecret: GITHUB_CLIENT_SECRET }) as any,
-        Credentials({
-            credentials: {
+        // Credentials({
+        //     credentials: {
 
-                email: { label: 'Username', type: 'text'   } ,
-                password: { label: 'Password', type: 'password' },
-            },
-            async authorize(credentials) {
-                const UserInput:Prisma.UserWhereUniqueInput = {
-                    email:credentials.email
-                }
+        //         email: { label: 'Username', type: 'text'   } ,
+        //         password: { label: 'Password', type: 'password' },
+        //     },
+        //     async authorize(credentials) {
+        //         const UserInput:Prisma.UserWhereUniqueInput = {
+        //             email:credentials.email
+        //         }
             
-                const response = await prisma.user.findUnique({
-                    where:UserInput
-                })
-                if (response == null || response == undefined) {
-                    return null
-                }
-                if (response.password !== credentials.password) {
-                    return null
-                }
-                return (response) ?? null
-            }
+        //         const response = await prisma.user.findUnique({
+        //             where:UserInput
+        //         })
+        //         if (response == null || response == undefined) {
+        //             return null
+        //         }
+        //         if (response.password !== credentials.password) {
+        //             return null
+        //         }
+        //         return (response) ?? null
+        //     }
 
-        }) as any,
+        // }) as any,
 
 
         
@@ -71,6 +72,7 @@ export const handle = SvelteKitAuth({
                     "authMethod": "github",
                     "token": "null",
                 }
+                
                 try {
                         await prisma.user.create({
                             data:user
