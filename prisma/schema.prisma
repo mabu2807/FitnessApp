@@ -14,6 +14,7 @@ model User {
   id          Int          @id @default(autoincrement())
   email       String       @unique
   username    String
+  image       Bytes?       @db.LongBlob
   password    String?
   authMethod  String
   verified    Boolean      @default(false)
@@ -29,15 +30,18 @@ model UserDetails {
   height        Int
   dob           DateTime           @default(now())
   activityLevel Int
+  goal          String
   foodDiary     FoodDiary?
   trainingPlans UserTrainingPlan[]
   session       Session[]
+  reviews       Review[]
 }
 
 model Review {
-  id       String @id @default(uuid())
-  userName String
-  text     String
+  id          String      @id @default(uuid())
+  text        String
+  userDetails UserDetails @relation(fields: [userId], references: [userId])
+  userId      Int
 }
 
 model TrainingPlan {

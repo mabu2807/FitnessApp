@@ -144,7 +144,7 @@
 					<header class="card-header flex flex-row m-1">
 						<img
 							class="object-cover aspect-[1/1] md:w-16 w-12 sm:14 h-full rounded-lg"
-							src={'test.jpeg'}
+							src={review.userImage}
 							alt="Kunde {review.id}"
 						/>
 						<p class="ml-7 overflow-hidden dark:text-white">{review.text}</p>

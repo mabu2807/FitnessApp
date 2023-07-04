@@ -1,13 +1,29 @@
 import prisma from '$lib/prisma';
 import type { PageServerLoad } from './$types';
-import { error, fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import { sendEmail } from '$lib/emails/SendContactMail';
 
 export const load = (async () => {
 	const categoryResponse = await prisma.category.findMany();
-	const reviewResponse = await prisma.review.findMany({});
-	return { categories: categoryResponse, reviews: reviewResponse };
+	const reviewsWithUserDetails = await prisma.review.findMany({
+		include: {
+			userDetails: {
+				include: {
+					user: true,
+				},
+			},
+		},
+	});
+
+	const reviewData = reviewsWithUserDetails.map((review) => ({
+		id: review.id,
+		text: review.text,
+		userName: review.userDetails.user.username,
+		userImage: "data:image/png;base64,"+(review.userDetails.user.image 
+			? Buffer.from(review.userDetails.user.image).toString("utf-8")
+			: null),
+	}));
+	return { categories: categoryResponse, reviews: reviewData };
 }) satisfies PageServerLoad;
 
 const validateEmail = (email: string) => {
