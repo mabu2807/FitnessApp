@@ -24,10 +24,10 @@ async function main() {
 			data: {
 				id: user.id,
 				email: user.email,
-				authMethod: user.authMethod,
 				username: user.username,
+				image: Buffer.from(user.image, "utf-8"),
 				password: user.password,
-				auth_method: user.auth_method
+				authMethod: user.authMethod,
 				token: user.token
 			}
 		});
@@ -41,6 +41,7 @@ async function main() {
 				weight: userDetails.weight,
 				height: userDetails.height,
 				dob: new Date(userDetails.dob),
+				goal: userDetails.goal,
 				activityLevel: userDetails.activityLevel
 			}
 		});
@@ -61,8 +62,8 @@ async function main() {
 		await prisma.review.create({
 			data: {
 				id: review.id,
-				userName: review.userName,
-				text: review.text
+				text: review.text,
+				userId: review.userId
 			}
 		});
 	}
