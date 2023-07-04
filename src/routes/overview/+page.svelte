@@ -3,12 +3,10 @@
 	import Chart from 'chart.js/auto';
 	import Head from '../../components/Head.svelte';
 
-	let trainingPlans = [
-		{
-			name: 'Krafttraining',
-			exercises: [
-				{
-					name: 'Übung 1',
+	let liftingData = [
+		
+				{ 
+					name: "Bankdrücken stehend",
 					weight: [
 						{ x: 3, y: 100 },
 						{ x: 5, y: 90 },
@@ -16,8 +14,8 @@
 						{ x: 1, y: 110 }
 					]
 				},
-				{
-					name: 'Übung 2',
+				{ 
+					name: "Latzug springend",
 					weight: [
 						{ x: 5, y: 20 },
 						{ x: 10, y: 15 },
@@ -26,8 +24,8 @@
 						{ x: 27, y: 5 }
 					]
 				},
-				{
-					name: 'Übung 3',
+				{ 
+					name: "Kniebeuge aufm Tisch",
 					weight: [
 						{ x: 5, y: 20 },
 						{ x: 10, y: 15 },
@@ -36,8 +34,37 @@
 						{ x: 27, y: 5 }
 					]
 				},
-				{
-					name: 'Übung 4',
+				{ 
+					name: "Curls mit Wasserkästen",
+					weight: [
+						{ x: 5, y: 20 },
+						{ x: 10, y: 15 },
+						{ x: 15, y: 12 },
+						{ x: 25, y: 9 },
+						{ x: 27, y: 5 }
+					]
+				
+		}]
+
+	let cardioData = [
+		{ name: "Laufen",
+					weight: [
+						{ x: 3, y: 100 },
+						{ x: 5, y: 90 },
+						{ x: 7, y: 85 },
+						{ x: 1, y: 110 }
+					]
+				},
+				{ name: "Radfahren",
+					weight: [
+						{ x: 5, y: 20 },
+						{ x: 10, y: 15 },
+						{ x: 15, y: 12 },
+						{ x: 25, y: 9 },
+						{ x: 27, y: 5 }
+					]
+				},
+				{ name: "Schwimmen",
 					weight: [
 						{ x: 5, y: 20 },
 						{ x: 10, y: 15 },
@@ -46,38 +73,57 @@
 						{ x: 27, y: 5 }
 					]
 				}
-			]
-		},
-		{
-			name: 'Ausdauer',
-			exercises: [
-				{
-					name: 'Übung 1',
-					weight: [
-						{ x: 30, y: 15 },
-						{ x: 40, y: 20 }
-					]
-				},
-				{
-					name: 'Übung 2',
-					weight: [
-						{ x: 15, y: 7 },
-						{ x: 25, y: 12 }
-					]
-				}
-			]
-		}
 	];
 
-	let selectedTrainingPlan = trainingPlans[0];
-	let weightInput: Array<Array<string>> = trainingPlans.map((plan) => plan.exercises.map(() => ''));
-	let weightInput2: Array<Array<string>> = trainingPlans.map((plan) =>
-		plan.exercises.map(() => '')
-	);
+	// let selectedTrainingPlan = trainingPlans[0];
+	// let weightInput: Array<Array<string>> = trainingPlans.map((plan) => plan.exercises.map(() => ''));
+	// let weightInput2: Array<Array<string>> = trainingPlans.map((plan) =>
+	// 	plan.exercises.map(() => '')
+	// );
 
 	let charts: any[] = [];
 
-	function createChart(canvas: any) {
+	function createCardioChart(canvas: any) {
+		const ctx = canvas.getContext('2d');
+		let chart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: [],
+				datasets: [
+					{
+						label: 'Jaaaa',
+						data: [],
+						borderColor: 'rgb(54, 162, 235)',
+						backgroundColor: 'rgba(54, 162, 235, 0.2)',
+						borderWidth: 1
+					}
+				]
+			},
+			options: {
+				responsive: true,
+				scales: {
+					x: {
+						type: 'linear',
+						position: 'bottom',
+						title: {
+							display: true,
+							text: 'Zeit'
+						}
+					},
+					y: {
+						title: {
+							display: true,
+							text: 'Distanz'
+						}
+					}
+				}
+			}
+		});
+
+		return chart;
+	}
+
+	function createWeightChart(canvas: any) {
 		const ctx = canvas.getContext('2d');
 		let chart = new Chart(ctx, {
 			type: 'line',
@@ -117,58 +163,62 @@
 		return chart;
 	}
 
+
 	function updateChart(chart: any, data: any) {
 		chart.data.datasets[0].data = data;
 		chart.update();
 	}
 
-	function addWeight(planIndex: number, exerciseIndex: number) {
-		const weight = parseFloat(weightInput[planIndex][exerciseIndex]);
-		const weight2 = parseFloat(weightInput2[planIndex][exerciseIndex]);
+	// function addWeight(planIndex: number, exerciseIndex: number) {
+	// 	const weight = parseFloat(weightInput[planIndex][exerciseIndex]);
+	// 	const weight2 = parseFloat(weightInput2[planIndex][exerciseIndex]);
 
-		if (!isNaN(weight) && !isNaN(weight2)) {
-			trainingPlans[planIndex].exercises[exerciseIndex].weight.push({ x: weight, y: weight2 });
-			const chartIndex = planIndex * trainingPlans[0].exercises.length + exerciseIndex;
-			updateChart(charts[chartIndex], trainingPlans[planIndex].exercises[exerciseIndex].weight);
-			console.log(trainingPlans[planIndex].exercises[exerciseIndex].weight);
-		}
-		weightInput[planIndex][exerciseIndex] = '';
-		weightInput2[planIndex][exerciseIndex] = '';
-	}
+	// 	if (!isNaN(weight) && !isNaN(weight2)) {
+	// 		trainingPlans[planIndex].exercises[exerciseIndex].weight.push({ x: weight, y: weight2 });
+	// 		const chartIndex = planIndex * trainingPlans[0].exercises.length + exerciseIndex;
+	// 		updateChart(charts[chartIndex], trainingPlans[planIndex].exercises[exerciseIndex].weight);
+	// 		console.log(trainingPlans[planIndex].exercises[exerciseIndex].weight);
+	// 	}
+	// 	weightInput[planIndex][exerciseIndex] = '';
+	// 	weightInput2[planIndex][exerciseIndex] = '';
+	// }
 
-	function updateWeight(event: any) {
-		const weight = parseFloat(event.target.value);
-		const planIndex = parseInt(event.target.dataset.planIndex);
-		const exerciseIndex = parseInt(event.target.dataset.exerciseIndex);
+	// function updateWeight(event: any) {
+	// 	const weight = parseFloat(event.target.value);
+	// 	const planIndex = parseInt(event.target.dataset.planIndex);
+	// 	const exerciseIndex = parseInt(event.target.dataset.exerciseIndex);
 
-		if (!isNaN(weight)) {
-			(trainingPlans[planIndex].exercises[exerciseIndex].weight as any) = weight;
-			updateChart(
-				charts[planIndex * trainingPlans.length + exerciseIndex],
-				trainingPlans[planIndex].exercises[exerciseIndex].weight
-			);
-		}
-	}
+	// 	if (!isNaN(weight)) {
+	// 		(trainingPlans[planIndex].exercises[exerciseIndex].weight as any) = weight;
+	// 		updateChart(
+	// 			charts[planIndex * trainingPlans.length + exerciseIndex],
+	// 			trainingPlans[planIndex].exercises[exerciseIndex].weight
+	// 		);
+	// 	}
+	// }
 
-	let selectedExerciseIndex = 0;
 
 	onMount(() => {
-		const containers = document.querySelectorAll('.exercise-container');
-		containers.forEach((container, index) => {
-			const canvas = container.querySelector('canvas');
-			const chart = createChart(canvas);
-			charts.push(chart);
-			const trainingPlanIndex = Math.floor(index / trainingPlans[0].exercises.length);
-			const exerciseIndex = index % trainingPlans[0].exercises.length;
-			updateChart(chart, trainingPlans[trainingPlanIndex].exercises[exerciseIndex].weight);
+		
+		const liftingContainers = document.querySelectorAll('.lifting-container');
+		liftingContainers.forEach((liftingContainer) => {
+			const liftingCanvas = liftingContainer.querySelector('.lifting-canvas');
+			const liftingChart = createWeightChart(liftingCanvas);
+			charts.push(liftingChart);
+		});
+		liftingData.forEach((lifting, liftingIndex) => {
+				updateChart(charts[liftingIndex], lifting.weight);
+		});
+		const cardioContainers = document.querySelectorAll('.cardio-container');
+		cardioContainers.forEach((cardioContainer) => {
+			const cardioCanvas = cardioContainer.querySelector('.cardio-canvas');
+			const cardioChart = createCardioChart(cardioCanvas);
+			charts.push(cardioChart);
+		});
+		cardioData.forEach((cardio, cardioIndex) => {
+				updateChart(charts[cardioIndex], cardio.weight);
 		});
 
-		trainingPlans.forEach((plan, planIndex) => {
-			plan.exercises.forEach((exercise, exerciseIndex) => {
-				const chartIndex = planIndex * trainingPlans[0].exercises.length + exerciseIndex;
-				updateChart(charts[chartIndex], exercise.weight);
-			});
-		});
 	});
 
 	onDestroy(() => {
@@ -177,8 +227,8 @@
 		});
 	});
 
-	function toggleChartType(planIndex: any, exerciseIndex: any) {
-		const chartIndex = planIndex * trainingPlans[0].exercises.length + exerciseIndex;
+	function toggleChartType(exerciseIndex: any) {
+		const chartIndex = exerciseIndex;
 		const chart = charts[chartIndex];
 
 		chart.config.type = chart.config.type === 'line' ? 'bar' : 'line';
@@ -190,10 +240,9 @@
 <Head />
 
 <section class="text-center w-full mx-auto px-6 py-10 md:py-16 mt-24 dark:bg-surface-800">
-	<h2 class="h2 mb-5">Verfolge deine Trainingspläne</h2>
+	<h2 class="h2 mb-5">Überblicke deinen Trainingsfortschritt</h2>
 	<p class="text-sm md:text-lg mb-12">
-		Nutze die Möglichkeit deinen Trainingsplan zu verfolgen und deine entdecke deine Stärken und
-		Schwächen!
+		Ganz nach dem Motto: "Masthuhn für Wachstum!"
 	</p>
 	<div class="flex justify-center">
 		<div class="w-72 h-1 rounded-full bg-black dark:bg-white" />
@@ -203,24 +252,19 @@
 <div
 	class="dark:bg-gradient-to-b dark:from-surface-800 dark:from-10% dark:via-sky-700 dark:via-31% dark:to-surface-800 dark:to-75% pt-7 pb-14"
 >
-	{#each trainingPlans as trainingPlan, planIndex}
-		<!-- selection wrapper -->
 		<section class="flex justify-center items-center mb-14 flex-col text-center">
-			<h2 class="md:h2 h1">{trainingPlan.name}</h2>
+			<h2 class="md:h2 h1">Krafttraining</h2>
 			<div class="grid md:grid-cols-2 grid-cols-1 md:gap-12 gap-6 lg:my-10 md:my-8 my-6 mx-12">
-				{#each trainingPlan.exercises as exercise, exerciseIndex}
+				{#each liftingData as exercise, exerciseIndex}
 					<!-- exercise-container class -->
 					<!-- svelte-ignore a11y-no-static-element-interactions -->
 					<div
-						class="card bg-success-400 p-3 exercise-container dark:bg-surface-500"
-						on:keydown={() => {
-							selectedTrainingPlan = trainingPlan;
-							selectedExerciseIndex = exerciseIndex;
-						}}
+						class="card bg-success-400 p-3 lifting-container dark:bg-surface-500"
+			
 					>
 						<h3 class="h3 mt-3 mb-5">{exercise.name}</h3>
-						<div class="p-3">
-							<input
+						<!-- <div class="p-3"> -->
+							<!-- <input
 								class="input bg-secondary-100 dark:bg-surface-800 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white px-3 py-1 mb-2 lg:text-base text-sm"
 								type="number"
 								placeholder="Wiederholungen"
@@ -231,27 +275,43 @@
 								type="number"
 								placeholder="Gewicht"
 								bind:value={weightInput2[planIndex][exerciseIndex]}
-							/>
+							/> -->
 							<div class="mt-3 flex justify-between gap-2">
-								<button
+								<!-- <button
 									class="btn variant-filled overflow-hidden lg:text-base text-sm hover:bg-tertiary-500 dark:hover:bg-primary-500"
 									on:click={() => addWeight(planIndex, exerciseIndex)}>Hinzufügen</button
-								>
+								> -->
 								<button
 									class="btn variant-soft overflow-hidden lg:text-base text-sm hover:bg-tertiary-400 dark:bg-success-600 dark:text-black hover:text-black dark:hover:bg-primary-400"
-									on:click={() => toggleChartType(planIndex, exerciseIndex)}
+									on:click={() => toggleChartType(exerciseIndex)}
 									>Diagrammtyp ändern</button
 								>
 							</div>
 							<canvas
-								class="card bg-secondary-100 dark:bg-surface-800 text-black dark:text-white mt-10"
+								class="card bg-secondary-100 dark:bg-surface-800 text-black dark:text-white mt-10 lifting-canvas"
 							/>
 						</div>
-					</div>
+					<!-- </div> -->
 				{/each}
 			</div>
 		</section>
-	{/each}
+		<section class="flex justify-center items-center mb-14 flex-col text-center">
+			<h2 class="md:h2 h1">Ausdauer</h2>
+			<div class="grid md:grid-cols-2 grid-cols-1 md:gap-12 gap-6 lg:my-10 md:my-8 my-6 mx-12">
+				{#each cardioData as exercise, exerciseIndex}
+<!-- exercise-container class -->
+					<!-- svelte-ignore a11y-no-static-element-interactions -->
+					<div
+					class="card bg-success-400 p-3 cardio-container dark:bg-surface-500"
+				>
+				<h3 class="h3 mt-3 mb-5">{exercise.name}</h3>
+		<canvas
+							class="card bg-secondary-100 dark:bg-surface-800 text-black dark:text-white mt-10 cardio-canvas"
+						/>
+					</div>
+				{/each}
+	
+		</section>
 </div>
 
 <style>
