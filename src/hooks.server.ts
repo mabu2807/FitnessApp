@@ -42,6 +42,7 @@ export const handle = SvelteKitAuth({
                     password: null,
                     authMethod: "github",
                     token: "null",
+                    verified: true,
                 }
                 
                 try {
@@ -62,6 +63,7 @@ export const handle = SvelteKitAuth({
                             userId:userid,
                             activityLevel:0,
                             gender:'male',
+                            goal: 'Stay Fit',
                             height:0,
                             weight:0,   
                             }
