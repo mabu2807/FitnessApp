@@ -7,7 +7,7 @@ import { calcMaxCalories, calcOneWeekBefore } from './calc';
 import { calcChartValues } from './calcChartValues';
 
 // Load function
-export const load = (async () => {
+export const load = (async (event) => {
 	let responseUserDetails;
 	let responseUsermeals;
 	let responsedaymeal;
@@ -15,13 +15,31 @@ export const load = (async () => {
 	let responseAllDishes;
 	const oneWeekBefore = calcOneWeekBefore();
 	let foodDiary = 0;
+	let user
+	const session = await event.locals.getSession();
+
 	try {
-		//all calories request
-		responseUserDetails = await prisma.userDetails.findUnique({
+		user = await prisma.user.findUnique({
 			where: {
-				userId: 2
+				email: session?.user?.email ?? undefined
 			}
 		});
+		if(user?.id == undefined){
+			return fail(404, { message: 'User does not exist' });
+		}
+		
+		//all calories request
+		if(user?.id !== undefined){
+		responseUserDetails = await prisma.userDetails.findUnique({
+			where: {
+				userId: 3
+			}
+		});
+
+		if (responseUserDetails == null || responseUserDetails == undefined) {
+			return fail(404, { message: 'UserDetails does not exist' });
+		}
+	}
 
 		// FoodDiaryID request
 		responseFoodDiaryID = await prisma.foodDiary.findUnique({
