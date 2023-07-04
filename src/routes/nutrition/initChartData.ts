@@ -3,13 +3,13 @@ import type { allValues, allmaxValues, userdetail } from './nutritionTypes';
 export function initChartData(allmaxValues: allmaxValues, allValues: allValues) {
 	const week = calcWeekArray();
 	const chartColors = {
-		calories: "#909CC2",
-		fat:"#ff7970",
-		sugar: "#A0A595",
-		salt: "#42EAD4",
-		protein: "#26547C",
-		carbohydrates:"#708F56",
-		saturatedFat: "#F6AD2D"
+		calories: '#909CC2',
+		fat: '#ff7970',
+		sugar: '#A0A595',
+		salt: '#42EAD4',
+		protein: '#26547C',
+		carbohydrates: '#708F56',
+		saturatedFat: '#F6AD2D'
 	};
 
 	const data = {
@@ -18,9 +18,17 @@ export function initChartData(allmaxValues: allmaxValues, allValues: allValues) 
 			{
 				label: 'Kalorien',
 				data: allValues.calories,
-				backgroundColor: changeBgColors(allmaxValues.calories, allValues.calories, chartColors.calories),
+				backgroundColor: changeBgColors(
+					allmaxValues.calories,
+					allValues.calories,
+					chartColors.calories
+				),
 				borderWidth: 1,
-				borderColor: changeBorderColors(allmaxValues.calories, allValues.calories, chartColors.calories)
+				borderColor: changeBorderColors(
+					allmaxValues.calories,
+					allValues.calories,
+					chartColors.calories
+				)
 			},
 			{
 				label: 'Fett',
@@ -49,25 +57,49 @@ export function initChartData(allmaxValues: allmaxValues, allValues: allValues) 
 			{
 				label: 'Eiweiß',
 				data: allValues.protein,
-				backgroundColor: changeBgColors(allmaxValues.protein, allValues.protein, chartColors.protein),
+				backgroundColor: changeBgColors(
+					allmaxValues.protein,
+					allValues.protein,
+					chartColors.protein
+				),
 				borderWidth: 1,
-				borderColor: changeBorderColors(allmaxValues.protein, allValues.protein, chartColors.protein),
+				borderColor: changeBorderColors(
+					allmaxValues.protein,
+					allValues.protein,
+					chartColors.protein
+				),
 				hidden: true
 			},
 			{
 				label: 'Kohlenhydrate',
 				data: allValues.carbohydrates,
-				backgroundColor: changeBgColors(allmaxValues.carbohydrates, allValues.carbohydrates, chartColors.carbohydrates),
+				backgroundColor: changeBgColors(
+					allmaxValues.carbohydrates,
+					allValues.carbohydrates,
+					chartColors.carbohydrates
+				),
 				borderWidth: 1,
-				borderColor: changeBorderColors(allmaxValues.carbohydrates, allValues.carbohydrates, chartColors.carbohydrates),
+				borderColor: changeBorderColors(
+					allmaxValues.carbohydrates,
+					allValues.carbohydrates,
+					chartColors.carbohydrates
+				),
 				hidden: true
 			},
 			{
 				label: 'gesätigte Fettsäuren',
 				data: allValues.saturatedFat,
-				backgroundColor: changeBgColors(allmaxValues.saturatedFat, allValues.saturatedFat, chartColors.saturatedFat),
+				backgroundColor: changeBgColors(
+					allmaxValues.saturatedFat,
+					allValues.saturatedFat,
+					chartColors.saturatedFat
+				),
 				borderWidth: 1,
-				borderColor: changeBorderColors(allmaxValues.saturatedFat, allValues.saturatedFat, chartColors.saturatedFat),
+				borderColor: changeBorderColors(
+					allmaxValues.saturatedFat,
+					allValues.saturatedFat,
+					chartColors.saturatedFat
+				),
 				hidden: true
 			}
 		]
@@ -103,16 +135,8 @@ function calcWeekArray() {
 	return week;
 }
 
-function changeBgColors(maxValue: number, calperday: number[], color:string) {
-	const backgroundColor = [
-		color,
-		color,
-		color,
-		color,
-		color,
-		color,
-		color
-	];
+function changeBgColors(maxValue: number, calperday: number[], color: string) {
+	const backgroundColor = [color, color, color, color, color, color, color];
 
 	const red = 'rgb(255, 99, 132)';
 	for (let i = 0; i < calperday.length; i++) {
@@ -122,16 +146,8 @@ function changeBgColors(maxValue: number, calperday: number[], color:string) {
 	}
 	return backgroundColor;
 }
-function changeBorderColors(maxCalories: number, calperday: number[], color:string) {
-	const borderColor = [
-		color,
-		color,
-		color,
-		color,
-		color,
-		color,
-		color
-	];
+function changeBorderColors(maxCalories: number, calperday: number[], color: string) {
+	const borderColor = [color, color, color, color, color, color, color];
 
 	const red = 'rgb(255, 99, 132, 0.4)';
 	for (let i = 0; i < calperday.length; i++) {

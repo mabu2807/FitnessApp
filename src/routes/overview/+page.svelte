@@ -4,82 +4,78 @@
 	import Head from '../../components/Head.svelte';
 
 	let liftingData = [
-		
-				{ 
-					name: "Bankdrücken stehend",
-					weight: [
-						{ x: 3, y: 100 },
-						{ x: 5, y: 90 },
-						{ x: 7, y: 85 },
-						{ x: 1, y: 110 }
-					]
-				},
-				{ 
-					name: "Latzug springend",
-					weight: [
-						{ x: 5, y: 20 },
-						{ x: 10, y: 15 },
-						{ x: 15, y: 12 },
-						{ x: 25, y: 9 },
-						{ x: 27, y: 5 }
-					]
-				},
-				{ 
-					name: "Kniebeuge aufm Tisch",
-					weight: [
-						{ x: 5, y: 20 },
-						{ x: 10, y: 15 },
-						{ x: 15, y: 12 },
-						{ x: 25, y: 9 },
-						{ x: 27, y: 5 }
-					]
-				},
-				{ 
-					name: "Curls mit Wasserkästen",
-					weight: [
-						{ x: 5, y: 20 },
-						{ x: 10, y: 15 },
-						{ x: 15, y: 12 },
-						{ x: 25, y: 9 },
-						{ x: 27, y: 5 }
-					]
-				
-		}]
-
-	let cardioData = [
-		{ name: "Laufen",
-					weight: [
-						{ x: 3, y: 100 },
-						{ x: 5, y: 90 },
-						{ x: 7, y: 85 },
-						{ x: 1, y: 110 }
-					]
-				},
-				{ name: "Radfahren",
-					weight: [
-						{ x: 5, y: 20 },
-						{ x: 10, y: 15 },
-						{ x: 15, y: 12 },
-						{ x: 25, y: 9 },
-						{ x: 27, y: 5 }
-					]
-				},
-				{ name: "Schwimmen",
-					weight: [
-						{ x: 5, y: 20 },
-						{ x: 10, y: 15 },
-						{ x: 15, y: 12 },
-						{ x: 25, y: 9 },
-						{ x: 27, y: 5 }
-					]
-				}
+		{
+			name: 'Bankdrücken stehend',
+			weight: [
+				{ x: 3, y: 100 },
+				{ x: 5, y: 90 },
+				{ x: 7, y: 85 },
+				{ x: 1, y: 110 }
+			]
+		},
+		{
+			name: 'Latzug springend',
+			weight: [
+				{ x: 5, y: 20 },
+				{ x: 10, y: 15 },
+				{ x: 15, y: 12 },
+				{ x: 25, y: 9 },
+				{ x: 27, y: 5 }
+			]
+		},
+		{
+			name: 'Kniebeuge aufm Tisch',
+			weight: [
+				{ x: 5, y: 20 },
+				{ x: 10, y: 15 },
+				{ x: 15, y: 12 },
+				{ x: 25, y: 9 },
+				{ x: 27, y: 5 }
+			]
+		},
+		{
+			name: 'Curls mit Wasserkästen',
+			weight: [
+				{ x: 5, y: 20 },
+				{ x: 10, y: 15 },
+				{ x: 15, y: 12 },
+				{ x: 25, y: 9 },
+				{ x: 27, y: 5 }
+			]
+		}
 	];
 
-	// let selectedTrainingPlan = trainingPlans[0];
-	// let weightInput: Array<Array<string>> = trainingPlans.map((plan) => plan.exercises.map(() => ''));
-	// let weightInput2: Array<Array<string>> = trainingPlans.map((plan) =>
-	// 	plan.exercises.map(() => '')
-	// );
+	let cardioData = [
+		{
+			name: 'Laufen',
+			weight: [
+				{ x: 3, y: 100 },
+				{ x: 5, y: 90 },
+				{ x: 7, y: 85 },
+				{ x: 1, y: 110 }
+			]
+		},
+		{
+			name: 'Radfahren',
+			weight: [
+				{ x: 5, y: 20 },
+				{ x: 10, y: 15 },
+				{ x: 15, y: 12 },
+				{ x: 25, y: 9 },
+				{ x: 27, y: 5 }
+			]
+		},
+		{
+			name: 'Schwimmen',
+			weight: [
+				{ x: 5, y: 20 },
+				{ x: 10, y: 15 },
+				{ x: 15, y: 12 },
+				{ x: 25, y: 9 },
+				{ x: 57, y: 5 }
+			]
+		}
+	];
 
 	let charts: any[] = [];
 
@@ -163,43 +159,12 @@
 		return chart;
 	}
 
-
 	function updateChart(chart: any, data: any) {
 		chart.data.datasets[0].data = data;
 		chart.update();
 	}
 
-	// function addWeight(planIndex: number, exerciseIndex: number) {
-	// 	const weight = parseFloat(weightInput[planIndex][exerciseIndex]);
-	// 	const weight2 = parseFloat(weightInput2[planIndex][exerciseIndex]);
-
-	// 	if (!isNaN(weight) && !isNaN(weight2)) {
-	// 		trainingPlans[planIndex].exercises[exerciseIndex].weight.push({ x: weight, y: weight2 });
-	// 		const chartIndex = planIndex * trainingPlans[0].exercises.length + exerciseIndex;
-	// 		updateChart(charts[chartIndex], trainingPlans[planIndex].exercises[exerciseIndex].weight);
-	// 		console.log(trainingPlans[planIndex].exercises[exerciseIndex].weight);
-	// 	}
-	// 	weightInput[planIndex][exerciseIndex] = '';
-	// 	weightInput2[planIndex][exerciseIndex] = '';
-	// }
-
-	// function updateWeight(event: any) {
-	// 	const weight = parseFloat(event.target.value);
-	// 	const planIndex = parseInt(event.target.dataset.planIndex);
-	// 	const exerciseIndex = parseInt(event.target.dataset.exerciseIndex);
-
-	// 	if (!isNaN(weight)) {
-	// 		(trainingPlans[planIndex].exercises[exerciseIndex].weight as any) = weight;
-	// 		updateChart(
-	// 			charts[planIndex * trainingPlans.length + exerciseIndex],
-	// 			trainingPlans[planIndex].exercises[exerciseIndex].weight
-	// 		);
-	// 	}
-	// }
-
-
 	onMount(() => {
-		
 		const liftingContainers = document.querySelectorAll('.lifting-container');
 		liftingContainers.forEach((liftingContainer) => {
 			const liftingCanvas = liftingContainer.querySelector('.lifting-canvas');
@@ -207,7 +172,7 @@
 			charts.push(liftingChart);
 		});
 		liftingData.forEach((lifting, liftingIndex) => {
-				updateChart(charts[liftingIndex], lifting.weight);
+			updateChart(charts[liftingIndex], lifting.weight);
 		});
 		const cardioContainers = document.querySelectorAll('.cardio-container');
 		cardioContainers.forEach((cardioContainer) => {
@@ -216,9 +181,8 @@
 			charts.push(cardioChart);
 		});
 		cardioData.forEach((cardio, cardioIndex) => {
-				updateChart(charts[cardioIndex], cardio.weight);
+			updateChart(charts[cardioIndex + liftingData.length], cardio.weight);
 		});
-
 	});
 
 	onDestroy(() => {
@@ -241,9 +205,7 @@
 
 <section class="text-center w-full mx-auto px-6 py-10 md:py-16 mt-24 dark:bg-surface-800">
 	<h2 class="h2 mb-5">Überblicke deinen Trainingsfortschritt</h2>
-	<p class="text-sm md:text-lg mb-12">
-		Ganz nach dem Motto: "Masthuhn für Wachstum!"
-	</p>
+	<p class="text-sm md:text-lg mb-12">Ganz nach dem Motto: "Masthuhn für Wachstum!"</p>
 	<div class="flex justify-center">
 		<div class="w-72 h-1 rounded-full bg-black dark:bg-white" />
 	</div>
@@ -252,66 +214,39 @@
 <div
 	class="dark:bg-gradient-to-b dark:from-surface-800 dark:from-10% dark:via-sky-700 dark:via-31% dark:to-surface-800 dark:to-75% pt-7 pb-14"
 >
-		<section class="flex justify-center items-center mb-14 flex-col text-center">
-			<h2 class="md:h2 h1">Krafttraining</h2>
-			<div class="grid md:grid-cols-2 grid-cols-1 md:gap-12 gap-6 lg:my-10 md:my-8 my-6 mx-12">
-				{#each liftingData as exercise, exerciseIndex}
-					<!-- exercise-container class -->
-					<!-- svelte-ignore a11y-no-static-element-interactions -->
-					<div
-						class="card bg-success-400 p-3 lifting-container dark:bg-surface-500"
-			
-					>
-						<h3 class="h3 mt-3 mb-5">{exercise.name}</h3>
-						<!-- <div class="p-3"> -->
-							<!-- <input
-								class="input bg-secondary-100 dark:bg-surface-800 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white px-3 py-1 mb-2 lg:text-base text-sm"
-								type="number"
-								placeholder="Wiederholungen"
-								bind:value={weightInput[planIndex][exerciseIndex]}
-							/>
-							<input
-								class="input bg-secondary-100 dark:bg-surface-800 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white px-3 py-1 lg:text-base text-sm"
-								type="number"
-								placeholder="Gewicht"
-								bind:value={weightInput2[planIndex][exerciseIndex]}
-							/> -->
-							<div class="mt-3 flex justify-between gap-2">
-								<!-- <button
-									class="btn variant-filled overflow-hidden lg:text-base text-sm hover:bg-tertiary-500 dark:hover:bg-primary-500"
-									on:click={() => addWeight(planIndex, exerciseIndex)}>Hinzufügen</button
-								> -->
-								<button
-									class="btn variant-soft overflow-hidden lg:text-base text-sm hover:bg-tertiary-400 dark:bg-success-600 dark:text-black hover:text-black dark:hover:bg-primary-400"
-									on:click={() => toggleChartType(exerciseIndex)}
-									>Diagrammtyp ändern</button
-								>
-							</div>
-							<canvas
-								class="card bg-secondary-100 dark:bg-surface-800 text-black dark:text-white mt-10 lifting-canvas"
-							/>
-						</div>
-					<!-- </div> -->
-				{/each}
-			</div>
-		</section>
-		<section class="flex justify-center items-center mb-14 flex-col text-center">
-			<h2 class="md:h2 h1">Ausdauer</h2>
-			<div class="grid md:grid-cols-2 grid-cols-1 md:gap-12 gap-6 lg:my-10 md:my-8 my-6 mx-12">
-				{#each cardioData as exercise, exerciseIndex}
-<!-- exercise-container class -->
-					<!-- svelte-ignore a11y-no-static-element-interactions -->
-					<div
-					class="card bg-success-400 p-3 cardio-container dark:bg-surface-500"
-				>
-				<h3 class="h3 mt-3 mb-5">{exercise.name}</h3>
-		<canvas
-							class="card bg-secondary-100 dark:bg-surface-800 text-black dark:text-white mt-10 cardio-canvas"
-						/>
+	<section class="flex justify-center items-center mb-14 flex-col text-center">
+		<h2 class="md:h2 h1">Krafttraining</h2>
+		<div class="grid md:grid-cols-2 grid-cols-1 md:gap-12 gap-6 lg:my-10 md:my-8 my-6 mx-12">
+			{#each liftingData as exercise, exerciseIndex}
+				<div class="card bg-success-400 p-3 lifting-container dark:bg-surface-500">
+					<h3 class="h3 mt-3 mb-5">{exercise.name}</h3>
+
+					<div class="mt-3 flex justify-between gap-2">
+						<button
+							class="btn variant-soft overflow-hidden lg:text-base text-sm hover:bg-tertiary-400 dark:bg-success-600 dark:text-black hover:text-black dark:hover:bg-primary-400"
+							on:click={() => toggleChartType(exerciseIndex)}>Diagrammtyp ändern</button
+						>
 					</div>
-				{/each}
-	
-		</section>
+					<canvas
+						class="card bg-secondary-100 dark:bg-surface-800 text-black dark:text-white mt-10 lifting-canvas"
+					/>
+				</div>
+			{/each}
+		</div>
+	</section>
+	<section class="flex justify-center items-center mb-14 flex-col text-center">
+		<h2 class="md:h2 h1">Ausdauer</h2>
+		<div class="grid md:grid-cols-2 grid-cols-1 md:gap-12 gap-6 lg:my-10 md:my-8 my-6 mx-12">
+			{#each cardioData as exercise, exerciseIndex}
+				<div class="card bg-success-400 p-3 cardio-container dark:bg-surface-500">
+					<h3 class="h3 mt-3 mb-5">{exercise.name}</h3>
+					<canvas
+						class="card bg-secondary-100 dark:bg-surface-800 text-black dark:text-white mt-10 cardio-canvas"
+					/>
+				</div>
+			{/each}
+		</div>
+	</section>
 </div>
 
 <style>
