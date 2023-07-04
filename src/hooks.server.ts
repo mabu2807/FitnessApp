@@ -37,11 +37,11 @@ export const handle = SvelteKitAuth({
                     user_name = user_name.replace(' ','.')
                 }
                 const user:Prisma.UserCreateInput = {
-                    "email": email,
-                    "username": user_name,
-                    "password": null,
-                    "authMethod": "github",
-                    "token": "null",
+                    email: email,
+                    username: user_name,
+                    password: null,
+                    authMethod: "github",
+                    token: "null",
                 }
                 
                 try {

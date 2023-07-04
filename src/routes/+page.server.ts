@@ -6,7 +6,7 @@ import { sendEmail } from '$lib/emails/SendContactMail';
 
 export const load = (async () => {
 	const categoryResponse = await prisma.category.findMany();
-	const reviewResponse = await prisma.review.findMany();
+	const reviewResponse = await prisma.review.findMany({});
 	return { categories: categoryResponse, reviews: reviewResponse };
 }) satisfies PageServerLoad;
 

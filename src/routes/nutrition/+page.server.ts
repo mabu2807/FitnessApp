@@ -32,7 +32,7 @@ export const load = (async (event) => {
 		if(user?.id !== undefined){
 		responseUserDetails = await prisma.userDetails.findUnique({
 			where: {
-				userId: 3
+				userId: user?.id
 			}
 		});
 
