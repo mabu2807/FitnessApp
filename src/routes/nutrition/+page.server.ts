@@ -35,6 +35,7 @@ export const load = (async (event) => {
 				userId: 3
 			}
 		});
+
 		if (responseUserDetails == null || responseUserDetails == undefined) {
 			return fail(404, { message: 'UserDetails does not exist' });
 		}

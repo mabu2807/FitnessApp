@@ -1,9 +1,8 @@
-import { SvelteKitAuth } from '@auth/sveltekit'
-import GitHub from "@auth/core/providers/github";
+import { SvelteKitAuth } from '@auth/sveltekit';
+import GitHub from '@auth/core/providers/github';
 import { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } from '$env/static/private';
 import prisma from '$lib/prisma';
 import type { Prisma } from '@prisma/client';
-
 
 
 export const handle = SvelteKitAuth({
@@ -91,3 +90,4 @@ export const handle = SvelteKitAuth({
             
 
 
+		

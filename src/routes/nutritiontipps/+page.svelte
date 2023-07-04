@@ -1,5 +1,4 @@
 <script lang="ts">
-
 	import Article from './article.svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;

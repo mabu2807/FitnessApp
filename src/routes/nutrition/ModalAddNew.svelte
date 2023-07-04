@@ -1,8 +1,6 @@
 <script lang="ts">
-	import type { ModalComponent } from '@skeletonlabs/skeleton';
 	import type { PageData } from './$types';
-	//import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
-	import { SlideToggle } from '@skeletonlabs/skeleton';
+	import { SlideToggle, toastStore } from '@skeletonlabs/skeleton';
 
 	export let data: PageData;
 	let time: string;
@@ -15,6 +13,7 @@
 	let sugar: number;
 	let protein: number;
 	let salt: number;
+	let disabledButton = true;
 
 	export let showModal: boolean;
 	let dialog: HTMLDialogElement;
@@ -23,10 +22,14 @@
 	const closeClick = () => {
 		dialog.close();
 	};
-
 	function saveChanges() {
 		dialog.close();
-	}
+	};
+	function disabledCheck(){
+		if(mealtext!=null && calories!=null && mealtext!=""){
+			disabledButton=false
+		}
+	};
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -56,11 +59,17 @@
 			</label>
 			<label for="meal" class="label">
 				<span>Gericht: </span>
-				<input class="input" name="mealText" type="text" id="meal2" bind:value={mealtext} />
+				<input class="input" name="mealText" type="text" id="meal2" bind:value={mealtext} on:change={disabledCheck}/>
+				{#if mealtext == null}
+				<p class="text-red-600 text-xs">Darf nicht leer sein!</p>
+				{/if}
 			</label>
 			<label for="calories" class="label">
 				<span>Kalorien: </span>
-				<input class="input" name="calories" type="number" id="calories" bind:value={calories} />
+				<input class="input" name="calories" type="number" id="calories" bind:value={calories} on:change={disabledCheck}/>
+				{#if calories == null}
+				<p class="text-red-600 text-xs">Darf nicht leer sein!</p>
+				{/if}
 			</label>
 			<div>
 				<SlideToggle
@@ -127,8 +136,9 @@
 			{/if}
 
 			<footer>
-				<button id="btnCloseAdd" on:click={closeClick} class="btn variant-filled m-1">Close</button>
+				<button  id="btnCloseAdd" on:click={closeClick} class="btn variant-filled m-1">Close</button>
 				<button
+					disabled={disabledButton}
 					type="submit"
 					on:click={saveChanges}
 					on:click={closeClick}

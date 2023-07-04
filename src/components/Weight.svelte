@@ -43,5 +43,12 @@
 		</div>
 	</div>
 
-	<input title="weightSlider" type="range" min="50" max="130" bind:value={sliderValue} on:input={updateSliderValue} />
+	<input
+		title="weightSlider"
+		type="range"
+		min="50"
+		max="130"
+		bind:value={sliderValue}
+		on:input={updateSliderValue}
+	/>
 </section>

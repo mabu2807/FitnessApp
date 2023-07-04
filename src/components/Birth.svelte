@@ -23,7 +23,7 @@
 			class="card card-hover bg-success-400 dark:bg-success-400 dark:text-black w-48 h-10 sm:text-xl text-lg p-5"
 			type="date"
 			id="dob"
-			title = "dob picker"
+			title="dob picker"
 			bind:value={dob}
 			on:input={updateDob}
 		/>

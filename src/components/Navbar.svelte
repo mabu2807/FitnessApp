@@ -14,19 +14,13 @@
 
 	const drawerSettings: DrawerSettings = {
 		id: 'example-1',
-		// Provide your property overrides:
-
 		width: 'w-[280px] md:w-[480px]',
-		// padding: 'p-4',
 		rounded: 'rounded'
 	};
 
 	const popupNavigation: PopupSettings = {
-		// Represents the type of event that opens/closed the popup
 		event: 'click',
-		// Matches the data-popup value on your popup element
 		target: 'popupNavigation',
-		// Defines which side of your trigger the popup will appear
 		placement: 'bottom'
 	};
 
@@ -115,7 +109,8 @@
 		</div>
 
 		<div class="mt-12">
-			<button on:click={() => signOut()}
+			<button
+				on:click={() => signOut()}
 				class="cursor-pointer px-5 py-3 border-2 border-black dark:text-black dark:border-white bg-success-400 font-bold hover:bg-tertiary-500 dark:hover:bg-primary-500 rounded-xl"
 			>
 				Abmelden <i class="fa-solid fa-right-from-bracket md:ml-10 ml-6" />
@@ -131,97 +126,112 @@
 		</a>
 		<p class="m-3 font-medium text-xl">FitnessHub</p>
 		{#if $page.data.session}
-		<button class="btn-icon btn-icon-sm lg:!hidden" use:popup={popupNavigation}>
-			<i class="fa-solid fa-bars text-2xl hover:text-tertiary-500 dark:hover:text-primary-500" />
-		</button>
-		<!-- popup -->
-		
-		<div class="card p-4 w-60 shadow-xl lg:!hidden" data-popup="popupNavigation">
-			<nav>
-				<ul>
-					<li class="m-3">
-						<a href="/" data-sveltekit-preload-data="hover">
-							<span
-								class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
-								>Home</span
-							>
-						</a>
-					</li>
-					<li class="m-3">
-						<a href="/category" data-sveltekit-preload-data="hover">
-							<span
-								class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
-								>Workouts</span
-							>
-						</a>
-					</li>
-					<li class="m-3">
-						<a href="/progress" data-sveltekit-preload-data="hover">
-							<span
-								class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
-								>Progress</span
-							>
-						</a>
-					</li>
-					<li class="m-3">
-						<a href="/nutrition" data-sveltekit-preload-data="hover">
-							<span
-								class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
-								>Ernährungstagebuch</span
-							>
-						</a>
-					</li>
-				</ul>
-			</nav>
-		
-		</div>
-		{/if}
-		</svelte:fragment>
+			<button class="btn-icon btn-icon-sm lg:!hidden" use:popup={popupNavigation}>
+				<i class="fa-solid fa-bars text-2xl hover:text-tertiary-500 dark:hover:text-primary-500" />
+			</button>
+			<!-- popup -->
 
-	{#if $page.data.session}
-	<div class="p-5 hidden relative hidden lg:flex flex-row justify-center">
-		<a href="/"
-			><span
-				class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
-				>Home</span
-			></a
-		>
-		<a href="/category"
-			><span
-				class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
-				>Workouts</span
-			></a
-		>
-		<a href="/progress"
-			><span
-				class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
-				>Progress</span
-			></a
-		>
-		<a href="/nutrition">
-			<span
-				class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
-				>Ernährungsplan</span
-			></a
-		>
-	</div>
-	{/if}
-
-	
-	<svelte:fragment slot="trail">
-		{#if $page.data.session}
-		<Avatar
-			src="profile.jpg"
-			fallback="profile.jpg"
-			border="border-4 border-secondary-300 dark:hover:!border-primary-500 hover:!border-tertiary-500"
-			cursor="cursor-pointer"
-			on:click={() => drawerStore.open(drawerSettings)}
-		/>
+			<div class="card p-4 w-60 shadow-xl lg:!hidden" data-popup="popupNavigation">
+				<nav>
+					<ul>
+						<li class="m-3">
+							<a href="/" data-sveltekit-preload-data="hover">
+								<span
+									class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+									>Home</span
+								>
+							</a>
+						</li>
+						<li class="m-3">
+							<a href="/category" data-sveltekit-preload-data="hover">
+								<span
+									class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+									>Workouts</span
+								>
+							</a>
+						</li>
+						<li class="m-3">
+							<a href="/progress" data-sveltekit-preload-data="hover">
+								<span
+									class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+									>Progress</span
+								>
+							</a>
+						</li>
+						<li class="m-3">
+							<a href="/overview" data-sveltekit-preload-data="hover">
+								<span
+									class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+									>Overview</span
+								>
+							</a>
+						</li>
+						<li class="m-3">
+							<a href="/nutrition" data-sveltekit-preload-data="hover">
+								<span
+									class="text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+									>Ernährungstagebuch</span
+								>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
 		{/if}
 	</svelte:fragment>
-	{#if !$page.data.session}
-	<a href="/login"><button>Login</button></a>
-	{/if}
-	
 
+	{#if $page.data.session}
+		<div class="p-5 hidden relative hidden lg:flex flex-row justify-center">
+			<a href="/"
+				><span
+					class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+					>Home</span
+				></a
+			>
+			<a href="/category"
+				><span
+					class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+					>Workouts</span
+				></a
+			>
+			<a href="/progress"
+				><span
+					class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+					>Progress</span
+				></a
+			>
+			<a href="/overview"
+				><span
+					class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+					>Overview</span
+				></a
+			>
+			<a href="/nutrition">
+				<span
+					class="m-3 font-medium text-xl dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
+					>Ernährungsplan</span
+				></a
+			>
+		</div>
+	{/if}
+
+	<svelte:fragment slot="trail">
+		{#if $page.data.session}
+			<Avatar
+				src="profile.jpg"
+				fallback="profile.jpg"
+				border="border-4 border-secondary-300 dark:hover:!border-primary-500 hover:!border-tertiary-500"
+				cursor="cursor-pointer"
+				on:click={() => drawerStore.open(drawerSettings)}
+			/>
+		{/if}
+		{#if !$page.data.session}
+			<a href="/login"
+				><button
+					class="btn variant-ghost inline-block px-4 py-2 hover:bg-tertiary-300 dark:hover:bg-primary-300"
+					>Login</button
+				>
+			</a>
+		{/if}
+	</svelte:fragment>
 </AppBar>

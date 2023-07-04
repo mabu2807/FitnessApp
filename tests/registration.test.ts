@@ -35,7 +35,6 @@
 //     await expect(endTextValue).toBe("170 cm");
 // });
 
-
 // // Weight
 // test('Wähle dein Gewicht aus! is visible', async ({ page }) => {
 //     await page.goto('/registration');
@@ -68,7 +67,6 @@
 //     await expect(initialPicture).not.toBe(endPicture);
 // });
 
-
 // // Age
 // test('wähle deinen Geburtstag aus! is visible', async ({ page }) => {
 //     await page.goto('/registration');
@@ -78,7 +76,6 @@
 //     await page.getByRole('button', { name: 'Next' }).click();
 //     await expect(page.getByText('Wähle deinen Geburtstag aus!')).toBeVisible();
 // });
-
 
 // // gender
 // test('Wähle dein Geschlecht aus! is visible', async ({ page }) => {
@@ -147,29 +144,29 @@
 //     const dobValue = '1999-01-01';
 //     const genderValue = 'männlich';
 //     const levelValue = 'Solide';
-  
+
 //     await page.goto('/registration');
-  
+
 //     await page.getByText(goalValue).click();
 //     await page.getByRole('button', { name: 'Next' }).click();
-  
+
 //     const sizeSlider = await page.$('input[title="sizeSlider"]');
 //     await sizeSlider?.fill(sizeValue);
 //     await page.getByRole('button', { name: 'Next' }).click();
-  
+
 //     const weightSlider = await page.$('input[title="weightSlider"]');
 //     await weightSlider?.fill(weightValue);
 //     await page.getByRole('button', { name: 'Next' }).click();
-  
+
 //     const dobPicker = await page.$('input[title="dob picker"]');
 //     await dobPicker?.fill(dobValue);
 //     await page.getByRole('button', { name: 'Next' }).click();
-  
+
 //     await page.getByTitle(genderValue).click();
 //     await page.getByRole('button', { name: 'Next' }).click();
-  
+
 //     await page.getByRole('button', { name: 'Next' }).click();
-  
+
 //     await expect(page.getByText(goalValue)).toBeVisible();
 //     await expect(page.getByText(sizeValue)).toBeVisible();
 //     await expect(page.getByText(weightValue, {exact: true})).toBeVisible();

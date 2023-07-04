@@ -1,26 +1,28 @@
 ---nutrition
 -DONE actions add meal
 -DONE actions edit meal
-- CircleProgressBar for diffrent values
 -DONE layout überarbeiten
 -DONE close button fixen
-- template meal category auswählen
-- required name und calories
-- delete old dialogs
-- in
+-DONE required name und calories
+-DONE template meal category auswählen
+-DONE delete old dialogs
+-DONE info button zu nähwerten neben den circles
+-DONE CircleProgressBar for diffrent values
 
-
+-  Code Aufräumen !!!!!!!!!
+- Chart Farben an Progress Circle Farben anpassen
 
 
 --- UI Update
 
 -DONE header  anpassen (Titel einfügen)
--CircleProgressBar Update
 -DONE header mit foto updaten
 -DONE meal card neues skeleton layout
 -DONE neu add button
 -DONE nutritiontipps link einbauen (bild mit button)
 -DONE template modal Titel
-- delete button style
-- in nutriTipps mehr anzeigen ändern
+-DONE delete button style
+-DONE in nutriTipps mehr anzeigen ändern
+-DONE CircleProgressBar Update
+    -DONE >100% dann rot
 

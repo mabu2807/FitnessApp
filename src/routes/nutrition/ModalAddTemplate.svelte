@@ -1,12 +1,11 @@
 <script lang="ts">
-	//import { Modal, modalStore } from '@skeletonlabs/skeleton';
-	//import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton';
 	import type { Dish } from './nutritionTypes';
 	import type { PageData } from './$types';
-	//import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
 
 	export let data: PageData;
 	let allDishes = data.allDishes;
+
+	let time: string;
 
 	export let showModal2: boolean;
 	let dialog2: HTMLDialogElement;
@@ -38,6 +37,15 @@
 			<header>
 				<h1 class="h4">Vorläge für Meal auswählen</h1>
 			</header>
+			<label class="label" for="category">
+				<span>Kategorie auswählen</span>
+				<select class="select" bind:value={time} name="category" id="mealCat">
+					<option value="Frühstück">Frühstück</option>
+					<option value="Mittagessen">Mittagessen</option>
+					<option value="Abendessen">Abendessen</option>
+					<option value="Snack">Snack</option>
+				</select>
+			</label>
 			<table class="table table-hover" id="tableDishes">
 				<thead>
 					<tr>

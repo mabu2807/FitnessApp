@@ -28,11 +28,10 @@ export type Meal = {
 	day: Date;
 	time: string;
 	dish: Dish | null;
-	dishId: number |null;
-	customDish: customDish | null	;
-	customDishId: number |null;
+	dishId: number | null;
+	customDish: customDish | null;
+	customDishId: number | null;
 };
-
 
 export type userdetail = {
 	userId: number;
