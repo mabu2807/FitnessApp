@@ -14,7 +14,7 @@ export const load = (async () => {
 			},
 		},
 	});
-	
+
 	const reviewData = reviewsWithUserDetails.map((review) => ({
 		id: review.id,
 		text: review.text,

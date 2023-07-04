@@ -46,7 +46,7 @@
 	if (data.allmaxValues != undefined) {
 		maxCalories = data.allmaxValues.calories;
 		maxFat = data.allmaxValues.fat;
-		maxSugar = data.allmaxValues.sugar ?? 0;
+		maxSugar = data.allmaxValues.sugar;
 		maxSalt = data.allmaxValues.salt;
 		maxProtein = data.allmaxValues.protein;
 		maxCarbohydrates = data.allmaxValues.carbohydrates;
