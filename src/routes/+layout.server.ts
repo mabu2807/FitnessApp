@@ -1,7 +1,32 @@
 import type { LayoutServerLoad } from './$types';
+import prisma from '$lib/prisma';
+import { redirect } from '@sveltejs/kit';
 
-export const load: LayoutServerLoad = async (event) => {
+
+export const load: LayoutServerLoad = async ({locals, cookies}) => {
+	const session = await locals.getSession();
+	let user;
+	if (session?.user) {
+		try {
+			 user = await prisma.user.findUnique({
+				where: {
+					email: session.user.email ?? ''
+				}
+				
+			});
+
+		} catch (error) {
+			throw redirect(303,'/login');
+		}
+		if (!user){
+			throw redirect(303,'/login');
+		}
+		cookies.set('user_id', user.id.toString())
+	}
+
+	
 	return {
-		session: await event.locals.getSession()
+		session: await locals.getSession()
+		
 	};
 };
