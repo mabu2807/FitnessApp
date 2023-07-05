@@ -81,12 +81,14 @@ export const handle = SvelteKitAuth({
                 } catch (error) {
                     console.log(error)
                 }
-            }
-            return true
+            }             
+            
+            
+        return true
         }
     },
 })
-            
+        
             
             
             

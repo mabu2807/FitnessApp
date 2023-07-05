@@ -1,5 +1,5 @@
 import prisma from '$lib/prisma';
-import { fail } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 import { initChartData, allmaxvalues } from './initChartData';
 import type { Prisma } from '@prisma/client';
@@ -7,127 +7,108 @@ import { calcMaxCalories, calcOneWeekBefore } from './calc';
 import { calcChartValues } from './calcChartValues';
 
 // Load function
-export const load = (async (event) => {
+export const load = (async ({cookies, locals})  => {
+	const session = await locals.getSession();
+	if (!session?.user) throw redirect(303,'/login');
+	const userID = cookies.get('user_id');
 	let responseUserDetails;
 	let responseUsermeals;
 	let responsedaymeal;
-	let responseFoodDiaryID;
 	let responseAllDishes;
 	const oneWeekBefore = calcOneWeekBefore();
-	let foodDiary = 0;
-	let user
-	const session = await event.locals.getSession();
-
 	try {
-		user = await prisma.user.findUnique({
-			where: {
-				email: session?.user?.email ?? undefined
-			}
-		});
-		if(user?.id == undefined){
-			return fail(404, { message: 'User does not exist' });
-		}
-		
-		//all calories request
-		if(user?.id !== undefined){
 		responseUserDetails = await prisma.userDetails.findUnique({
 			where: {
-				userId: user?.id
+				userId: Number(userID)
 			}
 		});
+		
 
-		if (responseUserDetails == null || responseUserDetails == undefined) {
-			return fail(404, { message: 'UserDetails does not exist' });
-		}
-	}
-
-		// FoodDiaryID request
-		responseFoodDiaryID = await prisma.foodDiary.findUnique({
-			where: {
-				userId: responseUserDetails?.userId
-			}
-		});
-		// FoodDiaryID check
-		if (responseFoodDiaryID != undefined) {
-			foodDiary = responseFoodDiaryID.id;
-		}
-
-		// Chart data request
-		responseUsermeals = await prisma.meal.findMany({
-			where: {
-				day: {
-					gt: oneWeekBefore
+		const responseFoodDiaryID = await prisma.foodDiary.findUnique({
+				where: {
+					userId: responseUserDetails?.userId
+				}
+			});
+		
+						
+			// Chart data request
+			responseUsermeals = await prisma.meal.findMany({
+				where: {
+					day: {
+						gt: oneWeekBefore
+					},
+					foodDiaryId: responseFoodDiaryID?.id
 				},
-				foodDiaryId: foodDiary
-			},
-			include: {
-				foodDiary: true,
-				customDish: {
-					include: {
-						nutritionalValues: true
-					}
-				},
-				dish: {
-					include: {
-						nutritionalValues: true
+				include: {
+					foodDiary: true,
+					customDish: {
+						include: {
+							nutritionalValues: true
+						}
+					},
+					dish: {
+						include: {
+							nutritionalValues: true
+						}
 					}
 				}
-			}
-		});
-		// Meal for card request
-		const todayMidnight = new Date();
-		todayMidnight.setHours(2, 0, 0, 0);
-		responsedaymeal = await prisma.meal.findMany({
-			where: {
-				day: {
-					gt: todayMidnight
+			});
+			
+			// Meal for card request
+			const todayMidnight = new Date();
+			todayMidnight.setHours(2, 0, 0, 0);
+			responsedaymeal = await prisma.meal.findMany({
+				where: {
+					day: {
+						gt: todayMidnight
+					},
+					foodDiaryId: responseFoodDiaryID?.id
 				},
-				foodDiaryId: responseFoodDiaryID?.id
-			},
-
-			include: {
-				customDish: {
-					include: {
-						nutritionalValues: true
-					}
-				},
-				dish: {
-					include: {
-						nutritionalValues: true
+	
+				include: {
+					customDish: {
+						include: {
+							nutritionalValues: true
+						}
+					},
+					dish: {
+						include: {
+							nutritionalValues: true
+						}
 					}
 				}
-			}
-		});
-		// All dishes request for template modal
-		responseAllDishes = await prisma.dish.findMany({
-			include: {
-				nutritionalValues: true
-			}
-		});
+			});
+			// All dishes request for template modal
+			responseAllDishes = await prisma.dish.findMany({
+				include: {
+					nutritionalValues: true
+				}
+			});
+				
+		
+	
 	} catch (error) {
 		return fail(400, { message: 'Bad request' });
 	}
 	if (responseUserDetails == null) {
+		
 		return fail(404, { message: 'UserID does not exist' });
 	}
-	if (responseUsermeals == null) {
-		return fail(404, { message: 'User have no meals' });
-	}
+	
 	if (responseAllDishes == null) {
+		
 		return fail(404, { message: 'User have no dishes' });
 	}
-	if (responsedaymeal == null) {
-		return fail(404, { message: 'User have no meals' });
-	}
-	if (responseFoodDiaryID == null) {
-		return fail(404, { message: 'User have no food diary' });
-	}
+	
+	
 	const maxCalories = calcMaxCalories(responseUserDetails);
-
 	const allValues = calcChartValues(responseUsermeals);
 	const allmaxValues = allmaxvalues(responseUserDetails, maxCalories);
 
 	const chartdata = initChartData(allmaxValues, allValues);
+
+	
+
 
 	return {
 		chartdata: chartdata,
@@ -140,16 +121,24 @@ export const load = (async (event) => {
 
 //-------------------------------Actions--------------------------------------------------------------
 
-export const actions: Actions = {
-	createMealfromTemplate: async ({ request }) => {
+export const actions: Actions = { 
+	createMealfromTemplate: async ({ request, cookies } ) => {
+		const day = new Date();	
+		 
 		const data = await request.formData();
 		const selectDish = data.get('selectDish');
 		let category = data.get('category')?.toString();
 		if (category == undefined) {
 			category = 'Snack';
 		}
-		const day = new Date();
-		const foodID = 1;
+		const userID = cookies.get('user_id');
+		const responseFoodDiaryID = await prisma.foodDiary.findUnique({
+			where: {
+				userId: Number(userID)
+			}
+		});
+		const foodID = responseFoodDiaryID?.id ?? 0;
+
 		if (selectDish != null) {
 			const meal: Prisma.MealUncheckedCreateInput = {
 				dishId: Number(selectDish),
@@ -166,7 +155,7 @@ export const actions: Actions = {
 			}
 		}
 	},
-	createCustomMeal: async ({ request }) => {
+	createCustomMeal: async ({ request, cookies }) => {
 		let imagePath = '';
 		const data = await request.formData();
 		const name = data.get('mealText')?.toString();
@@ -179,7 +168,6 @@ export const actions: Actions = {
 		const carbohydrates = Number(data.get('carbohydrates')) ?? 0;
 		const saturatedFat = Number(data.get('saturatedFat')) ?? 0;
 		const day = new Date();
-		const foodID = 1;
 		let selected_customDish = null;
 
 		if (name == undefined || name == '' || name == null) {
@@ -202,6 +190,14 @@ export const actions: Actions = {
 				imagePath = 'dinner2.jpeg';
 				break;
 		}
+		const userID = cookies.get('user_id');
+		const responseFoodDiaryID = await prisma.foodDiary.findUnique({
+			where: {
+				userId: Number(userID)
+			}
+		});
+		const foodID = responseFoodDiaryID?.id ?? 0;
+
 		const customDish: Prisma.customDishCreateInput = {
 			name: name,
 			imagePath: imagePath,
