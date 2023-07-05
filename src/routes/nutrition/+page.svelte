@@ -9,7 +9,7 @@
 	import ModalDelete from './ModalDelete.svelte';
 	import Head from '../../components/Head.svelte';
 	import { popup } from '@skeletonlabs/skeleton';
-    import type { PopupSettings } from '@skeletonlabs/skeleton';
+	import type { PopupSettings } from '@skeletonlabs/skeleton';
 
 	let dialog: HTMLDialogElement;
 	let showModal = false;
@@ -32,7 +32,6 @@
 	let usedCarbohydrates = 0;
 	let maxSaturatedFat = 0;
 	let usedSaturatedFat = 0;
-
 
 	if (data.allValues != undefined) {
 		usedCalories = data.allValues.calories[6];
@@ -83,9 +82,9 @@
 		console.log('Add Meal');
 	}
 	const popupHoverCalories: PopupSettings = {
-	event: 'hover',
-	target: 'popupHoverCalories',
-	placement: 'top'
+		event: 'hover',
+		target: 'popupHoverCalories',
+		placement: 'top'
 	};
 	const popupHoverFat: PopupSettings = {
 		event: 'hover',
@@ -93,9 +92,9 @@
 		placement: 'top'
 	};
 	const popupHoverSugar: PopupSettings = {
-	event: 'hover',
-	target: 'popupHoverSugar',
-	placement: 'top'
+		event: 'hover',
+		target: 'popupHoverSugar',
+		placement: 'top'
 	};
 	const popupHoverSalt: PopupSettings = {
 		event: 'hover',
@@ -108,50 +107,49 @@
 		placement: 'top'
 	};
 	const popupHoverCarbohydrates: PopupSettings = {
-	event: 'hover',
-	target: 'popupHoverCarbohydrates',
-	placement: 'top'
+		event: 'hover',
+		target: 'popupHoverCarbohydrates',
+		placement: 'top'
 	};
 	const popupHoverSaturatedFat: PopupSettings = {
 		event: 'hover',
 		target: 'popupHoverSaturatedFat',
 		placement: 'top'
 	};
-	let colorCalories = "stroke-[#909CC2]";
-	let colorFat = "stroke-[#ff7970]";
-	let colorSugar = "stroke-[#A0A595]";
-	let colorSalt = "stroke-[#42EAD4]";
-	let colorProtein = "stroke-[#26547C]";
-	let colorCarbohydrates = "stroke-[#708F56]";
-	let colorSatFat = "stroke-[#F6AD2D]";
+	let colorCalories = 'stroke-[#909CC2]';
+	let colorFat = 'stroke-[#ff7970]';
+	let colorSugar = 'stroke-[#A0A595]';
+	let colorSalt = 'stroke-[#42EAD4]';
+	let colorProtein = 'stroke-[#26547C]';
+	let colorCarbohydrates = 'stroke-[#708F56]';
+	let colorSatFat = 'stroke-[#F6AD2D]';
 
-
-	if(progressCalories>100){
-	 	colorCalories = "stroke-[#FF0000]";
-		progressCalories=100;
+	if (progressCalories > 100) {
+		colorCalories = 'stroke-[#FF0000]';
+		progressCalories = 100;
 	}
-	if(progressFat>100){
-		colorFat = "stroke-[#FF0000]";
+	if (progressFat > 100) {
+		colorFat = 'stroke-[#FF0000]';
 		progressFat = 100;
 	}
-	if(progressSugar>100){
-		colorSugar = "stroke-[#FF0000]";
+	if (progressSugar > 100) {
+		colorSugar = 'stroke-[#FF0000]';
 		progressSugar = 100;
 	}
-	if(progressSalt>100){
-		colorSalt = "stroke-[#FF0000]";
+	if (progressSalt > 100) {
+		colorSalt = 'stroke-[#FF0000]';
 		progressSalt = 100;
 	}
-	if(progressProtein>100){
-		colorProtein = "stroke-[#FF0000]";
+	if (progressProtein > 100) {
+		colorProtein = 'stroke-[#FF0000]';
 		progressProtein = 100;
 	}
-	if(progressCarbohydrates>100){
-		colorCarbohydrates = "stroke-[#FF0000]";
+	if (progressCarbohydrates > 100) {
+		colorCarbohydrates = 'stroke-[#FF0000]';
 		progressCarbohydrates = 100;
 	}
-	if(progressSaturatedFat>100){
-		colorSatFat = "stroke-[#FF0000]";
+	if (progressSaturatedFat > 100) {
+		colorSatFat = 'stroke-[#FF0000]';
 		progressSaturatedFat = 100;
 	}
 </script>
@@ -170,112 +168,147 @@
 		<section class="flex flex-col lg:w-2/5 justify-start items-start h-auto w-full">
 			<p class="text-3xl font-bold pb-3">Tages-Werte</p>
 			<div class="flex justify-around m-10 flex-wrap">
-			<div class="flex flex-col items-center ml-10 mt-5">
-				<ProgressRadial value={progressCalories} meter={colorCalories} track="stroke-[#f0f0f0f0]" stroke={80}>{progressCalText}%</ProgressRadial>
-				<div class="flex flex-row">
-				<p>Kalorien</p>
-				<button class="ml-3" use:popup={popupHoverCalories}>
-					<img src="info_icon.png" alt="info Button">
-				</button>
-				<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverCalories">
-					<p>Empfohlene Tagesmenge: {maxCalories} Gramm</p>
-					<p>Liefert dem Körper Energie</p>
-					<div class="arrow variant-filled-secondary" />
-				</div>
-			</div>
-				<p>{usedCalories}/ {maxCalories} kcal</p>
-			</div>
-			<div class="flex flex-col items-center ml-10 mt-5">
-				<ProgressRadial value={progressFat} meter={colorFat} track="stroke-[#f0f0f0f0]" stroke={80}>{progressFatText}%</ProgressRadial>
-				<div class="flex flex-row">
-					<p>Fett</p>
-					<button class="ml-3" use:popup={popupHoverFat}>
-						<img src="info_icon.png" alt="info Button">
-					</button>
-					<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverFat">
-						<p>Empfohlene Tagesmenge: {Math.round(maxFat)} Gramm</p>
-						<p>Liefert dem Körper Energie</p>
-						<div class="arrow variant-filled-secondary" />
+				<div class="flex flex-col items-center ml-10 mt-5">
+					<ProgressRadial
+						value={progressCalories}
+						meter={colorCalories}
+						track="stroke-[#f0f0f0f0]"
+						stroke={80}>{progressCalText}%</ProgressRadial
+					>
+					<div class="flex flex-row">
+						<p>Kalorien</p>
+						<button class="ml-3" use:popup={popupHoverCalories}>
+							<img src="info_icon.png" alt="info Button" />
+						</button>
+						<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverCalories">
+							<p>Empfohlene Tagesmenge: {maxCalories} Gramm</p>
+							<p>Liefert dem Körper Energie</p>
+							<div class="arrow variant-filled-secondary" />
+						</div>
 					</div>
+					<p>{usedCalories}/ {maxCalories} kcal</p>
 				</div>
-				<p>{usedFat}/ {Math.round(maxFat)} Gramm</p>
-			</div>
-			<div class="flex flex-col items-center ml-10 mt-5">
-				<ProgressRadial value={progressSugar} meter={colorSugar} track="stroke-[#f0f0f0f0]" stroke={80}>{progressSuText}%</ProgressRadial>
-				<div class="flex flex-row">
-					<p>Zucker</p>
-					<button class="ml-3" use:popup={popupHoverSugar}>
-						<img src="info_icon.png" alt="info Button">
-					</button>
-					<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverSugar">
-						<p>Empfohlene Tagesmenge: {maxSugar} Gramm</p>
-						<p>Für den Aufbau/ Erhalt von Nervenzellen</p>
-						<div class="arrow variant-filled-secondary" />
+				<div class="flex flex-col items-center ml-10 mt-5">
+					<ProgressRadial
+						value={progressFat}
+						meter={colorFat}
+						track="stroke-[#f0f0f0f0]"
+						stroke={80}>{progressFatText}%</ProgressRadial
+					>
+					<div class="flex flex-row">
+						<p>Fett</p>
+						<button class="ml-3" use:popup={popupHoverFat}>
+							<img src="info_icon.png" alt="info Button" />
+						</button>
+						<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverFat">
+							<p>Empfohlene Tagesmenge: {Math.round(maxFat)} Gramm</p>
+							<p>Liefert dem Körper Energie</p>
+							<div class="arrow variant-filled-secondary" />
+						</div>
 					</div>
+					<p>{usedFat}/ {Math.round(maxFat)} Gramm</p>
 				</div>
-				<p>{usedSugar}/ {maxSugar} Gramm</p>
-			</div>
-			<div class="flex flex-col items-center ml-10 mt-5">
-				<ProgressRadial value={progressSalt} meter={colorSalt} track="stroke-[#f0f0f0f0]" stroke={80}>{progressSaText}%</ProgressRadial>
-				<div class="flex flex-row">
-					<p>Salz</p>
-					<button class="ml-3" use:popup={popupHoverSalt}>
-						<img src="info_icon.png" alt="info Button">
-					</button>
-					<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverSalt">
-						<p>Empfohlene Tagesmenge: {maxSalt} Gramm</p>
-						<p>Für die Verdauung oder die Muskeln</p>
-						<div class="arrow variant-filled-secondary" />
+				<div class="flex flex-col items-center ml-10 mt-5">
+					<ProgressRadial
+						value={progressSugar}
+						meter={colorSugar}
+						track="stroke-[#f0f0f0f0]"
+						stroke={80}>{progressSuText}%</ProgressRadial
+					>
+					<div class="flex flex-row">
+						<p>Zucker</p>
+						<button class="ml-3" use:popup={popupHoverSugar}>
+							<img src="info_icon.png" alt="info Button" />
+						</button>
+						<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverSugar">
+							<p>Empfohlene Tagesmenge: {maxSugar} Gramm</p>
+							<p>Für den Aufbau/ Erhalt von Nervenzellen</p>
+							<div class="arrow variant-filled-secondary" />
+						</div>
 					</div>
+					<p>{usedSugar}/ {maxSugar} Gramm</p>
 				</div>
-				<p>{usedSalt}/ {maxSalt} Gramm</p>
-			</div>
-			<div class="flex flex-col items-center ml-10 mt-5">
-				<ProgressRadial value={progressProtein} meter={colorProtein} track="stroke-[#f0f0f0f0]" stroke={80}>{progressProText}%</ProgressRadial>
-				<div class="flex flex-row">
-					<p>Eiweiß</p>
-					<button class="ml-3" use:popup={popupHoverProtein}>
-						<img src="info_icon.png" alt="info Button">
-					</button>
-					<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverProtein">
-						<p>Empfohlene Tagesmenge: {Math.round(maxProtein)} Gramm</p>
-						<p>Für den Muskelaufbau</p>
-						<div class="arrow variant-filled-secondary" />
+				<div class="flex flex-col items-center ml-10 mt-5">
+					<ProgressRadial
+						value={progressSalt}
+						meter={colorSalt}
+						track="stroke-[#f0f0f0f0]"
+						stroke={80}>{progressSaText}%</ProgressRadial
+					>
+					<div class="flex flex-row">
+						<p>Salz</p>
+						<button class="ml-3" use:popup={popupHoverSalt}>
+							<img src="info_icon.png" alt="info Button" />
+						</button>
+						<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverSalt">
+							<p>Empfohlene Tagesmenge: {maxSalt} Gramm</p>
+							<p>Für die Verdauung oder die Muskeln</p>
+							<div class="arrow variant-filled-secondary" />
+						</div>
 					</div>
+					<p>{usedSalt}/ {maxSalt} Gramm</p>
 				</div>
-				<p>{usedProtein}/ {Math.round(maxProtein)} Gramm</p>
-			</div>
-			<div class="flex flex-col items-center ml-10 mt-5">
-				<ProgressRadial value={progressCarbohydrates} meter={colorCarbohydrates} track="stroke-[#f0f0f0f0]" stroke={80}>{progressCarText}%</ProgressRadial>
-				<div class="flex flex-row">
-					<p>Kohlenhydrate</p>
-					<button class="ml-3" use:popup={popupHoverCarbohydrates}>
-						<img src="info_icon.png" alt="info Button">
-					</button>
-					<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverCarbohydrates">
-						<p>Empfohlene Tagesmenge: {maxCarbohydrates} Gramm</p>
-						<p>Gespeicherte Energiereserven für den Körper</p>
-						<div class="arrow variant-filled-secondary" />
+				<div class="flex flex-col items-center ml-10 mt-5">
+					<ProgressRadial
+						value={progressProtein}
+						meter={colorProtein}
+						track="stroke-[#f0f0f0f0]"
+						stroke={80}>{progressProText}%</ProgressRadial
+					>
+					<div class="flex flex-row">
+						<p>Eiweiß</p>
+						<button class="ml-3" use:popup={popupHoverProtein}>
+							<img src="info_icon.png" alt="info Button" />
+						</button>
+						<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverProtein">
+							<p>Empfohlene Tagesmenge: {Math.round(maxProtein)} Gramm</p>
+							<p>Für den Muskelaufbau</p>
+							<div class="arrow variant-filled-secondary" />
+						</div>
 					</div>
+					<p>{usedProtein}/ {Math.round(maxProtein)} Gramm</p>
 				</div>
-				<p>{usedCarbohydrates}/ {maxCarbohydrates} Gramm</p>
-			</div>
-			<div class="flex flex-col items-center ml-10 mt-5">
-				<ProgressRadial value={progressSaturatedFat} meter={colorSatFat} track="stroke-[#f0f0f0f0]" stroke={80}>{progressSatFatText}%</ProgressRadial>
-				<div class="flex flex-row">
-					<p>Gesättigte Fettsäuren</p>
-					<button class="ml-3" use:popup={popupHoverSaturatedFat}>
-						<img src="info_icon.png" alt="info Button">
-					</button>
-					<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverSaturatedFat">
-						<p>Empfohlene Tagesmenge: {maxSaturatedFat} Gramm</p>
-						<p>Energiequelle und zur Immunabwehr</p>
-						<div class="arrow variant-filled-secondary" />
+				<div class="flex flex-col items-center ml-10 mt-5">
+					<ProgressRadial
+						value={progressCarbohydrates}
+						meter={colorCarbohydrates}
+						track="stroke-[#f0f0f0f0]"
+						stroke={80}>{progressCarText}%</ProgressRadial
+					>
+					<div class="flex flex-row">
+						<p>Kohlenhydrate</p>
+						<button class="ml-3" use:popup={popupHoverCarbohydrates}>
+							<img src="info_icon.png" alt="info Button" />
+						</button>
+						<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverCarbohydrates">
+							<p>Empfohlene Tagesmenge: {maxCarbohydrates} Gramm</p>
+							<p>Gespeicherte Energiereserven für den Körper</p>
+							<div class="arrow variant-filled-secondary" />
+						</div>
 					</div>
+					<p>{usedCarbohydrates}/ {maxCarbohydrates} Gramm</p>
 				</div>
-				<p>{usedSaturatedFat}/ {maxSaturatedFat} kcal</p>
+				<div class="flex flex-col items-center ml-10 mt-5">
+					<ProgressRadial
+						value={progressSaturatedFat}
+						meter={colorSatFat}
+						track="stroke-[#f0f0f0f0]"
+						stroke={80}>{progressSatFatText}%</ProgressRadial
+					>
+					<div class="flex flex-row">
+						<p>Gesättigte Fettsäuren</p>
+						<button class="ml-3" use:popup={popupHoverSaturatedFat}>
+							<img src="info_icon.png" alt="info Button" />
+						</button>
+						<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverSaturatedFat">
+							<p>Empfohlene Tagesmenge: {maxSaturatedFat} Gramm</p>
+							<p>Energiequelle und zur Immunabwehr</p>
+							<div class="arrow variant-filled-secondary" />
+						</div>
+					</div>
+					<p>{usedSaturatedFat}/ {maxSaturatedFat} kcal</p>
+				</div>
 			</div>
-		</div>
 		</section>
 		<!-- Chart -->
 		<div class="lg:w-3/5 w-full lg:h-auto h-[40vh]">
