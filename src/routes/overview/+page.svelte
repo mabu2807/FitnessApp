@@ -7,40 +7,40 @@
 		{
 			name: 'Bankdrücken stehend',
 			weight: [
-				{ x: 3, y: 100 },
-				{ x: 5, y: 90 },
-				{ x: 7, y: 85 },
-				{ x: 1, y: 110 }
+				{ x: 100, y: 30 },
+				{ x: 90, y: 50 },
+				{ x: 85, y: 70 },
+				{ x: 110, y: 10 }
 			]
 		},
 		{
 			name: 'Latzug springend',
 			weight: [
-				{ x: 5, y: 20 },
-				{ x: 10, y: 15 },
-				{ x: 15, y: 12 },
-				{ x: 25, y: 9 },
-				{ x: 27, y: 5 }
+				{ x: 20, y: 5 },
+				{ x: 15, y: 10 },
+				{ x: 12, y: 15 },
+				{ x: 9, y: 25 },
+				{ x: 5, y: 27 }
 			]
 		},
 		{
 			name: 'Kniebeuge aufm Tisch',
 			weight: [
-				{ x: 5, y: 20 },
-				{ x: 10, y: 15 },
-				{ x: 15, y: 12 },
-				{ x: 25, y: 9 },
-				{ x: 27, y: 5 }
+				{ x: 20, y: 5 },
+				{ x: 15, y: 10 },
+				{ x: 12, y: 15 },
+				{ x: 9, y: 25 },
+				{ x: 5, y: 27 }
 			]
 		},
 		{
 			name: 'Curls mit Wasserkästen',
 			weight: [
-				{ x: 5, y: 20 },
-				{ x: 10, y: 15 },
-				{ x: 15, y: 12 },
-				{ x: 25, y: 9 },
-				{ x: 27, y: 5 }
+				{ x: 20, y: 5 },
+				{ x: 15, y: 10 },
+				{ x: 12, y: 10 },
+				{ x: 9, y: 25 },
+				{ x: 5, y: 27 }
 			]
 		}
 	];
@@ -143,13 +143,13 @@
 						position: 'bottom',
 						title: {
 							display: true,
-							text: 'Wiederholungen'
+							text: 'Gewicht'
 						}
 					},
 					y: {
 						title: {
 							display: true,
-							text: 'Gewicht'
+							text: 'Wiederholung'
 						}
 					}
 				}
@@ -218,17 +218,17 @@
 		<h2 class="md:h2 h1">Krafttraining</h2>
 		<div class="grid md:grid-cols-2 grid-cols-1 md:gap-12 gap-6 lg:my-10 md:my-8 my-6 mx-12">
 			{#each liftingData as exercise, exerciseIndex}
-				<div class="card bg-success-400 p-3 lifting-container dark:bg-surface-500">
+				<div class="card pl-12 pr-12 pb-10 bg-success-400   p-3 lifting-container dark:bg-surface-500">
 					<h3 class="h3 mt-3 mb-5">{exercise.name}</h3>
 
-					<div class="mt-3 flex justify-between gap-2">
+					<div class="mt-3 flex justify-center mt-8 gap-2">
 						<button
 							class="btn variant-soft overflow-hidden lg:text-base text-sm hover:bg-tertiary-400 dark:bg-success-600 dark:text-black hover:text-black dark:hover:bg-primary-400"
 							on:click={() => toggleChartType(exerciseIndex)}>Diagrammtyp ändern</button
 						>
 					</div>
 					<canvas
-						class="card bg-secondary-100 dark:bg-surface-800 text-black dark:text-white mt-10 lifting-canvas"
+						class="card bg-secondary-100  h-full p-2  dark:bg-surface-800 text-black dark:text-white mt-10 lifting-canvas"
 					/>
 				</div>
 			{/each}
@@ -238,10 +238,10 @@
 		<h2 class="md:h2 h1">Ausdauer</h2>
 		<div class="grid md:grid-cols-2 grid-cols-1 md:gap-12 gap-6 lg:my-10 md:my-8 my-6 mx-12">
 			{#each cardioData as exercise, exerciseIndex}
-				<div class="card bg-success-400 p-3 cardio-container dark:bg-surface-500">
+				<div class="card bg-success-400 pl-12 pr-12 pb-10 cardio-container dark:bg-surface-500">
 					<h3 class="h3 mt-3 mb-5">{exercise.name}</h3>
 					<canvas
-						class="card bg-secondary-100 dark:bg-surface-800 text-black dark:text-white mt-10 cardio-canvas"
+						class="card bg-secondary-100  h-full dark:bg-surface-800 text-black dark:text-white mt-10 cardio-canvas"
 					/>
 				</div>
 			{/each}
