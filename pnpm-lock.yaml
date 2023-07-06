@@ -4,10 +4,14 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@auth/core':
-    specifier: ^0.8.4
-    version: 0.8.4(nodemailer@6.9.3)
+    specifier: ^0.9.0
+    version: 0.9.0(nodemailer@6.9.3)
   '@auth/sveltekit':
     specifier: ^0.3.3
     version: 0.3.3(@sveltejs/kit@1.21.0)(nodemailer@6.9.3)(svelte@4.0.1)
@@ -179,8 +183,8 @@ packages:
       preact-render-to-string: 5.2.3(preact@10.11.3)
     dev: false
 
-  /@auth/core@0.8.4(nodemailer@6.9.3):
-    resolution: {integrity: sha512-08aDVHar85akYaU9vRZ8O5Ydup9T/PS+4ehrBS5AvRW6cU3/4XMHtkU4ePtOiOVn69VgbAHShetm9VcnWwtjxg==}
+  /@auth/core@0.9.0(nodemailer@6.9.3):
+    resolution: {integrity: sha512-W2WO0WCBg1T3P8+yjQPzurTQhPv6ecBYfJ2oE3uvXPAX5ZLWAMSjKFAIa9oLZy5pwrB+YehJZPnlIxVilhrVcg==}
     peerDependencies:
       nodemailer: ^6.8.0
     peerDependenciesMeta:
