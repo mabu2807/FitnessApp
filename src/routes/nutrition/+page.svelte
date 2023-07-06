@@ -156,7 +156,7 @@
 
 <Head />
 
-<main class="mt-24">
+<main class="mt-24 dark:bg-surface-800" >
 	<header class="w-full h-80 flex items-center justify-center bg-[url('/header_food.jpeg')]">
 		<p class="bg-slate-300 font-black text-center text-black decoration-10 text-6xl">
 			Ernährungs-Tagebuch
