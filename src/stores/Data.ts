@@ -12,7 +12,7 @@ export const getStartedData = writable([
 export const weightData = writable([
 	{ title: 'Bankdrücken stehend', weight: '', rep: '', date: '' },
 	{ title: 'Latzug springend', weight: '', rep: '', date: '' },
-	{ title: 'Kniebeuge aufm Tisch', weight: '', rep:'', date: '' },
+	{ title: 'Kniebeuge aufm Tisch', weight: '', rep: '', date: '' },
 	{ title: 'Curls mit Wasserkästen', weight: '', rep: '', date: '' }
 ]);
 

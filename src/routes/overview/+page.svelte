@@ -2,45 +2,43 @@
 	import { onMount, onDestroy } from 'svelte';
 	import Chart from 'chart.js/auto';
 	import Head from '../../components/Head.svelte';
+	import 'chartjs-adapter-date-fns';
 
 	let liftingData = [
 		{
 			name: 'Bankdrücken stehend',
-			weight: [
-				{ x: 100, y: 30 },
-				{ x: 90, y: 50 },
-				{ x: 85, y: 70 },
-				{ x: 110, y: 10 }
+			event: [
+				{ date: '2023-03-10', weight: 100, reps: 10 },
+				{ date: '2023-03-11', weight: 80, reps: 10 },
+				{ date: '2023-03-12', weight: 100, reps: 10 },
+				{ date: '2023-03-13', weight: 90, reps: 10 }
 			]
 		},
 		{
 			name: 'Latzug springend',
-			weight: [
-				{ x: 20, y: 5 },
-				{ x: 15, y: 10 },
-				{ x: 12, y: 15 },
-				{ x: 9, y: 25 },
-				{ x: 5, y: 27 }
+			event: [
+				{ date: '2023-03-10', weight: 100, reps: 10 },
+				{ date: '2023-03-11', weight: 80, reps: 10 },
+				{ date: '2023-03-12', weight: 100, reps: 10 },
+				{ date: '2023-03-13', weight: 90, reps: 10 }
 			]
 		},
 		{
 			name: 'Kniebeuge aufm Tisch',
-			weight: [
-				{ x: 20, y: 5 },
-				{ x: 15, y: 10 },
-				{ x: 12, y: 15 },
-				{ x: 9, y: 25 },
-				{ x: 5, y: 27 }
+			event: [
+				{ date: '2023-03-10', weight: 100, reps: 10 },
+				{ date: '2023-03-11', weight: 80, reps: 10 },
+				{ date: '2023-03-12', weight: 100, reps: 10 },
+				{ date: '2023-03-13', weight: 90, reps: 10 }
 			]
 		},
 		{
 			name: 'Curls mit Wasserkästen',
-			weight: [
-				{ x: 20, y: 5 },
-				{ x: 15, y: 10 },
-				{ x: 12, y: 10 },
-				{ x: 9, y: 25 },
-				{ x: 5, y: 27 }
+			event: [
+				{ date: '2023-03-10', weight: 100, reps: 10 },
+				{ date: '2023-03-11', weight: 80, reps: 10 },
+				{ date: '2023-03-12', weight: 100, reps: 10 },
+				{ date: '2023-03-13', weight: 90, reps: 10 }
 			]
 		}
 	];
@@ -48,31 +46,29 @@
 	let cardioData = [
 		{
 			name: 'Laufen',
-			weight: [
-				{ x: 3, y: 100 },
-				{ x: 5, y: 90 },
-				{ x: 7, y: 85 },
-				{ x: 1, y: 110 }
+			event: [
+				{ date: '2023-03-10', distance: 100, time: 10 },
+				{ date: '2023-03-11', distance: 120, time: 10 },
+				{ date: '2023-03-12', distance: 140, time: 10 },
+				{ date: '2023-03-13', distance: 100, time: 10 }
 			]
 		},
 		{
 			name: 'Radfahren',
-			weight: [
-				{ x: 5, y: 20 },
-				{ x: 10, y: 15 },
-				{ x: 15, y: 12 },
-				{ x: 25, y: 9 },
-				{ x: 27, y: 5 }
+			event: [
+				{ date: '2023-03-10', distance: 100, time: 10 },
+				{ date: '2023-03-11', distance: 120, time: 10 },
+				{ date: '2023-03-12', distance: 140, time: 10 },
+				{ date: '2023-03-13', distance: 100, time: 10 }
 			]
 		},
 		{
 			name: 'Schwimmen',
-			weight: [
-				{ x: 5, y: 20 },
-				{ x: 10, y: 15 },
-				{ x: 15, y: 12 },
-				{ x: 25, y: 9 },
-				{ x: 57, y: 5 }
+			event: [
+				{ date: '2023-03-10', distance: 100, time: 10 },
+				{ date: '2023-03-11', distance: 120, time: 10 },
+				{ date: '2023-03-12', distance: 140, time: 10 },
+				{ date: '2023-03-13', distance: 100, time: 10 }
 			]
 		}
 	];
@@ -84,10 +80,9 @@
 		let chart = new Chart(ctx, {
 			type: 'line',
 			data: {
-				labels: [],
 				datasets: [
 					{
-						label: 'Jaaaa',
+						label: 'Distanz',
 						data: [],
 						borderColor: 'rgb(54, 162, 235)',
 						backgroundColor: 'rgba(54, 162, 235, 0.2)',
@@ -99,17 +94,19 @@
 				responsive: true,
 				scales: {
 					x: {
-						type: 'linear',
-						position: 'bottom',
+						type: 'time',
+						time: {
+							unit: 'day'
+						},
 						title: {
 							display: true,
-							text: 'Zeit'
+							text: 'Datum'
 						}
 					},
 					y: {
 						title: {
 							display: true,
-							text: 'Distanz'
+							text: 'Distanz in km'
 						}
 					}
 				}
@@ -124,7 +121,6 @@
 		let chart = new Chart(ctx, {
 			type: 'line',
 			data: {
-				labels: [],
 				datasets: [
 					{
 						label: 'Gewicht',
@@ -139,17 +135,19 @@
 				responsive: true,
 				scales: {
 					x: {
-						type: 'linear',
-						position: 'bottom',
+						type: 'time',
+						time: {
+							unit: 'day'
+						},
 						title: {
 							display: true,
-							text: 'Gewicht'
+							text: 'Datum'
 						}
 					},
 					y: {
 						title: {
 							display: true,
-							text: 'Wiederholung'
+							text: 'Gewicht in kg'
 						}
 					}
 				}
@@ -159,8 +157,19 @@
 		return chart;
 	}
 
-	function updateChart(chart: any, data: any) {
-		chart.data.datasets[0].data = data;
+	function updateWeightChart(chart: any, data: any) {
+		chart.data.datasets[0].data = data.map((event: any) => ({
+			x: event.date,
+			y: event.weight
+		}));
+		chart.update();
+	}
+
+	function updateCardioChart(chart: any, data: any) {
+		chart.data.datasets[0].data = data.map((event: any) => ({
+			x: event.date,
+			y: event.distance
+		}));
 		chart.update();
 	}
 
@@ -172,7 +181,7 @@
 			charts.push(liftingChart);
 		});
 		liftingData.forEach((lifting, liftingIndex) => {
-			updateChart(charts[liftingIndex], lifting.weight);
+			updateWeightChart(charts[liftingIndex], lifting.event);
 		});
 		const cardioContainers = document.querySelectorAll('.cardio-container');
 		cardioContainers.forEach((cardioContainer) => {
@@ -181,7 +190,7 @@
 			charts.push(cardioChart);
 		});
 		cardioData.forEach((cardio, cardioIndex) => {
-			updateChart(charts[cardioIndex + liftingData.length], cardio.weight);
+			updateCardioChart(charts[cardioIndex + liftingData.length], cardio.event);
 		});
 	});
 
@@ -218,7 +227,9 @@
 		<h2 class="md:h2 h1">Krafttraining</h2>
 		<div class="grid md:grid-cols-2 grid-cols-1 md:gap-12 gap-6 lg:my-10 md:my-8 my-6 mx-12">
 			{#each liftingData as exercise, exerciseIndex}
-				<div class="card pl-12 pr-12 pb-10 bg-success-400   p-3 lifting-container dark:bg-surface-500">
+				<div
+					class="card pl-12 pr-12 pb-10 bg-success-400 p-3 lifting-container dark:bg-surface-500"
+				>
 					<h3 class="h3 mt-3 mb-5">{exercise.name}</h3>
 
 					<div class="mt-3 flex justify-center mt-8 gap-2">
@@ -228,7 +239,7 @@
 						>
 					</div>
 					<canvas
-						class="card bg-secondary-100  h-full p-2  dark:bg-surface-800 text-black dark:text-white mt-10 lifting-canvas"
+						class="card bg-secondary-100 h-full p-2 dark:bg-surface-800 text-black dark:text-white mt-10 lifting-canvas"
 					/>
 				</div>
 			{/each}
@@ -241,7 +252,7 @@
 				<div class="card bg-success-400 pl-12 pr-12 pb-10 cardio-container dark:bg-surface-500">
 					<h3 class="h3 mt-3 mb-5">{exercise.name}</h3>
 					<canvas
-						class="card bg-secondary-100  h-full dark:bg-surface-800 text-black dark:text-white mt-10 cardio-canvas"
+						class="card bg-secondary-100 h-full dark:bg-surface-800 text-black dark:text-white mt-10 cardio-canvas"
 					/>
 				</div>
 			{/each}

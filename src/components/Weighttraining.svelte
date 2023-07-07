@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { weightData } from '../stores/Data';
 	import { onMount } from 'svelte';
-	let now = new Date(), month, day, year;
+	let now = new Date(),
+		month,
+		day,
+		year;
 	let dateString: string;
 
 	function updateDateValue(event: Event) {
@@ -10,22 +13,18 @@
 			exercise.date = dateString;
 		});
 	}
-	
-	onMount(()=> {
-        month = '' + (now.getMonth() + 1),
-        day = '' + now.getDate(),
-        year = now.getFullYear();
 
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
+	onMount(() => {
+		(month = '' + (now.getMonth() + 1)), (day = '' + now.getDate()), (year = now.getFullYear());
 
-    dateString = [year, month, day].join('-');
-	$weightData.forEach((exercise) => {
+		if (month.length < 2) month = '0' + month;
+		if (day.length < 2) day = '0' + day;
+
+		dateString = [year, month, day].join('-');
+		$weightData.forEach((exercise) => {
 			exercise.date = dateString;
 		});
-	})
+	});
 </script>
 
 <section>
@@ -34,7 +33,7 @@
 		type="date"
 		bind:value={dateString}
 		on:input={updateDateValue}
-							/>
+	/>
 	<div class="justify-center flex sm:my-12 my-8 md:px-5 px-0">
 		<div class="grid grid-cols-2 gap-y-8 lg:gap-x-20 gap-x-8">
 			{#each $weightData as exercise, i}

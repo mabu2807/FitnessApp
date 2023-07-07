@@ -9,21 +9,21 @@ export const load = (async (event) => {
 		include: {
 			userDetails: {
 				include: {
-					user: true,
-				},
-			},
-		},
+					user: true
+				}
+			}
+		}
 	});
-	
-	
 
 	const reviewData = reviewsWithUserDetails.map((review) => ({
 		id: review.id,
 		text: review.text,
 		userName: review.userDetails.user.username,
-		userImage: "data:image/png;base64,"+(review.userDetails.user.image 
-			? Buffer.from(review.userDetails.user.image).toString("utf-8")
-			: null),
+		userImage:
+			'data:image/png;base64,' +
+			(review.userDetails.user.image
+				? Buffer.from(review.userDetails.user.image).toString('utf-8')
+				: null)
 	}));
 	return { categories: categoryResponse, reviews: reviewData };
 }) satisfies PageServerLoad;

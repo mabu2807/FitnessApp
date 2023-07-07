@@ -25,7 +25,7 @@ async function main() {
 				id: user.id,
 				email: user.email,
 				username: user.username,
-				image: Buffer.from(user.image, "utf-8"),
+				image: Buffer.from(user.image, 'utf-8'),
 				password: user.password,
 				authMethod: user.authMethod,
 				token: user.token
