@@ -3,6 +3,7 @@ CREATE TABLE `User` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(191) NOT NULL,
     `username` VARCHAR(191) NOT NULL,
+    `image` LONGBLOB NULL,
     `password` VARCHAR(191) NULL,
     `authMethod` VARCHAR(191) NOT NULL,
     `verified` BOOLEAN NOT NULL DEFAULT false,
@@ -21,6 +22,7 @@ CREATE TABLE `UserDetails` (
     `height` INTEGER NOT NULL,
     `dob` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `activityLevel` INTEGER NOT NULL,
+    `goal` VARCHAR(191) NOT NULL,
 
     PRIMARY KEY (`userId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -28,38 +30,39 @@ CREATE TABLE `UserDetails` (
 -- CreateTable
 CREATE TABLE `Review` (
     `id` VARCHAR(191) NOT NULL,
-    `userName` VARCHAR(191) NOT NULL,
     `text` VARCHAR(191) NOT NULL,
+    `userId` INTEGER NOT NULL,
 
     PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Sport` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(191) NOT NULL,
+    `description` VARCHAR(191) NOT NULL,
+    `image` LONGBLOB NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `UserSport` (
+    `userId` INTEGER NOT NULL,
+    `sportId` INTEGER NOT NULL,
+    `active` BOOLEAN NOT NULL,
+    `assignedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+
+    PRIMARY KEY (`userId`, `sportId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `TrainingPlan` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `title` VARCHAR(191) NOT NULL,
+    `name` VARCHAR(191) NOT NULL,
     `description` VARCHAR(191) NOT NULL,
-    `imagePath` VARCHAR(191) NOT NULL,
-    `categoryId` INTEGER NOT NULL,
-
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
-CREATE TABLE `UserTrainingPlan` (
-    `userId` INTEGER NOT NULL,
-    `trainingPlanId` INTEGER NOT NULL,
-    `active` BOOLEAN NOT NULL,
-    `assignedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-
-    PRIMARY KEY (`userId`, `trainingPlanId`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
-CREATE TABLE `SessionTemplate` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `description` VARCHAR(191) NOT NULL,
-    `categoryId` INTEGER NOT NULL,
+    `image` LONGBLOB NULL,
+    `sportId` INTEGER NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -87,7 +90,6 @@ CREATE TABLE `ExerciseTemplate` (
 CREATE TABLE `Session` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `userId` INTEGER NOT NULL,
-    `sessionTemplateId` INTEGER NOT NULL,
     `date` DATETIME(3) NOT NULL,
 
     PRIMARY KEY (`id`)
@@ -193,44 +195,23 @@ CREATE TABLE `NutritionTippsArticles` (
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- CreateTable
-CREATE TABLE `_SessionTemplateToTrainingPlan` (
-    `A` INTEGER NOT NULL,
-    `B` INTEGER NOT NULL,
-
-    UNIQUE INDEX `_SessionTemplateToTrainingPlan_AB_unique`(`A`, `B`),
-    INDEX `_SessionTemplateToTrainingPlan_B_index`(`B`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
-CREATE TABLE `_ExerciseTemplateToSessionTemplate` (
-    `A` INTEGER NOT NULL,
-    `B` INTEGER NOT NULL,
-
-    UNIQUE INDEX `_ExerciseTemplateToSessionTemplate_AB_unique`(`A`, `B`),
-    INDEX `_ExerciseTemplateToSessionTemplate_B_index`(`B`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
 -- AddForeignKey
 ALTER TABLE `UserDetails` ADD CONSTRAINT `UserDetails_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `TrainingPlan` ADD CONSTRAINT `TrainingPlan_categoryId_fkey` FOREIGN KEY (`categoryId`) REFERENCES `Category`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Review` ADD CONSTRAINT `Review_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `UserDetails`(`userId`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `UserTrainingPlan` ADD CONSTRAINT `UserTrainingPlan_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `UserDetails`(`userId`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `UserSport` ADD CONSTRAINT `UserSport_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `UserDetails`(`userId`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `UserTrainingPlan` ADD CONSTRAINT `UserTrainingPlan_trainingPlanId_fkey` FOREIGN KEY (`trainingPlanId`) REFERENCES `TrainingPlan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `UserSport` ADD CONSTRAINT `UserSport_sportId_fkey` FOREIGN KEY (`sportId`) REFERENCES `Sport`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `SessionTemplate` ADD CONSTRAINT `SessionTemplate_categoryId_fkey` FOREIGN KEY (`categoryId`) REFERENCES `Category`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `TrainingPlan` ADD CONSTRAINT `TrainingPlan_sportId_fkey` FOREIGN KEY (`sportId`) REFERENCES `Sport`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Session` ADD CONSTRAINT `Session_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `UserDetails`(`userId`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `Session` ADD CONSTRAINT `Session_sessionTemplateId_fkey` FOREIGN KEY (`sessionTemplateId`) REFERENCES `SessionTemplate`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Exercise` ADD CONSTRAINT `Exercise_sessionId_fkey` FOREIGN KEY (`sessionId`) REFERENCES `Session`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -261,15 +242,3 @@ ALTER TABLE `customDish` ADD CONSTRAINT `customDish_nutritionalValuesId_fkey` FO
 
 -- AddForeignKey
 ALTER TABLE `Dish` ADD CONSTRAINT `Dish_nutritionalValuesId_fkey` FOREIGN KEY (`nutritionalValuesId`) REFERENCES `NutritionalValues`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `_SessionTemplateToTrainingPlan` ADD CONSTRAINT `_SessionTemplateToTrainingPlan_A_fkey` FOREIGN KEY (`A`) REFERENCES `SessionTemplate`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `_SessionTemplateToTrainingPlan` ADD CONSTRAINT `_SessionTemplateToTrainingPlan_B_fkey` FOREIGN KEY (`B`) REFERENCES `TrainingPlan`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `_ExerciseTemplateToSessionTemplate` ADD CONSTRAINT `_ExerciseTemplateToSessionTemplate_A_fkey` FOREIGN KEY (`A`) REFERENCES `ExerciseTemplate`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `_ExerciseTemplateToSessionTemplate` ADD CONSTRAINT `_ExerciseTemplateToSessionTemplate_B_fkey` FOREIGN KEY (`B`) REFERENCES `SessionTemplate`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;

@@ -46,38 +46,48 @@ export const handle = SvelteKitAuth({
 						data: user
 					});
 
-					const respone_user_id = await prisma.user.findUnique({
-						where: {
-							email: email
-						}
-					});
-					let userid = 0;
-					if (respone_user_id?.id !== undefined && respone_user_id?.id !== null) {
-						userid = respone_user_id?.id;
-					}
-					const userDetails: Prisma.UserDetailsUncheckedCreateInput = {
-						userId: userid,
-						activityLevel: 0,
-						gender: 'male',
-						goal: 'Stay Fit',
-						height: 0,
-						weight: 0
-					};
-					await prisma.userDetails.create({
-						data: userDetails
-					});
-					const foodDiary: Prisma.FoodDiaryUncheckedCreateInput = {
-						userId: userid
-					};
-					await prisma.foodDiary.create({
-						data: foodDiary
-					});
-				} catch (error) {
-					console.log(error);
-				}
-			}
+                        const respone_user_id = await prisma.user.findUnique({
+                            where: {
+                                email: email
+                            }
+                        })
+                        let userid = 0
+                        if(respone_user_id?.id !== undefined && respone_user_id?.id !== null){
+                            userid = respone_user_id?.id
+                        }
+                        const userDetails:Prisma.UserDetailsUncheckedCreateInput = {
+                            userId:userid,
+                            activityLevel:0,
+                            gender:'male',
+                            goal: 'Stay Fit',
+                            height:0,
+                            weight:0,   
+                            }
+                            await prisma.userDetails.create({
+                                data:userDetails
+                         })  
+                        const foodDiary:Prisma.FoodDiaryUncheckedCreateInput = {
+                        userId:userid    
+                        }
+                        await prisma.foodDiary.create({
+                            data:foodDiary
+                        })   
+                         
 
-			return true;
-		}
-	}
-});
+                } catch (error) {
+                    console.log(error)
+                }
+            }             
+            
+            
+        return true
+        }
+    },
+})
+        
+            
+            
+            
+
+
+		

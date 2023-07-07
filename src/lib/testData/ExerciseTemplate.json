@@ -1,26 +1,62 @@
 [
 	{
 		"id": 1,
-		"title": "Bankdrücken",
-		"description": "Drück ne Langhantel hoch",
-		"sessionTemplateId": 1
+		"exercise": "Bankdrücken schräg",
+		"description":
+			"Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.",
+		"imagePath": "plan1.jpg",
+		"sets": "3",
+		"repetitions": "18",
+		"weight": "120"
 	},
 	{
 		"id": 2,
-		"title": "Flys",
-		"description": "Flieg",
-		"sessionTemplateId": 1
+		"exercise": "Butterfly über Kopf",
+		"description":
+			"Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.",
+		"imagePath": "plan2.jpg",
+		"sets": "3",
+		"repetitions": "18",
+		"weight": "120"
 	},
 	{
 		"id": 3,
-		"title": "Rudern",
-		"description": "Ruder",
-		"sessionTemplateId": 2
+		"exercise": "Bankdrücken stehend",
+		"description":
+			"Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.",
+		"imagePath": "plan1.jpg",
+		"sets": "3",
+		"repetitions": "18",
+		"weight": "120"
 	},
 	{
 		"id": 4,
-		"title": "Latzug",
-		"description": "zieh",
-		"sessionTemplateId": 2
+		"exercise": "Butterfly unterm Tisch",
+		"description":
+			"Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.",
+		"imagePath": "plan2.jpg",
+		"sets": "3",
+		"repetitions": "18",
+		"weight": "120"
+	},
+	{
+		"id": 5,
+		"exercise": "Bankdrücken aufm Stuhl",
+		"description":
+			"Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben – nachdem man sie vorher abgesenkt hat.",
+		"imagePath": "plan1.jpg",
+		"sets": "3",
+		"repetitions": "18",
+		"weight": "120"
+	},
+	{
+		"id": 6,
+		"exercise": "Butterfly mit Klatschen",
+		"description":
+			"Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren). Die Arme sollten fast durchgestreckt sein. Beim Zusammenführen der Arme vorne vor der Brust atmest du aus. Anschließend kannst du einatmen, während die Arme kontrolliert in die Ausgangsposition zurückkehren.",
+		"imagePath": "plan2.jpg",
+		"sets": "3",
+		"repetitions": "18",
+		"weight": "120"
 	}
 ]

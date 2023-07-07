@@ -1,10 +1,8 @@
 import { PrismaClient } from '@prisma/client';
 import userData from '../src/lib/testdata/User.json' assert { type: 'json' };
 import userDetailsData from '../src/lib/testdata/UserDetails.json' assert { type: 'json' };
-import trainingPlanData from '../src/lib/testdata/Trainingplan.json' assert { type: 'json' };
-import userTrainingPlanData from '../src/lib/testdata/UserTrainingPlan.json' assert { type: 'json' };
+import sportData from '../src/lib/testdata/Sport.json' assert { type: 'json' };
 import categoryData from '../src/lib/testdata/Category.json' assert { type: 'json' };
-import sessionTemplateData from '../src/lib/testdata/SessionTemplate.json' assert { type: 'json' };
 import sessionData from '../src/lib/testdata/Session.json' assert { type: 'json' };
 import exerciseTemplateData from '../src/lib/testdata/ExerciseTemplate.json' assert { type: 'json' };
 import exerciseData from '../src/lib/testdata/Exercise.json' assert { type: 'json' };
@@ -15,6 +13,8 @@ import foodDiaryData from '../src/lib/testdata/FoodDiary.json' assert { type: 'j
 import nutritionalValuesData from '../src/lib/testdata/NutritionalValues.json' assert { type: 'json' };
 import reviewData from '../src/lib/testdata/Reviews.json' assert { type: 'json' };
 import nutritionarticles from '../src/lib/testdata/articles.json' assert { type: 'json' };
+import userSportData from '../src/lib/testdata/UserSport.json' assert { type: 'json' };
+import trainingPlanData from '../src/lib/testdata/TrainingPlan.json' assert { type: 'json' };
 
 const prisma = new PrismaClient();
 
@@ -68,37 +68,36 @@ async function main() {
 		});
 	}
 
+	for (const sport of sportData) {
+		await prisma.sport.create({
+			data: {
+				id: sport.id,
+				name: sport.name,
+				description: sport.description,
+				image: Buffer.from(sport.image, "utf-8"),
+			}
+		});
+	}
+
+	for (const userSport of userSportData) {
+		await prisma.userSport.create({
+			data: {
+				userId: userSport.userId,
+				sportId: userSport.sportId,
+				active: userSport.active,
+				assignedAt: new Date(userSport.assignedAt),
+			}
+		});
+	}
+
 	for (const trainingPlan of trainingPlanData) {
 		await prisma.trainingPlan.create({
 			data: {
 				id: trainingPlan.id,
-				title: trainingPlan.title,
+				name: trainingPlan.name,
 				description: trainingPlan.description,
-				imagePath: trainingPlan.imagePath,
-				categoryId: trainingPlan.categoryId
-			}
-		});
-	}
-
-	for (const userTrainingPlan of userTrainingPlanData) {
-		await prisma.userTrainingPlan.create({
-			data: {
-				userId: userTrainingPlan.userId,
-				trainingPlanId: userTrainingPlan.trainigPlanId,
-				active: userTrainingPlan.active
-			}
-		});
-	}
-
-	for (const sessionTemplate of sessionTemplateData) {
-		await prisma.sessionTemplate.create({
-			data: {
-				id: sessionTemplate.id,
-				description: sessionTemplate.description,
-				categoryId: sessionTemplate.categoryId,
-				trainingPlans: {
-					connect: [{ id: sessionTemplate.trainingPlanId }]
-				}
+				image: Buffer.from(trainingPlan.image, "utf-8"),
+				sportId: trainingPlan.sportId,
 			}
 		});
 	}
@@ -108,7 +107,6 @@ async function main() {
 			data: {
 				id: session.id,
 				userId: session.userId,
-				sessionTemplateId: session.sessionTemplateId,
 				date: new Date(session.date)
 			}
 		});
@@ -119,10 +117,7 @@ async function main() {
 			data: {
 				id: exerciseTemplate.id,
 				title: exerciseTemplate.title,
-				description: exerciseTemplate.description,
-				sessionTemplates: {
-					connect: [{ id: exerciseTemplate.sessionTemplateId }]
-				}
+				description: exerciseTemplate.description
 			}
 		});
 	}
