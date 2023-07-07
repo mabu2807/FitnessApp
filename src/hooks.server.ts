@@ -3,16 +3,44 @@ import GitHub from '@auth/core/providers/github';
 import { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } from '$env/static/private';
 import prisma from '$lib/prisma';
 import type { Prisma } from '@prisma/client';
+import Credentials from '@auth/core/providers/credentials';
+import type { User } from '@auth/core/types';
+import { fail } from '@sveltejs/kit';
 
 
 export const handle = SvelteKitAuth({
     providers: [
-        GitHub({ clientId: GITHUB_CLIENT_ID, clientSecret: GITHUB_CLIENT_SECRET }) as any        
+        GitHub({ clientId: GITHUB_CLIENT_ID, clientSecret: GITHUB_CLIENT_SECRET }) as any,
+        Credentials( {
+            credentials: {
+                email: { label: "Email" },
+                password: { label: "Password", type: "password" },
+              },
+              async authorize( credentials, request) {
+                const data = await request.formData()
+                const email = data.get('email')?.toString()
+                const password = data.get('password')?.toString()
+
+                const respone_user = await prisma.user.findUniqueOrThrow({
+                    where:{
+                        email: email
+                    }    
+                })
+                if (respone_user.password != password || respone_user.verified != true) {
+                    fail(303, {message: 'Login error'})
+                }
+
+                return {} as User
+              },
+            
+
+        })        
     ],
     secret: 'mysecret',
     trustHost: true,
     callbacks: {
-        signIn: async ({profile}) => {
+        signIn: async ({profile, user}) => {
+            
             let user_name = ''
             let email = ''
             let respone_user;
