@@ -17,6 +17,7 @@
 	let showModal3 = false;
 
 	export let data: PageData;
+	export let form: ActionData
 	let mealData = data.mealforCard;
 	let maxCalories = 0;
 	let usedCalories = 0;
