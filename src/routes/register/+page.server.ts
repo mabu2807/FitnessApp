@@ -3,6 +3,7 @@ import { redirect } from '@sveltejs/kit';
 import type { Actions } from '../register/$types';
 import { sendEmail } from '$lib/emails/SendVerificationMail';
 import cryptoRandomString from 'crypto-random-string';
+import bcrypt from 'bcryptjs';
 
 const validateEmail = (email: string) => {
 	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -47,12 +48,15 @@ export const actions = {
 			return { message: 'already registered' };
 		}
 
+		const salt = await bcrypt.genSalt(10);
+		const pwdHashed = await bcrypt.hash(password, salt); 
+
 		await prisma.user.create({
 			data: {
 				email: email,
 				username: username,
 				authMethod: 'email',
-				password: password,
+				password: pwdHashed,
 				token: token
 			}
 		});

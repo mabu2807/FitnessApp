@@ -3,7 +3,7 @@ import type { PageServerLoad } from './$types';
 import type { Actions } from './$types';
 import { sendEmail } from '$lib/emails/SendContactMail';
 
-export const load = (async (event) => {
+export const load = (async () => {
 	const categoryResponse = await prisma.category.findMany();
 	const reviewsWithUserDetails = await prisma.review.findMany({
 		include: {
@@ -15,8 +15,6 @@ export const load = (async (event) => {
 		},
 	});
 	
-	
-
 	const reviewData = reviewsWithUserDetails.map((review) => ({
 		id: review.id,
 		text: review.text,

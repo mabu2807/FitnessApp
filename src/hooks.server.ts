@@ -41,7 +41,7 @@ export const handle = SvelteKitAuth({
                     username: user_name,
                     password: null,
                     authMethod: "github",
-                    token: "null",
+                    token: email,
                     verified: true,
                 }
                 
@@ -50,14 +50,14 @@ export const handle = SvelteKitAuth({
                             data:user
                         })
 
-                        const respone_user_id = await prisma.user.findUnique({
+                        const response_user_id = await prisma.user.findUnique({
                             where: {
                                 email: email
                             }
                         })
                         let userid = 0
-                        if(respone_user_id?.id !== undefined && respone_user_id?.id !== null){
-                            userid = respone_user_id?.id
+                        if(response_user_id?.id !== undefined && response_user_id?.id !== null){
+                            userid = response_user_id?.id
                         }
                         const userDetails:Prisma.UserDetailsUncheckedCreateInput = {
                             userId:userid,
