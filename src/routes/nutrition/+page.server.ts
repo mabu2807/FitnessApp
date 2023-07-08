@@ -9,7 +9,7 @@ import { calcChartValues } from './calcChartValues';
 // Load function
 export const load = (async ({ cookies, locals }) => {
 	const session = await locals.getSession();
-	if (!session?.user) throw redirect(303, '/login');
+	if (!session?.user) throw redirect(303, '/auth/sigin');
 	const userID = cookies.get('user_id');
 	let responseUserDetails;
 	let responseUsermeals;
