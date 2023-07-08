@@ -1,26 +1,56 @@
 [
 	{
 		"id": 1,
-		"title": "Bankdrücken",
-		"description": "Drück ne Langhantel hoch",
-		"sessionTemplateId": 1
+		"title": "Bankdrücken schräg",
+		"description":
+			"Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben."
 	},
 	{
 		"id": 2,
-		"title": "Flys",
-		"description": "Flieg",
-		"sessionTemplateId": 1
+		"title": "Butterfly über Kopf",
+		"description":
+			"Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren)."
 	},
 	{
 		"id": 3,
-		"title": "Rudern",
-		"description": "Ruder",
-		"sessionTemplateId": 2
+		"title": "Bankdrücken stehend",
+		"description":
+			"Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben."
 	},
 	{
 		"id": 4,
-		"title": "Latzug",
-		"description": "zieh",
-		"sessionTemplateId": 2
+		"title": "Butterfly unterm Tisch",
+		"description":
+			"Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren)."
+	},
+	{
+		"id": 5,
+		"title": "Bankdrücken aufm Stuhl",
+		"description":
+			"Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben."
+	},
+	{
+		"id": 6,
+		"title": "Butterfly mit Klatschen",
+		"description":
+			"Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren)."
+	},
+	{
+		"id": 7,
+		"title": "Laufen",
+		"description":
+			"Ich erklär dir jetzt mal wie man läuft."
+	},
+	{
+		"id": 8,
+		"title": "Radfahren",
+		"description":
+			"Radfahren ist eine der besten Sportarten."
+	},
+	{
+		"id": 9,
+		"title": "Schwimmen",
+		"description":
+			"Schwimmen ist eine der besten Sportarten."
 	}
 ]

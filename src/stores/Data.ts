@@ -10,13 +10,13 @@ export const getStartedData = writable([
 ]);
 
 export const weightData = writable([
-	{ title: 'Bankdrücken stehend', weight: '', rep: '' },
-	{ title: 'Latzug springend', weight: '', rep: '' },
-	{ title: 'Kniebeuge aufm Tisch', weight: '' },
-	{ title: 'Curls mit Wasserkästen', weight: '', rep: '' }
+	{ title: 'Bankdrücken stehend', weight: '', rep: '', date: '' },
+	{ title: 'Latzug springend', weight: '', rep: '', date: '' },
+	{ title: 'Kniebeuge aufm Tisch', weight: '', rep: '', date: '' },
+	{ title: 'Curls mit Wasserkästen', weight: '', rep: '', date: '' }
 ]);
 
-export const cardioData = writable({ title: '', distance: '', time: '' });
+export const cardioData = writable({ title: '', distance: '', time: '', date: '' });
 
 export const lockedGoal = writable(true);
 

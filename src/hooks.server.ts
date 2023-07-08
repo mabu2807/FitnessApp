@@ -3,6 +3,7 @@ import GitHub from '@auth/core/providers/github';
 import { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } from '$env/static/private';
 import prisma from '$lib/prisma';
 import type { Prisma } from '@prisma/client';
+
 import Credentials from '@auth/core/providers/credentials';
 import type { User } from '@auth/core/types';
 import { fail} from '@sveltejs/kit';
@@ -78,6 +79,8 @@ export const handle = SvelteKitAuth({
                     const responseUser = await prisma.user.findUnique({
                         where: {
                             email: email
+
+
                         }
                     })
                     const userDetails:Prisma.UserDetailsUncheckedCreateInput = {
