@@ -1,7 +1,10 @@
 import prisma from '$lib/prisma';
 import type { PageServerLoad } from './$types';
 
-export const load = (async () => {
+export const load = (async ({ locals }) => {
+    const session = await locals.getSession();
+    const email = session?.user?.email;
+
     interface GroupedLiftingData {
         [name: string]: {
             name: string;
@@ -17,13 +20,24 @@ export const load = (async () => {
         include: {
             exercise: {
                 include: {
-                    session: true,
+                    session: {
+                        include: {
+                            userDetails: {
+                                include: {
+                                    user: true
+                                }
+                            }
+                        }
+                    },
                     exerciseTemplate: true
                 }
             }
         }
     });
-    const liftingExercisePerformanceData = liftingExercisePerformanceResponse.map((performance) => ({
+
+    const liftingExercisePerformanceData = liftingExercisePerformanceResponse
+        .filter((performance) => performance.exercise.session.userDetails.user.email === email)
+        .map((performance) => ({
         name: performance.exercise.exerciseTemplate.title,
         date: performance.exercise.session.date,
         weight: performance.weight,

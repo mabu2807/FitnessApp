@@ -101,7 +101,6 @@ model Exercise {
   sessionId                  Int
   exerciseTemplate           ExerciseTemplate             @relation(fields: [exerciseTemplateId], references: [id])
   exerciseTemplateId         Int
-  title                      String
   //An exercise can either be a lifting or a cardio exercise. Prisma apperantly does not offer support for inheritance, so an
   //exercise has two optional attributes cardio and lifting
   liftingExercisePerformance LiftingExercisePerformance[]

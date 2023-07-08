@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcryptjs';
 import userData from '../src/lib/testdata/User.json' assert { type: 'json' };
 import userDetailsData from '../src/lib/testdata/UserDetails.json' assert { type: 'json' };
 import sportData from '../src/lib/testdata/Sport.json' assert { type: 'json' };
@@ -20,6 +21,7 @@ import trainingPlanData from '../src/lib/testdata/TrainingPlan.json' assert { ty
 const prisma = new PrismaClient();
 
 async function main() {
+	const salt = await bcrypt.genSalt(10);
 	for (const user of userData) {
 		await prisma.user.create({
 			data: {
@@ -27,7 +29,7 @@ async function main() {
 				email: user.email,
 				username: user.username,
 				image: Buffer.from(user.image, 'utf-8'),
-				password: user.password,
+				password: await bcrypt.hash(user.password, salt),
 				authMethod: user.authMethod,
 				token: user.token
 			}
@@ -128,8 +130,7 @@ async function main() {
 			data: {
 				id: exercise.id,
 				sessionId: exercise.sessionId,
-				exerciseTemplateId: exercise.exerciseTemplateId,
-				title: exercise.title
+				exerciseTemplateId: exercise.exerciseTemplateId
 			}
 		});
 	}

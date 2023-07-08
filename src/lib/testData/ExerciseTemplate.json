@@ -1,56 +1,37 @@
 [
-	{
+	{ 
 		"id": 1,
-		"title": "Bankdrücken schräg",
-		"description":
-			"Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben."
+		"title": "Bankdrücken stehend", 
+		"description": "Lieblingsübung vom Vizemeister im Gewichtheben"
 	},
-	{
+	{ 
 		"id": 2,
-		"title": "Butterfly über Kopf",
-		"description":
-			"Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren)."
+		"title": "Latzug springend",
+		"description": "Für alle die von Cardio wegkommen wollen"
 	},
-	{
+	{ 
 		"id": 3,
-		"title": "Bankdrücken stehend",
-		"description":
-			"Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben."
+		"title": "Kniebeuge aufm Tisch",
+		"description": "Der Tisch ist eigentlich völlig egal"
 	},
 	{
 		"id": 4,
-		"title": "Butterfly unterm Tisch",
-		"description":
-			"Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren)."
+		"title": "Curls mit Wasserkästen",
+		"description": "Falls die Hanteln wieder zu leicht sind"
 	},
 	{
 		"id": 5,
-		"title": "Bankdrücken aufm Stuhl",
-		"description":
-			"Beim Bankdrücken (engl.: „Bench Press“) liegt man auf einer sog. „Flachbank“ und drückt aus Brust, Schultern und Armen eine Langhantel nach oben."
+		"title": "Laufen",
+		"description": "Ich erklär dir jetzt nicht wie man läuft."
 	},
 	{
 		"id": 6,
-		"title": "Butterfly mit Klatschen",
-		"description":
-			"Bewege die Arme so weit, bis die Griffstangen vor der Brust zusammentreffen (oder kurz bevor sie sich berühren)."
+		"title": "Radfahren",
+		"description": "Ich kenn nen Witz von Onkel Fritz der hat ein Fahrrad ohne Sitz."
 	},
 	{
 		"id": 7,
-		"title": "Laufen",
-		"description":
-			"Ich erklär dir jetzt mal wie man läuft."
-	},
-	{
-		"id": 8,
-		"title": "Radfahren",
-		"description":
-			"Radfahren ist eine der besten Sportarten."
-	},
-	{
-		"id": 9,
 		"title": "Schwimmen",
-		"description":
-			"Schwimmen ist eine der besten Sportarten."
+		"description": "Nicht nur nach Schiffuntergängen sinnvoll."
 	}
 ]
