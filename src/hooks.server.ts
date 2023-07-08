@@ -5,10 +5,9 @@ import prisma from '$lib/prisma';
 import type { Prisma } from '@prisma/client';
 import Credentials from '@auth/core/providers/credentials';
 import type { User } from '@auth/core/types';
-import { fail } from '@sveltejs/kit';
-
-
+import { fail} from '@sveltejs/kit';
 export const handle = SvelteKitAuth({
+
     providers: [
         GitHub({ clientId: GITHUB_CLIENT_ID, clientSecret: GITHUB_CLIENT_SECRET }) as any,
         Credentials( {
@@ -16,105 +15,95 @@ export const handle = SvelteKitAuth({
                 email: { label: "Email" },
                 password: { label: "Password", type: "password" },
               },
-              async authorize( credentials, request) {
-                const data = await request.formData()
-                const email = data.get('email')?.toString()
-                const password = data.get('password')?.toString()
-
-                const respone_user = await prisma.user.findUniqueOrThrow({
-                    where:{
-                        email: email
-                    }    
-                })
-                if (respone_user.password != password || respone_user.verified != true) {
+              async authorize( credentials) {
+                let response_user;
+                try {
+                    response_user = await prisma.user.findUniqueOrThrow({
+                        where:{
+                            email: credentials.email as string
+                        }    
+                    })
+                } catch (error) {
                     fail(303, {message: 'Login error'})
                 }
 
-                return {} as User
-              },
-            
-
+            if (response_user?.password == credentials.password as string || response_user?.verified == true) {
+                return {
+                    id: ""+response_user?.id,
+                    email: response_user?.email,
+                    name: response_user?.username,
+                } as User
+            }
+            else {
+                
+                return null 
+            } 
+        }
         })        
     ],
     secret: 'mysecret',
     trustHost: true,
     callbacks: {
         signIn: async ({profile, user}) => {
-            
-            let user_name = ''
-            let email = ''
-            let respone_user;
-            if(profile?.email !== undefined && profile?.email !== null){
-                email = profile.email
+            if (profile == undefined && user == undefined){ 
+                return false
             }
-            
-            
-            try {
-                respone_user = await prisma.user.findUnique({
+            if (profile != undefined){
+                const email = profile?.email as string
+                let userName = ''
+                const response_user = await prisma.user.findUnique({
                     where: {
                         email: email
                     }
                 })
-            } catch (error) {
-                console.log(error)
+                if (user == undefined){
+                    if (response_user == undefined){
+                    if(profile?.name !== undefined && profile?.name !== null){
+                        userName = profile?.name ?? ''
+                        userName = userName.toLowerCase()
+                        userName = userName.replace(' ','.')
+                    } 
+                    
+                    const user:Prisma.UserCreateInput = {
+                        email: profile?.email as string,
+                        username: userName ?? '',
+                        password: null,
+                        authMethod: "github",
+                        token: profile?.email as string,
+                        verified: true,
+                    }
+                    await prisma.user.create({
+                        data:user
+                    })
+                    const responseUser = await prisma.user.findUnique({
+                        where: {
+                            email: email
+                        }
+                    })
+                    const userDetails:Prisma.UserDetailsUncheckedCreateInput = {
+                        userId: responseUser?.id as number,
+                        activityLevel:0,
+                        gender:'male',
+                        goal: 'Stay Fit',
+                        height:0,
+                        weight:0,   
+                        }
+                        await prisma.userDetails.create({
+                            data:userDetails
+                     })  
+                    const foodDiary:Prisma.FoodDiaryUncheckedCreateInput = {
+                        userId: responseUser?.id as number,   
+                    }
+                    await prisma.foodDiary.create({
+                        data:foodDiary
+                    }) 
             }
-            if(respone_user == null || respone_user == undefined){
-                if(profile?.name !== undefined && profile?.name !== null){
-                    user_name = profile?.name
-                    user_name = user_name.toLowerCase()
-                    user_name = user_name.replace(' ','.')
-                }
-                const user:Prisma.UserCreateInput = {
-                    email: email,
-                    username: user_name,
-                    password: null,
-                    authMethod: "github",
-                    token: "null",
-                    verified: true,
-                }
-                
-                try {
-                        await prisma.user.create({
-                            data:user
-                        })
-
-                        const respone_user_id = await prisma.user.findUnique({
-                            where: {
-                                email: email
-                            }
-                        })
-                        let userid = 0
-                        if(respone_user_id?.id !== undefined && respone_user_id?.id !== null){
-                            userid = respone_user_id?.id
-                        }
-                        const userDetails:Prisma.UserDetailsUncheckedCreateInput = {
-                            userId:userid,
-                            activityLevel:0,
-                            gender:'male',
-                            goal: 'Stay Fit',
-                            height:0,
-                            weight:0,   
-                            }
-                            await prisma.userDetails.create({
-                                data:userDetails
-                         })  
-                        const foodDiary:Prisma.FoodDiaryUncheckedCreateInput = {
-                        userId:userid    
-                        }
-                        await prisma.foodDiary.create({
-                            data:foodDiary
-                        })   
-                         
-
-                } catch (error) {
-                    console.log(error)
-                }
-            }             
-            
-            
+        }
+            console.log(user)
+        }
         return true
         }
-    },
+    }
 })
         
             
