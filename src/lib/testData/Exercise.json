@@ -2,55 +2,46 @@
 	{
 		"id": 1,
 		"sessionId": 1,
-		"exerciseTemplateId": 1,
-		"title": "Bankdrücken"
+		"exerciseTemplateId": 1
 	},
 	{
 		"id": 2,
 		"sessionId": 1,
-		"exerciseTemplateId": 2,
-		"title": "Flys"
+		"exerciseTemplateId": 2
 	},
 	{
 		"id": 3,
 		"sessionId": 2,
-		"exerciseTemplateId": 3,
-		"title": "Rudern"
+		"exerciseTemplateId": 3
 	},
 	{
 		"id": 4,
 		"sessionId": 2,
-		"exerciseTemplateId": 4,
-		"title": "Latzug"
+		"exerciseTemplateId": 4
 	},
 	{
 		"id": 5,
 		"sessionId": 3,
-		"exerciseTemplateId": 1,
-		"title": "Bankdrücken"
+		"exerciseTemplateId": 1
 	},
 	{
 		"id": 6,
 		"sessionId": 3,
-		"exerciseTemplateId": 2,
-		"title": "Flys"
+		"exerciseTemplateId": 2
 	},
 	{
 		"id": 7,
 		"sessionId": 7,
-		"exerciseTemplateId": 2,
-		"title": "Laufen"
+		"exerciseTemplateId": 2
 	},
 	{
 		"id": 8,
 		"sessionId": 8,
-		"exerciseTemplateId": 2,
-		"title": "Fahrrad fahren"
+		"exerciseTemplateId": 2
 	},
 	{
 		"id": 9,
 		"sessionId": 9,
-		"exerciseTemplateId": 2,
-		"title": "Schwimmen"
+		"exerciseTemplateId": 2
 	}
 ]
