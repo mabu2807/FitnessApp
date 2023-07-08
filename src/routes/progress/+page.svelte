@@ -5,6 +5,10 @@
 	import Cardio from '../../components/Cardio.svelte';
 	import Chooser from '../../components/Chooser.svelte';
 	import { selectedCategory } from '../../stores/Data';
+	function handleComplete() {
+		console.log('completed');
+		location.href = '/overview';
+	}
 </script>
 
 <section class="flex justify-center pt-32 pb-20 dark:bg-surface-800">
@@ -12,7 +16,7 @@
 		<Stepper
 			buttonBack="btn variant-ghost hover:bg-tertiary-400 dark:hover:bg-primary-400"
 			buttonNext="btn variant-filled hover:bg-tertiary-500 dark:hover:bg-primary-500"
-			on:complete={() => (location.href = '/overview')}
+			on:complete={() => (handleComplete())}
 		>
 			<Step class="text-center">
 				<svelte:fragment slot="header"

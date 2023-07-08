@@ -1,6 +1,7 @@
 import prisma from '$lib/prisma';
-import { fail, redirect } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 import type { Actions } from '../login/$types';
+import bcrypt from 'bcryptjs';
 
 const validateEmail = (email: string) => {
 	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -33,7 +34,7 @@ export const actions = {
 			return { message: 'login error' };
 		}
 
-		if (user.password !== password) {
+		if(!bcrypt.compareSync(password, user.password??'')){
 			return { message: 'login error' };
 		}
 

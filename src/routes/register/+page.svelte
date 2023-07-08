@@ -27,7 +27,7 @@
 	function throwToast() {
 		if (formMessage() != null) {
 			const t: ToastSettings = {
-				message: formMessage(),
+				message: formMessage()??'',
 				timeout: 3000
 			};
 			toastStore.trigger(t);

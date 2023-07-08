@@ -7,9 +7,9 @@ import { calcMaxCalories, calcOneWeekBefore } from './calc';
 import { calcChartValues } from './calcChartValues';
 
 // Load function
-export const load = (async ({cookies, locals})  => {
+export const load = (async ({ cookies, locals }) => {
 	const session = await locals.getSession();
-	if (!session?.user) throw redirect(303,'/login');
+	if (!session?.user) throw redirect(303, '/login');
 	const userID = cookies.get('user_id');
 	let responseUserDetails;
 	let responseUsermeals;
@@ -22,93 +22,82 @@ export const load = (async ({cookies, locals})  => {
 				userId: Number(userID)
 			}
 		});
-		
 
 		const responseFoodDiaryID = await prisma.foodDiary.findUnique({
-				where: {
-					userId: responseUserDetails?.userId
-				}
-			});
-		
-						
-			// Chart data request
-			responseUsermeals = await prisma.meal.findMany({
-				where: {
-					day: {
-						gt: oneWeekBefore
-					},
-					foodDiaryId: responseFoodDiaryID?.id
+			where: {
+				userId: responseUserDetails?.userId
+			}
+		});
+
+		// Chart data request
+		responseUsermeals = await prisma.meal.findMany({
+			where: {
+				day: {
+					gt: oneWeekBefore
 				},
-				include: {
-					foodDiary: true,
-					customDish: {
-						include: {
-							nutritionalValues: true
-						}
-					},
-					dish: {
-						include: {
-							nutritionalValues: true
-						}
+				foodDiaryId: responseFoodDiaryID?.id
+			},
+			include: {
+				foodDiary: true,
+				customDish: {
+					include: {
+						nutritionalValues: true
+					}
+				},
+				dish: {
+					include: {
+						nutritionalValues: true
 					}
 				}
-			});
-			
-			// Meal for card request
-			const todayMidnight = new Date();
-			todayMidnight.setHours(2, 0, 0, 0);
-			responsedaymeal = await prisma.meal.findMany({
-				where: {
-					day: {
-						gt: todayMidnight
-					},
-					foodDiaryId: responseFoodDiaryID?.id
+			}
+		});
+
+		// Meal for card request
+		const todayMidnight = new Date();
+		todayMidnight.setHours(2, 0, 0, 0);
+		responsedaymeal = await prisma.meal.findMany({
+			where: {
+				day: {
+					gt: todayMidnight
 				},
-	
-				include: {
-					customDish: {
-						include: {
-							nutritionalValues: true
-						}
-					},
-					dish: {
-						include: {
-							nutritionalValues: true
-						}
+				foodDiaryId: responseFoodDiaryID?.id
+			},
+
+			include: {
+				customDish: {
+					include: {
+						nutritionalValues: true
+					}
+				},
+				dish: {
+					include: {
+						nutritionalValues: true
 					}
 				}
-			});
-			// All dishes request for template modal
-			responseAllDishes = await prisma.dish.findMany({
-				include: {
-					nutritionalValues: true
-				}
-			});
-				
-		
-	
+			}
+		});
+		// All dishes request for template modal
+		responseAllDishes = await prisma.dish.findMany({
+			include: {
+				nutritionalValues: true
+			}
+		});
 	} catch (error) {
 		return fail(400, { message: 'Bad request' });
 	}
 	if (responseUserDetails == null) {
-		
 		return fail(404, { message: 'UserID does not exist' });
 	}
-	
+
 	if (responseAllDishes == null) {
-		
 		return fail(404, { message: 'User have no dishes' });
 	}
-	
-	
+
 	const maxCalories = calcMaxCalories(responseUserDetails);
 	const allValues = calcChartValues(responseUsermeals);
 	const allmaxValues = allmaxvalues(responseUserDetails, maxCalories);
 
 	const chartdata = initChartData(allmaxValues, allValues);
-
-	
-
 
 	return {
 		chartdata: chartdata,
@@ -121,10 +110,10 @@ export const load = (async ({cookies, locals})  => {
 
 //-------------------------------Actions--------------------------------------------------------------
 
-export const actions: Actions = { 
-	createMealfromTemplate: async ({ request, cookies } ) => {
-		const day = new Date();	
-		 
+export const actions: Actions = {
+	createMealfromTemplate: async ({ request, cookies }) => {
+		const day = new Date();
+
 		const data = await request.formData();
 		const selectDish = data.get('selectDish');
 		let category = data.get('category')?.toString();

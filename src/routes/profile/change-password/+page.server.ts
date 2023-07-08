@@ -1,16 +1,20 @@
 import prisma from '$lib/prisma';
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from '../change-password/$types';
+import bcrypt from 'bcryptjs';
 
 export const actions = {
-	default: async ({ request }) => {
+	default: async ({ request, locals }) => {
+		const session = await locals.getSession();
+		if (!session?.user) throw redirect(303,'/login');
+
 		const data = Object.fromEntries(await request.formData());
 
 		const oldPassword = data.oldPassword;
 		const newPassword = data.newPassword;
 		const newPasswordRepeated = data.newPasswordRepeated;
-		//Hardcoded, needs to be changed once login cookies are enabled
-		const email = 'markus@masse.de';
+		
+		const email = session.user.email??'';
 
 		if (!oldPassword || !newPassword || !newPasswordRepeated) {
 			return fail(400, { oldPassword, newPassword, newPasswordRepeated, missing: true });
@@ -39,12 +43,15 @@ export const actions = {
 			return fail(401, { email, oldPassword });
 		}
 
+		const salt = await bcrypt.genSalt(10);
+		const pwdHashed = await bcrypt.hash(password, salt); 
+
 		await prisma.user.update({
 			where: {
 				id: user.id
 			},
 			data: {
-				password: newPassword
+				password: pwdHashed
 			}
 		});
 

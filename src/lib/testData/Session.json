@@ -2,37 +2,61 @@
 	{
 		"id": 1,
 		"userId": 1,
-		"sessionTemplateId": 1,
 		"date": "2023-05-17"
 	},
 	{
 		"id": 2,
 		"userId": 1,
-		"sessionTemplateId": 2,
 		"date": "2023-05-18"
 	},
 	{
 		"id": 3,
 		"userId": 1,
-		"sessionTemplateId": 1,
 		"date": "2023-05-20"
 	},
 	{
 		"id": 4,
 		"userId": 2,
-		"sessionTemplateId": 3,
 		"date": "2023-05-17"
 	},
 	{
 		"id": 5,
 		"userId": 2,
-		"sessionTemplateId": 4,
 		"date": "2023-05-20"
 	},
 	{
 		"id": 6,
-		"userId": 3,
-		"sessionTemplateId": 5,
+		"userId": 2,
 		"date": "2023-05-17"
+	},
+	{
+		"id": 7,
+		"userId": 2,
+		"date": "2023-05-17"
+	},
+	{
+		"id": 8,
+		"userId": 2,
+		"date": "2023-05-18"
+	},
+	{
+		"id": 9,
+		"userId": 3,
+		"date": "2023-05-17"
+	},
+	{
+		"id": 10,
+		"userId": 2,
+		"date": "2023-05-21"
+	},
+	{
+		"id": 11,
+		"userId": 2,
+		"date": "2023-05-22"
+	},
+	{
+		"id": 12,
+		"userId": 3,
+		"date": "2023-05-20"
 	}
 ]
