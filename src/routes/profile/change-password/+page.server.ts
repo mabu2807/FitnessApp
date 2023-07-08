@@ -1,6 +1,7 @@
 import prisma from '$lib/prisma';
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from '../change-password/$types';
+import bcrypt from 'bcryptjs';
 
 export const actions = {
 	default: async ({ request, locals }) => {
@@ -42,12 +43,15 @@ export const actions = {
 			return fail(401, { email, oldPassword });
 		}
 
+		const salt = await bcrypt.genSalt(10);
+		const pwdHashed = await bcrypt.hash(password, salt); 
+
 		await prisma.user.update({
 			where: {
 				id: user.id
 			},
 			data: {
-				password: newPassword
+				password: pwdHashed
 			}
 		});
 

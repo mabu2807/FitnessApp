@@ -22,5 +22,35 @@
 		"sessionId": 2,
 		"exerciseTemplateId": 4,
 		"title": "Latzug"
+	},
+	{
+		"id": 5,
+		"sessionId": 3,
+		"exerciseTemplateId": 1,
+		"title": "Bankdrücken"
+	},
+	{
+		"id": 6,
+		"sessionId": 3,
+		"exerciseTemplateId": 2,
+		"title": "Flys"
+	},
+	{
+		"id": 7,
+		"sessionId": 7,
+		"exerciseTemplateId": 2,
+		"title": "Laufen"
+	},
+	{
+		"id": 8,
+		"sessionId": 8,
+		"exerciseTemplateId": 2,
+		"title": "Fahrrad fahren"
+	},
+	{
+		"id": 9,
+		"sessionId": 9,
+		"exerciseTemplateId": 2,
+		"title": "Schwimmen"
 	}
 ]

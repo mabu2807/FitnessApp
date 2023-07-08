@@ -7,6 +7,7 @@ import sessionData from '../src/lib/testdata/Session.json' assert { type: 'json'
 import exerciseTemplateData from '../src/lib/testdata/ExerciseTemplate.json' assert { type: 'json' };
 import exerciseData from '../src/lib/testdata/Exercise.json' assert { type: 'json' };
 import liftingExercisePerformanceData from '../src/lib/testdata/LiftingExercisePerformance.json' assert { type: 'json' };
+import cardioExercisePerformanceData from '../src/lib/testdata/CardioExercisePerformance.json' assert { type: 'json' };
 import mealData from '../src/lib/testdata/Meal.json' assert { type: 'json' };
 import dishData from '../src/lib/testdata/Dish.json' assert { type: 'json' };
 import foodDiaryData from '../src/lib/testdata/FoodDiary.json' assert { type: 'json' };
@@ -137,10 +138,20 @@ async function main() {
 		await prisma.liftingExercisePerformance.create({
 			data: {
 				id: liftingExercisePerformance.id,
-				set: liftingExercisePerformance.set,
 				repetitions: liftingExercisePerformance.repetitions,
 				weight: liftingExercisePerformance.weight,
 				exerciseId: liftingExercisePerformance.exerciseId
+			}
+		});
+	}
+
+	for (const cardioExercisePerformance of cardioExercisePerformanceData) {
+		await prisma.cardioExercisePerformance.create({
+			data: {
+				id: cardioExercisePerformance.id,
+				time: cardioExercisePerformance.time,
+				distance: cardioExercisePerformance.distance,
+				exerciseId: cardioExercisePerformance.exerciseId
 			}
 		});
 	}

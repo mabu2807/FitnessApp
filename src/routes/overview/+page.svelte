@@ -3,75 +3,14 @@
 	import Chart from 'chart.js/auto';
 	import Head from '../../components/Head.svelte';
 	import 'chartjs-adapter-date-fns';
+	import type { PageData } from './$types';
 
-	let liftingData = [
-		{
-			name: 'Bankdrücken stehend',
-			event: [
-				{ date: '2023-03-10', weight: 100, reps: 10 },
-				{ date: '2023-03-11', weight: 80, reps: 10 },
-				{ date: '2023-03-12', weight: 100, reps: 10 },
-				{ date: '2023-03-13', weight: 90, reps: 10 }
-			]
-		},
-		{
-			name: 'Latzug springend',
-			event: [
-				{ date: '2023-03-10', weight: 100, reps: 10 },
-				{ date: '2023-03-11', weight: 80, reps: 10 },
-				{ date: '2023-03-12', weight: 100, reps: 10 },
-				{ date: '2023-03-13', weight: 90, reps: 10 }
-			]
-		},
-		{
-			name: 'Kniebeuge aufm Tisch',
-			event: [
-				{ date: '2023-03-10', weight: 100, reps: 10 },
-				{ date: '2023-03-11', weight: 80, reps: 10 },
-				{ date: '2023-03-12', weight: 100, reps: 10 },
-				{ date: '2023-03-13', weight: 90, reps: 10 }
-			]
-		},
-		{
-			name: 'Curls mit Wasserkästen',
-			event: [
-				{ date: '2023-03-10', weight: 100, reps: 10 },
-				{ date: '2023-03-11', weight: 80, reps: 10 },
-				{ date: '2023-03-12', weight: 100, reps: 10 },
-				{ date: '2023-03-13', weight: 90, reps: 10 }
-			]
-		}
-	];
+	export let data: PageData;
 
-	let cardioData = [
-		{
-			name: 'Laufen',
-			event: [
-				{ date: '2023-03-10', distance: 100, time: 10 },
-				{ date: '2023-03-11', distance: 120, time: 10 },
-				{ date: '2023-03-12', distance: 140, time: 10 },
-				{ date: '2023-03-13', distance: 100, time: 10 }
-			]
-		},
-		{
-			name: 'Radfahren',
-			event: [
-				{ date: '2023-03-10', distance: 100, time: 10 },
-				{ date: '2023-03-11', distance: 120, time: 10 },
-				{ date: '2023-03-12', distance: 140, time: 10 },
-				{ date: '2023-03-13', distance: 100, time: 10 }
-			]
-		},
-		{
-			name: 'Schwimmen',
-			event: [
-				{ date: '2023-03-10', distance: 100, time: 10 },
-				{ date: '2023-03-11', distance: 120, time: 10 },
-				{ date: '2023-03-12', distance: 140, time: 10 },
-				{ date: '2023-03-13', distance: 100, time: 10 }
-			]
-		}
-	];
+	let liftingPerformances = data.liftingExercisePerformances;
+	let cardioPerformances = data.cardioExercisePerformances;
+
+	console.log(cardioPerformances);
 
 	let charts: any[] = [];
 
@@ -180,7 +119,7 @@
 			const liftingChart = createWeightChart(liftingCanvas);
 			charts.push(liftingChart);
 		});
-		liftingData.forEach((lifting, liftingIndex) => {
+		liftingPerformances.forEach((lifting, liftingIndex) => {
 			updateWeightChart(charts[liftingIndex], lifting.event);
 		});
 		const cardioContainers = document.querySelectorAll('.cardio-container');
@@ -189,8 +128,8 @@
 			const cardioChart = createCardioChart(cardioCanvas);
 			charts.push(cardioChart);
 		});
-		cardioData.forEach((cardio, cardioIndex) => {
-			updateCardioChart(charts[cardioIndex + liftingData.length], cardio.event);
+		cardioPerformances.forEach((cardio, cardioIndex) => {
+			updateCardioChart(charts[cardioIndex + liftingPerformances.length], cardio.event);
 		});
 	});
 
@@ -226,7 +165,7 @@
 	<section class="flex justify-center items-center mb-14 flex-col text-center">
 		<h2 class="md:h2 h1">Krafttraining</h2>
 		<div class="grid md:grid-cols-2 grid-cols-1 md:gap-12 gap-6 lg:my-10 md:my-8 my-6 mx-12">
-			{#each liftingData as exercise, exerciseIndex}
+			{#each liftingPerformances as exercise, exerciseIndex}
 				<div
 					class="card pl-12 pr-12 pb-10 bg-success-400 p-3 lifting-container dark:bg-surface-500"
 				>
@@ -248,7 +187,7 @@
 	<section class="flex justify-center items-center mb-14 flex-col text-center">
 		<h2 class="md:h2 h1">Ausdauer</h2>
 		<div class="grid md:grid-cols-2 grid-cols-1 md:gap-12 gap-6 lg:my-10 md:my-8 my-6 mx-12">
-			{#each cardioData as exercise, exerciseIndex}
+			{#each cardioPerformances as exercise, exerciseIndex}
 				<div class="card bg-success-400 pl-12 pr-12 pb-10 cardio-container dark:bg-surface-500">
 					<h3 class="h3 mt-3 mb-5">{exercise.name}</h3>
 					<canvas

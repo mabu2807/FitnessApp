@@ -5,9 +5,13 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+	let exerciseTemplates = data.exerciceTemplates;
 
 	const modalWorkout: ModalComponent = {
-		ref: WorkoutModal
+		ref: WorkoutModal,
+		props: {
+			exerciseTemplates
+		},
 	};
 
 	function modalPlan(): void {
