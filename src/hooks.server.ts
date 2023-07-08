@@ -6,7 +6,7 @@ import type { Prisma } from '@prisma/client';
 
 import Credentials from '@auth/core/providers/credentials';
 import type { User } from '@auth/core/types';
-import { fail} from '@sveltejs/kit';
+import {  redirect } from '@sveltejs/kit';
 export const handle = SvelteKitAuth({
 
     providers: [
@@ -24,8 +24,8 @@ export const handle = SvelteKitAuth({
                             email: credentials.email as string
                         }    
                     })
-                } catch (error) {
-                    fail(303, {message: 'Login error'})
+                } catch  (error){
+                    redirect(303, '/auth/signin')
                 }
 
             if (response_user?.password == credentials.password as string || response_user?.verified == true) {
