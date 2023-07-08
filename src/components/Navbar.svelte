@@ -226,7 +226,7 @@
 			/>
 		{/if}
 		{#if !$page.data.session}
-			<a href="/login"
+			<a href="/auth/signin"
 				><button
 					class="btn variant-ghost inline-block px-4 py-2 hover:bg-tertiary-300 dark:hover:bg-primary-300"
 					>Login</button

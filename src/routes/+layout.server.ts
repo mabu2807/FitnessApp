@@ -15,9 +15,8 @@ export const load: LayoutServerLoad = async ({ locals, cookies }) => {
 		} catch (error) {
 			throw redirect(303, '/login');
 		}
-		//cookies.set('user_id', user.id.toString())
+		cookies.set('user_id', user.id.toString())
 	}
-
 	return {
 		session: await locals.getSession()
 	};

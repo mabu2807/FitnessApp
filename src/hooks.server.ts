@@ -3,10 +3,10 @@ import GitHub from '@auth/core/providers/github';
 import { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } from '$env/static/private';
 import prisma from '$lib/prisma';
 import type { Prisma } from '@prisma/client';
-
+import bcrypt from 'bcryptjs';
 import Credentials from '@auth/core/providers/credentials';
 import type { User } from '@auth/core/types';
-import { fail} from '@sveltejs/kit';
+import {  redirect } from '@sveltejs/kit';
 export const handle = SvelteKitAuth({
 
     providers: [
@@ -24,11 +24,13 @@ export const handle = SvelteKitAuth({
                             email: credentials.email as string
                         }    
                     })
-                } catch (error) {
-                    fail(303, {message: 'Login error'})
+                } catch  (error){
+                    redirect(303, '/auth/signin')
                 }
+                const salt = await bcrypt.genSalt(10);
+                const pwdHashed = await bcrypt.hash(credentials.password as string, salt);
 
-            if (response_user?.password == credentials.password as string || response_user?.verified == true) {
+            if (response_user?.password == pwdHashed as string || response_user?.verified == true) {
                 return {
                     id: ""+response_user?.id,
                     email: response_user?.email,
