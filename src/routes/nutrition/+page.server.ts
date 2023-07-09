@@ -9,7 +9,7 @@ import { calcChartValues } from './calcChartValues';
 // Load function
 export const load = (async ({ cookies, locals }) => {
 	const session = await locals.getSession();
-	if (!session?.user) throw redirect(303, '/auth/signin');
+	if (!session?.user) throw redirect(303, '/');
 	const userID = cookies.get('user_id');
 	
 	const oneWeekBefore = calcOneWeekBefore();
