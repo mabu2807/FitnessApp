@@ -33,9 +33,10 @@
 	let usedCarbohydrates = 0;
 	let maxSaturatedFat = 0;
 	let usedSaturatedFat = 0;
+	
 
 	if (data.allValues != undefined) {
-		usedCalories = data.allValues.calories[6];
+		usedCalories = data.allValues?.calories[6];
 		usedFat = data.allValues.fat[6];
 		usedSugar = data.allValues.sugar[6];
 		usedSalt = data.allValues.salt[6];
