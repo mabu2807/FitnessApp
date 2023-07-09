@@ -9,7 +9,7 @@ import { calcChartValues } from './calcChartValues';
 // Load function
 export const load = (async ({ cookies, locals }) => {
 	const session = await locals.getSession();
-	if (!session?.user) throw redirect(303, '/auth/sigin');
+	if (!session?.user) throw redirect(303, '/auth/signin');
 	const userID = cookies.get('user_id');
 	
 	const oneWeekBefore = calcOneWeekBefore();
@@ -19,8 +19,8 @@ export const load = (async ({ cookies, locals }) => {
 			userId: Number(userID)
 		}
 	});
-	if (responseUserDetails == null || responseUserDetails == undefined) {
-		throw error(404, { message: 'User not found' })
+	if (responseUserDetails == null || responseUserDetails == undefined || responseUserDetails.weight == 0) {
+		throw error(404, { message: 'Bitte vervollständige dein Nutzerprofil in den in den Einstellungen, bevor du dieses Feature nutzen kannst' })
 	}
 
 	const responseFoodDiaryID = await prisma.foodDiary.findUnique({
@@ -29,7 +29,7 @@ export const load = (async ({ cookies, locals }) => {
 		}
 	});
 	if (responseFoodDiaryID == null || responseFoodDiaryID == undefined) {
-		throw error(404, { message: 'User have no FoodDiary' })
+		throw error(404, { message: 'Bitte wende dich an einen Administrator' })
 	}
 
 	// Chart data request
@@ -85,12 +85,6 @@ export const load = (async ({ cookies, locals }) => {
 			nutritionalValues: true
 		}
 	});
-	
-
-	if (responseAllDishes == null || responseAllDishes == undefined) {
-		throw error(404, { message: 'No templates available' });
-	}
-
 	const maxCalories = calcMaxCalories(responseUserDetails);
 	const allValues = calcChartValues(responseUsermeals);
 	const allmaxValues = allmaxvalues(responseUserDetails, maxCalories);

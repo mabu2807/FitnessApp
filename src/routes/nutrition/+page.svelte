@@ -10,6 +10,7 @@
 	import Head from '../../components/Head.svelte';
 	import { popup } from '@skeletonlabs/skeleton';
 	import type { PopupSettings } from '@skeletonlabs/skeleton';
+	import { page } from '$app/stores';
 
 	let dialog: HTMLDialogElement;
 	let showModal = false;
@@ -164,6 +165,7 @@
 			Ernährungs-Tagebuch
 		</p>
 	</header>
+	
 	<!-- Section chart ond circle progress -->
 	<section class=" mt-4 flex flex-col lg:flex-row p-2">
 		<!-- circle Progress -->
