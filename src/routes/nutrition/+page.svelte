@@ -10,6 +10,7 @@
 	import Head from '../../components/Head.svelte';
 	import { popup } from '@skeletonlabs/skeleton';
 	import type { PopupSettings } from '@skeletonlabs/skeleton';
+	import { page } from '$app/stores';
 
 	let dialog: HTMLDialogElement;
 	let showModal = false;
@@ -33,9 +34,10 @@
 	let usedCarbohydrates = 0;
 	let maxSaturatedFat = 0;
 	let usedSaturatedFat = 0;
+	
 
 	if (data.allValues != undefined) {
-		usedCalories = data.allValues.calories[6];
+		usedCalories = data.allValues?.calories[6];
 		usedFat = data.allValues.fat[6];
 		usedSugar = data.allValues.sugar[6];
 		usedSalt = data.allValues.salt[6];
@@ -163,6 +165,7 @@
 			Ernährungs-Tagebuch
 		</p>
 	</header>
+	
 	<!-- Section chart ond circle progress -->
 	<section class=" mt-4 flex flex-col lg:flex-row p-2">
 		<!-- circle Progress -->

@@ -74,6 +74,8 @@
 								</td>
 							</tr>
 						{/each}
+					{:else}
+					<p>Leider sind keine Templates verfügbar</p>
 					{/if}
 				</tbody>
 			</table>

@@ -1,5 +1,5 @@
 import prisma from '$lib/prisma';
-import { fail, redirect } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 import { initChartData, allmaxvalues } from './initChartData';
 import type { Prisma } from '@prisma/client';
@@ -9,90 +9,82 @@ import { calcChartValues } from './calcChartValues';
 // Load function
 export const load = (async ({ cookies, locals }) => {
 	const session = await locals.getSession();
-	if (!session?.user) throw redirect(303, '/auth/sigin');
+	if (!session?.user) throw redirect(303, '/auth/signin');
 	const userID = cookies.get('user_id');
-	let responseUserDetails;
-	let responseUsermeals;
-	let responsedaymeal;
-	let responseAllDishes;
+	
 	const oneWeekBefore = calcOneWeekBefore();
-	try {
-		responseUserDetails = await prisma.userDetails.findUnique({
-			where: {
-				userId: Number(userID)
-			}
-		});
+	
+	const responseUserDetails = await prisma.userDetails.findUnique({
+		where: {
+			userId: Number(userID)
+		}
+	});
+	if (responseUserDetails == null || responseUserDetails == undefined || responseUserDetails.weight == 0) {
+		throw error(404, { message: 'Bitte vervollständige dein Nutzerprofil in den in den Einstellungen, bevor du dieses Feature nutzen kannst' })
+	}
 
-		const responseFoodDiaryID = await prisma.foodDiary.findUnique({
-			where: {
-				userId: responseUserDetails?.userId
-			}
-		});
+	const responseFoodDiaryID = await prisma.foodDiary.findUnique({
+		where: {
+			userId: responseUserDetails?.userId
+		}
+	});
+	if (responseFoodDiaryID == null || responseFoodDiaryID == undefined) {
+		throw error(404, { message: 'Bitte wende dich an einen Administrator' })
+	}
 
-		// Chart data request
-		responseUsermeals = await prisma.meal.findMany({
-			where: {
-				day: {
-					gt: oneWeekBefore
-				},
-				foodDiaryId: responseFoodDiaryID?.id
+	// Chart data request
+	const responseUsermeals = await prisma.meal.findMany({
+		where: {
+			day: {
+				gt: oneWeekBefore
 			},
-			include: {
-				foodDiary: true,
-				customDish: {
-					include: {
-						nutritionalValues: true
-					}
-				},
-				dish: {
-					include: {
-						nutritionalValues: true
-					}
+			foodDiaryId: responseFoodDiaryID?.id
+		},
+		include: {
+			foodDiary: true,
+			customDish: {
+				include: {
+					nutritionalValues: true
+				}
+			},
+			dish: {
+				include: {
+					nutritionalValues: true
 				}
 			}
-		});
+		}
+	});
 
-		// Meal for card request
-		const todayMidnight = new Date();
-		todayMidnight.setHours(2, 0, 0, 0);
-		responsedaymeal = await prisma.meal.findMany({
-			where: {
-				day: {
-					gt: todayMidnight
-				},
-				foodDiaryId: responseFoodDiaryID?.id
+	// Meal for card request
+	const todayMidnight = new Date();
+	todayMidnight.setHours(2, 0, 0, 0);
+	const responsedaymeal = await prisma.meal.findMany({
+		where: {
+			day: {
+				gt: todayMidnight
 			},
+			foodDiaryId: responseFoodDiaryID?.id
+		},
 
-			include: {
-				customDish: {
-					include: {
-						nutritionalValues: true
-					}
-				},
-				dish: {
-					include: {
-						nutritionalValues: true
-					}
+		include: {
+			customDish: {
+				include: {
+					nutritionalValues: true
+				}
+			},
+			dish: {
+				include: {
+					nutritionalValues: true
 				}
 			}
-		});
-		// All dishes request for template modal
-		responseAllDishes = await prisma.dish.findMany({
-			include: {
-				nutritionalValues: true
-			}
-		});
-	} catch (error) {
-		return fail(400, { message: 'Bad request' });
-	}
-	if (responseUserDetails == null) {
-		return fail(404, { message: 'UserID does not exist' });
-	}
-
-	if (responseAllDishes == null) {
-		return fail(404, { message: 'User have no dishes' });
-	}
-
+		}
+	});
+	// All dishes request for template modal
+	const responseAllDishes = await prisma.dish.findMany({
+		include: {
+			nutritionalValues: true
+		}
+	});
 	const maxCalories = calcMaxCalories(responseUserDetails);
 	const allValues = calcChartValues(responseUsermeals);
 	const allmaxValues = allmaxvalues(responseUserDetails, maxCalories);
@@ -210,7 +202,7 @@ export const actions: Actions = {
 			selected_customDish = lastcustomDish[lastcustomDish.length - 1];
 		}
 		if (selected_customDish == undefined) {
-			return fail(403, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
+			throw fail(403, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
 		}
 		const customMeal: Prisma.MealUncheckedCreateInput = {
 			day: day,
@@ -224,7 +216,7 @@ export const actions: Actions = {
 				data: customMeal
 			});
 		} catch (error) {
-			return fail(400, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
+			throw fail(400, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
 		}
 	},
 
@@ -264,7 +256,7 @@ export const actions: Actions = {
 			}
 		});
 		if (responseMeal == null) {
-			return fail(404, { message: 'Meal not found' });
+			throw fail(404, { message: 'Meal not found' });
 		}
 		if (responseMeal.dishId == null) {
 			await prisma.meal.update({
@@ -331,7 +323,7 @@ export const actions: Actions = {
 				selected_customDish = lastcustomDish[lastcustomDish.length - 1];
 			}
 			if (selected_customDish == undefined) {
-				return fail(403, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
+				throw fail(403, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
 			}
 			await prisma.meal.update({
 				where: {
@@ -349,7 +341,7 @@ export const actions: Actions = {
 		const data = await request.formData();
 		const mealid = Number(data.get('Mealid'));
 		if (mealid == null || isNaN(mealid)) {
-			return fail(404, { message: 'Meal not found' });
+			throw fail(404, { message: 'Meal not found' });
 		}
 		console.log(mealid);
 		const responseMeal = await prisma.meal.findUnique({
@@ -358,7 +350,7 @@ export const actions: Actions = {
 			}
 		});
 		if (responseMeal == null) {
-			return fail(404, { message: 'Meal not found' });
+			throw fail(404, { message: 'Meal not found' });
 		}
 		if (responseMeal.dishId != null) {
 			try {
@@ -368,7 +360,7 @@ export const actions: Actions = {
 					}
 				});
 			} catch (error) {
-				return fail(400, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
+				throw fail(400, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
 			}
 		}
 
@@ -389,7 +381,7 @@ export const actions: Actions = {
 					}
 				});
 			} catch (error) {
-				return fail(400, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
+				throw fail(400, { message: 'Es gab leider ein Problem bitte versuchen sie es nochmal' });
 			}
 		}
 	}
