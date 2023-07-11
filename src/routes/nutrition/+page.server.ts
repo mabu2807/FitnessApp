@@ -7,16 +7,22 @@ import { calcMaxCalories, calcOneWeekBefore } from './calc';
 import { calcChartValues } from './calcChartValues';
 
 // Load function
-export const load = (async ({ cookies, locals }) => {
+export const load = (async ({ locals }) => {
 	const session = await locals.getSession();
 	if (!session?.user) throw redirect(303, '/');
-	const userID = cookies.get('user_id');
+	
 	
 	const oneWeekBefore = calcOneWeekBefore();
+
+	const user = await prisma.user.findUnique({
+		where: {
+			email: session.user.email as string
+		}
+	});
 	
 	const responseUserDetails = await prisma.userDetails.findUnique({
 		where: {
-			userId: Number(userID)
+			userId: user?.id ?? 0
 		}
 	});
 	if (responseUserDetails == null || responseUserDetails == undefined || responseUserDetails.weight == 0) {
@@ -103,19 +109,25 @@ export const load = (async ({ cookies, locals }) => {
 //-------------------------------Actions--------------------------------------------------------------
 
 export const actions: Actions = {
-	createMealfromTemplate: async ({ request, cookies }) => {
+	createMealfromTemplate: async ({ request, locals }) => {
+		const session = await locals.getSession();
+		const email = session?.user?.email;
 		const day = new Date();
-
 		const data = await request.formData();
 		const selectDish = data.get('selectDish');
 		let category = data.get('category')?.toString();
 		if (category == undefined) {
 			category = 'Snack';
 		}
-		const userID = cookies.get('user_id');
+
+		const user = await prisma.user.findUnique({
+			where: {
+				email: email as string
+			}
+		});
 		const responseFoodDiaryID = await prisma.foodDiary.findUnique({
 			where: {
-				userId: Number(userID)
+				userId: user?.id
 			}
 		});
 		const foodID = responseFoodDiaryID?.id ?? 0;
@@ -136,7 +148,9 @@ export const actions: Actions = {
 			}
 		}
 	},
-	createCustomMeal: async ({ request, cookies }) => {
+	createCustomMeal: async ({ request, locals }) => {
+		const session = await locals.getSession();
+		const email = session?.user?.email;
 		let imagePath = '';
 		const data = await request.formData();
 		const name = data.get('mealText')?.toString();
@@ -171,10 +185,15 @@ export const actions: Actions = {
 				imagePath = 'dinner2.jpeg';
 				break;
 		}
-		const userID = cookies.get('user_id');
+		const user = await prisma.user.findUnique({
+			where: {
+				email: email as string
+			}
+		});
+
 		const responseFoodDiaryID = await prisma.foodDiary.findUnique({
 			where: {
-				userId: Number(userID)
+				userId: user?.id
 			}
 		});
 		const foodID = responseFoodDiaryID?.id ?? 0;
