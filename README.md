@@ -1,27 +1,10 @@
-# Projekt Klonen
+# Aufteilung innerhalb des Projektes
 
-## pnpm
+Selbstverständlich ist es bei einem solchen Projekt nicht möglich, eine strikte Arbeitsaufteilung einzuhalten, sodass alle Teammitglieder auch außerhalb ihrer spezifizierten Bereiche mitgewirkt haben. Unsere grundlegende Arbeitsaufteilung bei dem Projekt der Erstellung einer Webseite war jedoch folgende:
 
-Wir benutzen den package-manager pnpm. Stelle sicher das dieser Installiert ist.
+- Nora Klemp: Route "Ernährungstagebuch"
+- Marcel Bulling: Aufsetzen der Datenbank, Deployment und Authentifizierung
+- Adrian Hagen: Email Provider und Einbindung der Daten aus der Datenbank
+- Dennis Bollian: Playwright Tests und Route "Get Started"
+- Aleks Georgiev & Justin Schwab: Navbar & Footer, Routes: Homepage, Workouts, Liftingplan, Progress und Overview, dazu jeweils Design und Funktionalitäten
 
-## Repo Klonen
-
-Für den befehl in deiner Konsole aus:
-
-git clone <repo_url>
-
-## pnpm init
-
-- Navigiere in deiner Konsole in den repo Ordner (cd <Repo_name>)
-- Gib in die Konsole: "pnpm install"
-- Wenn beendet -> "pnpm prisma generate"
-
-## Projekt starten
-
-Um das Projekt zu starten benutze den Befehl:
-
-"pnpm dev"
-
-Desweiteren kannst du dir den aktuellen main-branch auch immer unter folgendem Link anschauen:
-
-https://fitness-app-seven-nu.vercel.app/
