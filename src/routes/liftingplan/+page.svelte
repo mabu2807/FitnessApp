@@ -28,10 +28,10 @@
 		<h2 class="h2 font-medium">Alle Trainingspläne dieser Sportart</h2>
 		<h5 class="h5 mt-4">Wähle das Workout, welches am besten zu dir und deinem Bizeps passt!</h5>
 	</section>
-	<section class="flex flex-wrap justify-center gap-x-6 mx-10 mb-12">
+	<section class="flex flex-wrap justify-center gap-x-6 mx-10 pb-28">
 		{#each data.trainingPlans as plan}
 			<div class="card md:w-80 w-60 mb-8 bg-success-400 dark:bg-surface-500 p-3">
-				<img src={plan.image} alt={plan.name} class="md:h-72 h-52 rounded-md object-cover" />
+				<img src={plan.image} alt={plan.name} class="md:h-72 h-52 w-full rounded-md object-cover" />
 				<div class="m-3">
 					<h3 class="h3 mb-3 font-bold">{plan.name}</h3>
 					<p class="mb-3 text-sm">{plan.description}</p>
@@ -47,13 +47,4 @@
 	</section>
 </div>
 
-<style>
-	.bg-gradient {
-		background-image: radial-gradient(
-				at 0% 0%,
-				rgba(var(--color-secondary-500) / 0.33) 0px,
-				transparent 50%
-			),
-			radial-gradient(at 98% 1%, rgba(var(--color-secondary-200) / 0.33) 0px, transparent 50%);
-	}
-</style>
+

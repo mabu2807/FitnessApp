@@ -31,20 +31,20 @@
 <div
 	class="bg-gradient-to-b from-success-400 from-15% via-success-700 via-51% to-success-400 to-90% dark:bg-gradient-to-b dark:from-surface-800 dark:from-15% dark:via-sky-700 dark:via-51% dark:to-surface-800 dark:to-90%"
 >
-	<section class="flex flex-wrap justify-center gap-8 p-16">
+	<section class="flex flex-wrap justify-center gap-10 p-16">
 		{#each sports as sport}
 			{#if true}
 				<a
 					href="liftingplan"
-					class="card card-hover flex flex-col items-center justify-center w-56 h-72 bg-success-400"
+					class="card card-hover flex flex-col text-center w-56 bg-success-400"
 				>
 					<img
-						class="w-full h-36 object-cover rounded-tl-md rounded-tr-md"
+						class="w-full aspect-[1/1] rounded-tl-md rounded-tr-md"
 						src={sport.image}
 						alt=""
 					/>
 
-					<div class="p-3 text-center">
+					<div class="p-5 space-y-3 overflow-hidden">
 						<h2 class="text-lg mt-1 mb-3 text-black dark:text-white font-semibold">{sport.name}</h2>
 						<p class="text-black dark:text-white text-sm overflow-ellipsis">{sport.description}</p>
 					</div>
