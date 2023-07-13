@@ -7,8 +7,16 @@
 		{ title: 'Stay Fit', description: 'Allgemeine Fitness erhalten und verbessern' }
 	];
 
-	function selectCard(value: string) {
-		$getStartedData[0].value = value;
+	function selectCard(newValue: string) {
+		const updatedRow = { title: 'Ziele', value: newValue };
+		getStartedData.update((data) => {
+			return data.map((item) => {
+				if (item.title === updatedRow.title) {
+					return updatedRow;
+				}
+				return item;
+			});
+		});
 		lockedGoal.set(false);
 	}
 </script>

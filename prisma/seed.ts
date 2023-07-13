@@ -31,7 +31,8 @@ async function main() {
 				image: Buffer.from(user.image, 'utf-8'),
 				password: await bcrypt.hash(user.password, salt),
 				authMethod: user.authMethod,
-				token: user.token
+				token: user.token,
+				verified: true
 			}
 		});
 	}
@@ -120,7 +121,8 @@ async function main() {
 			data: {
 				id: exerciseTemplate.id,
 				title: exerciseTemplate.title,
-				description: exerciseTemplate.description
+				description: exerciseTemplate.description,
+				image: Buffer.from(exerciseTemplate.image, 'utf-8')
 			}
 		});
 	}

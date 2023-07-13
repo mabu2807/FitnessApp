@@ -5,12 +5,12 @@
 		month,
 		day,
 		year;
+	
 	let dateString: string;
 
-	function updateDateValue(event: Event) {
-		dateString = (event.target as HTMLInputElement).value;
-		$weightData.forEach((exercise) => {
-			exercise.date = dateString;
+	function updateValues() {
+		weightData.update((data) => {
+  			return data.map((item) => ({ ...item, date: "afdsad" }));
 		});
 	}
 
@@ -21,9 +21,6 @@
 		if (day.length < 2) day = '0' + day;
 
 		dateString = [year, month, day].join('-');
-		$weightData.forEach((exercise) => {
-			exercise.date = dateString;
-		});
 	});
 </script>
 
@@ -32,7 +29,7 @@
 		class="input bg-success-400 dark:bg-surface-800 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white px-3 py-1 lg:text-base text-sm w-auto mt-3"
 		type="date"
 		bind:value={dateString}
-		on:input={updateDateValue}
+		on:input={updateValues}
 	/>
 	<div class="justify-center flex sm:my-12 my-8 md:px-5 px-0">
 		<div class="grid grid-cols-2 gap-y-8 lg:gap-x-20 gap-x-8">
@@ -47,6 +44,7 @@
 								type="number"
 								placeholder="..."
 								bind:value={exercise.rep}
+								on:input={updateValues}
 							/>
 						</div>
 						<div class="flex flex-col">
@@ -56,6 +54,7 @@
 								type="number"
 								placeholder="..."
 								bind:value={exercise.weight}
+								on:input={updateValues}
 							/>
 						</div>
 					</div>

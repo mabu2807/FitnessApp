@@ -10,8 +10,6 @@
 	let liftingPerformances = data.liftingExercisePerformances;
 	let cardioPerformances = data.cardioExercisePerformances;
 
-	console.log(cardioPerformances);
-
 	let charts: any[] = [];
 
 	function createCardioChart(canvas: any) {

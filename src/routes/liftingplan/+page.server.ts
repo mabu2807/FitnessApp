@@ -14,6 +14,14 @@ export const load = (async () => {
 	}));
 
 	const exerciseTemplateResponse = await prisma.exerciseTemplate.findMany();
+	const exerciseTemplateData = exerciseTemplateResponse.map((template) => ({
+		id: template.id,
+		title: template.title,
+		description: template.description,
+		image: template.image
+			? Buffer.from(template.image).toString('utf-8')
+			: null
+	}));
 
-	return { exerciceTemplates: exerciseTemplateResponse, trainingPlans: trainingPlanData };
+	return { exerciceTemplates: exerciseTemplateData, trainingPlans: trainingPlanData };
 }) satisfies PageServerLoad;

@@ -18,15 +18,14 @@
 				<h6 class="h6 font-bold">Übung {exercise.id}: {exercise.title}</h6>
 				<div class="flex flex-row gap-7 mb-6 mt-2">
 					<div class="w-40">
-						<img class="rounded" src={exercise.imagePath} alt={exercise.imagePath} />
+						<img class="rounded" src={exercise.image} alt={exercise.title} />
 					</div>
 					<div class="w-full">
 						<p class="sm:text-base text-sm">
 							<b> {10} </b> Sätze x <b> {20} </b>
 						</p>
 						<p class="sm:text-base text-sm">
-							Wiederholungen (Gewicht: Langhantel mit zusätzlichen
-							<b> {300}kg</b>)
+							{exercise.description}
 						</p>
 					</div>
 				</div>

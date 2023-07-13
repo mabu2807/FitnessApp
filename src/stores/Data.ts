@@ -2,11 +2,11 @@ import { writable } from 'svelte/store';
 
 export const getStartedData = writable([
 	{ title: 'Ziele', value: '' },
-	{ title: 'Körpergröße', value: '' },
-	{ title: 'Gewicht', value: '' },
+	{ title: 'Körpergröße', value: 0 },
+	{ title: 'Gewicht', value: 0 },
 	{ title: 'Geburtsdatum', value: '' },
 	{ title: 'Geschlecht', value: '' },
-	{ title: 'Aktivitätslevel', value: '' }
+	{ title: 'Aktivitätslevel', value: 0 }
 ]);
 
 export const weightData = writable([
@@ -54,6 +54,6 @@ export const categoryData = writable([
 	}
 ]);
 
-export function updateCategoryData(newData) {
+/*export function updateCategoryData(newData) {
 	categoryData.set(newData);
-}
+}*/

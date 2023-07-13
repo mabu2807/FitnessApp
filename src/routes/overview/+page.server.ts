@@ -112,8 +112,6 @@ export const load = (async ({ locals }) => {
     // Convert the grouped data object to an array
     const groupedCardioDataResult = Object.values(groupedCardioData);
 
-    console.log(groupedCardioDataResult);
-
     return {
         liftingExercisePerformances: groupedLiftingDataResult,
         cardioExercisePerformances: groupedCardioDataResult
