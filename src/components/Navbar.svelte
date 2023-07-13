@@ -41,11 +41,12 @@
 	}
 
 	function modalPassword(): void {
-		const modal: ModalSettings = {
+		location.href = 'profile/change-password';
+		/*const modal: ModalSettings = {
 			type: 'component',
 			component: modalChange
 		};
-		modalStore.trigger(modal);
+		modalStore.trigger(modal);*/
 	}
 
 	let testUser = {

@@ -31,6 +31,7 @@ export const actions = {
 		const user = await prisma.user.findUnique({
 			where: { email: email }
 		});
+
 		if (!user) {
 			return fail(404, { email });
 		}
@@ -39,12 +40,12 @@ export const actions = {
 			return fail(401, { newPassword, newPasswordRepeated });
 		}
 
-		if (user.password !== oldPassword) {
-			return fail(401, { email, oldPassword });
+		if(!bcrypt.compareSync(oldPassword, user.password??'')){
+			return { message: 'login error' };
 		}
 
 		const salt = await bcrypt.genSalt(10);
-		const pwdHashed = await bcrypt.hash(password, salt); 
+		const pwdHashed = await bcrypt.hash(newPassword, salt);
 
 		await prisma.user.update({
 			where: {
