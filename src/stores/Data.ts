@@ -54,6 +54,6 @@ export const categoryData = writable([
 	}
 ]);
 
-/*export function updateCategoryData(newData) {
+export function updateCategoryData(newData: any) {
 	categoryData.set(newData);
-}*/
+}
