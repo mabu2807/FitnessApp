@@ -17,7 +17,7 @@ export const handle = SvelteKitAuth({
                 password: { label: "Password", type: "password" },
               },
               async authorize( credentials) {
-                let response_user;
+                let response_user: any;
                 try {
                     response_user = await prisma.user.findUniqueOrThrow({
                         where:{
@@ -27,20 +27,21 @@ export const handle = SvelteKitAuth({
                 } catch  (error){
                     redirect(303, '/auth/signin')
                 }
-                const salt = await bcrypt.genSalt(10);
-                const pwdHashed = await bcrypt.hash(credentials.password as string, salt);
-
-            if (response_user?.password == pwdHashed as string || response_user?.verified == true) {
-                return {
-                    id: ""+response_user?.id,
-                    email: response_user?.email,
-                    name: response_user?.username,
-                } as User
-            }
-            else {
                 
-                return null 
-            } 
+                const result = await bcrypt.compare(credentials.password as string, response_user?.password as string)
+                
+                if (result) {
+                    return {
+                        id: ""+response_user?.id,
+                        email: response_user?.email,
+                        name: response_user?.username
+                    } as User
+                }
+                else{
+                return null
+                }
+            
+                
         }
         })        
     ],
@@ -104,16 +105,9 @@ export const handle = SvelteKitAuth({
                     }) 
             }
         }
-            console.log(user)
         }
         return true
         }
     }
 })
         
-            
-            
-            
-
-
-		

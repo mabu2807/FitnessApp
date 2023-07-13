@@ -32,23 +32,6 @@
 		ref: PersonalModal
 	};
 
-	function modalPersonal(): void {
-		const modal: ModalSettings = {
-			type: 'component',
-			component: modalData
-		};
-		modalStore.trigger(modal);
-	}
-
-	function modalPassword(): void {
-		location.href = 'profile/change-password';
-		/*const modal: ModalSettings = {
-			type: 'component',
-			component: modalChange
-		};
-		modalStore.trigger(modal);*/
-	}
-
 	let testUser = {
 		name: 'Georgiev, Aleks'
 	};
@@ -76,7 +59,7 @@
 					<i class="fa-solid fa-user" />
 				</div>
 
-				<button on:click={modalPersonal}>
+				<button on:click={() => location.href = 'change-personal-data'}>
 					<p
 						class="text-base md:text-lg dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
 					>
@@ -89,7 +72,7 @@
 					<i class="fa-solid fa-key" />
 				</div>
 
-				<button on:click={modalPassword}>
+				<button on:click={() => location.href = 'change-password'}>
 					<p
 						class="text-base md:text-lg dark:text-white text-black hover:text-tertiary-500 dark:hover:text-primary-500"
 					>

@@ -5,7 +5,9 @@
 	import Cardio from '../../components/Cardio.svelte';
 	import Chooser from '../../components/Chooser.svelte';
 	import { selectedCategory } from '../../stores/Data';
-	import { weightData } from '../../stores/Data';
+	import { weightData, cardiodistance } from '../../stores/Data';	
+	let cdistance: string
+	cardiodistance.subscribe((value) =>{cdistance = value})
 	async function handleComplete() {
 		weightData.subscribe(data => {
         data.forEach(item => {
@@ -56,6 +58,7 @@
 				{/if}
 			</Step>
 		</Stepper>
+		<p>{cdistance}</p>
 	</div>
 </section>
 

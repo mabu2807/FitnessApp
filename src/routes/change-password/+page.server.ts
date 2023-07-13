@@ -1,6 +1,6 @@
 import prisma from '$lib/prisma';
 import { fail, redirect } from '@sveltejs/kit';
-import type { Actions } from '../change-password/$types';
+import type { Actions } from './$types';
 import bcrypt from 'bcryptjs';
 
 export const actions = {
@@ -17,7 +17,7 @@ export const actions = {
 		const email = session.user.email??'';
 
 		if (!oldPassword || !newPassword || !newPasswordRepeated) {
-			return fail(400, { oldPassword, newPassword, newPasswordRepeated, missing: true });
+			return {oldPassword, newPassword, newPasswordRepeated, message: 'empty fields'};
 		}
 
 		if (
@@ -25,7 +25,7 @@ export const actions = {
 			typeof newPassword != 'string' ||
 			typeof newPasswordRepeated != 'string'
 		) {
-			return fail(400, { incorrect: true });
+			return { message: 'no string'};
 		}
 
 		const user = await prisma.user.findUnique({
@@ -37,7 +37,7 @@ export const actions = {
 		}
 
 		if (newPassword !== newPasswordRepeated) {
-			return fail(401, { newPassword, newPasswordRepeated });
+			return { newPassword, newPasswordRepeated, message: "passwords not matching" };
 		}
 
 		if(!bcrypt.compareSync(oldPassword, user.password??'')){
@@ -56,8 +56,7 @@ export const actions = {
 			}
 		});
 
-		console.log('Changed password successfully!');
+		return {message: "successful"};
 
-		throw redirect(303, `/profile`);
 	}
 } satisfies Actions;

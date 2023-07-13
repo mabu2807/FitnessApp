@@ -1,5 +1,7 @@
 import { writable } from 'svelte/store';
 
+export const testData = writable(0);
+
 export const getStartedData = writable([
 	{ title: 'Ziele', value: '' },
 	{ title: 'Körpergröße', value: 0 },
@@ -17,6 +19,10 @@ export const weightData = writable([
 ]);
 
 export const cardioData = writable({ title: '', distance: '', time: '', date: '' });
+export const cardioTitle = writable('')
+export const cardiodistance = writable('')
+export const cardiotime = writable('')
+export const sessiondate = writable('')
 
 export const lockedGoal = writable(true);
 
