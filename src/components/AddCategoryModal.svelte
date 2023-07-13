@@ -47,7 +47,7 @@
 </script>
 
 {#if $modalStore[0]}
-	<div class="card bg-success-400">
+	<div class="card bg-success-400 mt-auto">
 		<div class="flex justify-end p-4">
 			<button on:click={() => modalStore.close()}>
 				<i class="fa-solid fa-circle-xmark text-2xl hover:text-error-500" />
