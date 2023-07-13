@@ -55,6 +55,9 @@
 					<div class=" mr-8">
 						<p class="mt-2 font-bold">Haftungshinweis:</p>
 						<p class="mt-2">
+							Bei dieser Webseite handelt es sich um ein Projekt von Studenten der Dualen Hochschule Mannheim.
+							Diese Webseite ist nicht für den öffentlichen Betrieb bestimmt. Bei Fragen wenden
+							sie sich bitte an s212532@student.dhbw-mannheim.de .  <br /><br />
 							Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte
 							externer Links. <br />
 							Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
