@@ -84,6 +84,7 @@ model ExerciseTemplate {
   id          Int        @id @default(autoincrement())
   title       String
   description String
+  image       Bytes?     @db.LongBlob
   exercises   Exercise[]
 }
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getStartedData, lockedGender } from '../stores/Data';
+	import { getStartedData, lockedGender } from '../stores/Data'
 
 	let genderPics = [
 		// fa-solid fa-person fa-lg
@@ -10,7 +10,9 @@
 	];
 
 	function selectCard(value: string) {
-		$getStartedData[4].value = value;
+		let getStartedDataNew = $getStartedData;
+		getStartedDataNew[4].value = value;
+		getStartedData.set(getStartedDataNew);
 		lockedGender.set(false);
 	}
 </script>

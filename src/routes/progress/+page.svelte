@@ -5,9 +5,22 @@
 	import Cardio from '../../components/Cardio.svelte';
 	import Chooser from '../../components/Chooser.svelte';
 	import { selectedCategory } from '../../stores/Data';
-	function handleComplete() {
-		console.log('completed');
+	import { weightData } from '../../stores/Data';
+	async function handleComplete() {
+		weightData.subscribe(data => {
+        data.forEach(item => {
+            const title = item.title;
+            const weight = item.weight;
+            const rep = item.rep;
+            const date = item.date;
+
+            console.log(title, weight, rep, date);
+        });
+    });
 		location.href = '/overview';
+		await fetch('/progress', {
+			method: 'POST'
+		})
 	}
 </script>
 
@@ -16,8 +29,8 @@
 		<Stepper
 			buttonBack="btn variant-ghost hover:bg-tertiary-400 dark:hover:bg-primary-400"
 			buttonNext="btn variant-filled hover:bg-tertiary-500 dark:hover:bg-primary-500"
-			on:complete={() => (handleComplete())}
-		>
+			on:complete={() => handleComplete()}
+			>
 			<Step class="text-center">
 				<svelte:fragment slot="header"
 					><h4 class="h4 mt-10">
