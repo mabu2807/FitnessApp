@@ -9,42 +9,49 @@
 	import Overview from '../../components/Overview.svelte';
 	import { lockedGoal, lockedGender } from '../../stores/Data';
 	import { Toast, toastStore, type ToastSettings } from '@skeletonlabs/skeleton';
-	import type { ActionData } from './$types';
-	import { onMount } from 'svelte';
+	import {getStartedData} from '../../stores/Data';
 
-	export let form: ActionData;
+	let username: string;
+	let eMail: string;
+	let password: string;
+	let passwordConfirm: string;
 
-	function formMessage() {
-		if (form?.message == 'empty fields') {
-			return 'Schön alle Felder ausfüllen!';
+	async function handleComplete(){
+		if(password !== passwordConfirm){
+			return false;
 		}
-		if (form?.message == 'no string') {
-			return 'Die Form passt nicht!';
-		}
-		if (form?.message == 'invalid email') {
-			return 'Das ist keine valide Email, Muchacho!';
-		}
-		if (form?.message == 'passwords not matching') {
-			return 'Die Passwörter stimmen nicht überein!';
-		}
-		if (form?.message == 'already registered') {
-			return 'Unter dieser Email Adresse besteht bereits ein stabiler Account!';
-		}
+		getStartedData.update((data) => {
+			return data.map((item) => {
+			if (item.title === 'userName') {
+				return { ...item, value: username };
+			}
+			return item;
+			});
+		});
+		getStartedData.update((data) => {
+			return data.map((item) => {
+			if (item.title === 'eMail') {
+				return { ...item, value: eMail };
+			}
+			return item;
+			});
+		});
+		getStartedData.update((data) => {
+			return data.map((item) => {
+			if (item.title === 'password') {
+				return { ...item, value: password };
+			}
+			return item;
+			});
+		});
+		await fetch('/register', {
+			method: 'POST',
+			body: JSON.stringify({
+				data: $getStartedData
+			})
+		})
+		location.href = '/';
 	}
-
-	function throwToast() {
-		if (formMessage() != null) {
-			const t: ToastSettings = {
-				message: formMessage()??'',
-				timeout: 3000
-			};
-			toastStore.trigger(t);
-		}
-	}
-
-	onMount(() => {
-		throwToast();
-	});
 </script>
 
 <section class="flex justify-center pt-32 pb-20 dark:bg-surface-800">
@@ -52,7 +59,7 @@
 		<Stepper
 			buttonBack="btn variant-ghost hover:bg-tertiary-400 dark:hover:bg-primary-400"
 			buttonNext="btn variant-filled hover:bg-tertiary-500 dark:hover:bg-primary-500"
-			on:complete={() => (location.href = '/')}
+			on:complete={handleComplete}
 		>
 			<Step locked={$lockedGoal} class="text-center">
 				<svelte:fragment slot="header"
@@ -109,42 +116,34 @@
 							<h3 class="md:text-2xl md:mx-3 lg:mx-4 sm:text-lg text-2xl font-semibold mb-8 mx-2">
 								Noch etwas Persönliches
 							</h3>
-
-							<form method="post" class="mb-8 md:mx-3 lg:mx-4 mx-2">
 								<input
 									class="input p-2 mb-4 md:text-base text-base sm:text-sm bg-secondary-100 dark:bg-surface-900 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white"
 									name="username"
 									type="text"
 									placeholder="Benutzername"
-									value={form?.username ?? ''}
+									bind:value={username}
 								/>
 								<input
 									class="input p-2 mb-4 md:text-base text-base sm:text-sm bg-secondary-100 dark:bg-surface-900 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white"
 									name="email"
 									type="text"
 									placeholder="Email"
-									value={form?.email ?? ''}
+									bind:value={eMail}
 								/>
 								<input
 									class="input p-2 mb-4 md:text-base text-base sm:text-sm bg-secondary-100 dark:bg-surface-900 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white"
 									name="password"
 									type="password"
 									placeholder="Passwort"
-									value={form?.password ?? ''}
+									bind:value={password}
 								/>
 								<input
 									class="input p-2 mb-4 md:text-base text-base sm:text-sm bg-secondary-100 dark:bg-surface-900 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white"
 									name="passwordConfirm"
 									type="password"
 									placeholder="Bestätige Passwort"
-									value={form?.passwordConfirm ?? ''}
+									bind:value={passwordConfirm}
 								/>
-								<button
-									type="submit"
-									class="btn variant-filled w-full mt-8 md:text-base text-base sm:text-sm md:px-7 px-5 py-2 hover:bg-tertiary-500 dark:hover:bg-primary-500"
-									>Registrieren</button
-								>
-							</form>
 						</div>
 						<div
 							class="sm:w-1/2 w-full flex flex-col justify-center items-center bg-gradient-to-b from-success-400 from-15% via-success-700 via-51% to-success-400 to-90% dark:bg-gradient-to-b dark:from-surface-500 dark:from-15% dark:via-sky-700 dark:via-51% dark:to-surface-500 dark:to-90% sm:rounded-tr-xl sm:rounded-br-xl sm:rounded-bl-none rounded-bl-xl rounded-br-xl"

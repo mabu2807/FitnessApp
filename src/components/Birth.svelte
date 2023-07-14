@@ -5,12 +5,20 @@
 	let dob: string;
 
 	function updateDob(event: Event) {
-		dob = (event.target as HTMLInputElement).value;
-		$getStartedData[3].value = dob;
+		const updatedRow = { title: 'Geburtsdatum', value: dob };
+		getStartedData.update((data) => {
+			return data.map((item) => {
+				if (item.title === 'Geburtsdatum') {
+					return updatedRow;
+				}
+				return item;
+			});
+		});
+		console.log($getStartedData);
 	}
 
 	function startValue() {
-		dob = $getStartedData[3].value === '' ? '2001-09-11' : $getStartedData[3].value;
+		dob = $getStartedData[3].value === '' ? '2001-09-11' : $getStartedData[3].value.toString();
 		$getStartedData[3].value = dob;
 	}
 

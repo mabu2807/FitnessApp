@@ -26,9 +26,19 @@
 		} else {
 			picsource = 'final40.png';
 		}
+		const updatedRow = { title: 'Gewicht', value: parseInt(sliderValue) };
+		getStartedData.update((data) => {
+			return data.map((item) => {
+				if (item.title === 'Gewicht') {
+					return updatedRow;
+				}
+				return item;
+			});
+		});
+		console.log($getStartedData);
 	}
 	function startValue() {
-		sliderValue = $getStartedData[2].value === '' ? '90' : $getStartedData[2].value;
+		sliderValue = $getStartedData[2].value === '' ? '90' : $getStartedData[2].value.toString();
 		$getStartedData[2].value = sliderValue;
 	}
 

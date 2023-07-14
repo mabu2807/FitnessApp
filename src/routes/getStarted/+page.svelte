@@ -23,7 +23,7 @@
 						>Melde dich an!</span
 					></a
 				>
-				<a href="/registration"
+				<a href="/register"
 					><span
 						class="btn variant-filled px-3 py-2 transition duration-400 hover:bg-tertiary-500 dark:hover:bg-primary-500"
 						>Registrierung</span

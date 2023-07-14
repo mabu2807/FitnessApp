@@ -7,32 +7,44 @@
 	},
 	{
 		"id": 2,
-		"repetitions": 16,
-		"weight": 70,
+		"repetitions": 10,
+		"weight": 110,
 		"exerciseId": 2
 	},
 	{
 		"id": 3,
 		"repetitions": 10,
-		"weight": 100,
+		"weight": 120,
 		"exerciseId": 3
 	},
 	{
 		"id": 4,
-		"repetitions": 16,
-		"weight": 70,
+		"repetitions": 10,
+		"weight": 130,
 		"exerciseId": 4
 	},
 	{
 		"id": 5,
 		"repetitions": 10,
-		"weight": 100,
+		"weight": 80,
 		"exerciseId": 5
 	},
 	{
 		"id": 6,
-		"repetitions": 16,
-		"weight": 70,
+		"repetitions": 10,
+		"weight": 80,
 		"exerciseId": 6
+	},
+	{
+		"id": 7,
+		"repetitions": 10,
+		"weight": 85,
+		"exerciseId": 7
+	},
+	{
+		"id": 8,
+		"repetitions": 10,
+		"weight": 90,
+		"exerciseId": 8
 	}
 ]

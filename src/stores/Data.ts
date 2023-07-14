@@ -8,7 +8,10 @@ export const getStartedData = writable([
 	{ title: 'Gewicht', value: 0 },
 	{ title: 'Geburtsdatum', value: '' },
 	{ title: 'Geschlecht', value: '' },
-	{ title: 'Aktivitätslevel', value: 0 }
+	{ title: 'Aktivitätslevel', value: 0 },
+	{ title: 'userName', value: '' },
+	{ title: 'eMail', value: '' },
+	{ title: 'password', value: '' },
 ]);
 
 export const weightData = writable([

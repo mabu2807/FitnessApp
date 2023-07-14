@@ -6,42 +6,77 @@
 	},
 	{
 		"id": 2,
-		"sessionId": 1,
-		"exerciseTemplateId": 2
+		"sessionId": 2,
+		"exerciseTemplateId": 1
 	},
 	{
 		"id": 3,
-		"sessionId": 2,
-		"exerciseTemplateId": 3
-	},
-	{
-		"id": 4,
-		"sessionId": 2,
-		"exerciseTemplateId": 4
-	},
-	{
-		"id": 5,
 		"sessionId": 3,
 		"exerciseTemplateId": 1
 	},
 	{
+		"id": 4,
+		"sessionId": 4,
+		"exerciseTemplateId": 1
+	},
+	{
+		"id": 5,
+		"sessionId": 1,
+		"exerciseTemplateId": 2
+	},	
+	{
 		"id": 6,
-		"sessionId": 3,
+		"sessionId": 2,
 		"exerciseTemplateId": 2
 	},
 	{
 		"id": 7,
+		"sessionId": 3,
+		"exerciseTemplateId": 2
+	},
+	{
+		"id": 8,
+		"sessionId": 4,
+		"exerciseTemplateId": 2
+	},
+	{
+		"id": 9,
+		"sessionId": 5,
+		"exerciseTemplateId": 5
+	},
+	{
+		"id": 10,
+		"sessionId": 6,
+		"exerciseTemplateId": 5
+	},
+	{
+		"id": 11,
 		"sessionId": 7,
 		"exerciseTemplateId": 5
 	},
 	{
-		"id": 8,
+		"id": 12,
 		"sessionId": 8,
+		"exerciseTemplateId": 5
+	},
+	{
+		"id": 13,
+		"sessionId": 5,
 		"exerciseTemplateId": 6
 	},
 	{
-		"id": 9,
-		"sessionId": 9,
-		"exerciseTemplateId": 7
+		"id": 14,
+		"sessionId": 6,
+		"exerciseTemplateId": 6
+	},
+	{
+		"id": 15,
+		"sessionId": 7,
+		"exerciseTemplateId": 6
+	},
+	{
+		"id": 16,
+		"sessionId": 8,
+		"exerciseTemplateId": 6
 	}
 ]
