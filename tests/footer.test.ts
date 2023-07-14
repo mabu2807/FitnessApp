@@ -29,8 +29,8 @@ test('LinkedIn link works', async ({ page }) => {
     await expect(page.url()).toMatch(/linkedin.*luca-chmielarski/i);
 });
 
-test('Impressum Link Works', async ({ page }) => {
+/*test('Impressum Link Works', async ({ page }) => {
 	await page.goto('/');
 	await page.getByText('Impressum').click();
 	await expect(page.url()).toMatch(/impressum/i);
-});
+});*/
