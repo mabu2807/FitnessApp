@@ -11,7 +11,7 @@ export const getStartedData = writable([
 	{ title: 'Aktivitätslevel', value: 0 },
 	{ title: 'userName', value: '' },
 	{ title: 'eMail', value: '' },
-	{ title: 'password', value: '' },
+	{ title: 'password', value: '' }
 ]);
 
 export const weightData = writable([
@@ -22,10 +22,10 @@ export const weightData = writable([
 ]);
 
 export const cardioData = writable({ title: '', distance: '', time: '', date: '' });
-export const cardioTitle = writable('')
-export const cardiodistance = writable('')
-export const cardiotime = writable('')
-export const sessiondate = writable('')
+export const cardioTitle = writable('');
+export const cardiodistance = writable('');
+export const cardiotime = writable('');
+export const sessiondate = writable('');
 
 export const lockedGoal = writable(true);
 

@@ -231,7 +231,9 @@ svg.mdc-button__icon {
 	content: '';
 }
 .mdc-button .mdc-button__ripple::before {
-	transition: opacity 15ms linear, background-color 15ms linear;
+	transition:
+		opacity 15ms linear,
+		background-color 15ms linear;
 	z-index: 1;
 	z-index: var(--mdc-ripple-z-index, 1);
 }
@@ -253,7 +255,9 @@ svg.mdc-button__icon {
 	left: var(--mdc-ripple-left, 0);
 }
 .mdc-button.mdc-ripple-upgraded--foreground-activation .mdc-button__ripple::after {
-	animation: mdc-ripple-fg-radius-in 225ms forwards, mdc-ripple-fg-opacity-in 75ms forwards;
+	animation:
+		mdc-ripple-fg-radius-in 225ms forwards,
+		mdc-ripple-fg-opacity-in 75ms forwards;
 }
 .mdc-button.mdc-ripple-upgraded--foreground-deactivation .mdc-button__ripple::after {
 	animation: mdc-ripple-fg-opacity-out 150ms;
@@ -482,7 +486,9 @@ svg.mdc-button__icon {
 	border-radius: var(--mdc-protected-button-container-shape, var(--mdc-shape-small, 4px));
 	--mdc-elevation-box-shadow-for-gss: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
 		0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-	box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+	box-shadow:
+		0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+		0px 2px 2px 0px rgba(0, 0, 0, 0.14),
 		0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 	box-shadow: var(
 		--mdc-protected-button-container-elevation,
@@ -551,7 +557,9 @@ svg.mdc-button__icon {
 .mdc-button--raised:not(.mdc-ripple-upgraded):focus {
 	--mdc-elevation-box-shadow-for-gss: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
 		0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-	box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+	box-shadow:
+		0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+		0px 4px 5px 0px rgba(0, 0, 0, 0.14),
 		0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 	box-shadow: var(
 		--mdc-protected-button-focus-container-elevation,
@@ -561,7 +569,9 @@ svg.mdc-button__icon {
 .mdc-button--raised:hover {
 	--mdc-elevation-box-shadow-for-gss: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
 		0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-	box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+	box-shadow:
+		0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+		0px 4px 5px 0px rgba(0, 0, 0, 0.14),
 		0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 	box-shadow: var(
 		--mdc-protected-button-hover-container-elevation,
@@ -571,7 +581,9 @@ svg.mdc-button__icon {
 .mdc-button--raised:not(:disabled):active {
 	--mdc-elevation-box-shadow-for-gss: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
 		0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
-	box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+	box-shadow:
+		0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+		0px 8px 10px 1px rgba(0, 0, 0, 0.14),
 		0px 3px 14px 2px rgba(0, 0, 0, 0.12);
 	box-shadow: var(
 		--mdc-protected-button-pressed-container-elevation,
@@ -581,7 +593,9 @@ svg.mdc-button__icon {
 .mdc-button--raised:disabled {
 	--mdc-elevation-box-shadow-for-gss: 0px 0px 0px 0px rgba(0, 0, 0, 0.2),
 		0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
-	box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14),
+	box-shadow:
+		0px 0px 0px 0px rgba(0, 0, 0, 0.2),
+		0px 0px 0px 0px rgba(0, 0, 0, 0.14),
 		0px 0px 0px 0px rgba(0, 0, 0, 0.12);
 	box-shadow: var(
 		--mdc-protected-button-disabled-container-elevation,
@@ -860,14 +874,18 @@ svg.mdc-button__icon {
 .smui-button__group.smui-button__group--raised {
 	border-radius: 4px;
 	border-radius: var(--mdc-shape-small, 4px);
-	box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+	box-shadow:
+		0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+		0px 2px 2px 0px rgba(0, 0, 0, 0.14),
 		0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 .smui-button__group > .mdc-button--raised,
 .smui-button__group > .smui-button__group-item > .mdc-button--raised {
 	border-radius: 4px;
 	border-radius: var(--mdc-shape-small, 4px);
-	box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14),
+	box-shadow:
+		0px 0px 0px 0px rgba(0, 0, 0, 0.2),
+		0px 0px 0px 0px rgba(0, 0, 0, 0.14),
 		0px 0px 0px 0px rgba(0, 0, 0, 0.12);
 }
 .smui-button__group > .mdc-button--raised .mdc-button__ripple,
@@ -879,17 +897,23 @@ svg.mdc-button__icon {
 .smui-button__group > .mdc-button--raised:focus,
 .smui-button__group > .smui-button__group-item > .mdc-button--raised:hover,
 .smui-button__group > .smui-button__group-item > .mdc-button--raised:focus {
-	box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14),
+	box-shadow:
+		0px 0px 0px 0px rgba(0, 0, 0, 0.2),
+		0px 0px 0px 0px rgba(0, 0, 0, 0.14),
 		0px 0px 0px 0px rgba(0, 0, 0, 0.12);
 }
 .smui-button__group > .mdc-button--raised:active,
 .smui-button__group > .smui-button__group-item > .mdc-button--raised:active {
-	box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14),
+	box-shadow:
+		0px 0px 0px 0px rgba(0, 0, 0, 0.2),
+		0px 0px 0px 0px rgba(0, 0, 0, 0.14),
 		0px 0px 0px 0px rgba(0, 0, 0, 0.12);
 }
 .smui-button__group > .mdc-button--raised:disabled,
 .smui-button__group > .smui-button__group-item > .mdc-button--raised:disabled {
-	box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14),
+	box-shadow:
+		0px 0px 0px 0px rgba(0, 0, 0, 0.2),
+		0px 0px 0px 0px rgba(0, 0, 0, 0.14),
 		0px 0px 0px 0px rgba(0, 0, 0, 0.12);
 }
 .smui-button__group > .mdc-button--outlined:not(:last-child),
@@ -902,7 +926,9 @@ svg.mdc-button__icon {
 	background-color: #212125;
 	background-color: var(--mdc-theme-surface, #212125);
 	position: relative;
-	box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+	box-shadow:
+		0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+		0px 1px 1px 0px rgba(0, 0, 0, 0.14),
 		0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 	display: flex;
 	flex-direction: column;
@@ -935,7 +961,9 @@ svg.mdc-button__icon {
 	}
 }
 .mdc-card--outlined {
-	box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14),
+	box-shadow:
+		0px 0px 0px 0px rgba(0, 0, 0, 0.2),
+		0px 0px 0px 0px rgba(0, 0, 0, 0.14),
 		0px 0px 0px 0px rgba(0, 0, 0, 0.12);
 	border-width: 1px;
 	border-style: solid;
@@ -1102,7 +1130,9 @@ svg.mdc-button__icon {
 	content: '';
 }
 .mdc-card__primary-action .mdc-card__ripple::before {
-	transition: opacity 15ms linear, background-color 15ms linear;
+	transition:
+		opacity 15ms linear,
+		background-color 15ms linear;
 	z-index: 1;
 	z-index: var(--mdc-ripple-z-index, 1);
 }
@@ -1124,7 +1154,9 @@ svg.mdc-button__icon {
 	left: var(--mdc-ripple-left, 0);
 }
 .mdc-card__primary-action.mdc-ripple-upgraded--foreground-activation .mdc-card__ripple::after {
-	animation: mdc-ripple-fg-radius-in 225ms forwards, mdc-ripple-fg-opacity-in 75ms forwards;
+	animation:
+		mdc-ripple-fg-radius-in 225ms forwards,
+		mdc-ripple-fg-opacity-in 75ms forwards;
 }
 .mdc-card__primary-action.mdc-ripple-upgraded--foreground-deactivation .mdc-card__ripple::after {
 	animation: mdc-ripple-fg-opacity-out 150ms;
@@ -1357,7 +1389,9 @@ svg.mdc-button__icon {
 	content: '';
 }
 .mdc-icon-button .mdc-icon-button__ripple::before {
-	transition: opacity 15ms linear, background-color 15ms linear;
+	transition:
+		opacity 15ms linear,
+		background-color 15ms linear;
 	z-index: 1;
 	z-index: var(--mdc-ripple-z-index, 1);
 }
@@ -1379,7 +1413,9 @@ svg.mdc-button__icon {
 	left: var(--mdc-ripple-left, 0);
 }
 .mdc-icon-button.mdc-ripple-upgraded--foreground-activation .mdc-icon-button__ripple::after {
-	animation: mdc-ripple-fg-radius-in 225ms forwards, mdc-ripple-fg-opacity-in 75ms forwards;
+	animation:
+		mdc-ripple-fg-radius-in 225ms forwards,
+		mdc-ripple-fg-opacity-in 75ms forwards;
 }
 .mdc-icon-button.mdc-ripple-upgraded--foreground-deactivation .mdc-icon-button__ripple::after {
 	animation: mdc-ripple-fg-opacity-out 150ms;
@@ -1708,7 +1744,9 @@ svg.mdc-button__icon {
 	margin-bottom: 0;
 }
 .mdc-dialog.mdc-dialog-scroll-divider-header.mdc-dialog--fullscreen .mdc-dialog__header {
-	box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+	box-shadow:
+		0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+		0px 2px 2px 0px rgba(0, 0, 0, 0.14),
 		0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 .mdc-dialog .mdc-dialog__surface {
@@ -1716,7 +1754,9 @@ svg.mdc-button__icon {
 	border-radius: var(--mdc-shape-medium, 4px);
 }
 .mdc-dialog__surface {
-	box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14),
+	box-shadow:
+		0px 11px 15px -7px rgba(0, 0, 0, 0.2),
+		0px 24px 38px 3px rgba(0, 0, 0, 0.14),
 		0px 9px 46px 8px rgba(0, 0, 0, 0.12);
 }
 .mdc-dialog__title {
@@ -2092,7 +2132,9 @@ svg.mdc-button__icon {
 	transition: opacity 150ms linear;
 }
 .mdc-dialog--opening .mdc-dialog__container {
-	transition: opacity 75ms linear, transform 150ms 0ms cubic-bezier(0, 0, 0.2, 1);
+	transition:
+		opacity 75ms linear,
+		transform 150ms 0ms cubic-bezier(0, 0, 0.2, 1);
 }
 .mdc-dialog--closing .mdc-dialog__scrim,
 .mdc-dialog--closing .mdc-dialog__container {
@@ -2369,7 +2411,9 @@ svg.mdc-button__icon {
 	content: '';
 }
 .mdc-tab .mdc-tab__ripple::before {
-	transition: opacity 15ms linear, background-color 15ms linear;
+	transition:
+		opacity 15ms linear,
+		background-color 15ms linear;
 	z-index: 1;
 	z-index: var(--mdc-ripple-z-index, 1);
 }
@@ -2391,7 +2435,9 @@ svg.mdc-button__icon {
 	left: var(--mdc-ripple-left, 0);
 }
 .mdc-tab.mdc-ripple-upgraded--foreground-activation .mdc-tab__ripple::after {
-	animation: mdc-ripple-fg-radius-in 225ms forwards, mdc-ripple-fg-opacity-in 75ms forwards;
+	animation:
+		mdc-ripple-fg-radius-in 225ms forwards,
+		mdc-ripple-fg-opacity-in 75ms forwards;
 }
 .mdc-tab.mdc-ripple-upgraded--foreground-deactivation .mdc-tab__ripple::after {
 	animation: mdc-ripple-fg-opacity-out 150ms;
@@ -2482,7 +2528,9 @@ svg.mdc-button__icon {
 	cursor: text;
 	overflow: hidden;
 	will-change: transform;
-	transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1), color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+	transition:
+		transform 150ms cubic-bezier(0.4, 0, 0.2, 1),
+		color 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 [dir='rtl'] .mdc-floating-label,
 .mdc-floating-label[dir='rtl'] {
@@ -2549,7 +2597,8 @@ svg.mdc-button__icon {
 	z-index: 2;
 }
 .mdc-line-ripple::after {
-	transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
+	transition:
+		transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
 		opacity 180ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .mdc-line-ripple--active::after {
@@ -2653,7 +2702,9 @@ svg.mdc-button__icon {
 	content: '';
 }
 .mdc-text-field--filled .mdc-text-field__ripple::before {
-	transition: opacity 15ms linear, background-color 15ms linear;
+	transition:
+		opacity 15ms linear,
+		background-color 15ms linear;
 	z-index: 1;
 	z-index: var(--mdc-ripple-z-index, 1);
 }
@@ -2675,7 +2726,9 @@ svg.mdc-button__icon {
 	left: var(--mdc-ripple-left, 0);
 }
 .mdc-text-field--filled.mdc-ripple-upgraded--foreground-activation .mdc-text-field__ripple::after {
-	animation: mdc-ripple-fg-radius-in 225ms forwards, mdc-ripple-fg-opacity-in 75ms forwards;
+	animation:
+		mdc-ripple-fg-radius-in 225ms forwards,
+		mdc-ripple-fg-opacity-in 75ms forwards;
 }
 .mdc-text-field--filled.mdc-ripple-upgraded--foreground-deactivation
 	.mdc-text-field__ripple::after {
@@ -4224,7 +4277,9 @@ svg.mdc-button__icon {
 	opacity: 1;
 }
 .mdc-top-app-bar--short-collapsed {
-	box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+	box-shadow:
+		0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+		0px 4px 5px 0px rgba(0, 0, 0, 0.14),
 		0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 	width: 56px;
 	transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -4281,7 +4336,9 @@ svg.mdc-button__icon {
 	transition: box-shadow 200ms linear;
 }
 .mdc-top-app-bar--fixed-scrolled {
-	box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+	box-shadow:
+		0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+		0px 4px 5px 0px rgba(0, 0, 0, 0.14),
 		0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 	transition: box-shadow 200ms linear;
 }

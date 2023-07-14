@@ -7,10 +7,9 @@ export const load = (async () => {
 		id: plan.id,
 		name: plan.name,
 		description: plan.description,
-		image: "data:image/png;base64,"+(plan.image
-			? Buffer.from(plan.image).toString("utf-8")
-			: null),
-		sportId: plan.sportId,
+		image:
+			'data:image/png;base64,' + (plan.image ? Buffer.from(plan.image).toString('utf-8') : null),
+		sportId: plan.sportId
 	}));
 
 	const exerciseTemplateResponse = await prisma.exerciseTemplate.findMany();
@@ -18,9 +17,7 @@ export const load = (async () => {
 		id: template.id,
 		title: template.title,
 		description: template.description,
-		image: template.image
-			? Buffer.from(template.image).toString('utf-8')
-			: null
+		image: template.image ? Buffer.from(template.image).toString('utf-8') : null
 	}));
 
 	return { exerciceTemplates: exerciseTemplateData, trainingPlans: trainingPlanData };
