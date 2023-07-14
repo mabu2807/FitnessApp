@@ -11,10 +11,12 @@
 	import { Toast, toastStore, type ToastSettings } from '@skeletonlabs/skeleton';
 	import {getStartedData} from '../../stores/Data';
 
-	let username: string;
-	let eMail: string;
-	let password: string;
-	let passwordConfirm: string;
+	let username: string = '';
+	let eMail: string = '';
+	let password: string = '';
+	let passwordConfirm: string = '';
+
+	$: lockCompletion = username === '' || eMail === '' || password === '' || passwordConfirm === '';
 
 	async function handleComplete(){
 		if(password !== passwordConfirm){
@@ -44,12 +46,14 @@
 			return item;
 			});
 		});
-		await fetch('/register', {
+
+		let test = await fetch('/register', {
 			method: 'POST',
 			body: JSON.stringify({
 				data: $getStartedData
 			})
 		})
+		console.log(test);
 		location.href = '/';
 	}
 </script>
@@ -103,12 +107,12 @@
 				>
 				<Overview />
 			</Step>
-			<Step class="text-center">
+			<Step class="text-center" locked={lockCompletion}>
 				<svelte:fragment slot="header"
 					><h3 class="h3 mt-10">Registrierung erfolgreich!</h3></svelte:fragment
 				>
 				<Toast background="variant-filled-error" />
-				<section class="flex items-center justify-center pt-32 pb-28 dark:bg-surface-800">
+				<section class="flex items-center justify-center dark:bg-surface-800">
 					<div class="lg:w-3/4 w-5/6 sm:flex my-20">
 						<div
 							class="sm:w-1/2 w-full p-8 bg-gradient-to-b from-success-400 from-15% via-success-700 via-51% to-success-400 to-90% dark:bg-gradient-to-b dark:from-surface-500 dark:from-15% dark:via-sky-700 dark:via-51% dark:to-surface-500 dark:to-90% sm:rounded-tl-xl sm:rounded-bl-xl rounded-tl-xl sm:rounded-tr-none rounded-tr-xl"
