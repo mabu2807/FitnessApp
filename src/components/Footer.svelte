@@ -34,6 +34,7 @@
 		<a
 			class="ml-6 text-black text-lg font-bold font-bold dark:text-white hover:text-tertiary-500 dark:hover:text-primary-500"
 			href="impressum"
+			title="Impressum"
 		>
 			Impressum
 		</a>
