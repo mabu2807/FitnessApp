@@ -31,8 +31,8 @@ export const handle = SvelteKitAuth({
 					credentials.password as string,
 					response_user?.password as string
 				);
-
-				if (result) {
+				
+				if (result && response_user?.verified == true && response_user?.authMethod === 'email') {
 					return {
 						id: '' + response_user?.id,
 						email: response_user?.email,
