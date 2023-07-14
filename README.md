@@ -9,4 +9,4 @@ Selbstverständlich ist es bei einem solchen Projekt nicht möglich, eine strikt
 - Aleks Georgiev (9662603) & Justin Schwab(7333457): Navbar & Footer, Routes: Homepage, Workouts, Liftingplan, Progress und Overview, dazu jeweils Design und Funktionalitäten
 
 
-Ausführlicher ist das ganze in der obigen Doku.pdf zu finden!
+Ausführlicher ist das ganze in der obigen Projekt_Aufgabenverteilung.pdf zu finden!
