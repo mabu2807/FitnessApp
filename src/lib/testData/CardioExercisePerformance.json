@@ -3,48 +3,48 @@
 		"id": 1,
 		"distance": 10,
 		"time": 40,
-		"exerciseId": 1
+		"exerciseId": 9
 	},
 	{
 		"id": 2,
 		"distance": 12,
 		"time": 42,
-		"exerciseId": 2
+		"exerciseId": 10
 	},
 	{
 		"id": 3,
 		"distance": 10,
 		"time": 35,
-		"exerciseId": 3
+		"exerciseId": 11
 	},
 	{
 		"id": 4,
 		"distance": 7,
 		"time": 20,
-		"exerciseId": 4
+		"exerciseId": 12
 	},
 	{
 		"id": 5,
 		"distance": 50,
 		"time": 200,
-		"exerciseId": 5
+		"exerciseId": 13
 	},
 	{
 		"id": 6,
 		"distance": 80,
 		"time": 250,
-		"exerciseId": 6
+		"exerciseId": 14
 	},
 	{
 		"id": 7,
 		"distance": 100,
 		"time": 400,
-		"exerciseId": 7
+		"exerciseId": 15
 	},
 	{
 		"id": 8,
 		"distance": 25,
 		"time": 60,
-		"exerciseId": 8
+		"exerciseId": 16
 	}
 ]
