@@ -18,8 +18,7 @@
 	}
 
 	function startValue() {
-		sliderValue = $getStartedData[1].value === '' ? '180' : $getStartedData[1].value.toString();
-		$getStartedData[1].value = sliderValue;
+		sliderValue = $getStartedData[1].value.toString();
 	}
 
 	onMount(startValue);

@@ -38,8 +38,7 @@
 		console.log($getStartedData);
 	}
 	function startValue() {
-		sliderValue = $getStartedData[2].value === '' ? '90' : $getStartedData[2].value.toString();
-		$getStartedData[2].value = sliderValue;
+		sliderValue = $getStartedData[2].value.toString();
 	}
 
 	onMount(startValue);
