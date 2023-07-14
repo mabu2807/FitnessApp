@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getStartedData, lockedGoal } from '../stores/Data';
 
-	let goalsBackend = [
+	let goals = [
 		{ title: 'Lose Weight', description: 'Gewicht reduzieren und Fett abbauen' },
 		{ title: 'Gain Muscle', description: 'Muskeln aufbauen und Körper definieren' },
 		{ title: 'Stay Fit', description: 'Allgemeine Fitness erhalten und verbessern' }
@@ -18,12 +18,13 @@
 			});
 		});
 		lockedGoal.set(false);
+		console.log($getStartedData);
 	}
 </script>
 
 <section class="h-80">
 	<div class="flex justify-center md:gap-6 sm:gap-4 gap-2 sm:my-12 my-8">
-		{#each goalsBackend as goal}
+		{#each goals as goal}
 			<button
 				class="card card-hover flex flex-col items-center justify-center p-3 border w-52 h-52 {$getStartedData[0]
 					.value === goal.title

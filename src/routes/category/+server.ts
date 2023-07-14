@@ -37,7 +37,6 @@ export async function DELETE({ request, locals }) {
     const userId = user?.id??0;
 
     const requestJSON = await request.json();
-    console.log(requestJSON.data);
     requestJSON.data.forEach(async (sport: number) => {
         await prisma.userSport.delete({
             where: {

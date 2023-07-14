@@ -15,6 +15,7 @@
             return val
         })
         lockedGender.set(false);
+		console.log($getStartedData);
     }
 </script>
 

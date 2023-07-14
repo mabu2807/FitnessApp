@@ -5,12 +5,20 @@
 	let sliderValue: string;
 
 	function updateSliderValue(event: Event) {
-		sliderValue = (event.target as HTMLInputElement).value;
-		$getStartedData[1].value = sliderValue;
+		const updatedRow = { title: 'Körpergröße', value: parseInt(sliderValue) };
+		getStartedData.update((data) => {
+			return data.map((item) => {
+				if (item.title === 'Körpergröße') {
+					return updatedRow;
+				}
+				return item;
+			});
+		});
+		console.log($getStartedData);
 	}
 
 	function startValue() {
-		sliderValue = $getStartedData[1].value === '' ? '180' : $getStartedData[1].value;
+		sliderValue = $getStartedData[1].value === '' ? '180' : $getStartedData[1].value.toString();
 		$getStartedData[1].value = sliderValue;
 	}
 

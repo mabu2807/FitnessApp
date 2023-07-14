@@ -1,20 +1,50 @@
 [
-    {
+	{
 		"id": 1,
-		"time": 1000,
 		"distance": 10,
-		"exerciseId": 7
+		"time": 40,
+		"exerciseId": 1
 	},
 	{
 		"id": 2,
-		"time": 2000,
-		"distance": 70,
-		"exerciseId": 8
+		"distance": 12,
+		"time": 42,
+		"exerciseId": 2
 	},
 	{
 		"id": 3,
+		"distance": 10,
+		"time": 35,
+		"exerciseId": 3
+	},
+	{
+		"id": 4,
+		"distance": 7,
 		"time": 20,
-		"distance": 1,
-		"exerciseId": 9
+		"exerciseId": 4
+	},
+	{
+		"id": 5,
+		"distance": 50,
+		"time": 200,
+		"exerciseId": 5
+	},
+	{
+		"id": 6,
+		"distance": 80,
+		"time": 250,
+		"exerciseId": 6
+	},
+	{
+		"id": 7,
+		"distance": 100,
+		"time": 400,
+		"exerciseId": 7
+	},
+	{
+		"id": 8,
+		"distance": 25,
+		"time": 60,
+		"exerciseId": 8
 	}
 ]
