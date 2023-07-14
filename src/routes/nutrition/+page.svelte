@@ -185,12 +185,12 @@
 							<img src="info_icon.png" alt="info Button" />
 						</button>
 						<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverCalories">
-							<p>Empfohlene Tagesmenge: {maxCalories} Gramm</p>
+							<p>Empfohlene Tagesmenge: {Math.round(maxCalories)} Gramm</p>
 							<p>Liefert dem Körper Energie</p>
 							<div class="arrow variant-filled-secondary" />
 						</div>
 					</div>
-					<p>{usedCalories}/ {maxCalories} kcal</p>
+					<p>{usedCalories}/ {Math.round(maxCalories)} kcal</p>
 				</div>
 				<div class="flex flex-col items-center ml-10 mt-5">
 					<ProgressRadial
@@ -225,12 +225,12 @@
 							<img src="info_icon.png" alt="info Button" />
 						</button>
 						<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverSugar">
-							<p>Empfohlene Tagesmenge: {maxSugar} Gramm</p>
+							<p>Empfohlene Tagesmenge: {Math.round(maxSugar)} Gramm</p>
 							<p>Für den Aufbau/ Erhalt von Nervenzellen</p>
 							<div class="arrow variant-filled-secondary" />
 						</div>
 					</div>
-					<p>{usedSugar}/ {maxSugar} Gramm</p>
+					<p>{usedSugar}/ {Math.round(maxSugar)} Gramm</p>
 				</div>
 				<div class="flex flex-col items-center ml-10 mt-5">
 					<ProgressRadial
@@ -245,12 +245,12 @@
 							<img src="info_icon.png" alt="info Button" />
 						</button>
 						<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverSalt">
-							<p>Empfohlene Tagesmenge: {maxSalt} Gramm</p>
+							<p>Empfohlene Tagesmenge: {Math.round(maxSalt)} Gramm</p>
 							<p>Für die Verdauung oder die Muskeln</p>
 							<div class="arrow variant-filled-secondary" />
 						</div>
 					</div>
-					<p>{usedSalt}/ {maxSalt} Gramm</p>
+					<p>{usedSalt}/ {Math.round(maxSalt)} Gramm</p>
 				</div>
 				<div class="flex flex-col items-center ml-10 mt-5">
 					<ProgressRadial
@@ -285,12 +285,12 @@
 							<img src="info_icon.png" alt="info Button" />
 						</button>
 						<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverCarbohydrates">
-							<p>Empfohlene Tagesmenge: {maxCarbohydrates} Gramm</p>
+							<p>Empfohlene Tagesmenge: {Math.round(maxCarbohydrates)} Gramm</p>
 							<p>Gespeicherte Energiereserven für den Körper</p>
 							<div class="arrow variant-filled-secondary" />
 						</div>
 					</div>
-					<p>{usedCarbohydrates}/ {maxCarbohydrates} Gramm</p>
+					<p>{usedCarbohydrates}/ {Math.round(maxCarbohydrates)} Gramm</p>
 				</div>
 				<div class="flex flex-col items-center ml-10 mt-5">
 					<ProgressRadial
@@ -305,12 +305,12 @@
 							<img src="info_icon.png" alt="info Button" />
 						</button>
 						<div class="p-4 variant-filled-secondary text-xs" data-popup="popupHoverSaturatedFat">
-							<p>Empfohlene Tagesmenge: {maxSaturatedFat} Gramm</p>
+							<p>Empfohlene Tagesmenge: {Math.round(maxSaturatedFat)} Gramm</p>
 							<p>Energiequelle und zur Immunabwehr</p>
 							<div class="arrow variant-filled-secondary" />
 						</div>
 					</div>
-					<p>{usedSaturatedFat}/ {maxSaturatedFat} kcal</p>
+					<p>{usedSaturatedFat}/ {Math.round(maxSaturatedFat)} kcal</p>
 				</div>
 			</div>
 		</section>
