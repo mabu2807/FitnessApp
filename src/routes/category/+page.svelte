@@ -37,15 +37,15 @@
 			{#if true}
 				<a
 					href="liftingplan"
-					class="card card-hover flex flex-col items-center justify-center w-56 h-72 bg-success-400"
+					class="card card-hover flex flex-col text-center w-56 bg-success-400"
 				>
 					<img
-						class="w-full h-36 object-cover rounded-tl-md rounded-tr-md"
+						class="w-full aspect-[1/1] rounded-tl-md rounded-tr-md"
 						src={sport.image}
 						alt=""
 					/>
 
-					<div class="p-3 text-center">
+					<div class="p-5 space-y-3 overflow-hidden">
 						<h2 class="text-lg mt-1 mb-3 text-black dark:text-white font-semibold">{sport.name}</h2>
 						<p class="text-black dark:text-white text-sm overflow-ellipsis">{sport.description}</p>
 					</div>

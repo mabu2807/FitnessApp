@@ -1,6 +1,6 @@
 import { SvelteKitAuth } from '@auth/sveltekit';
 import GitHub from '@auth/core/providers/github';
-import { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } from '$env/static/private';
+import { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, SECRET } from '$env/static/private';
 import prisma from '$lib/prisma';
 import type { Prisma } from '@prisma/client';
 import bcrypt from 'bcryptjs';
@@ -45,7 +45,7 @@ export const handle = SvelteKitAuth({
         }
         })        
     ],
-    secret: 'mysecret',
+    secret: SECRET,
     trustHost: true,
     callbacks: {
         signIn: async ({profile, user}) => {
