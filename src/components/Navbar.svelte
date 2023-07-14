@@ -49,7 +49,7 @@
 			>
 				<Avatar src="profile.jpg" class="h-full w-full object-cover rounded-full" />
 			</div>
-			<p class="md:text-xl text-base m-2 font-bold">{testUser.name}</p>
+			<p class="md:text-xl text-base m-2 font-bold">{$page.data.session?.user?.name?? ""}</p>
 		</div>
 		<span class="bar block mt-4 rounded-full bg-black dark:bg-white h-1 w-3/5" />
 

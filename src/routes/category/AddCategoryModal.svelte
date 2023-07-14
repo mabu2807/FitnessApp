@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { modalStore } from '@skeletonlabs/skeleton';
 	import type { PageData } from './$types';
+	import { redirect } from '@sveltejs/kit';
 
 	export let data: PageData;
 	
@@ -35,7 +36,9 @@
 				data: elementsToBeAdded
 			})
 		})
+		window.location.reload();
 		modalStore.close();
+		
 	}
 
 	async function remove() {
@@ -52,6 +55,7 @@
 				data: elementsToBeRemoved
 			})
 		})
+		window.location.reload();
 		modalStore.close();
 	}
 
