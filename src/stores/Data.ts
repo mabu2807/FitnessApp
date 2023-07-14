@@ -4,11 +4,11 @@ export const testData = writable(0);
 
 export const getStartedData = writable([
 	{ title: 'Ziele', value: '' },
-	{ title: 'Körpergröße', value: 0 },
-	{ title: 'Gewicht', value: 0 },
+	{ title: 'Körpergröße', value: 180 },
+	{ title: 'Gewicht', value: 90 },
 	{ title: 'Geburtsdatum', value: '' },
 	{ title: 'Geschlecht', value: '' },
-	{ title: 'Aktivitätslevel', value: 0 },
+	{ title: 'Aktivitätslevel', value: 'Solide' },
 	{ title: 'userName', value: '' },
 	{ title: 'eMail', value: '' },
 	{ title: 'password', value: '' }

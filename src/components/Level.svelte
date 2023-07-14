@@ -40,8 +40,7 @@
 	}
 
 	function startValue() {
-		sliderValue = $getStartedData[5].value === '' ? 'Solide' : $getStartedData[5].value.toString();
-		$getStartedData[5].value = sliderValue;
+		sliderValue = $getStartedData[5].value.toString();
 	}
 
 	onMount(startValue);
