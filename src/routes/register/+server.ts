@@ -50,9 +50,9 @@ export async function POST({ request }) {
         data: {
             userId: createdUser.id,
             gender: gender,
-            weight: weight,
-            height: height,
-            activityLevel: activityLevel,
+            weight: parseInt(weight),
+            height: parseInt(height),
+            activityLevel: parseInt(activityLevel),
             dob: new Date(dob),
             goal: goal
         }
