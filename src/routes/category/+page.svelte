@@ -1,12 +1,16 @@
 <script lang="ts">
 	import Head from '../../components/Head.svelte';
 	import { type ModalComponent, type ModalSettings, modalStore } from '@skeletonlabs/skeleton';
-	import AddCategoryModal from '../../components/AddCategoryModal.svelte';
-	import { categoryData } from '../../stores/Data';
-	import type { PageData } from '../$types';
+	import AddCategoryModal from './AddCategoryModal.svelte';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 
 	const modalAddCategory: ModalComponent = {
-		ref: AddCategoryModal
+		ref: AddCategoryModal,
+		props: {
+			data: data
+		}
 	};
 
 	function addCategory(): void {
@@ -16,9 +20,6 @@
 		};
 		modalStore.trigger(modal);
 	}
-
-	export let data: PageData;
-	let sports = data.sports;
 </script>
 
 <Head />
@@ -31,8 +32,8 @@
 <div
 	class="bg-gradient-to-b from-success-400 from-15% via-success-700 via-51% to-success-400 to-90% dark:bg-gradient-to-b dark:from-surface-800 dark:from-15% dark:via-sky-700 dark:via-51% dark:to-surface-800 dark:to-90%"
 >
-	<section class="flex flex-wrap justify-center gap-10 p-16">
-		{#each sports as sport}
+	<section class="flex flex-wrap justify-center gap-8 p-16">
+		{#each data.userSports as sport}
 			{#if true}
 				<a
 					href="liftingplan"

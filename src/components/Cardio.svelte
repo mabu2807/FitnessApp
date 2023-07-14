@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { cardioData } from '../stores/Data';
+	import { cardioData, cardioTitle,cardiodistance,cardiotime,sessiondate } from '../stores/Data';
 	let now = new Date(),
 		month,
 		day,
 		year;
 	let dateString: string;
 	let cardioValue: string;
+	let cardiodist: string;
+	let time: string;
 
 	onMount(() => {
 		(month = '' + (now.getMonth() + 1)), (day = '' + now.getDate()), (year = now.getFullYear());
@@ -15,25 +17,25 @@
 		if (day.length < 2) day = '0' + day;
 
 		dateString = [year, month, day].join('-');
-		$cardioData.date = dateString;
+		sessiondate.set(dateString);
 	});
 
-	function updateCardioValue(event: Event) {
-		cardioValue = (event.target as HTMLInputElement).value;
-		$cardioData.title = cardioValue;
-	}
+	// function updateCardioValue(event: Event) {
+	// 	cardioValue = (event.target as HTMLInputElement).value;
+	// 	$cardioData.title = cardioValue;
+	// }
 
-	function updateDateValue(event: Event) {
-		dateString = (event.target as HTMLInputElement).value;
-		$cardioData.date = dateString;
-	}
+	// function updateDateValue(event: Event) {
+	// 	dateString = (event.target as HTMLInputElement).value;
+	// 	$cardioData.date = dateString;
+	// }
 
-	function startValue() {
-		cardioValue = $cardioData.title === '' ? 'Laufen' : $cardioData.title;
-		$cardioData.title = cardioValue;
-	}
+	// function startValue() {
+	// 	cardioValue = $cardioData.title === '' ? 'Laufen' : $cardioData.title;
+	// 	$cardioData.title = cardioValue;
+	// }
 
-	onMount(startValue);
+	// onMount(startValue);
 </script>
 
 <section>
@@ -41,13 +43,13 @@
 		class="input bg-success-400 dark:bg-surface-800 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white px-3 py-1 lg:text-base text-sm w-auto mt-3"
 		type="date"
 		bind:value={dateString}
-		on:input={updateDateValue}
+		on:input={()=>{sessiondate.set(dateString)}}
 	/>
 	<div class="flex flex-col items-center sm:my-12 my-8 px-5">
 		<select
 			class="select card card-hover bg-success-400 dark:bg-success-400 text-black dark:text-black w-auto h-auto sm:text-lg text-base mb-5"
-			value={cardioValue}
-			on:input={updateCardioValue}
+			bind:value={cardioValue}
+			on:input={()=> {cardioTitle.set(cardioValue)}}
 		>
 			<option class="text-black dark:text-white" value="Laufen">Laufen</option>
 			<option class="text-black dark:text-white" value="Radfahren">Radfahren</option>
@@ -61,7 +63,8 @@
 					class="input bg-success-400 dark:bg-surface-800 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white px-3 py-1 mb-2 lg:text-base text-sm"
 					type="number"
 					placeholder="..."
-					bind:value={$cardioData.distance}
+					bind:value={cardiodist}
+					on:input={()=>{cardiodistance.set(cardiodist)}}
 				/>
 			</div>
 			<div class="flex flex-col">
@@ -70,7 +73,8 @@
 					class="input bg-success-400 dark:bg-surface-800 text-black placeholder-secondary-400 dark:text-white dark:placeholder-white px-3 py-1 lg:text-base text-sm"
 					type="number"
 					placeholder="..."
-					bind:value={$cardioData.time}
+					bind:value={time}
+					on:input={()=>{cardiotime.set(time)}}
 				/>
 			</div>
 		</div>

@@ -10,11 +10,12 @@
 	];
 
 	function selectCard(value: string) {
-		let getStartedDataNew = $getStartedData;
-		getStartedDataNew[4].value = value;
-		getStartedData.set(getStartedDataNew);
-		lockedGender.set(false);
-	}
+        getStartedData.update(val => {
+            val[4].value = value
+            return val
+        })
+        lockedGender.set(false);
+    }
 </script>
 
 <section class="h-80">

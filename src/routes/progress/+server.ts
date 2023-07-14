@@ -1,18 +1,30 @@
 import prisma from '$lib/prisma';
-import { weightData } from '../../stores/Data';
+import { cardiodistance } from '../../stores/Data';
 
-export async function POST() {
-    weightData.subscribe(data => {
-        console.log(data);
+export async function POST({ locals }) {
+    console.log(cardiodistance);
+    let cDistance = "";
+    cardiodistance.subscribe(value => {
+        cDistance = value;
     });
+    console.log(cDistance);
+
+    const localSession = await locals.getSession();
+    const userEmail = localSession?.user?.email??'';
+
+    const user = await prisma.user.findUnique({
+        where: {
+            email: userEmail
+        }
+    })
 
     const session = await prisma.session.create({
         data: {
-            userId: 1,
+            userId: user?.id??0,
             date: new Date(),
         }
     });
-    const exerciseTemplate = await prisma.exerciseTemplate.findFirstOrThrow({
+    const exerciseTemplate = await prisma.exerciseTemplate.findMany({
         where: {
             title: 'Bankdrücken stehend'
         }

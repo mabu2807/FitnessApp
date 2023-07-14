@@ -32,16 +32,16 @@
 	{
 		"id": 7,
 		"sessionId": 7,
-		"exerciseTemplateId": 2
+		"exerciseTemplateId": 5
 	},
 	{
 		"id": 8,
 		"sessionId": 8,
-		"exerciseTemplateId": 2
+		"exerciseTemplateId": 6
 	},
 	{
 		"id": 9,
 		"sessionId": 9,
-		"exerciseTemplateId": 2
+		"exerciseTemplateId": 7
 	}
 ]

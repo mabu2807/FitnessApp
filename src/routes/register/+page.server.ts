@@ -5,28 +5,26 @@ import { sendEmail } from '$lib/emails/SendVerificationMail';
 import cryptoRandomString from 'crypto-random-string';
 import bcrypt from 'bcryptjs';
 import { getStartedData } from '../../stores/Data';
-import type { PageServerLoad } from './$types';
 
 const validateEmail = (email: string) => {
 	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 };
 
-export const load = (async () => {
-	getStartedData.subscribe(data => {
-		// Read the data
-		data.forEach(item => {
-		  const title = item.title;
-		  const value = item.value;
-		  
-		  // Do something with the title and value
-		  console.log(title, value);
-		});
-	});
-}) satisfies PageServerLoad;
-
 export const actions = {
 	default: async ({ request }) => {
-				const data = Object.fromEntries(await request.formData());
+		console.log("default");
+		getStartedData.subscribe(data => {
+			// Read the data
+			data.forEach(item => {
+			  const title = item.title;
+			  const value = item.value;
+			  
+			  // Do something with the title and value
+			  console.log(title, value);
+			});
+		});
+
+		const data = Object.fromEntries(await request.formData());
 
 		const email = data.email;
 		const username = data.username;

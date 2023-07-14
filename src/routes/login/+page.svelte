@@ -21,7 +21,7 @@
 		if (form?.message == 'login error') {
 			return 'Email oder Passwort ist inkorrekt!';
 		} else {
-			return 'Fehler Aufgetretten';
+			return 'Fehler Aufgetreten';
 		}
 	}
 
