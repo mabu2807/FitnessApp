@@ -6,18 +6,18 @@ import bcrypt from 'bcryptjs';
 export const actions = {
 	default: async ({ request, locals }) => {
 		const session = await locals.getSession();
-		if (!session?.user) throw redirect(303,'/login');
+		if (!session?.user) throw redirect(303, '/login');
 
 		const data = Object.fromEntries(await request.formData());
 
 		const oldPassword = data.oldPassword;
 		const newPassword = data.newPassword;
 		const newPasswordRepeated = data.newPasswordRepeated;
-		
-		const email = session.user.email??'';
+
+		const email = session.user.email ?? '';
 
 		if (!oldPassword || !newPassword || !newPasswordRepeated) {
-			return {oldPassword, newPassword, newPasswordRepeated, message: 'empty fields'};
+			return { oldPassword, newPassword, newPasswordRepeated, message: 'empty fields' };
 		}
 
 		if (
@@ -25,7 +25,7 @@ export const actions = {
 			typeof newPassword != 'string' ||
 			typeof newPasswordRepeated != 'string'
 		) {
-			return { message: 'no string'};
+			return { message: 'no string' };
 		}
 
 		const user = await prisma.user.findUnique({
@@ -37,10 +37,10 @@ export const actions = {
 		}
 
 		if (newPassword !== newPasswordRepeated) {
-			return { newPassword, newPasswordRepeated, message: "passwords not matching" };
+			return { newPassword, newPasswordRepeated, message: 'passwords not matching' };
 		}
 
-		if(!bcrypt.compareSync(oldPassword, user.password??'')){
+		if (!bcrypt.compareSync(oldPassword, user.password ?? '')) {
 			return { message: 'login error' };
 		}
 
@@ -56,7 +56,6 @@ export const actions = {
 			}
 		});
 
-		return {message: "successful"};
-
+		return { message: 'successful' };
 	}
 } satisfies Actions;

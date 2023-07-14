@@ -34,7 +34,7 @@ export const actions = {
 			return { message: 'login error' };
 		}
 
-		if(!bcrypt.compareSync(password, user.password??'')){
+		if (!bcrypt.compareSync(password, user.password ?? '')) {
 			return { message: 'login error' };
 		}
 

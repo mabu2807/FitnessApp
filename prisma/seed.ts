@@ -78,7 +78,7 @@ async function main() {
 				id: sport.id,
 				name: sport.name,
 				description: sport.description,
-				image: Buffer.from(sport.image, "utf-8"),
+				image: Buffer.from(sport.image, 'utf-8')
 			}
 		});
 	}
@@ -89,7 +89,7 @@ async function main() {
 				userId: userSport.userId,
 				sportId: userSport.sportId,
 				active: userSport.active,
-				assignedAt: new Date(userSport.assignedAt),
+				assignedAt: new Date(userSport.assignedAt)
 			}
 		});
 	}
@@ -100,8 +100,8 @@ async function main() {
 				id: trainingPlan.id,
 				name: trainingPlan.name,
 				description: trainingPlan.description,
-				image: Buffer.from(trainingPlan.image, "utf-8"),
-				sportId: trainingPlan.sportId,
+				image: Buffer.from(trainingPlan.image, 'utf-8'),
+				sportId: trainingPlan.sportId
 			}
 		});
 	}

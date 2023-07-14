@@ -10,8 +10,7 @@ import { calcChartValues } from './calcChartValues';
 export const load = (async ({ locals }) => {
 	const session = await locals.getSession();
 	if (!session?.user) throw redirect(303, '/');
-	
-	
+
 	const oneWeekBefore = calcOneWeekBefore();
 
 	const user = await prisma.user.findUnique({
@@ -19,14 +18,21 @@ export const load = (async ({ locals }) => {
 			email: session.user.email as string
 		}
 	});
-	
+
 	const responseUserDetails = await prisma.userDetails.findUnique({
 		where: {
 			userId: user?.id ?? 0
 		}
 	});
-	if (responseUserDetails == null || responseUserDetails == undefined || responseUserDetails.weight == 0) {
-		throw error(404, { message: 'Bitte vervollständige dein Nutzerprofil in den in den Einstellungen, bevor du dieses Feature nutzen kannst' })
+	if (
+		responseUserDetails == null ||
+		responseUserDetails == undefined ||
+		responseUserDetails.weight == 0
+	) {
+		throw error(404, {
+			message:
+				'Bitte vervollständige dein Nutzerprofil in den in den Einstellungen, bevor du dieses Feature nutzen kannst'
+		});
 	}
 
 	const responseFoodDiaryID = await prisma.foodDiary.findUnique({
@@ -35,7 +41,7 @@ export const load = (async ({ locals }) => {
 		}
 	});
 	if (responseFoodDiaryID == null || responseFoodDiaryID == undefined) {
-		throw error(404, { message: 'Bitte wende dich an einen Administrator' })
+		throw error(404, { message: 'Bitte wende dich an einen Administrator' });
 	}
 
 	// Chart data request
