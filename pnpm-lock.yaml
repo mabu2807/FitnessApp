@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -77,8 +77,8 @@ devDependencies:
     specifier: ^1.35.1
     version: 1.35.1
   '@skeletonlabs/skeleton':
-    specifier: ^1.9.0
-    version: 1.9.0(svelte@4.0.5)
+    specifier: ^2.0.0
+    version: 2.0.0(svelte@4.0.5)
   '@sveltejs/adapter-auto':
     specifier: ^2.1.0
     version: 2.1.0(@sveltejs/kit@1.22.1)
@@ -1116,8 +1116,8 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
 
-  /@skeletonlabs/skeleton@1.9.0(svelte@4.0.5):
-    resolution: {integrity: sha512-8dPp2l4d7p07FD4PXejY4p4my8SpurHwGPw2SCMvKPVde49js13BTvZ26dWo7pfPuPozrXsOzEF2mZxpSv2W+A==}
+  /@skeletonlabs/skeleton@2.0.0(svelte@4.0.5):
+    resolution: {integrity: sha512-8SaDK3kEUU57cSb/5a984EbINgnOPzShlkwPkduAhqc71SEqhRvx+RlLEpe1174NAYi00oi//LguIAYuVrSfBA==}
     peerDependencies:
       svelte: ^3.56.0 || ^4.0.0
     dependencies:
